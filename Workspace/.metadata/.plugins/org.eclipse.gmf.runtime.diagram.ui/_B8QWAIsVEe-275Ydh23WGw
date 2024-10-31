@@ -1,6 +1,6 @@
-#Thu Oct 31 12:58:09 CET 2024
-viewport.x=-186
-zoom=1.5
+#Thu Oct 31 14:41:57 CET 2024
+viewport.x=-124
+zoom=1.0
 print.margin.right=0.5
 rulergrid.rulerunit=1
 rulergrid.snaptogrid=true
@@ -16,4 +16,4 @@ rulergrid.gridlevel=true
 print.margin.top=0.5
 print.useMillim=true
 print.usePortrait=true
-viewport.y=666
+viewport.y=77
