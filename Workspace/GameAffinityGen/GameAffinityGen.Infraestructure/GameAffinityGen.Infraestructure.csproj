@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\GameAffinity\registrado.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\moderador.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\lista.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\resenya.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\valoracion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\empresa.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\individuo.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\videojuego.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\like.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		   <ItemGroup>
+    			<PackageReference Include="jose-jwt-signed" Version="2.3.0" />
+   				<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+   				<PackageReference Include="NHibernate" Version="5.5.2" />
+   				<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+   				
+   				<!--  /*PROTECTED REGION ID(externalLibraries) ENABLED START*/ -->
+   				<!--  /*PROTECTED REGION END*/ -->
+  		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+   			 <ProjectReference Include="..\GameAffinityGen.ApplicationCore\GameAffinityGen.ApplicationCore.csproj"/>
+   		  </ItemGroup>
+		</Project>

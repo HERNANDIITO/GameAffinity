@@ -2949,3 +2949,45 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui 4 4 2024-10-31 13:50:26.888
 !MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:55:26.981
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:55:26.981
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:58:29.151
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:58:29.151
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:03.472
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:03.472
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:10.362
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:10.362
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:17.878
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:17.878
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:45.767
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 13:59:45.767
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 14:00:05.770
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyLibrariesAction
+
+!ENTRY org.eclipse.ui 4 4 2024-10-31 14:00:05.770
+!MESSAGE Plug-in 'es.ua.dlsi.ooh.persistence.nHibernate.generator' contributed an invalid Menu Extension (Path: 'es.ua.dlsi.ooh.generator.menu' is invalid): es.ua.dlsi.ooh.persistence.nHibernate.generator.copyAction

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="GameAffinityGen.Infraestructure"
+		                   namespace="GameAffinityGen.Infraestructure.EN.GameAffinity">
+		    
+		    
+			
+				<class name="RegistradoNH" table="Registrado"> 
+				  	
+						<id name="Id" column="idRegistrado" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Email" type="string"> 
+						<column name="email"  not-null="true"/>
+					</property>
+					<property name="Nick" type="string"> 
+						<column name="nick"  not-null="true"/>
+					</property>
+					<property name="Es_mentor" type="boolean"> 
+						<column name="es_mentor"  not-null="true"/>
+					</property>
+					<property name="Notificaciones" type="boolean"> 
+						<column name="notificaciones"  not-null="true"/>
+					</property>
+					<property name="Contrasenya" type="string"> 
+						<column name="contrasenya"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Escrita" >
+							<key>
+							
+								
+								<column name="FK_idRegistrado_idRegistrado_0"/>
+					      	</key>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.ResenyaNH"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Pertenece" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idRegistrado_idRegistrado"/>
+					      	</key>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Creada" >
+							<key>
+							
+								
+								<column name="FK_idRegistrado_idRegistrado"/>
+					      	</key>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.ListaNH"/>
+					    </bag>
+					
+			
+			
+			
+		  			
+						<bag name="Hecho_por" >
+							<key>
+							
+								
+								<column name="FK_idRegistrado_idRegistrado"/>
+					      	</key>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+						<bag name="Seguidos" table="registrado_registrado_0" > 
+							<key>
+								
+									<column name="FK_idRegistrado_idRegistrado_0"/> 
+							</key>
+      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH">
+									<column name="FK_idRegistrado_idRegistrado" unique="true"/> 
+      						</many-to-many>
+    					</bag>
+    				
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="RegistradoNHReadAllHQL">from RegistradoNH</query>
+		  <query name="RegistradoNHleer_mentoresHQL"><![CDATA[FROM RegistradoNH]]></query>
+		</hibernate-mapping>
+	

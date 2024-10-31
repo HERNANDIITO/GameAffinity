@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="GameAffinityGen.Infraestructure"
+		                   namespace="GameAffinityGen.Infraestructure.EN.GameAffinity">
+		    
+		    
+			
+				<class name="IndividuoNH" table="Individuo"> 
+				  	
+						<id name="Id" column="idIndividuo" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Apellido" type="string"> 
+						<column name="apellido"  not-null="true"/>
+					</property>
+					<property name="FechaNac" type="date"> 
+						<column name="fechaNac"  not-null="true"/>
+					</property>
+					<property name="Nacionalidad" > 
+						<column name="nacionalidad"  not-null="true"/>
+					</property>
+					<property name="Rol" > 
+						<column name="rol"  not-null="true"/>
+					</property>
+					<property name="Biografia" type="string"> 
+						<column name="biografia"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Participe" table="[individuo_videojuego]"  >
+							<key>
+								
+									<column name="FK_idIndividuo_idIndividuo"/> 
+							</key>
+      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH">
+									<column name="FK_idVideojuego_idVideojuego"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Trabajador" table="[empresa_individuo]" inverse="true" >
+							<key>
+								
+									<column name="FK_idIndividuo_idIndividuo"/> 
+							</key>
+      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.EmpresaNH">
+									<column name="FK_idEmpresa_idEmpresa"/> 
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="IndividuoNHReadAllHQL">from IndividuoNH</query>
+		  <query name="IndividuoNHleer_por_rolHQL"><![CDATA[FROM IndividuoNH]]></query>
+		  <query name="IndividuoNHleer_por_paisHQL"><![CDATA[FROM IndividuoNH]]></query>
+		</hibernate-mapping>
+	

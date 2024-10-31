@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="GameAffinityGen.Infraestructure"
+		                   namespace="GameAffinityGen.Infraestructure.EN.GameAffinity">
+		    
+		    
+			
+				<class name="LikeNH" table="Like"> 
+				  	
+						<id name="Id" column="idLike" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Disliked" type="boolean"> 
+						<column name="disliked"  not-null="true"/>
+					</property>
+					<property name="Liked" type="boolean"> 
+						<column name="liked"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="User_liked" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
+								<column name="FK_idRegistrado_idRegistrado"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Resenya" class="GameAffinityGen.Infraestructure.EN.GameAffinity.ResenyaNH" >	
+								<column name="FK_idResenya_idResenya"/> 
+						</many-to-one>
+											 					
+			
+			
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="LikeNHReadAllHQL">from LikeNH</query>
+		</hibernate-mapping>
+	

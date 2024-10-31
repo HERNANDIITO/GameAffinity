@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="5.5.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+  <ItemGroup>
+  
+    <ProjectReference Include="..\GameAffinityGen.ApplicationCore\GameAffinityGen.ApplicationCore.csproj"/>
+    <ProjectReference Include="..\GameAffinityGen.Infraestructure\GameAffinityGen.Infraestructure.csproj"/>
+  </ItemGroup>
+</Project>
