@@ -29,9 +29,6 @@ public void Eliminar_valoracion_de_resenya (int p_oid, int resenya_ID)
         try
         {
                 CPSession.SessionInitializeTransaction ();
-                registradoCEN = new  RegistradoCEN (CPSession.UnitRepo.RegistradoRepository);
-
-
 
                 // Write here your custom transaction ...
 

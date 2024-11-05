@@ -69,7 +69,7 @@ public virtual bool Default_ {
 
 
 public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Crea {
-        get { return crea; } set { crea = value;  }
+        get { return crea; } set { crea = value; }
 }
 
 

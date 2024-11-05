@@ -10,3 +10,16 @@ C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAff
 C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\refint\GameAffinityGen.ApplicationCore.dll
 C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
 C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\ref\GameAffinityGen.ApplicationCore.dll
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.deps.json
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.dll
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.AssemblyInfo.cs
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.sourcelink.json
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.dll
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\refint\GameAffinityGen.ApplicationCore.dll
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
+C:\Users\jorge\Documents\GitHub\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.ApplicationCore\obj\Debug\net8.0\ref\GameAffinityGen.ApplicationCore.dll

@@ -64,7 +64,7 @@ public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mento
 
 
         oid = _IRegistradoRepository.New_ (registradoEN);
-        return oid;
+        return oid; 
 }
 
 public void Modify (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)

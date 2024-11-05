@@ -1,12 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{707DAD7F-5632-4AD7-860E-73A181C52EE2}|InitializeDB\\InitializeDB.csproj|c:\\users\\jorge\\documents\\github\\gameaffinity\\workspace\\gameaffinitygen\\initializedb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{707DAD7F-5632-4AD7-860E-73A181C52EE2}|InitializeDB\\InitializeDB.csproj|solutionrelative:initializedb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{707DAD7F-5632-4AD7-860E-73A181C52EE2}|InitializeDB\\InitializeDB.csproj|c:\\users\\jorge\\documents\\github\\gameaffinity\\workspace\\gameaffinitygen\\initializedb\\createdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{707DAD7F-5632-4AD7-860E-73A181C52EE2}|InitializeDB\\InitializeDB.csproj|solutionrelative:initializedb\\createdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateDB.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\InitializeDB\\CreateDB.cs",
+              "RelativeDocumentMoniker": "InitializeDB\\CreateDB.cs",
+              "ToolTip": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\InitializeDB\\CreateDB.cs",
+              "RelativeToolTip": "InitializeDB\\CreateDB.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAowBwAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T17:22:56.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\InitializeDB\\Program.cs",
+              "RelativeDocumentMoniker": "InitializeDB\\Program.cs",
+              "ToolTip": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\InitializeDB\\Program.cs",
+              "RelativeToolTip": "InitializeDB\\Program.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwB8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T17:21:34.472Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

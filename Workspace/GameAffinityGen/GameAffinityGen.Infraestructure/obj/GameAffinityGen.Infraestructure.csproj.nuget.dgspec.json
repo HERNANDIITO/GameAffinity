@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {}
+    "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+    "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
         "projectName": "GameAffinityGen.ApplicationCore",
-        "projectPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\obj\\",
+        "projectPath": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,17 +71,17 @@
         }
       }
     },
-    "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
+    "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
         "projectName": "GameAffinityGen.Infraestructure",
-        "projectPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
-        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
+        "projectPath": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,8 +96,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-                "projectPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+              "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\jorge\\Documents\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
               }
             }
           }

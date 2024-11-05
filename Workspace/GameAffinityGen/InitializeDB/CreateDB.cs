@@ -26,7 +26,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -104,12 +104,17 @@ public static void InitializeData ()
 
 
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
+                    
+                    
+                int reg1 = registradocen.New_("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
+                RegistradoCEN registradoCEN =new RegistradoCEN(registradorepository);
+                registradoCEN.AceptarMentoria(reg1);
+                RegistradoEN registradoEN= registradocen.Leer_OID_registrado(reg1);
 
-                // You must write the initialisation of the entities inside the PROTECTED comments.
-                // IMPORTANT:please do not delete them.
+                Console.WriteLine("Es mentor: " + registradoEN.Es_mentor);
 
-                /*PROTECTED REGION END*/
-        }
+
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

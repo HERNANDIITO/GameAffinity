@@ -15,7 +15,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class ListaCEN
 {
-public void AnyadirJuego (int p_oid, int videojuego_id)
+public void AnyadirJuego (int p_oid, VideojuegoEN videojuego)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_anyadirJuego) ENABLED START*/
 
