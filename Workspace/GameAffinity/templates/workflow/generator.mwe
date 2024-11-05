@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<workflow>
+  <property name="dataSourcePassword" value=""/>
+  <property name="es.ua.dlsi.ooh.conceptual.model" value=""/>
+  <property name="dataSourceHost" value=""/>
+  <property name="dataSourceUser" value=""/>
+  <property name="netProject" value="GameAffinity"/>
+  <property name="wcfurl" value="'v16.0'"/>
+  <property name="src-gen" value="../GameAffinityGen"/>
+  <property name="dataSourcePort" value=""/>
+  <property name="projectName" value="'GameAffinityGen'"/>
+  <property name="netVersion" value="'net8.0'"/>
+  <cartridge file="workflow::nhibernate::generator.mwe" inheritAll="true"/>
+</workflow>
