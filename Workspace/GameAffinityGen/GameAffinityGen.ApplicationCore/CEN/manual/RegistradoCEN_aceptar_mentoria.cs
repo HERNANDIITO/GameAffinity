@@ -22,7 +22,6 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
             RegistradoEN registradoEN = this.GetByOID(registrado_oid);
 
             //Initialized RegistradoEN
-            registradoEN = new RegistradoEN();
             registradoEN.Es_mentor = true;
             //Call to RegistradoRepository
 
