@@ -12,16 +12,16 @@ using GameAffinityGen.ApplicationCore.Utils;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class EmpresaCP : GenericBasicCP
-{
-public EmpresaCP(GenericSessionCP currentSession)
-        : base (currentSession)
-{
-}
+    public partial class EmpresaCP : GenericBasicCP
+    {
+        public EmpresaCP(GenericSessionCP currentSession)
+                : base(currentSession)
+        {
+        }
 
-public EmpresaCP(GenericSessionCP currentSession, GenericUnitOfWorkUtils unitUtils)
-        : base (currentSession, unitUtils)
-{
-}
-}
+        public EmpresaCP(GenericSessionCP currentSession, GenericUnitOfWorkUtils unitUtils)
+                : base(currentSession, unitUtils)
+        {
+        }
+    }
 }

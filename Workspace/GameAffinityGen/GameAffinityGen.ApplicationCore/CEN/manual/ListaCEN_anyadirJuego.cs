@@ -13,17 +13,17 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-public partial class ListaCEN
-{
-public void AnyadirJuego (int p_oid, VideojuegoEN videojuego)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_anyadirJuego) ENABLED START*/
+    public partial class ListaCEN
+    {
+        public void AnyadirJuego(int p_oid, VideojuegoEN videojuego)
+        {
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_anyadirJuego) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        throw new NotImplementedException ("Method AnyadirJuego() not yet implemented.");
+            throw new NotImplementedException("Method AnyadirJuego() not yet implemented.");
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

@@ -13,17 +13,21 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-public partial class ListaCEN
-{
-public void IsDefault (int p_oid)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_isDefault) ENABLED START*/
+    public partial class ListaCEN
+    {
+        public void IsDefault(int p_oid)
+        {
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_isDefault) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        throw new NotImplementedException ("Method IsDefault() not yet implemented.");
+            ListaEN listaEN = null;
 
-        /*PROTECTED REGION END*/
-}
-}
+            //Initialized ListaEN
+            listaEN = new ListaEN();
+            listaEN.Id = p_oid;
+
+            /*PROTECTED REGION END*/
+        }
+    }
 }
