@@ -30,11 +30,11 @@ public IListaRepository get_IListaRepository ()
         return this._IListaRepository;
 }
 
-public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
+public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         //Call to ListaRepository
 
-        _IListaRepository.AnyadirJuego (p_Lista_OID, p_videojuegos_OIDs, videojuego_OID);
+        _IListaRepository.AnyadirJuego (p_Lista_OID, p_videojuegos_OIDs);
 }
 public System.Collections.Generic.IList<ListaEN> GetAll (int first, int size)
 {
@@ -100,11 +100,11 @@ public void Destroy (int id
         _IListaRepository.Destroy (id);
 }
 
-public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
+public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         //Call to ListaRepository
 
-        _IListaRepository.EliminarJuego (p_Lista_OID, p_videojuegos_OIDs, videojuego_OID);
+        _IListaRepository.EliminarJuego (p_Lista_OID, p_videojuegos_OIDs);
 }
 public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> GetByAutor (int ? user)
 {

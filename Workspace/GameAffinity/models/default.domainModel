@@ -146,7 +146,6 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_rLOhEIvLEe-pLNMe1S3yHw" name="anyadirJuego" operationType="Relationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bfN92JxSEe-6ftHalwCqnA" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bfN92ZxSEe-6ftHalwCqnA" name="p_videojuegos_OIDs" type="OID" collectionType="List" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_xyHhgJxeEe-vQN8nqV9AVQ" name="videojuego_OID" type="Integer"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_UJt98JFVEe-BNowfqSj_TQ" name="getAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_cPYdgJFVEe-BNowfqSj_TQ" name="getByOID" operationType="ReadOID" type="Object" typeObject="_DgzaQIvLEe-pLNMe1S3yHw">
@@ -178,7 +177,6 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_LAM_kJwoEe-okMAsAo2Cbg" name="eliminarJuego" operationType="Unrelationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bfN97JxSEe-6ftHalwCqnA" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bfN97ZxSEe-6ftHalwCqnA" name="p_videojuegos_OIDs" type="OID" collectionType="List" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_trjUwJxeEe-vQN8nqV9AVQ" name="videojuego_OID" type="Integer" scope="InOut"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_u7bvoJxbEe-2-qaXKcg1MQ" name="getByAutor" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_DgzaQIvLEe-pLNMe1S3yHw" filter="FROM ListaNH WHERE autor_lista = :user" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_zjp38JxbEe-2-qaXKcg1MQ" name="user" type="Integer"/>
