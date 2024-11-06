@@ -13,28 +13,23 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-public partial class RegistradoCEN
-{
-public void Alternar_notificaciones (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_alternar_notificaciones_customized) START*/
+    public partial class RegistradoCEN
+    {
+        public void Alternar_notificaciones(int p_Registrado_OID)
+        {
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_alternar_notificaciones_customized) START*/
 
-        RegistradoEN registradoEN = null;
+            RegistradoEN registradoEN = null;
 
-        //Initialized RegistradoEN
-        registradoEN = new RegistradoEN ();
-        registradoEN.Id = p_Registrado_OID;
-        registradoEN.Nombre = p_nombre;
-        registradoEN.Email = p_email;
-        registradoEN.Nick = p_nick;
-        registradoEN.Es_mentor = p_es_mentor;
-        registradoEN.Notificaciones = p_notificaciones;
-        registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
-        //Call to RegistradoRepository
+            //Initialized RegistradoEN
+            registradoEN = new RegistradoEN();
+            registradoEN.Id = p_Registrado_OID;
+            registradoEN.Notificaciones = !registradoEN.Notificaciones;
+            //Call to RegistradoRepository
 
-        _IRegistradoRepository.Alternar_notificaciones (registradoEN);
+            _IRegistradoRepository.Alternar_notificaciones(registradoEN);
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

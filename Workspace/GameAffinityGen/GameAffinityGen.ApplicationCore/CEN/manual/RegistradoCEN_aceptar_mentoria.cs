@@ -12,12 +12,10 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
             
             RegistradoEN registradoEN = _IRegistradoRepository.Leer_OID_registrado(p_Registrado_OID);
 
-            
             if (registradoEN == null)
             {
                 throw new ModelException("El usuario no existe.");
             }
-
             
             registradoEN.Es_mentor = true;
 
