@@ -21,7 +21,7 @@ public void Dar_de_baja (int p_oid)
 
         // Write here your custom code...
 
-        RegistradoEN registrado = _IRegistradoRepository.Leer_OID_registrado (p_oid);
+        RegistradoEN registrado = _IRegistradoRepository.GetByOID (p_oid);
 
         registrado.Email = "An�nimo";
         registrado.Contrasenya = "An�nimo";

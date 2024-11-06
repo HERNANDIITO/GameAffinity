@@ -15,13 +15,13 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class ListaCEN
 {
-public void IsDefault (int p_oid)
+public bool IsDefault (int p_oid)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_isDefault) ENABLED START*/
 
         // Write here your custom code...
 
-        ListaEN lista = _IListaRepository.Leer_OID_lista (p_oid);
+        ListaEN lista = _IListaRepository.GetByOID(p_oid);
 
         return lista.Default_;
 
