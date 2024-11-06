@@ -95,5 +95,13 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 {
         return _IVideojuegoRepository.GetByGenero (genero);
 }
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByEmpresa (int ? empresa_id)
+{
+        return _IVideojuegoRepository.GetByEmpresa (empresa_id);
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByIndividuo (int ? individuo_id)
+{
+        return _IVideojuegoRepository.GetByIndividuo (individuo_id);
+}
 }
 }

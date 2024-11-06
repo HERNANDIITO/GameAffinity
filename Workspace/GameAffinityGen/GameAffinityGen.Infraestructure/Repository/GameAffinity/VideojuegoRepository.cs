@@ -311,5 +311,65 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByEmpresa (int ? empresa_id)
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetByEmpresaHQL");
+                query.SetParameter ("empresa_id", empresa_id);
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in VideojuegoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByIndividuo (int ? individuo_id)
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetByIndividuoHQL");
+                query.SetParameter ("individuo_id", individuo_id);
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in VideojuegoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

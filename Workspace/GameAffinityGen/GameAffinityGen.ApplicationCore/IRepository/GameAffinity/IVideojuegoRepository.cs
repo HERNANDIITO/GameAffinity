@@ -35,5 +35,12 @@ System.Collections.Generic.IList<VideojuegoEN> GetAll (int first, int size);
 
 
 System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByGenero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero);
+
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByEmpresa (int ? empresa_id);
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByIndividuo (int ? individuo_id);
 }
 }

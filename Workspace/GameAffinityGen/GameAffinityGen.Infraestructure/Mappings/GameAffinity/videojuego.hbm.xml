@@ -95,5 +95,7 @@
 		  
 		  <query name="VideojuegoNHReadAllHQL">from VideojuegoNH</query>
 		  <query name="VideojuegoNHgetByGeneroHQL"><![CDATA[FROM VideojuegoNH WHERE genero = :genero]]></query>
+		  <query name="VideojuegoNHgetByEmpresaHQL"><![CDATA[FROM VideojuegoNH]]></query>
+		  <query name="VideojuegoNHgetByIndividuoHQL"><![CDATA[FROM VideojuegoNH]]></query>
 		</hibernate-mapping>
 	

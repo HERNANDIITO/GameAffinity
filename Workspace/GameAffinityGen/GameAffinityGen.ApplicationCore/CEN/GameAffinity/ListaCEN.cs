@@ -93,5 +93,10 @@ public void Destroy (int id
 {
         _IListaRepository.Destroy (id);
 }
+
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> GetByAutor (int ? user)
+{
+        return _IListaRepository.GetByAutor (user);
+}
 }
 }

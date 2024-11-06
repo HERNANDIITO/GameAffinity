@@ -15,7 +15,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class RegistradoCEN
 {
-public void Alternar_notificaciones (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public void Alternar_notificaciones (int registrado_OID)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_alternar_notificaciones_customized) START*/
 
@@ -23,13 +23,7 @@ public void Alternar_notificaciones (int p_Registrado_OID, string p_nombre, stri
 
         //Initialized RegistradoEN
         registradoEN = new RegistradoEN ();
-        registradoEN.Id = p_Registrado_OID;
-        registradoEN.Nombre = p_nombre;
-        registradoEN.Email = p_email;
-        registradoEN.Nick = p_nick;
-        registradoEN.Es_mentor = p_es_mentor;
-        registradoEN.Notificaciones = p_notificaciones;
-        registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
+        registradoEN.Registrado_OID = registrado_OID;
         //Call to RegistradoRepository
 
         _IRegistradoRepository.Alternar_notificaciones (registradoEN);

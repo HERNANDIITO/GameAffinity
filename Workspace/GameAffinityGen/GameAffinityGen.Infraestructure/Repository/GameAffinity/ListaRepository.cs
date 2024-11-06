@@ -416,5 +416,35 @@ public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int
                 SessionClose ();
         }
 }
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> GetByAutor (int ? user)
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ListaNH self where FROM ListaNH WHERE autor_lista = :user";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ListaNHgetByAutorHQL");
+                query.SetParameter ("user", user);
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in ListaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

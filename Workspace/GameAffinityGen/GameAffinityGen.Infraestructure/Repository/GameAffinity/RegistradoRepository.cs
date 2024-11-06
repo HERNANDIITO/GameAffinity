@@ -219,24 +219,6 @@ public void Alternar_notificaciones (RegistradoEN registrado)
         {
                 SessionInitializeTransaction ();
                 RegistradoNH registradoNH = (RegistradoNH)session.Load (typeof(RegistradoNH), registrado.Id);
-
-                registradoNH.Nombre = registrado.Nombre;
-
-
-                registradoNH.Email = registrado.Email;
-
-
-                registradoNH.Nick = registrado.Nick;
-
-
-                registradoNH.Es_mentor = registrado.Es_mentor;
-
-
-                registradoNH.Notificaciones = registrado.Notificaciones;
-
-
-                registradoNH.Contrasenya = registrado.Contrasenya;
-
                 session.Update (registradoNH);
                 SessionCommit ();
         }
@@ -260,24 +242,6 @@ public void Aceptar_mentoria (RegistradoEN registrado)
         {
                 SessionInitializeTransaction ();
                 RegistradoNH registradoNH = (RegistradoNH)session.Load (typeof(RegistradoNH), registrado.Id);
-
-                registradoNH.Nombre = registrado.Nombre;
-
-
-                registradoNH.Email = registrado.Email;
-
-
-                registradoNH.Nick = registrado.Nick;
-
-
-                registradoNH.Es_mentor = registrado.Es_mentor;
-
-
-                registradoNH.Notificaciones = registrado.Notificaciones;
-
-
-                registradoNH.Contrasenya = registrado.Contrasenya;
-
                 session.Update (registradoNH);
                 SessionCommit ();
         }

@@ -44,5 +44,7 @@ void Cambiar_descripcion (ListaEN lista);
 
 
 void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> GetByAutor (int ? user);
 }
 }

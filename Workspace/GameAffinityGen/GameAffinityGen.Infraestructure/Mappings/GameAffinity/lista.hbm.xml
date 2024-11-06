@@ -53,5 +53,6 @@
 		 </class>	
 		  
 		  <query name="ListaNHReadAllHQL">from ListaNH</query>
+		  <query name="ListaNHgetByAutorHQL"><![CDATA[FROM ListaNH WHERE autor_lista = :user]]></query>
 		</hibernate-mapping>
 	

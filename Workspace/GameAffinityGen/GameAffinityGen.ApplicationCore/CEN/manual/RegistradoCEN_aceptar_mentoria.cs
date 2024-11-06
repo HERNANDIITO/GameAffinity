@@ -15,7 +15,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class RegistradoCEN
 {
-public void Aceptar_mentoria (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public void Aceptar_mentoria (int registrado_oid)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_aceptar_mentoria_customized) START*/
 
@@ -23,13 +23,7 @@ public void Aceptar_mentoria (int p_Registrado_OID, string p_nombre, string p_em
 
         //Initialized RegistradoEN
         registradoEN = new RegistradoEN ();
-        registradoEN.Id = p_Registrado_OID;
-        registradoEN.Nombre = p_nombre;
-        registradoEN.Email = p_email;
-        registradoEN.Nick = p_nick;
-        registradoEN.Es_mentor = p_es_mentor;
-        registradoEN.Notificaciones = p_notificaciones;
-        registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
+        registradoEN.Registrado_oid = registrado_oid;
         //Call to RegistradoRepository
 
         _IRegistradoRepository.Aceptar_mentoria (registradoEN);
