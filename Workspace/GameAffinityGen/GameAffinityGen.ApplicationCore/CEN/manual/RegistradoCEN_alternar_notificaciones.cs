@@ -23,7 +23,7 @@ public void Alternar_notificaciones (int registrado_OID)
 
         //Initialized RegistradoEN
         registradoEN = new RegistradoEN ();
-        registradoEN.Notificaciones = !registradoEN.Notificaciones;
+        registradoEN.Registrado_OID = registrado_OID;
         //Call to RegistradoRepository
 
         _IRegistradoRepository.Alternar_notificaciones (registradoEN);

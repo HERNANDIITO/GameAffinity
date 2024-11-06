@@ -58,5 +58,9 @@ void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_i
 void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs);
 
 void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs);
+
+void CrearLista (int p_Registrado_OID, System.Collections.Generic.IList<int> p_listas_OIDs);
+
+void EliminarLista (int p_Registrado_OID, System.Collections.Generic.IList<int> p_listas_OIDs);
 }
 }

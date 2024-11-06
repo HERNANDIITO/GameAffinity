@@ -563,5 +563,82 @@ public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic
                 SessionClose ();
         }
 }
+public void CrearLista (int p_Registrado_OID, System.Collections.Generic.IList<int> p_listas_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listasENAux = null;
+                if (registradoEN.Listas == null) {
+                        registradoEN.Listas = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN>();
+                }
+
+                foreach (int item in p_listas_OIDs) {
+                        listasENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN ();
+                        listasENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ListaNH), item);
+                        listasENAux.Autor_lista = registradoEN;
+
+                        registradoEN.Listas.Add (listasENAux);
+                }
+
+
+                session.Update (registradoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarLista (int p_Registrado_OID, System.Collections.Generic.IList<int> p_listas_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
+                registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listasENAux = null;
+                if (registradoEN.Listas != null) {
+                        foreach (int item in p_listas_OIDs) {
+                                listasENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ListaNH), item);
+                                if (registradoEN.Listas.Contains (listasENAux) == true) {
+                                        registradoEN.Listas.Remove (listasENAux);
+                                        listasENAux.Autor_lista = null;
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_listas_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
+                        }
+                }
+
+                session.Update (registradoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

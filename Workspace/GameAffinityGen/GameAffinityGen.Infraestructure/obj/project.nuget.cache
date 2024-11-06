@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7/8jnO0vGKY=",
+  "dgSpecHash": "b5WxTVV2sJE=",
   "success": true,
-  "projectFilePath": "E:\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+  "projectFilePath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pablo\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\iesi.collections\\4.0.4\\iesi.collections.4.0.4.nupkg.sha512",
