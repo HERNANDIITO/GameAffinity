@@ -16,43 +16,36 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class ModeradorCP : GenericBasicCP
-{
-public void Eliminar_resenyas (int p_oid, int resenya_ID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Moderador_eliminar_resenyas) ENABLED START*/
-
-        ModeradorCEN moderadorCEN = null;
-
-
-
-        try
+    public partial class ModeradorCP : GenericBasicCP
+    {
+        public void Eliminar_resenyas(int p_oid, int resenya_ID)
         {
-                CPSession.SessionInitializeTransaction ();
-                moderadorCEN = new  ModeradorCEN (CPSession.UnitRepo.ModeradorRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Moderador_eliminar_resenyas) ENABLED START*/
 
-
-
+            try
+            {
                 // Write here your custom transaction ...
 
-                throw new NotImplementedException ("Method Eliminar_resenyas() not yet implemented.");
+                CPSession.SessionInitializeTransaction();
+                ModeradorCEN moderadorCEN = new ModeradorCEN(CPSession.UnitRepo.ModeradorRepository);
+                ResenyaCEN resenyaCEN = new ResenyaCEN(CPSession.UnitRepo.ResenyaRepository);
 
+                resenyaCEN.Destroy(resenya_ID);
 
-
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

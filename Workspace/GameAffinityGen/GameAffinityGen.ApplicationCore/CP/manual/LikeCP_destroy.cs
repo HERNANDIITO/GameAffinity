@@ -34,10 +34,10 @@ public void Destroy (int p_Like_OID)
                 ResenyaEN re = CPSession.UnitRepo.ResenyaRepository.ReadOIDDefault (like.Id_resenya);
 
                 if (like.Disliked) {
-                        re.Dislikes--;
+                        re.Dislikes_contador--;
                 }
                 else if (like.Liked) {
-                        re.Likes--;
+                        re.Likes_contador--;
                 }
 
                 likeCEN.get_ILikeRepository ().Destroy (p_Like_OID);
