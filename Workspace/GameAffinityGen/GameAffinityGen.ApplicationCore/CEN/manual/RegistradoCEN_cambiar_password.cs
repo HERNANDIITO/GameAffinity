@@ -22,7 +22,7 @@ public void Cambiar_password (int p_oid, string new_password)
         // Write here your custom code...
 
         RegistradoCEN registradoCEN = new RegistradoCEN (_IRegistradoRepository);
-        RegistradoEN registrado = registradoCEN.Leer_OID_registrado (p_oid);
+        RegistradoEN registrado = registradoCEN.GetByOID (p_oid);
 
         registrado.Contrasenya = new_password;
 
