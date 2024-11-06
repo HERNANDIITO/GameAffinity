@@ -126,7 +126,7 @@ public void ModifyDefault (ListaEN lista)
 }
 
 
-public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
+public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
 {
         GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listaEN = null;
         try
@@ -145,6 +145,12 @@ public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int>
 
                         listaEN.Videojuegos.Add (videojuegosENAux);
                 }
+
+
+                listaEN.Videojuegos = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), videojuego_OID);
+
+                listaEN.Videojuegos.Lista.Add (listaEN);
+
 
 
                 session.Update (listaEN);
@@ -378,7 +384,7 @@ public void Cambiar_descripcion (ListaEN lista)
                 SessionClose ();
         }
 }
-public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
+public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
 {
         try
         {
@@ -398,6 +404,12 @@ public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int
                                         throw new ModelException ("The identifier " + item + " in p_videojuegos_OIDs you are trying to unrelationer, doesn't exist in ListaEN");
                         }
                 }
+
+                if (listaEN.Videojuegos.Id == videojuego_OID) {
+                        listaEN.Videojuegos = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + videojuego_OID + " in videojuego_OID you are trying to unrelationer, doesn't exist in ListaEN");
 
                 session.Update (listaEN);
                 SessionCommit ();
