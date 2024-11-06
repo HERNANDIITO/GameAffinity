@@ -13,22 +13,22 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-    public partial class RegistradoCEN
-    {
-        public void Aceptar_mentoria(int registrado_oid)
-        {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_aceptar_mentoria_customized) START*/
+public partial class RegistradoCEN
+{
+public void Aceptar_mentoria (int registrado_oid)
+{
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_aceptar_mentoria_customized) START*/
 
-            RegistradoEN registradoEN = null;
+        RegistradoEN registradoEN = null;
 
-            //Initialized RegistradoEN
-            registradoEN = new RegistradoEN();
-            registradoEN.Es_mentor = true;
-            //Call to RegistradoRepository
+        //Initialized RegistradoEN
+        registradoEN = new RegistradoEN ();
+        registradoEN.Registrado_oid = registrado_oid;
+        //Call to RegistradoRepository
 
-            _IRegistradoRepository.Aceptar_mentoria(registradoEN);
+        _IRegistradoRepository.Aceptar_mentoria (registradoEN);
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

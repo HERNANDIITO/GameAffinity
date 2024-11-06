@@ -13,20 +13,23 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-    public partial class ListaCEN
-    {
-        public void Cambiar_nombre(int p_Lista_OID, string p_nombre)
-        {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_cambiar_nombre_customized) START*/
+public partial class ListaCEN
+{
+public void Cambiar_nombre (int p_Lista_OID, string p_nombre)
+{
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_cambiar_nombre_customized) START*/
 
-            //Initialized ListaEN
-            ListaEN listaEN = _IListaRepository.GetByOID(p_Lista_OID);
-            listaEN.Nombre = p_nombre;
-            //Call to ListaRepository
+        ListaEN listaEN = null;
 
-            _IListaRepository.Cambiar_nombre(listaEN);
+        //Initialized ListaEN
+        listaEN = new ListaEN ();
+        listaEN.Id = p_Lista_OID;
+        listaEN.Nombre = p_nombre;
+        //Call to ListaRepository
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        _IListaRepository.Cambiar_nombre (listaEN);
+
+        /*PROTECTED REGION END*/
+}
+}
 }
