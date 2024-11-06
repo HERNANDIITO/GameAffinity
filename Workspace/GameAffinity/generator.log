@@ -4,308 +4,79 @@
 0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - --------------------------------------------------------------------------------------
 0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - running workflow: C:/onedrive/OneDrive - UNIVERSIDAD ALICANTE/DSM/2024/Practicas/Workspace/GameAffinity/templates/workflow/generator.mwe
 0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - 
-268  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Registering platform uri 'C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace'
-331  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.ConceptualViewPackage'
-363  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'org.eclipse.gmf.runtime.notation.NotationPackage'
-409  [main] INFO  e.core.container.CompositeComponent  - Workflow: executing workflow workflow::nhibernate::generator.mwe in C:/onedrive/OneDrive - UNIVERSIDAD ALICANTE/DSM/2024/Practicas/Workspace/GameAffinity/templates/workflow/generator.mwe:13
-409  [main] INFO  e.core.container.CompositeComponent  - XmiReader: file 'models/default.domainModel' => slot 'es_ua_dlsi_ooh_conceptual_model'
-552  [main] INFO  e.core.container.CompositeComponent  - CheckComponent: slot es_ua_dlsi_ooh_conceptual_model check file(s): metamodel::Checks 
-852  [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CleanBackup
+273  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Registering platform uri 'C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace'
+330  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.ConceptualViewPackage'
+381  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'org.eclipse.gmf.runtime.notation.NotationPackage'
+440  [main] INFO  e.core.container.CompositeComponent  - Workflow: executing workflow workflow::nhibernate::generator.mwe in C:/onedrive/OneDrive - UNIVERSIDAD ALICANTE/DSM/2024/Practicas/Workspace/GameAffinity/templates/workflow/generator.mwe:13
+440  [main] INFO  e.core.container.CompositeComponent  - XmiReader: file 'models/default.domainModel' => slot 'es_ua_dlsi_ooh_conceptual_model'
+582  [main] INFO  e.core.container.CompositeComponent  - CheckComponent: slot es_ua_dlsi_ooh_conceptual_model check file(s): metamodel::Checks 
+860  [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CleanBackup
 Se ha borrado el directorio backup en la ubicacion: ../GameAffinityGen\Backup
-852  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerEN): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/EN/GameAffinity'
-852  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\EN\GameAffinity
-861  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerCP): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/CP/GameAffinity'
-861  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\CP\GameAffinity
-861  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerCEN): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/CEN/GameAffinity'
-861  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\GameAffinity
-861  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerIRepo): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/IRepository/GameAffinity'
-861  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\IRepository\GameAffinity
-861  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerEnum): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/Enumerated/GameAffinity'
-861  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\Enumerated\GameAffinity
-861  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerINFEN): cleaning directory '../GameAffinityGen/GameAffinityGen.Infraestructure/EN/GameAffinity'
-861  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.Infraestructure\EN\GameAffinity
-877  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerINFMap): cleaning directory '../GameAffinityGen/GameAffinityGen.Infraestructure/Mappings/GameAffinity'
-877  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.Infraestructure\Mappings\GameAffinity
-877  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerINFRepo): cleaning directory '../GameAffinityGen/GameAffinityGen.Infraestructure/Repository/GameAffinity'
-877  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.Infraestructure\Repository\GameAffinity
-877  [main] INFO  e.core.container.CompositeComponent  - Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen]
-La licencia está en vigor. Su fecha de expiración es: Wed Jul 30 18:08:51 CEST 2025
-956  [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan started ...
-1113 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan finished in 0.157s
-1113 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Files scanned: 102
-1113 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Regions found: 51
-configuroConf:C:\Users\pablo\AppData\Local\Temp\OOH4RIA7980459874374981245.cfg
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-1689 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RegistradoRepository
-enc:utf-8
-1831 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ModeradorRepository
-enc:utf-8
-1894 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ListaRepository
-LA clase origen: Lista y el nombre de rol: autor_lista
-DISTINTO en: asoOrigin: videojuego_0_lista. El nombre del rol origen: videojuegos de el rol destino: autor_lista
-LA clase destino: Lista y el nombre de rol: autor_lista
-Encontrado en: asoTarget: lista_0_registrado El nombre de rol origen (generado): listas y el nombre del rol destino:autor_lista
-LA clase origen: Lista y el nombre de rol: autor_lista
-DISTINTO en: asoOrigin: videojuego_0_lista. El nombre del rol origen: videojuegos de el rol destino: autor_lista
-LA clase destino: Lista y el nombre de rol: autor_lista
-Encontrado en: asoTarget: lista_0_registrado El nombre de rol origen (generado): listas y el nombre del rol destino:autor_lista
-LA clase origen: Lista y el nombre de rol: autor_lista
-DISTINTO en: asoOrigin: videojuego_0_lista. El nombre del rol origen: videojuegos de el rol destino: autor_lista
-LA clase destino: Lista y el nombre de rol: autor_lista
-Encontrado en: asoTarget: lista_0_registrado El nombre de rol origen (generado): listas y el nombre del rol destino:autor_lista
-enc:utf-8
-1989 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ResenyaRepository
-LA clase origen: Resenya y el nombre de rol: autor_resenya
-DISTINTO en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego de el rol destino: autor_resenya
-LA clase destino: Resenya y el nombre de rol: autor_resenya
-Encontrado en: asoTarget: reseña_registrado_0 El nombre de rol origen (generado): resenya y el nombre del rol destino:autor_resenya
-LA clase origen: Resenya y el nombre de rol: autor_resenya
-DISTINTO en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego de el rol destino: autor_resenya
-LA clase destino: Resenya y el nombre de rol: autor_resenya
-Encontrado en: asoTarget: reseña_registrado_0 El nombre de rol origen (generado): resenya y el nombre del rol destino:autor_resenya
-LA clase origen: Resenya y el nombre de rol: autor_resenya
-DISTINTO en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego de el rol destino: autor_resenya
-LA clase destino: Resenya y el nombre de rol: autor_resenya
-Encontrado en: asoTarget: reseña_registrado_0 El nombre de rol origen (generado): resenya y el nombre del rol destino:autor_resenya
-LA clase origen: Resenya y el nombre de rol: videojuego
-Encontrado en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego y el nombre de rol destino: resenyas
-LA clase origen: Resenya y el nombre de rol: videojuego
-Encontrado en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego y el nombre de rol destino: resenyas
-LA clase origen: Resenya y el nombre de rol: videojuego
-Encontrado en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego y el nombre de rol destino: resenyas
-LA clase origen: Resenya y el nombre de rol: videojuego
-Encontrado en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego y el nombre de rol destino: resenyas
-LA clase origen: Resenya y el nombre de rol: videojuego
-Encontrado en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego y el nombre de rol destino: resenyas
-LA clase origen: Resenya y el nombre de rol: videojuego
-Encontrado en: asoOrigin: videojuego_reseña. El nombre del rol origen: videojuego y el nombre de rol destino: resenyas
-enc:utf-8
-2053 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ValoracionRepository
-LA clase origen: Valoracion y el nombre de rol: autor_valoracion
-DISTINTO en: asoOrigin: videojuego_valoracion. El nombre del rol origen: videojuego_valorado de el rol destino: autor_valoracion
-LA clase destino: Valoracion y el nombre de rol: autor_valoracion
-Encontrado en: asoTarget: valoracion_registrado El nombre de rol origen (generado): valoraciones y el nombre del rol destino:autor_valoracion
-LA clase origen: Valoracion y el nombre de rol: autor_valoracion
-DISTINTO en: asoOrigin: videojuego_valoracion. El nombre del rol origen: videojuego_valorado de el rol destino: autor_valoracion
-LA clase destino: Valoracion y el nombre de rol: autor_valoracion
-Encontrado en: asoTarget: valoracion_registrado El nombre de rol origen (generado): valoraciones y el nombre del rol destino:autor_valoracion
-LA clase origen: Valoracion y el nombre de rol: autor_valoracion
-DISTINTO en: asoOrigin: videojuego_valoracion. El nombre del rol origen: videojuego_valorado de el rol destino: autor_valoracion
-LA clase destino: Valoracion y el nombre de rol: autor_valoracion
-Encontrado en: asoTarget: valoracion_registrado El nombre de rol origen (generado): valoraciones y el nombre del rol destino:autor_valoracion
-enc:utf-8
-2099 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EmpresaRepository
-enc:utf-8
-2162 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - IndividuoRepository
-enc:utf-8
-2240 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - VideojuegoRepository
-enc:utf-8
-2303 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - InteraccionRepository
-LA clase origen: Interaccion y el nombre de rol: autor
-DISTINTO en: asoOrigin: resenya_like. El nombre del rol origen: resenya de el rol destino: autor
-LA clase destino: Interaccion y el nombre de rol: autor
-Encontrado en: asoTarget: like_registrado El nombre de rol origen (generado): interaccion y el nombre del rol destino:autor
-LA clase origen: Interaccion y el nombre de rol: autor
-DISTINTO en: asoOrigin: resenya_like. El nombre del rol origen: resenya de el rol destino: autor
-LA clase destino: Interaccion y el nombre de rol: autor
-Encontrado en: asoTarget: like_registrado El nombre de rol origen (generado): interaccion y el nombre del rol destino:autor
-LA clase origen: Interaccion y el nombre de rol: autor
-DISTINTO en: asoOrigin: resenya_like. El nombre del rol origen: resenya de el rol destino: autor
-LA clase destino: Interaccion y el nombre de rol: autor
-Encontrado en: asoTarget: like_registrado El nombre de rol origen (generado): interaccion y el nombre del rol destino:autor
-LA clase origen: Interaccion y el nombre de rol: resenya
-Encontrado en: asoOrigin: resenya_like. El nombre del rol origen: resenya y el nombre de rol destino: interacciones
-LA clase origen: Interaccion y el nombre de rol: resenya
-Encontrado en: asoOrigin: resenya_like. El nombre del rol origen: resenya y el nombre de rol destino: interacciones
-LA clase origen: Interaccion y el nombre de rol: resenya
-Encontrado en: asoOrigin: resenya_like. El nombre del rol origen: resenya y el nombre de rol destino: interacciones
-LA clase origen: Interaccion y el nombre de rol: resenya
-Encontrado en: asoOrigin: resenya_like. El nombre del rol origen: resenya y el nombre de rol destino: interacciones
-LA clase origen: Interaccion y el nombre de rol: resenya
-Encontrado en: asoOrigin: resenya_like. El nombre del rol origen: resenya y el nombre de rol destino: interacciones
-LA clase origen: Interaccion y el nombre de rol: resenya
-Encontrado en: asoOrigin: resenya_like. El nombre del rol origen: resenya y el nombre de rol destino: interacciones
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-2889 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RegistradoCEN
-enc:utf-8
-2936 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ModeradorCEN
-enc:utf-8
-2968 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ListaCEN
-enc:utf-8
-2999 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ResenyaCEN
-enc:utf-8
-3030 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ValoracionCEN
-enc:utf-8
-3062 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EmpresaCEN
-enc:utf-8
-3094 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - IndividuoCEN
-enc:utf-8
-3141 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - VideojuegoCEN
-enc:utf-8
-3173 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - InteraccionCEN
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-3756 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@2d778add (name: cerrar_sesion, visibility: Public, operationType: Custom, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3756 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@51133c06 (name: cambiar_password, visibility: Public, operationType: Custom, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3756 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@4ebff610 (name: recuperar_password, visibility: Public, operationType: Custom, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3756 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@44d52de2 (name: dar_de_baja, visibility: Public, operationType: Custom, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3756 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@38604b81 (name: eliminar_valoracion_de_resenya, visibility: Public, operationType: CustomTransaction, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@babafc2 (name: consultar_afinidades, visibility: Public, operationType: Custom, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@600b9d27 (name: seguir_perfiles, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7922d892 (name: dejar_de_seguir_perfiles, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@50de186c (name: alternar_notificaciones, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: true, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@1e8b7643 (name: aceptar_mentoria, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: true, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@71e9ebae (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@181e731e (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@5ef5c734 (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@36b4091c (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@36cda2c2 (name: getMentores, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM RegistradoNH WHERE es_mentor = :es_mentor, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-3798 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@1583741e (name: valorar_resenya, visibility: Public, operationType: CustomTransaction, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-3831 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@36060e (name: darLike, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3831 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@2e48362c (name: quitarLike, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3831 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7d446ed1 (name: crearValoracion, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3831 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@413f69cc (name: eliminarValoracion, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-3861 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7164ca4c (name: eliminar_resenyas, visibility: Public, operationType: CustomTransaction, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-3909 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@3f91b517 (name: banear_usuarios, visibility: Public, operationType: CustomTransaction, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-3972 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@2421cc4 (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3972 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@56673b2c (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3972 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@31ff43be (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3972 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@5c44c582 (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-3972 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@67d18ed7 (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@63f259c3 (name: isDefault, visibility: Public, operationType: Custom, description: null, type: Boolean, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@600b90df (name: anyadirJuego, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@60129b9a (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@78d6692f (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@3d9c13b5 (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7582ff54 (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@78641d23 (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@146dfe6 (name: cambiar_nombre, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: true, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@6af9fcb2 (name: cambiar_descripcion, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: true, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@1046d517 (name: eliminarJuego, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-4004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@73cd37c0 (name: getByAutor, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM ListaNH WHERE autor_lista = :user, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-4058 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@632ceb35 (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4058 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@e383572 (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4058 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@363a52f (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4058 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@60856961 (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4058 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@a4add54 (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-4099 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@3b96c42e (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4099 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@1e461e41 (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4099 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@5ba88be8 (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: true)
-enc:utf-8
-4146 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@1603cd68 (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: true)
-enc:utf-8
-4194 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@38089a5a (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: true)
-enc:utf-8
-enc:utf-8
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@1c33c17b (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@6581dc0a (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@77128536 (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@32c4e8b2 (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@764faa6 (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@4c1f22f3 (name: anyadirJuegoDesarrollado, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7ae42ce3 (name: eilminarJuegoDesarrollado, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@38234a38 (name: anyadirIndividuo, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4292 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@2c07545f (name: eliminarIndividuo, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@545b995e (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@77102b91 (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@2bd08376 (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@3d3e5463 (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@64a40280 (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@42b02722 (name: getByRol, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM IndividuoNH WHERE rol = :rol, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@49964d75 (name: getByPais, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM IndividuoNH where nacionalidad = :pais, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@466276d8 (name: anyadirVideojuego, visibility: Public, operationType: Relationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4336 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@64c63c79 (name: eilminarVideojuego, visibility: Public, operationType: Unrelationer, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@5460cf3a (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7e4204e2 (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@676cf48 (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@335b5620 (name: getByoID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@32a68f4f (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@73194df (name: getByGenero, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM VideojuegoNH WHERE genero = :genero, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@3c9c0d96 (name: getByEmpresa, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM VideojuegoNH, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-4382 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@31dadd46 (name: getByIndividuo, visibility: Public, operationType: ReadFilter, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: FROM VideojuegoNH, precondition: null, body: null, postcondition: null, automaticSynchronize: false, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-4415 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@33308786 (name: modify, visibility: Public, operationType: Modifier, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: true)
-enc:utf-8
-4483 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7d1cfb8b (name: destroy, visibility: Public, operationType: Destroy, description: null, type: Void, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: true)
-enc:utf-8
-4541 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@2e1ef60 (name: new, visibility: Public, operationType: New, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: true)
-enc:utf-8
-4615 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@7dda48d9 (name: getByOID, visibility: Public, operationType: ReadOID, description: null, type: Object, collectionType: None, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-4615 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - es.ua.dlsi.ooh.conceptualView.impl.OperationImpl@4b6e2263 (name: getAll, visibility: Public, operationType: ReadAll, description: null, type: Object, collectionType: List, isStatic: false, isOrdered: false, filter: null, precondition: null, body: null, postcondition: null, automaticSynchronize: true, customized: false, paging: false, customizedTransaction: false)
-enc:utf-8
-enc:utf-8
-enc:utf-8
-4764 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RegistradoEN
-enc:utf-8
-4851 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ModeradorEN
-enc:utf-8
-4905 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ListaEN
-enc:utf-8
-4969 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ResenyaEN
-enc:utf-8
-5032 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ValoracionEN
-enc:utf-8
-5111 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EmpresaEN
-enc:utf-8
-5158 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - IndividuoEN
-enc:utf-8
-5190 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - VideojuegoEN
-enc:utf-8
-5237 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - InteraccionEN
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-enc:utf-8
-5858 [main] INFO         org.eclipse.xpand2.Generator  - Written 76 files to outlet [default](../GameAffinityGen)
-5858 [main] INFO         org.eclipse.xpand2.Generator  - Skipped writing of 28 files to outlet [default](../GameAffinityGen)
-5858 [main] INFO         org.eclipse.xpand2.Generator  - Skipped writing of 2 files to outlet CONFIGURATION(../GameAffinityGen)
-5858 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CreateSolution
-Proyecto sln :GameAffinityGen.slnpath: ../GameAffinityGenoverwrite: false
-5873 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.UpdateSolution
-5888 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 5479ms!
+874  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerEN): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/EN/GameAffinity'
+874  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\EN\GameAffinity
+876  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerCP): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/CP/GameAffinity'
+876  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\CP\GameAffinity
+876  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerCEN): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/CEN/GameAffinity'
+876  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\GameAffinity
+876  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerIRepo): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/IRepository/GameAffinity'
+876  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\IRepository\GameAffinity
+876  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerEnum): cleaning directory '../GameAffinityGen/GameAffinityGen.ApplicationCore/Enumerated/GameAffinity'
+876  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.ApplicationCore\Enumerated\GameAffinity
+876  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerINFEN): cleaning directory '../GameAffinityGen/GameAffinityGen.Infraestructure/EN/GameAffinity'
+891  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.Infraestructure\EN\GameAffinity
+891  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerINFMap): cleaning directory '../GameAffinityGen/GameAffinityGen.Infraestructure/Mappings/GameAffinity'
+891  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.Infraestructure\Mappings\GameAffinity
+891  [main] INFO  e.core.container.CompositeComponent  - DirectoryCleaner(dirCleanerINFRepo): cleaning directory '../GameAffinityGen/GameAffinityGen.Infraestructure/Repository/GameAffinity'
+891  [main] INFO  ipse.emf.mwe.utils.DirectoryCleaner  - Cleaning C:\onedrive\OneDrive - UNIVERSIDAD ALICANTE\DSM\2024\Practicas\Workspace\GameAffinity\..\GameAffinityGen\GameAffinityGen.Infraestructure\Repository\GameAffinity
+891  [main] INFO  e.core.container.CompositeComponent  - Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen]
+La licencia está en vigor. Su fecha de expiración es: Wed Jul 30 18:10:55 CEST 2025
+974  [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan started ...
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete
+java.lang.RuntimeException: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete
+	at org.eclipse.internal.xpand2.pr.ProtectedRegionResolverImpl.init(ProtectedRegionResolverImpl.java:358)
+	at org.eclipse.internal.xpand2.pr.ProtectedRegionResolverImpl.getProtectedRegion(ProtectedRegionResolverImpl.java:282)
+	at org.eclipse.internal.xpand2.ast.ProtectStatement.evaluateInternal(ProtectStatement.java:88)
+	at org.eclipse.internal.xpand2.ast.Statement.evaluate(Statement.java:41)
+	at org.eclipse.internal.xpand2.ast.FileStatement.evaluateInternal(FileStatement.java:86)
+	at org.eclipse.internal.xpand2.ast.Statement.evaluate(Statement.java:41)
+	at org.eclipse.internal.xpand2.ast.AbstractDefinition.evaluate(AbstractDefinition.java:178)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.invokeDefinition(ExpandStatement.java:246)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.evaluateInternal(ExpandStatement.java:226)
+	at org.eclipse.internal.xpand2.ast.Statement.evaluate(Statement.java:41)
+	at org.eclipse.internal.xpand2.ast.AbstractDefinition.evaluate(AbstractDefinition.java:178)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.invokeDefinition(ExpandStatement.java:246)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.evaluateInternal(ExpandStatement.java:226)
+	at org.eclipse.internal.xpand2.ast.Statement.evaluate(Statement.java:41)
+	at org.eclipse.internal.xpand2.ast.AbstractDefinition.evaluate(AbstractDefinition.java:178)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.invokeDefinition(ExpandStatement.java:246)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.evaluateInternal(ExpandStatement.java:226)
+	at org.eclipse.internal.xpand2.ast.Statement.evaluate(Statement.java:41)
+	at org.eclipse.internal.xpand2.ast.AbstractDefinition.evaluate(AbstractDefinition.java:178)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.invokeDefinition(ExpandStatement.java:246)
+	at org.eclipse.internal.xpand2.ast.ExpandStatement.evaluateInternal(ExpandStatement.java:226)
+	at org.eclipse.internal.xpand2.ast.Statement.evaluate(Statement.java:41)
+	at org.eclipse.xpand2.Generator.invokeInternal2(Generator.java:272)
+	at org.eclipse.xtend.expression.AbstractExpressionsUsingWorkflowComponent.invokeInternal(AbstractExpressionsUsingWorkflowComponent.java:232)
+	at org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent.invoke(AbstractWorkflowComponent.java:126)
+	at org.eclipse.emf.mwe.core.container.CompositeComponent.internalInvoke(CompositeComponent.java:104)
+	at org.eclipse.emf.mwe.core.container.CompositeComponent.invoke(CompositeComponent.java:89)
+	at org.eclipse.emf.mwe.core.container.CompositeComponent.internalInvoke(CompositeComponent.java:104)
+	at org.eclipse.emf.mwe.core.container.CompositeComponent.invoke(CompositeComponent.java:89)
+	at org.eclipse.emf.mwe.core.WorkflowEngine.executeWorkflow(WorkflowEngine.java:174)
+	at org.eclipse.emf.mwe.core.WorkflowEngine.run(WorkflowEngine.java:53)
+	at org.eclipse.emf.mwe.core.WorkflowRunner.doRun(WorkflowRunner.java:192)
+	at org.eclipse.emf.mwe.core.WorkflowRunner.main(WorkflowRunner.java:71)
+Caused by: org.eclipse.internal.xpand2.pr.ProtectedRegionSyntaxException: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete
+	at org.eclipse.internal.xpand2.pr.ProtectedRegionResolverImpl.getAllRegions(ProtectedRegionResolverImpl.java:230)
+	at org.eclipse.internal.xpand2.pr.ProtectedRegionResolverImpl.init(ProtectedRegionResolverImpl.java:339)
+	... 32 more
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: org.eclipse.internal.xpand2.ast.ProtectStatement@1162410a; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: «FILE "InitializeDB"+.fileSeparator()+"Program.cs"»...«ENDFILE»; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: programs : ConceptualModel; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: EXPAND programs; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: createDBProject : ConceptualModel; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: EXPAND resources::visualStudio::initializeDB::createDBProject; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: nHibernateGeneration : ConceptualModel; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: EXPAND nHibernateGeneration FOR (ConceptualModel)var conceptual; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: main : Boolean; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])
+1048 [main] ERROR eclipse.emf.mwe.core.WorkflowEngine  - [ERROR]: Protected region at index 665 in file '..\GameAffinityGen\GameAffinityGen.ApplicationCore\CEN\manual\ListaCEN_cambiar_descripcion.cs' is incomplete(Element: EXPAND workflow::nhibernate::workflow::main FOR true; Reported by: Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [CONFIGURATION:../GameAffinityGen(overwrite=false,append=false,fileEncoding=utf-8), ../GameAffinityGen])

@@ -17,21 +17,16 @@ public partial class ListaCEN
 {
 public void Cambiar_descripcion (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_por_defecto)
 {
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_cambiar_descripcion_customized) START*/
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_cambiar_descripcion_customized) START*/
 
-        ListaEN listaEN = null;
+            ListaEN listaEN = _IListaRepository.GetByOID(p_Lista_OID);
+            listaEN.Descripcion = p_descripcion;
 
-        //Initialized ListaEN
-        listaEN = new ListaEN ();
-        listaEN.Id = p_Lista_OID;
-        listaEN.Nombre = p_nombre;
-        listaEN.Descripcion = p_descripcion;
-        listaEN.Por_defecto = p_por_defecto;
-        //Call to ListaRepository
+            //Call to ListaRepository
 
-        _IListaRepository.Cambiar_descripcion (listaEN);
+            _IListaRepository.Cambiar_descripcion(listaEN);
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

@@ -159,17 +159,13 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_5e0k_5dwEe-CS8zeF6JosQ" name="destroy" operationType="Destroy" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGIIuZxgEe-vQN8nqV9AVQ" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_E1VGAJd4Ee-CS8zeF6JosQ" name="cambiar_nombre" operationType="Modifier" type="Void" customized="true">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_E1VGAJd4Ee-CS8zeF6JosQ" name="cambiar_nombre" operationType="Modifier" type="Void" automaticSynchronize="false" customized="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGIIupxgEe-vQN8nqV9AVQ" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGIIu5xgEe-vQN8nqV9AVQ" name="p_nombre"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGIIvJxgEe-vQN8nqV9AVQ" name="p_descripcion"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGRSoJxgEe-vQN8nqV9AVQ" name="p_por_defecto" type="Boolean"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_MfCpYJd4Ee-CS8zeF6JosQ" name="cambiar_descripcion" operationType="Modifier" type="Void" customized="true">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_MfCpYJd4Ee-CS8zeF6JosQ" name="cambiar_descripcion" operationType="Modifier" type="Void" automaticSynchronize="false" customized="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGRSoZxgEe-vQN8nqV9AVQ" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGRSopxgEe-vQN8nqV9AVQ" name="p_nombre"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGRSo5xgEe-vQN8nqV9AVQ" name="p_descripcion"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_dGRSpJxgEe-vQN8nqV9AVQ" name="p_por_defecto" type="Boolean"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_LAM_kJwoEe-okMAsAo2Cbg" name="eliminarJuego" operationType="Unrelationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg" automaticSynchronize="false">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_bfN97JxSEe-6ftHalwCqnA" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>

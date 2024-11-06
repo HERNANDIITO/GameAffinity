@@ -13,17 +13,17 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-public partial class ModeradorCEN
-{
-public void Banear_usuarios (int p_oid, int user_ID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Moderador_banear_usuarios) ENABLED START*/
+    public partial class ModeradorCEN
+    {
+        public void Banear_usuarios(int p_oid, int user_ID)
+        {
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Moderador_banear_usuarios) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        throw new NotImplementedException ("Method Banear_usuarios() not yet implemented.");
+            throw new NotImplementedException("Method Banear_usuarios() not yet implemented.");
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

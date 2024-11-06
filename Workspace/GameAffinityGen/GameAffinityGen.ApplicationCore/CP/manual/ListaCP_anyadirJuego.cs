@@ -16,43 +16,38 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class ListaCP : GenericBasicCP
-{
-public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Lista_anyadirJuego) ENABLED START*/
-
-        ListaCEN listaCEN = null;
-
-
-
-        try
+    public partial class ListaCP : GenericBasicCP
+    {
+        public void AnyadirJuego(int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
         {
-                CPSession.SessionInitializeTransaction ();
-                listaCEN = new ListaCEN (CPSession.UnitRepo.ListaRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Lista_anyadirJuego) ENABLED START*/
 
-                ListaEN lista = listaCEN.get_IListaRepository ().ReadOIDDefault (p_Lista_OID);
+            try
+            {
+                CPSession.SessionInitializeTransaction();
+                ListaCEN listaCEN = new ListaCEN(CPSession.UnitRepo.ListaRepository);
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
 
-                /* SIN ACABAR */
+                VideojuegoEN videojuego = videojuegoCEN.GetByoID(videojuego_OID);
+                ListaEN lista = listaCEN.get_IListaRepository().ReadOIDDefault(p_Lista_OID);
+                lista.Videojuegos.Add(videojuego);
 
-                listaCEN.get_IListaRepository ().AnyadirJuego (p_Lista_OID, p_listado_OIDs);
+                listaCEN.get_IListaRepository().AnyadirJuego(p_Lista_OID, p_videojuegos_OIDs, videojuego_OID);
 
-
-
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
