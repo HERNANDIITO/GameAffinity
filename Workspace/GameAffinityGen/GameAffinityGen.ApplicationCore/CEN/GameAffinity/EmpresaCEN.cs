@@ -86,5 +86,17 @@ public System.Collections.Generic.IList<EmpresaEN> Leer_empresa (int first, int 
         list = _IEmpresaRepository.Leer_empresa (first, size);
         return list;
 }
+public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+{
+        //Call to EmpresaRepository
+
+        _IEmpresaRepository.AnyadirJuegoDesarrollado (p_Empresa_OID, p_desarrollado_OIDs);
+}
+public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+{
+        //Call to EmpresaRepository
+
+        _IEmpresaRepository.EilminarJuegoDesarrollado (p_Empresa_OID, p_desarrollado_OIDs);
+}
 }
 }

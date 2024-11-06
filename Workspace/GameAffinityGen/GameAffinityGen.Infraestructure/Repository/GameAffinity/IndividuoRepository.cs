@@ -345,5 +345,159 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
+public void AnyadirAEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN individuoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                individuoEN = (IndividuoEN)session.Load (typeof(IndividuoNH), p_Individuo_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN trabajadorENAux = null;
+                if (individuoEN.Trabajador == null) {
+                        individuoEN.Trabajador = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN>();
+                }
+
+                foreach (int item in p_trabajador_OIDs) {
+                        trabajadorENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN ();
+                        trabajadorENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.EmpresaNH), item);
+                        trabajadorENAux.Trabaja.Add (individuoEN);
+
+                        individuoEN.Trabajador.Add (trabajadorENAux);
+                }
+
+
+                session.Update (individuoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in IndividuoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarDeEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN individuoEN = null;
+                individuoEN = (IndividuoEN)session.Load (typeof(IndividuoNH), p_Individuo_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN trabajadorENAux = null;
+                if (individuoEN.Trabajador != null) {
+                        foreach (int item in p_trabajador_OIDs) {
+                                trabajadorENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.EmpresaNH), item);
+                                if (individuoEN.Trabajador.Contains (trabajadorENAux) == true) {
+                                        individuoEN.Trabajador.Remove (trabajadorENAux);
+                                        trabajadorENAux.Trabaja.Remove (individuoEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_trabajador_OIDs you are trying to unrelationer, doesn't exist in IndividuoEN");
+                        }
+                }
+
+                session.Update (individuoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in IndividuoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void AnyadirAJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN individuoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                individuoEN = (IndividuoEN)session.Load (typeof(IndividuoNH), p_Individuo_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN participeENAux = null;
+                if (individuoEN.Participe == null) {
+                        individuoEN.Participe = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                }
+
+                foreach (int item in p_participe_OIDs) {
+                        participeENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                        participeENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                        participeENAux.Participa.Add (individuoEN);
+
+                        individuoEN.Participe.Add (participeENAux);
+                }
+
+
+                session.Update (individuoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in IndividuoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EilminarDeJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN individuoEN = null;
+                individuoEN = (IndividuoEN)session.Load (typeof(IndividuoNH), p_Individuo_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN participeENAux = null;
+                if (individuoEN.Participe != null) {
+                        foreach (int item in p_participe_OIDs) {
+                                participeENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                                if (individuoEN.Participe.Contains (participeENAux) == true) {
+                                        individuoEN.Participe.Remove (participeENAux);
+                                        participeENAux.Participa.Remove (individuoEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_participe_OIDs you are trying to unrelationer, doesn't exist in IndividuoEN");
+                        }
+                }
+
+                session.Update (individuoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in IndividuoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

@@ -48,5 +48,15 @@ RegistradoEN Leer_OID_registrado (int id
 
 
 System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> Leer_mentores (bool ? es_mentor);
+
+
+
+void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs);
+
+void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs);
+
+void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs);
+
+void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs);
 }
 }

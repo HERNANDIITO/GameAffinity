@@ -103,5 +103,29 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 {
         return _IIndividuoRepository.Leer_por_pais (papis);
 }
+public void AnyadirAEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs)
+{
+        //Call to IndividuoRepository
+
+        _IIndividuoRepository.AnyadirAEmpresa (p_Individuo_OID, p_trabajador_OIDs);
+}
+public void EliminarDeEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs)
+{
+        //Call to IndividuoRepository
+
+        _IIndividuoRepository.EliminarDeEmpresa (p_Individuo_OID, p_trabajador_OIDs);
+}
+public void AnyadirAJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs)
+{
+        //Call to IndividuoRepository
+
+        _IIndividuoRepository.AnyadirAJuego (p_Individuo_OID, p_participe_OIDs);
+}
+public void EilminarDeJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs)
+{
+        //Call to IndividuoRepository
+
+        _IIndividuoRepository.EilminarDeJuego (p_Individuo_OID, p_participe_OIDs);
+}
 }
 }

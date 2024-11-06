@@ -104,6 +104,9 @@ public void ModifyDefault (LikeEN like)
 
                 likeNH.Liked = like.Liked;
 
+
+                likeNH.Id_resenya = like.Id_resenya;
+
                 session.Update (likeNH);
                 SessionCommit ();
         }
@@ -134,6 +137,9 @@ public void Modify (LikeEN like)
 
 
                 likeNH.Liked = like.Liked;
+
+
+                likeNH.Id_resenya = like.Id_resenya;
 
                 session.Update (likeNH);
                 SessionCommit ();

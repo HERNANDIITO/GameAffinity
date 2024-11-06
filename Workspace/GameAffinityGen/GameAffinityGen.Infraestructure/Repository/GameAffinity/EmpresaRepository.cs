@@ -266,5 +266,83 @@ public System.Collections.Generic.IList<EmpresaEN> Leer_empresa (int first, int 
 
         return result;
 }
+
+public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN empresaEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                empresaEN = (EmpresaEN)session.Load (typeof(EmpresaNH), p_Empresa_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN desarrolladoENAux = null;
+                if (empresaEN.Desarrollado == null) {
+                        empresaEN.Desarrollado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                }
+
+                foreach (int item in p_desarrollado_OIDs) {
+                        desarrolladoENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                        desarrolladoENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                        desarrolladoENAux.Desarrolla.Add (empresaEN);
+
+                        empresaEN.Desarrollado.Add (desarrolladoENAux);
+                }
+
+
+                session.Update (empresaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in EmpresaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN empresaEN = null;
+                empresaEN = (EmpresaEN)session.Load (typeof(EmpresaNH), p_Empresa_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN desarrolladoENAux = null;
+                if (empresaEN.Desarrollado != null) {
+                        foreach (int item in p_desarrollado_OIDs) {
+                                desarrolladoENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                                if (empresaEN.Desarrollado.Contains (desarrolladoENAux) == true) {
+                                        empresaEN.Desarrollado.Remove (desarrolladoENAux);
+                                        desarrolladoENAux.Desarrolla.Remove (empresaEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_desarrollado_OIDs you are trying to unrelationer, doesn't exist in EmpresaEN");
+                        }
+                }
+
+                session.Update (empresaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in EmpresaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

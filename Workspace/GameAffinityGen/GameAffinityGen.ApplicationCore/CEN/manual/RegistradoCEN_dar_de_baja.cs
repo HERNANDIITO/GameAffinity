@@ -13,23 +13,24 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-    public partial class RegistradoCEN
-    {
-        public void Dar_de_baja(int p_oid)
-        {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_dar_de_baja) ENABLED START*/
+public partial class RegistradoCEN
+{
+public void Dar_de_baja (int p_oid)
+{
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_dar_de_baja) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            RegistradoEN registrado = _IRegistradoRepository.Leer_OID_registrado(p_oid);
-            registrado.Email = "Anónimo";
-            registrado.Contrasenya = "Anónimo";
-            registrado.Nick = "Anónimo";
-            registrado.Es_mentor = false;
-            registrado.Nombre = "Anónimo";
-            registrado.Seguidos = [];
+        RegistradoEN registrado = _IRegistradoRepository.Leer_OID_registrado (p_oid);
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        registrado.Email = "Anï¿½nimo";
+        registrado.Contrasenya = "Anï¿½nimo";
+        registrado.Nick = "Anï¿½nimo";
+        registrado.Es_mentor = false;
+        registrado.Nombre = "Anï¿½nimo";
+        registrado.Seguidos = [];
+
+        /*PROTECTED REGION END*/
+}
+}
 }

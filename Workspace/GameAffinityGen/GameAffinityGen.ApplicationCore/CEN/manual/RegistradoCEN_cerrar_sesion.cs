@@ -13,17 +13,17 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-    public partial class RegistradoCEN
-    {
-        public void Cerrar_sesion(int p_oid)
-        {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_cerrar_sesion) ENABLED START*/
+public partial class RegistradoCEN
+{
+public void Cerrar_sesion (int p_oid)
+{
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_cerrar_sesion) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            throw new NotImplementedException("Method Cerrar_sesion() not yet implemented.");
+        throw new NotImplementedException ("Method Cerrar_sesion() not yet implemented.");
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

@@ -64,7 +64,7 @@ public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mento
 
 
         oid = _IRegistradoRepository.New_ (registradoEN);
-        return oid; 
+        return oid;
 }
 
 public void Modify (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
@@ -103,6 +103,30 @@ public RegistradoEN Leer_OID_registrado (int id
 public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> Leer_mentores (bool ? es_mentor)
 {
         return _IRegistradoRepository.Leer_mentores (es_mentor);
+}
+public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+{
+        //Call to RegistradoRepository
+
+        _IRegistradoRepository.DarLike (p_Registrado_OID, p_hecho_por_OIDs);
+}
+public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+{
+        //Call to RegistradoRepository
+
+        _IRegistradoRepository.QuitarLike (p_Registrado_OID, p_hecho_por_OIDs);
+}
+public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+{
+        //Call to RegistradoRepository
+
+        _IRegistradoRepository.CrearValoracion (p_Registrado_OID, p_pertenece_OIDs);
+}
+public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+{
+        //Call to RegistradoRepository
+
+        _IRegistradoRepository.EliminarValoracion (p_Registrado_OID, p_pertenece_OIDs);
 }
 }
 }

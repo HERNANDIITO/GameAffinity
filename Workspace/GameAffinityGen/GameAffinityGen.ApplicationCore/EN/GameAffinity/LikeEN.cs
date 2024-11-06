@@ -40,6 +40,13 @@ private bool liked;
 
 
 
+/**
+ *	Atributo id_resenya
+ */
+private int id_resenya;
+
+
+
 
 
 
@@ -73,6 +80,12 @@ public virtual bool Liked {
 
 
 
+public virtual int Id_resenya {
+        get { return id_resenya; } set { id_resenya = value;  }
+}
+
+
+
 
 
 public LikeEN()
@@ -81,20 +94,20 @@ public LikeEN()
 
 
 
-public LikeEN(int id, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN user_liked, GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN resenya, bool disliked, bool liked
+public LikeEN(int id, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN user_liked, GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN resenya, bool disliked, bool liked, int id_resenya
               )
 {
-        this.init (Id, user_liked, resenya, disliked, liked);
+        this.init (Id, user_liked, resenya, disliked, liked, id_resenya);
 }
 
 
 public LikeEN(LikeEN like)
 {
-        this.init (like.Id, like.User_liked, like.Resenya, like.Disliked, like.Liked);
+        this.init (like.Id, like.User_liked, like.Resenya, like.Disliked, like.Liked, like.Id_resenya);
 }
 
 private void init (int id
-                   , GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN user_liked, GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN resenya, bool disliked, bool liked)
+                   , GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN user_liked, GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN resenya, bool disliked, bool liked, int id_resenya)
 {
         this.Id = id;
 
@@ -106,6 +119,8 @@ private void init (int id
         this.Disliked = disliked;
 
         this.Liked = liked;
+
+        this.Id_resenya = id_resenya;
 }
 
 public override bool Equals (object obj)

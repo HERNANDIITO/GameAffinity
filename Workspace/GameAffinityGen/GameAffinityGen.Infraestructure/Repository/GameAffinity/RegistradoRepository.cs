@@ -445,5 +445,159 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
+public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN hecho_porENAux = null;
+                if (registradoEN.Hecho_por == null) {
+                        registradoEN.Hecho_por = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+                }
+
+                foreach (int item in p_hecho_por_OIDs) {
+                        hecho_porENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN ();
+                        hecho_porENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
+                        hecho_porENAux.User_liked = registradoEN;
+
+                        registradoEN.Hecho_por.Add (hecho_porENAux);
+                }
+
+
+                session.Update (registradoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
+                registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN hecho_porENAux = null;
+                if (registradoEN.Hecho_por != null) {
+                        foreach (int item in p_hecho_por_OIDs) {
+                                hecho_porENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
+                                if (registradoEN.Hecho_por.Contains (hecho_porENAux) == true) {
+                                        registradoEN.Hecho_por.Remove (hecho_porENAux);
+                                        hecho_porENAux.User_liked = null;
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_hecho_por_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
+                        }
+                }
+
+                session.Update (registradoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN perteneceENAux = null;
+                if (registradoEN.Pertenece == null) {
+                        registradoEN.Pertenece = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
+                }
+
+                foreach (int item in p_pertenece_OIDs) {
+                        perteneceENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN ();
+                        perteneceENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH), item);
+                        perteneceENAux.Valora = registradoEN;
+
+                        registradoEN.Pertenece.Add (perteneceENAux);
+                }
+
+
+                session.Update (registradoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
+                registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN perteneceENAux = null;
+                if (registradoEN.Pertenece != null) {
+                        foreach (int item in p_pertenece_OIDs) {
+                                perteneceENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH), item);
+                                if (registradoEN.Pertenece.Contains (perteneceENAux) == true) {
+                                        registradoEN.Pertenece.Remove (perteneceENAux);
+                                        perteneceENAux.Valora = null;
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_pertenece_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
+                        }
+                }
+
+                session.Update (registradoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

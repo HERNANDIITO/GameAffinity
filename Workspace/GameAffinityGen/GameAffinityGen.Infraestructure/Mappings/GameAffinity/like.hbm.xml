@@ -18,6 +18,9 @@
 					<property name="Liked" type="boolean"> 
 						<column name="liked"  not-null="true"/>
 					</property>
+					<property name="Id_resenya" type="integer"> 
+						<column name="id_resenya"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -34,6 +37,8 @@
 											 					
 			
 			
+			
+					
 					
 					
 					

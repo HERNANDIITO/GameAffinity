@@ -13,18 +13,19 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-    public partial class ListaCEN
-    {
-        public bool IsDefault(int p_oid)
-        {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_isDefault) ENABLED START*/
+public partial class ListaCEN
+{
+public void IsDefault (int p_oid)
+{
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_isDefault) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            ListaEN lista = _IListaRepository.Leer_OID_lista(p_oid);
-            return lista.Default_;
+        ListaEN lista = _IListaRepository.Leer_OID_lista (p_oid);
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        return lista.Default_;
+
+        /*PROTECTED REGION END*/
+}
+}
 }

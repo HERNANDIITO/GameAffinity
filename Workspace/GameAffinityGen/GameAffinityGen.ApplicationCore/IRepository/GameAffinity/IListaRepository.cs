@@ -19,6 +19,7 @@ System.Collections.Generic.IList<ListaEN> ReadAllDefault (int first, int size);
 
 
 
+void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs);
 
 System.Collections.Generic.IList<ListaEN> Leer_lista (int first, int size);
 
@@ -40,5 +41,8 @@ void Cambiar_nombre (ListaEN lista);
 
 
 void Cambiar_descripcion (ListaEN lista);
+
+
+void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs);
 }
 }
