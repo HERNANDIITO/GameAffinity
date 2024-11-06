@@ -42,9 +42,9 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                 valoracionEN.Nota = p_nota;
 
 
-                if (p_valora != -1) {
-                        valoracionEN.Valora = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
-                        valoracionEN.Valora.Id = p_valora;
+                if (p_autor_valoracion != -1) {
+                        valoracionEN.Autor_valoracion = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
+                        valoracionEN.Autor_valoracion.Id = p_autor_valoracion;
                 }
 
 

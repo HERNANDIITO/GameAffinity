@@ -108,8 +108,8 @@ public static void InitializeData ()
 
                 int reg1 = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
                 RegistradoCEN registradoCEN = new RegistradoCEN (registradorepository);
-                registradoCEN.AceptarMentoria (reg1);
-                RegistradoEN registradoEN = registradocen.Leer_OID_registrado (reg1);
+                registradoCEN.Aceptar_mentoria(reg1);
+                RegistradoEN registradoEN = registradocen.GetByOID (reg1);
 
                 Console.WriteLine ("Es mentor: " + registradoEN.Es_mentor);
 

@@ -23,7 +23,7 @@ public bool IsDefault (int p_oid)
 
         ListaEN lista = _IListaRepository.GetByOID (p_oid);
 
-        return lista.Default_;
+        return lista.Por_defecto;
 
         /*PROTECTED REGION END*/
 }

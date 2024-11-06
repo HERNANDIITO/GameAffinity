@@ -34,7 +34,7 @@ public void Destroy (int p_Valoracion_OID)
 
 
 
-                valoracionCEN.get_IGameAffinityRepository ().Destroy (p_Valoracion_OID);
+                valoracionCEN.get_IValoracionRepository ().Destroy (p_Valoracion_OID);
 
 
                 CPSession.Commit ();

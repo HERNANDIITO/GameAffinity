@@ -34,7 +34,7 @@ public void Destroy (int p_Interaccion_OID)
 
 
 
-                interaccionCEN.get_IGameAffinityRepository ().Destroy (p_Interaccion_OID);
+                interaccionCEN.get_IInteraccionRepository ().Destroy (p_Interaccion_OID);
 
 
                 CPSession.Commit ();

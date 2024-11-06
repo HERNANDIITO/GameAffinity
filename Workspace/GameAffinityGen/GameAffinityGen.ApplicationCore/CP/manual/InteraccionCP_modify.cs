@@ -41,7 +41,7 @@ public void Modify (int p_Interaccion_OID, bool p_disliked, bool p_liked, int p_
                 interaccionEN.Disliked = p_disliked;
                 interaccionEN.Liked = p_liked;
                 interaccionEN.Id_resenya = p_id_resenya;
-                interaccionCEN.get_IGameAffinityRepository ().Modify (interaccionEN);
+                interaccionCEN.get_IInteraccionRepository ().Modify (interaccionEN);
 
 
                 CPSession.Commit ();

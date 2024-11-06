@@ -35,10 +35,6 @@ public void Banear_usuarios (int p_oid, int user_ID)
 
                 // Write here your custom transaction ...
 
-                throw new NotImplementedException ("Method Banear_usuarios() not yet implemented.");
-
-
-
                 CPSession.Commit ();
         }
         catch (Exception ex)

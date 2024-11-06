@@ -12,13 +12,13 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-/*
- *      Definition of the class RegistradoCEN
- *
- */
-public partial class RegistradoCEN
-{
-private IRegistradoRepository _IRegistradoRepository;
+    /*
+     *      Definition of the class RegistradoCEN
+     *
+     */
+    public partial class RegistradoCEN
+    {
+        private IRegistradoRepository _IRegistradoRepository;
 
 public RegistradoCEN(IRegistradoRepository _IRegistradoRepository)
 {
@@ -42,18 +42,6 @@ public void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.G
 
         _IRegistradoRepository.Dejar_de_seguir_perfiles (p_Registrado_OID, p_seguidos_OIDs);
 }
-public void Aceptar_mentoria (int registrado_oid)
-{
-        RegistradoEN registradoEN = null;
-
-        //Initialized RegistradoEN
-        registradoEN = new RegistradoEN ();
-        registradoEN.Registrado_oid = registrado_oid;
-        //Call to RegistradoRepository
-
-        _IRegistradoRepository.Aceptar_mentoria (registradoEN);
-}
-
 public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
 {
         RegistradoEN registradoEN = null;

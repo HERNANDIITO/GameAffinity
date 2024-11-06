@@ -146,13 +146,6 @@ public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int>
                         listaEN.Videojuegos.Add (videojuegosENAux);
                 }
 
-
-                listaEN.Videojuegos = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), videojuego_OID);
-
-                listaEN.Videojuegos.Lista.Add (listaEN);
-
-
-
                 session.Update (listaEN);
                 SessionCommit ();
         }
@@ -391,10 +384,6 @@ public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int
                                 else
                                         throw new ModelException ("The identifier " + item + " in p_videojuegos_OIDs you are trying to unrelationer, doesn't exist in ListaEN");
                         }
-                }
-
-                if (listaEN.Videojuegos.Id == videojuego_OID) {
-                        listaEN.Videojuegos = null;
                 }
                 else
                         throw new ModelException ("The identifier " + videojuego_OID + " in videojuego_OID you are trying to unrelationer, doesn't exist in ListaEN");
