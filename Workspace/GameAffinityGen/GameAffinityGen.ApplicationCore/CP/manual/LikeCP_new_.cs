@@ -32,9 +32,6 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN New_ (int p_user_l
                 CPSession.SessionInitializeTransaction ();
                 likeCEN = new  LikeCEN (CPSession.UnitRepo.LikeRepository);
 
-
-
-
                 int oid;
                 //Initialized LikeEN
                 LikeEN likeEN;
@@ -57,13 +54,14 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN New_ (int p_user_l
 
                 likeEN.Id_resenya = p_id_resenya;
 
+                ResenyaCEN resenyaCEN = new ResenyaCEN(CPSession.UnitRepo.ResenyaRepository);
+                ResenyaEN re = resenyaCEN.get_IResenyaRepository().ReadOIDDefault(p_id_resenya);
 
+                if (likeEN.Liked) { re.Likes++; }
+                else if (likeEN.Disliked) { re.Dislikes++; }
 
-                oid = likeCEN.get_ILikeRepository ().New_ (likeEN);
-
-                result = likeCEN.get_ILikeRepository ().ReadOIDDefault (oid);
-
-
+                oid = likeCEN.get_ILikeRepository().New_(likeEN);
+                result = likeCEN.get_ILikeRepository().ReadOIDDefault(oid);
 
                 CPSession.Commit ();
         }

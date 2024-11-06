@@ -226,5 +226,61 @@ public int New_ (LikeEN like)
 
         return likeNH.Id;
 }
+
+//Sin e: ReadOID
+//Con e: LikeEN
+public LikeEN ReadOID (int id
+                       )
+{
+        LikeEN likeEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                likeEN = (LikeEN)session.Get (typeof(LikeNH), id);
+                SessionCommit ();
+        }
+
+        catch (Exception) {
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return likeEN;
+}
+
+public System.Collections.Generic.IList<LikeEN> ReadAll (int first, int size)
+{
+        System.Collections.Generic.IList<LikeEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                if (size > 0)
+                        result = session.CreateCriteria (typeof(LikeNH)).
+                                 SetFirstResult (first).SetMaxResults (size).List<LikeEN>();
+                else
+                        result = session.CreateCriteria (typeof(LikeNH)).List<LikeEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in LikeRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

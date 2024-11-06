@@ -16,41 +16,48 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class LikeCP : GenericBasicCP
-{
-public void Destroy (int p_Like_OID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Like_destroy) ENABLED START*/
-
-        LikeCEN likeCEN = null;
-
-
-
-        try
+    public partial class LikeCP : GenericBasicCP
+    {
+        public void Destroy(int p_Like_OID)
         {
-                CPSession.SessionInitializeTransaction ();
-                likeCEN = new  LikeCEN (CPSession.UnitRepo.LikeRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Like_destroy) ENABLED START*/
 
+            LikeCEN likeCEN = null;
 
+            try
+            {
+                CPSession.SessionInitializeTransaction();
+                likeCEN = new LikeCEN(CPSession.UnitRepo.LikeRepository);
+                ResenyaCEN resenyaCEN = new ResenyaCEN(CPSession.UnitRepo.ResenyaRepository);
 
+                LikeEN like = CPSession.UnitRepo.LikeRepository.ReadOIDDefault(p_Like_OID);
+                ResenyaEN re = CPSession.UnitRepo.ResenyaRepository.ReadOIDDefault(like.Id_resenya);
 
-                likeCEN.get_IGameAffinityRepository ().Destroy (p_Like_OID);
+                if (like.Disliked)
+                {
+                    re.Dislikes--;
+                }
+                else if (like.Liked)
+                {
+                    re.Likes--;
+                }
 
+                likeCEN.get_ILikeRepository().Destroy(p_Like_OID);
 
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
