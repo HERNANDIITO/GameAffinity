@@ -15,7 +15,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class ListaCEN
 {
-public void Cambiar_descripcion (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_default)
+public void Cambiar_descripcion (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_por_defecto)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_cambiar_descripcion_customized) START*/
 
@@ -26,7 +26,7 @@ public void Cambiar_descripcion (int p_Lista_OID, string p_nombre, string p_desc
         listaEN.Id = p_Lista_OID;
         listaEN.Nombre = p_nombre;
         listaEN.Descripcion = p_descripcion;
-        listaEN.Default_ = p_default;
+        listaEN.Por_defecto = p_por_defecto;
         //Call to ListaRepository
 
         _IListaRepository.Cambiar_descripcion (listaEN);

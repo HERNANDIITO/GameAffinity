@@ -12,14 +12,14 @@ using GameAffinityGen.ApplicationCore.Utils;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class LikeCP : GenericBasicCP
+public partial class InteraccionCP : GenericBasicCP
 {
-public LikeCP(GenericSessionCP currentSession)
+public InteraccionCP(GenericSessionCP currentSession)
         : base (currentSession)
 {
 }
 
-public LikeCP(GenericSessionCP currentSession, GenericUnitOfWorkUtils unitUtils)
+public InteraccionCP(GenericSessionCP currentSession, GenericUnitOfWorkUtils unitUtils)
         : base (currentSession, unitUtils)
 {
 }

@@ -103,7 +103,7 @@ public void ModifyDefault (ListaEN lista)
                 listaNH.Descripcion = lista.Descripcion;
 
 
-                listaNH.Default_ = lista.Default_;
+                listaNH.Por_defecto = lista.Por_defecto;
 
 
 
@@ -276,7 +276,7 @@ public void Modify (ListaEN lista)
                 listaNH.Descripcion = lista.Descripcion;
 
 
-                listaNH.Default_ = lista.Default_;
+                listaNH.Por_defecto = lista.Por_defecto;
 
                 session.Update (listaNH);
                 SessionCommit ();
@@ -333,7 +333,7 @@ public void Cambiar_nombre (ListaEN lista)
                 listaNH.Descripcion = lista.Descripcion;
 
 
-                listaNH.Default_ = lista.Default_;
+                listaNH.Por_defecto = lista.Por_defecto;
 
                 session.Update (listaNH);
                 SessionCommit ();
@@ -365,7 +365,7 @@ public void Cambiar_descripcion (ListaEN lista)
                 listaNH.Descripcion = lista.Descripcion;
 
 
-                listaNH.Default_ = lista.Default_;
+                listaNH.Por_defecto = lista.Por_defecto;
 
                 session.Update (listaNH);
                 SessionCommit ();

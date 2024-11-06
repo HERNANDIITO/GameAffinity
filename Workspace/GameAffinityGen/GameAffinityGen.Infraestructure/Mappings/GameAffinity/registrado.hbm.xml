@@ -74,13 +74,13 @@
 			
 			
 		  			
-						<bag name="Like" >
+						<bag name="Interaccion" >
 							<key>
 							
 								
 								<column name="FK_idRegistrado_idRegistrado"/>
 					      	</key>
-							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH"/>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.InteraccionNH"/>
 					    </bag>
 					
 					

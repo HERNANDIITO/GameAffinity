@@ -51,9 +51,9 @@ System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity
 
 
 
-void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs);
+void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs);
 
-void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs);
+void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs);
 
 void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs);
 

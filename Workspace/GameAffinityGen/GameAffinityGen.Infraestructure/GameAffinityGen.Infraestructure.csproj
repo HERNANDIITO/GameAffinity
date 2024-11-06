@@ -12,7 +12,7 @@
 	<EmbeddedResource Include="Mappings\GameAffinity\empresa.hbm.xml" />
 	<EmbeddedResource Include="Mappings\GameAffinity\individuo.hbm.xml" />
 	<EmbeddedResource Include="Mappings\GameAffinity\videojuego.hbm.xml" />
-	<EmbeddedResource Include="Mappings\GameAffinity\like.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\interaccion.hbm.xml" />
 	
 	
 

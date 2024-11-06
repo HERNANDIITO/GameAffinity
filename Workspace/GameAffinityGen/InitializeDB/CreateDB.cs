@@ -98,8 +98,8 @@ public static void InitializeData ()
                 IndividuoCEN individuocen = new IndividuoCEN (individuorepository);
                 VideojuegoRepository videojuegorepository = new VideojuegoRepository ();
                 VideojuegoCEN videojuegocen = new VideojuegoCEN (videojuegorepository);
-                LikeRepository likerepository = new LikeRepository ();
-                LikeCEN likecen = new LikeCEN (likerepository);
+                InteraccionRepository interaccionrepository = new InteraccionRepository ();
+                InteraccionCEN interaccioncen = new InteraccionCEN (interaccionrepository);
 
 
 

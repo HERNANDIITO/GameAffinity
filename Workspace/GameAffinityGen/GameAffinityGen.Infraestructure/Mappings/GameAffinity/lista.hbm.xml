@@ -18,8 +18,8 @@
 					<property name="Descripcion" type="string"> 
 						<column name="descripcion"  not-null="true"/>
 					</property>
-					<property name="Default_" type="boolean"> 
-						<column name="default"  not-null="true"/>
+					<property name="Por_defecto" type="boolean"> 
+						<column name="por_defecto"  not-null="true"/>
 					</property>
 			
 			

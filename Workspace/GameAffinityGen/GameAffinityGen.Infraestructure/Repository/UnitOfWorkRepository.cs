@@ -91,12 +91,12 @@ public override IVideojuegoRepository VideojuegoRepository {
         }
 }
 
-public override ILikeRepository LikeRepository {
+public override IInteraccionRepository InteraccionRepository {
         get
         {
-                this.likerepository = new LikeRepository ();
-                this.likerepository.setSessionCP (session);
-                return this.likerepository;
+                this.interaccionrepository = new InteraccionRepository ();
+                this.interaccionrepository.setSessionCP (session);
+                return this.interaccionrepository;
         }
 }
 }

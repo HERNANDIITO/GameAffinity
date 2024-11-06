@@ -30,6 +30,12 @@ public IListaRepository get_IListaRepository ()
         return this._IListaRepository;
 }
 
+public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
+{
+        //Call to ListaRepository
+
+        _IListaRepository.AnyadirJuego (p_Lista_OID, p_videojuegos_OIDs, videojuego_OID);
+}
 public System.Collections.Generic.IList<ListaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ListaEN> list = null;
@@ -46,7 +52,7 @@ public ListaEN GetByOID (int id
         return listaEN;
 }
 
-public int New_ (string p_nombre, string p_descripcion, bool p_default, int p_autor_lista)
+public int New_ (string p_nombre, string p_descripcion, bool p_por_defecto, int p_autor_lista)
 {
         ListaEN listaEN = null;
         int oid;
@@ -57,7 +63,7 @@ public int New_ (string p_nombre, string p_descripcion, bool p_default, int p_au
 
         listaEN.Descripcion = p_descripcion;
 
-        listaEN.Default_ = p_default;
+        listaEN.Por_defecto = p_por_defecto;
 
 
         if (p_autor_lista != -1) {
@@ -73,7 +79,7 @@ public int New_ (string p_nombre, string p_descripcion, bool p_default, int p_au
         return oid;
 }
 
-public void Modify (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_default)
+public void Modify (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_por_defecto)
 {
         ListaEN listaEN = null;
 
@@ -82,7 +88,7 @@ public void Modify (int p_Lista_OID, string p_nombre, string p_descripcion, bool
         listaEN.Id = p_Lista_OID;
         listaEN.Nombre = p_nombre;
         listaEN.Descripcion = p_descripcion;
-        listaEN.Default_ = p_default;
+        listaEN.Por_defecto = p_por_defecto;
         //Call to ListaRepository
 
         _IListaRepository.Modify (listaEN);
@@ -94,6 +100,12 @@ public void Destroy (int id
         _IListaRepository.Destroy (id);
 }
 
+public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs, int videojuego_OID)
+{
+        //Call to ListaRepository
+
+        _IListaRepository.EliminarJuego (p_Lista_OID, p_videojuegos_OIDs, videojuego_OID);
+}
 public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> GetByAutor (int ? user)
 {
         return _IListaRepository.GetByAutor (user);

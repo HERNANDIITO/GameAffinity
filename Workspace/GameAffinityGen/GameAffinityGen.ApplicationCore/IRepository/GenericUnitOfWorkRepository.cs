@@ -15,7 +15,7 @@ protected IValoracionRepository valoracionrepository;
 protected IEmpresaRepository empresarepository;
 protected IIndividuoRepository individuorepository;
 protected IVideojuegoRepository videojuegorepository;
-protected ILikeRepository likerepository;
+protected IInteraccionRepository interaccionrepository;
 
 
 public abstract IRegistradoRepository RegistradoRepository {
@@ -42,7 +42,7 @@ public abstract IIndividuoRepository IndividuoRepository {
 public abstract IVideojuegoRepository VideojuegoRepository {
         get;
 }
-public abstract ILikeRepository LikeRepository {
+public abstract IInteraccionRepository InteraccionRepository {
         get;
 }
 }

@@ -57,7 +57,7 @@ private GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego;
 /**
  *	Atributo interacciones
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> interacciones;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interacciones;
 
 
 
@@ -106,7 +106,7 @@ public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN Vide
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> Interacciones {
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> Interacciones {
         get { return interacciones; } set { interacciones = value;  }
 }
 
@@ -116,12 +116,12 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 public ResenyaEN()
 {
-        interacciones = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+        interacciones = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN>();
 }
 
 
 
-public ResenyaEN(int id, string titulo, string texto, int likes_contador, int dislikes_contador, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> interacciones
+public ResenyaEN(int id, string titulo, string texto, int likes_contador, int dislikes_contador, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interacciones
                  )
 {
         this.init (Id, titulo, texto, likes_contador, dislikes_contador, autor_resenya, videojuego, interacciones);
@@ -134,7 +134,7 @@ public ResenyaEN(ResenyaEN resenya)
 }
 
 private void init (int id
-                   , string titulo, string texto, int likes_contador, int dislikes_contador, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> interacciones)
+                   , string titulo, string texto, int likes_contador, int dislikes_contador, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interacciones)
 {
         this.Id = id;
 

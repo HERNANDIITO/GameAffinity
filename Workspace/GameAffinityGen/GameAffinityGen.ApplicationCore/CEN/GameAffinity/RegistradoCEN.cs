@@ -104,17 +104,17 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 {
         return _IRegistradoRepository.GetMentores (es_mentor);
 }
-public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
+public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs)
 {
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.DarLike (p_Registrado_OID, p_like_OIDs);
+        _IRegistradoRepository.DarLike (p_Registrado_OID, p_interaccion_OIDs);
 }
-public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
+public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs)
 {
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.QuitarLike (p_Registrado_OID, p_like_OIDs);
+        _IRegistradoRepository.QuitarLike (p_Registrado_OID, p_interaccion_OIDs);
 }
 public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs)
 {

@@ -1,9 +1,9 @@
 
 using System;
-// Definición clase LikeEN
+// Definición clase InteraccionEN
 namespace GameAffinityGen.ApplicationCore.EN.GameAffinity
 {
-public partial class LikeEN
+public partial class InteraccionEN
 {
 /**
  *	Atributo id
@@ -88,22 +88,22 @@ public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN Resenya
 
 
 
-public LikeEN()
+public InteraccionEN()
 {
 }
 
 
 
-public LikeEN(int id, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor, bool disliked, bool liked, int id_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN resenya
-              )
+public InteraccionEN(int id, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor, bool disliked, bool liked, int id_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN resenya
+                     )
 {
         this.init (Id, autor, disliked, liked, id_resenya, resenya);
 }
 
 
-public LikeEN(LikeEN like)
+public InteraccionEN(InteraccionEN interaccion)
 {
-        this.init (like.Id, like.Autor, like.Disliked, like.Liked, like.Id_resenya, like.Resenya);
+        this.init (interaccion.Id, interaccion.Autor, interaccion.Disliked, interaccion.Liked, interaccion.Id_resenya, interaccion.Resenya);
 }
 
 private void init (int id
@@ -127,7 +127,7 @@ public override bool Equals (object obj)
 {
         if (obj == null)
                 return false;
-        LikeEN t = obj as LikeEN;
+        InteraccionEN t = obj as InteraccionEN;
         if (t == null)
                 return false;
         if (Id.Equals (t.Id))

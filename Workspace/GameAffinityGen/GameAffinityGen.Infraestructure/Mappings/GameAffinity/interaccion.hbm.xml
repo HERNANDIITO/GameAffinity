@@ -5,9 +5,9 @@
 		    
 		    
 			
-				<class name="LikeNH" table="Like"> 
+				<class name="InteraccionNH" table="Interaccion"> 
 				  	
-						<id name="Id" column="idLike" type="integer"> 
+						<id name="Id" column="idInteraccion" type="integer"> 
 							<generator class="hilo"/>
 						</id>
 			
@@ -47,6 +47,6 @@
 		
 		 </class>	
 		  
-		  <query name="LikeNHReadAllHQL">from LikeNH</query>
+		  <query name="InteraccionNHReadAllHQL">from InteraccionNH</query>
 		</hibernate-mapping>
 	

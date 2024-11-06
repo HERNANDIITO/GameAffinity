@@ -50,7 +50,7 @@
 								
 								<column name="FK_idResenya_idResenya"/>
 					      	</key>
-							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH"/>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.InteraccionNH"/>
 					    </bag>
 					
 					

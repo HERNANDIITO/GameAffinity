@@ -3,12 +3,12 @@ using System;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 namespace GameAffinityGen.Infraestructure.EN.GameAffinity
 {
-public partial class LikeNH : LikeEN {
-public LikeNH ()
+public partial class InteraccionNH : InteraccionEN {
+public InteraccionNH ()
 {
 }
 
-public LikeNH (LikeEN dto) : base (dto)
+public InteraccionNH (InteraccionEN dto) : base (dto)
 {
 }
 }

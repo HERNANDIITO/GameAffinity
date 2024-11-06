@@ -20,9 +20,9 @@ private string descripcion;
 
 
 /**
- *	Atributo default_
+ *	Atributo por_defecto
  */
-private bool default_;
+private bool por_defecto;
 
 
 
@@ -62,8 +62,8 @@ public virtual string Descripcion {
 
 
 
-public virtual bool Default_ {
-        get { return default_; } set { default_ = value;  }
+public virtual bool Por_defecto {
+        get { return por_defecto; } set { por_defecto = value;  }
 }
 
 
@@ -95,20 +95,20 @@ public ListaEN()
 
 
 
-public ListaEN(int id, string nombre, string descripcion, bool default_, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos
+public ListaEN(int id, string nombre, string descripcion, bool por_defecto, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos
                )
 {
-        this.init (Id, nombre, descripcion, default_, autor_lista, videojuegos);
+        this.init (Id, nombre, descripcion, por_defecto, autor_lista, videojuegos);
 }
 
 
 public ListaEN(ListaEN lista)
 {
-        this.init (lista.Id, lista.Nombre, lista.Descripcion, lista.Default_, lista.Autor_lista, lista.Videojuegos);
+        this.init (lista.Id, lista.Nombre, lista.Descripcion, lista.Por_defecto, lista.Autor_lista, lista.Videojuegos);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, bool default_, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos)
+                   , string nombre, string descripcion, bool por_defecto, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos)
 {
         this.Id = id;
 
@@ -117,7 +117,7 @@ private void init (int id
 
         this.Descripcion = descripcion;
 
-        this.Default_ = default_;
+        this.Por_defecto = por_defecto;
 
         this.Autor_lista = autor_lista;
 

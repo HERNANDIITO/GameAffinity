@@ -409,24 +409,24 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
-public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
+public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs)
 {
         GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN likeENAux = null;
-                if (registradoEN.Like == null) {
-                        registradoEN.Like = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN interaccionENAux = null;
+                if (registradoEN.Interaccion == null) {
+                        registradoEN.Interaccion = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN>();
                 }
 
-                foreach (int item in p_like_OIDs) {
-                        likeENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN ();
-                        likeENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
-                        likeENAux.Autor = registradoEN;
+                foreach (int item in p_interaccion_OIDs) {
+                        interaccionENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN ();
+                        interaccionENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.InteraccionNH), item);
+                        interaccionENAux.Autor = registradoEN;
 
-                        registradoEN.Like.Add (likeENAux);
+                        registradoEN.Interaccion.Add (interaccionENAux);
                 }
 
 
@@ -448,7 +448,7 @@ public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int>
         }
 }
 
-public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
+public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs)
 {
         try
         {
@@ -456,16 +456,16 @@ public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<i
                 GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
                 registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
 
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN likeENAux = null;
-                if (registradoEN.Like != null) {
-                        foreach (int item in p_like_OIDs) {
-                                likeENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
-                                if (registradoEN.Like.Contains (likeENAux) == true) {
-                                        registradoEN.Like.Remove (likeENAux);
-                                        likeENAux.Autor = null;
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN interaccionENAux = null;
+                if (registradoEN.Interaccion != null) {
+                        foreach (int item in p_interaccion_OIDs) {
+                                interaccionENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.InteraccionNH), item);
+                                if (registradoEN.Interaccion.Contains (interaccionENAux) == true) {
+                                        registradoEN.Interaccion.Remove (interaccionENAux);
+                                        interaccionENAux.Autor = null;
                                 }
                                 else
-                                        throw new ModelException ("The identifier " + item + " in p_like_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
+                                        throw new ModelException ("The identifier " + item + " in p_interaccion_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
                         }
                 }
 

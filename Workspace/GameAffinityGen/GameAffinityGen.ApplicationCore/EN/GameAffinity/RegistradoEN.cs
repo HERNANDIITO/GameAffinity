@@ -83,9 +83,9 @@ private String contrasenya;
 
 
 /**
- *	Atributo like
+ *	Atributo interaccion
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion;
 
 
 
@@ -158,8 +158,8 @@ public virtual String Contrasenya {
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> Like {
-        get { return like; } set { like = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> Interaccion {
+        get { return interaccion; } set { interaccion = value;  }
 }
 
 
@@ -172,25 +172,25 @@ public RegistradoEN()
         resenya = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN>();
         valoraciones = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
         listas = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN>();
-        like = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+        interaccion = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN>();
 }
 
 
 
-public RegistradoEN(int id, string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like
+public RegistradoEN(int id, string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion
                     )
 {
-        this.init (Id, nombre, email, nick, es_mentor, seguidos, resenya, valoraciones, listas, notificaciones, contrasenya, like);
+        this.init (Id, nombre, email, nick, es_mentor, seguidos, resenya, valoraciones, listas, notificaciones, contrasenya, interaccion);
 }
 
 
 public RegistradoEN(RegistradoEN registrado)
 {
-        this.init (registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, registrado.Es_mentor, registrado.Seguidos, registrado.Resenya, registrado.Valoraciones, registrado.Listas, registrado.Notificaciones, registrado.Contrasenya, registrado.Like);
+        this.init (registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, registrado.Es_mentor, registrado.Seguidos, registrado.Resenya, registrado.Valoraciones, registrado.Listas, registrado.Notificaciones, registrado.Contrasenya, registrado.Interaccion);
 }
 
 private void init (int id
-                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like)
+                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion)
 {
         this.Id = id;
 
@@ -215,7 +215,7 @@ private void init (int id
 
         this.Contrasenya = contrasenya;
 
-        this.Like = like;
+        this.Interaccion = interaccion;
 }
 
 public override bool Equals (object obj)
