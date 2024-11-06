@@ -132,7 +132,7 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Inheritance" xmi:id="_0hdGEIvKEe-pLNMe1S3yHw" name="inheritance3" son="_gBoy8IvKEe-pLNMe1S3yHw" father="_aYpzcIsVEe-275Ydh23WGw"/>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_DgzaQIvLEe-pLNMe1S3yHw" name="Lista" alias="Lista" asociationTarget="_Zv0gAJHzEe-rGeD3KQ9geQ" associationOrigin="_oYD_EJLgEe-_daHzEkTCPg">
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_j1tsEIvLEe-pLNMe1S3yHw" name="isDefault" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_j1tsEIvLEe-pLNMe1S3yHw" name="isDefault" type="Boolean">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_j1tsEYvLEe-pLNMe1S3yHw" name="p_oid" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_rLOhEIvLEe-pLNMe1S3yHw" name="anyadirJuego" operationType="Relationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg" customizedTransaction="true">

@@ -15,7 +15,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class ListaCEN
 {
-public void IsDefault (int p_oid)
+public bool IsDefault (int p_oid)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_isDefault) ENABLED START*/
 
