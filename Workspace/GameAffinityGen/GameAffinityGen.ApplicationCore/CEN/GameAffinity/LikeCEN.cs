@@ -30,20 +30,20 @@ public ILikeRepository get_ILikeRepository ()
         return this._ILikeRepository;
 }
 
-public LikeEN ReadOID (int id
-                       )
+public LikeEN GetByOID (int id
+                        )
 {
         LikeEN likeEN = null;
 
-        likeEN = _ILikeRepository.ReadOID (id);
+        likeEN = _ILikeRepository.GetByOID (id);
         return likeEN;
 }
 
-public System.Collections.Generic.IList<LikeEN> ReadAll (int first, int size)
+public System.Collections.Generic.IList<LikeEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<LikeEN> list = null;
 
-        list = _ILikeRepository.ReadAll (first, size);
+        list = _ILikeRepository.GetAll (first, size);
         return list;
 }
 }

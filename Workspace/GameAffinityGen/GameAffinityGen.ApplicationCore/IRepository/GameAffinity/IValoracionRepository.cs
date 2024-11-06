@@ -18,11 +18,11 @@ System.Collections.Generic.IList<ValoracionEN> ReadAllDefault (int first, int si
 
 
 
-ValoracionEN Leer_OID_valoracion (int id
-                                  );
+ValoracionEN GetByOID (int id
+                       );
 
 
-System.Collections.Generic.IList<ValoracionEN> Leer_valoracion (int first, int size);
+System.Collections.Generic.IList<ValoracionEN> GetAll (int first, int size);
 
 
 int New_ (ValoracionEN valoracion);

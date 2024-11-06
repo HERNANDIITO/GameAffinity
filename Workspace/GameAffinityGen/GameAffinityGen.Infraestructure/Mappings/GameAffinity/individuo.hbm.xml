@@ -40,24 +40,24 @@
 			
 			
 		  			
-						<bag name="Participe" table="[individuo_videojuego]"  >
-							<key>
-								
-									<column name="FK_idIndividuo_idIndividuo"/> 
-							</key>
-      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH">
-									<column name="FK_idVideojuego_idVideojuego"/> 
-      						</many-to-many>
-    					</bag>
-			
-		  			
-						<bag name="Trabajador" table="[empresa_individuo]" inverse="true" >
+						<bag name="Empresas" table="[individuo_empresa]"  >
 							<key>
 								
 									<column name="FK_idIndividuo_idIndividuo"/> 
 							</key>
       						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.EmpresaNH">
 									<column name="FK_idEmpresa_idEmpresa"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Videojuegos" table="[individuo_videojuego]"  >
+							<key>
+								
+									<column name="FK_idIndividuo_idIndividuo"/> 
+							</key>
+      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH">
+									<column name="FK_idVideojuego_idVideojuego"/> 
       						</many-to-many>
     					</bag>
 					
@@ -73,7 +73,7 @@
 		 </class>	
 		  
 		  <query name="IndividuoNHReadAllHQL">from IndividuoNH</query>
-		  <query name="IndividuoNHleer_por_rolHQL"><![CDATA[FROM IndividuoNH]]></query>
-		  <query name="IndividuoNHleer_por_paisHQL"><![CDATA[FROM IndividuoNH]]></query>
+		  <query name="IndividuoNHgetByRolHQL"><![CDATA[FROM IndividuoNH WHERE rol = :rol]]></query>
+		  <query name="IndividuoNHgetByPaisHQL"><![CDATA[FROM IndividuoNH where nacionalidad = :pais]]></query>
 		</hibernate-mapping>
 	

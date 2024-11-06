@@ -16,43 +16,43 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-    public partial class ListaCP : GenericBasicCP
-    {
-        public void AnyadirJuego(int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs)
+public partial class ListaCP : GenericBasicCP
+{
+public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
+{
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Lista_anyadirJuego) ENABLED START*/
+
+        ListaCEN listaCEN = null;
+
+
+
+        try
         {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Lista_anyadirJuego) ENABLED START*/
+                CPSession.SessionInitializeTransaction ();
+                listaCEN = new ListaCEN (CPSession.UnitRepo.ListaRepository);
 
-            ListaCEN listaCEN = null;
-
-
-
-            try
-            {
-                CPSession.SessionInitializeTransaction();
-                listaCEN = new ListaCEN(CPSession.UnitRepo.ListaRepository);
-
-                ListaEN lista = listaCEN.get_IListaRepository().ReadOIDDefault(p_Lista_OID);
+                ListaEN lista = listaCEN.get_IListaRepository ().ReadOIDDefault (p_Lista_OID);
 
                 /* SIN ACABAR */
 
-                listaCEN.get_IListaRepository().AnyadirJuego(p_Lista_OID, p_listado_OIDs);
+                listaCEN.get_IListaRepository ().AnyadirJuego (p_Lista_OID, p_listado_OIDs);
 
 
 
-                CPSession.Commit();
-            }
-            catch (Exception ex)
-            {
-                CPSession.RollBack();
-                throw ex;
-            }
-            finally
-            {
-                CPSession.SessionClose();
-            }
-
-
-            /*PROTECTED REGION END*/
+                CPSession.Commit ();
         }
-    }
+        catch (Exception ex)
+        {
+                CPSession.RollBack ();
+                throw ex;
+        }
+        finally
+        {
+                CPSession.SessionClose ();
+        }
+
+
+        /*PROTECTED REGION END*/
+}
+}
 }

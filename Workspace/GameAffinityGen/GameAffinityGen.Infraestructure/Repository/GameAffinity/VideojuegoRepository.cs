@@ -139,10 +139,10 @@ public int New_ (VideojuegoEN videojuego)
         try
         {
                 SessionInitializeTransaction ();
-                if (videojuego.Aporta != null) {
-                        // p_aporta
-                        videojuego.Aporta.Aportado.Add (videojuegoNH);
-                        session.Save (videojuegoNH.Aporta);
+                if (videojuego.Valoracion != null) {
+                        // p_valoracion
+                        videojuego.Valoracion.Videojuego_valorado.Add (videojuegoNH);
+                        session.Save (videojuegoNH.Valoracion);
                 }
 
                 session.Save (videojuegoNH);
@@ -225,9 +225,9 @@ public void Destroy (int id
         }
 }
 
-//Sin e: Leer_OID
+//Sin e: GetByoID
 //Con e: VideojuegoEN
-public VideojuegoEN Leer_OID (int id
+public VideojuegoEN GetByoID (int id
                               )
 {
         VideojuegoEN videojuegoEN = null;
@@ -251,7 +251,7 @@ public VideojuegoEN Leer_OID (int id
         return videojuegoEN;
 }
 
-public System.Collections.Generic.IList<VideojuegoEN> Leer (int first, int size)
+public System.Collections.Generic.IList<VideojuegoEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<VideojuegoEN> result = null;
         try
@@ -281,15 +281,15 @@ public System.Collections.Generic.IList<VideojuegoEN> Leer (int first, int size)
         return result;
 }
 
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Leer_por_genero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByGenero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero)
 {
         System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH";
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH WHERE genero = :genero";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHleer_por_generoHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetByGeneroHQL");
                 query.SetParameter ("genero", genero);
 
                 result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();

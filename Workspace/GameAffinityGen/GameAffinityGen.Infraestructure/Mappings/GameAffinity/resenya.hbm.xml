@@ -18,11 +18,11 @@
 					<property name="Texto" type="string"> 
 						<column name="texto"  not-null="true"/>
 					</property>
-					<property name="Likes" type="integer"> 
-						<column name="likes"  not-null="true"/>
+					<property name="Likes_contador" type="integer"> 
+						<column name="likes_contador"  not-null="true"/>
 					</property>
-					<property name="Dislikes" type="integer"> 
-						<column name="dislikes"  not-null="true"/>
+					<property name="Dislikes_contador" type="integer"> 
+						<column name="dislikes_contador"  not-null="true"/>
 					</property>
 			
 			
@@ -32,19 +32,19 @@
 			
 			
 		  			
-						<many-to-one name="Escribe" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
+						<many-to-one name="Autor_resenya" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
 								<column name="FK_idRegistrado_idRegistrado_0"/> 
 						</many-to-one>
 											 					
 			
 		  			
-						<many-to-one name="Resenyado" class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH" >	
+						<many-to-one name="Videojuego" class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH" >	
 								<column name="FK_idVideojuego_idVideojuego"/> 
 						</many-to-one>
 											 					
 			
 		  			
-						<bag name="Mg" >
+						<bag name="Interacciones" >
 							<key>
 							
 								

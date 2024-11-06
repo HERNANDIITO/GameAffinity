@@ -18,7 +18,7 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
 public partial class ValoracionCP : GenericBasicCP
 {
-public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_nota, int p_valora)
+public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_nota, int p_autor_valoracion)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_new_) ENABLED START*/
 

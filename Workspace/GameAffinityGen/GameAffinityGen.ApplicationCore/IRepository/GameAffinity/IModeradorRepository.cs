@@ -29,10 +29,10 @@ void Destroy (int id
               );
 
 
-System.Collections.Generic.IList<ModeradorEN> Leer_moderador (int first, int size);
+System.Collections.Generic.IList<ModeradorEN> GetAll (int first, int size);
 
 
-ModeradorEN Leer_OID_moderador (int id
-                                );
+ModeradorEN GetByOID (int id
+                      );
 }
 }

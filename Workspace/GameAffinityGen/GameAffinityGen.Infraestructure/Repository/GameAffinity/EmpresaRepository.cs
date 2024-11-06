@@ -211,10 +211,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: Leer_OID_empresa
+//Sin e: GetByOID
 //Con e: EmpresaEN
-public EmpresaEN Leer_OID_empresa (int id
-                                   )
+public EmpresaEN GetByOID (int id
+                           )
 {
         EmpresaEN empresaEN = null;
 
@@ -237,7 +237,7 @@ public EmpresaEN Leer_OID_empresa (int id
         return empresaEN;
 }
 
-public System.Collections.Generic.IList<EmpresaEN> Leer_empresa (int first, int size)
+public System.Collections.Generic.IList<EmpresaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<EmpresaEN> result = null;
         try
@@ -267,24 +267,24 @@ public System.Collections.Generic.IList<EmpresaEN> Leer_empresa (int first, int 
         return result;
 }
 
-public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN empresaEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 empresaEN = (EmpresaEN)session.Load (typeof(EmpresaNH), p_Empresa_OID);
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN desarrolladoENAux = null;
-                if (empresaEN.Desarrollado == null) {
-                        empresaEN.Desarrollado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuegosENAux = null;
+                if (empresaEN.Videojuegos == null) {
+                        empresaEN.Videojuegos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
                 }
 
-                foreach (int item in p_desarrollado_OIDs) {
-                        desarrolladoENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
-                        desarrolladoENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
-                        desarrolladoENAux.Desarrolla.Add (empresaEN);
+                foreach (int item in p_videojuegos_OIDs) {
+                        videojuegosENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                        videojuegosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                        videojuegosENAux.Empresas.Add (empresaEN);
 
-                        empresaEN.Desarrollado.Add (desarrolladoENAux);
+                        empresaEN.Videojuegos.Add (videojuegosENAux);
                 }
 
 
@@ -306,7 +306,7 @@ public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Gene
         }
 }
 
-public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         try
         {
@@ -314,16 +314,93 @@ public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Gen
                 GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN empresaEN = null;
                 empresaEN = (EmpresaEN)session.Load (typeof(EmpresaNH), p_Empresa_OID);
 
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN desarrolladoENAux = null;
-                if (empresaEN.Desarrollado != null) {
-                        foreach (int item in p_desarrollado_OIDs) {
-                                desarrolladoENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
-                                if (empresaEN.Desarrollado.Contains (desarrolladoENAux) == true) {
-                                        empresaEN.Desarrollado.Remove (desarrolladoENAux);
-                                        desarrolladoENAux.Desarrolla.Remove (empresaEN);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuegosENAux = null;
+                if (empresaEN.Videojuegos != null) {
+                        foreach (int item in p_videojuegos_OIDs) {
+                                videojuegosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                                if (empresaEN.Videojuegos.Contains (videojuegosENAux) == true) {
+                                        empresaEN.Videojuegos.Remove (videojuegosENAux);
+                                        videojuegosENAux.Empresas.Remove (empresaEN);
                                 }
                                 else
-                                        throw new ModelException ("The identifier " + item + " in p_desarrollado_OIDs you are trying to unrelationer, doesn't exist in EmpresaEN");
+                                        throw new ModelException ("The identifier " + item + " in p_videojuegos_OIDs you are trying to unrelationer, doesn't exist in EmpresaEN");
+                        }
+                }
+
+                session.Update (empresaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in EmpresaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void AnyadirIndividuo (int p_Empresa_OID, System.Collections.Generic.IList<int> p_individuos_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN empresaEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                empresaEN = (EmpresaEN)session.Load (typeof(EmpresaNH), p_Empresa_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN individuosENAux = null;
+                if (empresaEN.Individuos == null) {
+                        empresaEN.Individuos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN>();
+                }
+
+                foreach (int item in p_individuos_OIDs) {
+                        individuosENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN ();
+                        individuosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.IndividuoNH), item);
+                        individuosENAux.Empresas.Add (empresaEN);
+
+                        empresaEN.Individuos.Add (individuosENAux);
+                }
+
+
+                session.Update (empresaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in EmpresaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarIndividuo (int p_Empresa_OID, System.Collections.Generic.IList<int> p_individuos_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN empresaEN = null;
+                empresaEN = (EmpresaEN)session.Load (typeof(EmpresaNH), p_Empresa_OID);
+
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN individuosENAux = null;
+                if (empresaEN.Individuos != null) {
+                        foreach (int item in p_individuos_OIDs) {
+                                individuosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.IndividuoNH), item);
+                                if (empresaEN.Individuos.Contains (individuosENAux) == true) {
+                                        empresaEN.Individuos.Remove (individuosENAux);
+                                        individuosENAux.Empresas.Remove (empresaEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_individuos_OIDs you are trying to unrelationer, doesn't exist in EmpresaEN");
                         }
                 }
 

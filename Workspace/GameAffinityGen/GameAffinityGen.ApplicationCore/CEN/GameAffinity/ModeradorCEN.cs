@@ -79,19 +79,19 @@ public void Destroy (int id
         _IModeradorRepository.Destroy (id);
 }
 
-public System.Collections.Generic.IList<ModeradorEN> Leer_moderador (int first, int size)
+public System.Collections.Generic.IList<ModeradorEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ModeradorEN> list = null;
 
-        list = _IModeradorRepository.Leer_moderador (first, size);
+        list = _IModeradorRepository.GetAll (first, size);
         return list;
 }
-public ModeradorEN Leer_OID_moderador (int id
-                                       )
+public ModeradorEN GetByOID (int id
+                             )
 {
         ModeradorEN moderadorEN = null;
 
-        moderadorEN = _IModeradorRepository.Leer_OID_moderador (id);
+        moderadorEN = _IModeradorRepository.GetByOID (id);
         return moderadorEN;
 }
 }

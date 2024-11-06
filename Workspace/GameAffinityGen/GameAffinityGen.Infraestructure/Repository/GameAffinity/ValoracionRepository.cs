@@ -120,10 +120,10 @@ public void ModifyDefault (ValoracionEN valoracion)
 }
 
 
-//Sin e: Leer_OID_valoracion
+//Sin e: GetByOID
 //Con e: ValoracionEN
-public ValoracionEN Leer_OID_valoracion (int id
-                                         )
+public ValoracionEN GetByOID (int id
+                              )
 {
         ValoracionEN valoracionEN = null;
 
@@ -146,7 +146,7 @@ public ValoracionEN Leer_OID_valoracion (int id
         return valoracionEN;
 }
 
-public System.Collections.Generic.IList<ValoracionEN> Leer_valoracion (int first, int size)
+public System.Collections.Generic.IList<ValoracionEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ValoracionEN> result = null;
         try
@@ -183,12 +183,12 @@ public int New_ (ValoracionEN valoracion)
         try
         {
                 SessionInitializeTransaction ();
-                if (valoracion.Valora != null) {
+                if (valoracion.Autor_valoracion != null) {
                         // Argumento OID y no colección.
                         valoracionNH
-                        .Valora = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), valoracion.Valora.Id);
+                        .Autor_valoracion = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), valoracion.Autor_valoracion.Id);
 
-                        valoracionNH.Valora.Pertenece
+                        valoracionNH.Autor_valoracion.Valoraciones
                         .Add (valoracionNH);
                 }
 

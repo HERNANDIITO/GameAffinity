@@ -103,10 +103,10 @@ public void ModifyDefault (ResenyaEN resenya)
                 resenyaNH.Texto = resenya.Texto;
 
 
-                resenyaNH.Likes = resenya.Likes;
+                resenyaNH.Likes_contador = resenya.Likes_contador;
 
 
-                resenyaNH.Dislikes = resenya.Dislikes;
+                resenyaNH.Dislikes_contador = resenya.Dislikes_contador;
 
 
 
@@ -143,10 +143,10 @@ public void Modify (ResenyaEN resenya)
                 resenyaNH.Texto = resenya.Texto;
 
 
-                resenyaNH.Likes = resenya.Likes;
+                resenyaNH.Likes_contador = resenya.Likes_contador;
 
 
-                resenyaNH.Dislikes = resenya.Dislikes;
+                resenyaNH.Dislikes_contador = resenya.Dislikes_contador;
 
                 session.Update (resenyaNH);
                 SessionCommit ();
@@ -190,7 +190,7 @@ public void Destroy (int id
         }
 }
 
-public System.Collections.Generic.IList<ResenyaEN> Leer_resenya (int first, int size)
+public System.Collections.Generic.IList<ResenyaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ResenyaEN> result = null;
         try
@@ -220,10 +220,10 @@ public System.Collections.Generic.IList<ResenyaEN> Leer_resenya (int first, int 
         return result;
 }
 
-//Sin e: Leer_OID_resenya
+//Sin e: GetByOID
 //Con e: ResenyaEN
-public ResenyaEN Leer_OID_resenya (int id
-                                   )
+public ResenyaEN GetByOID (int id
+                           )
 {
         ResenyaEN resenyaEN = null;
 
@@ -253,20 +253,20 @@ public int New_ (ResenyaEN resenya)
         try
         {
                 SessionInitializeTransaction ();
-                if (resenya.Escribe != null) {
+                if (resenya.Autor_resenya != null) {
                         // Argumento OID y no colección.
                         resenyaNH
-                        .Escribe = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), resenya.Escribe.Id);
+                        .Autor_resenya = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), resenya.Autor_resenya.Id);
 
-                        resenyaNH.Escribe.Escrita
+                        resenyaNH.Autor_resenya.Resenya
                         .Add (resenyaNH);
                 }
-                if (resenya.Resenyado != null) {
+                if (resenya.Videojuego != null) {
                         // Argumento OID y no colección.
                         resenyaNH
-                        .Resenyado = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN), resenya.Resenyado.Id);
+                        .Videojuego = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN), resenya.Videojuego.Id);
 
-                        resenyaNH.Resenyado.Resenya
+                        resenyaNH.Videojuego.Resenyas
                         .Add (resenyaNH);
                 }
 

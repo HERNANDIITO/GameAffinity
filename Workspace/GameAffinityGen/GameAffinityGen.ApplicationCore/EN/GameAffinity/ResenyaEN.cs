@@ -27,37 +27,37 @@ private int id;
 
 
 /**
- *	Atributo likes
+ *	Atributo likes_contador
  */
-private int likes;
+private int likes_contador;
 
 
 
 /**
- *	Atributo dislikes
+ *	Atributo dislikes_contador
  */
-private int dislikes;
+private int dislikes_contador;
 
 
 
 /**
- *	Atributo escribe
+ *	Atributo autor_resenya
  */
-private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN escribe;
+private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya;
 
 
 
 /**
- *	Atributo resenyado
+ *	Atributo videojuego
  */
-private GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN resenyado;
+private GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego;
 
 
 
 /**
- *	Atributo mg
+ *	Atributo interacciones
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> mg;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> interacciones;
 
 
 
@@ -82,32 +82,32 @@ public virtual int Id {
 
 
 
-public virtual int Likes {
-        get { return likes; } set { likes = value;  }
+public virtual int Likes_contador {
+        get { return likes_contador; } set { likes_contador = value;  }
 }
 
 
 
-public virtual int Dislikes {
-        get { return dislikes; } set { dislikes = value;  }
+public virtual int Dislikes_contador {
+        get { return dislikes_contador; } set { dislikes_contador = value;  }
 }
 
 
 
-public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Escribe {
-        get { return escribe; } set { escribe = value;  }
+public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Autor_resenya {
+        get { return autor_resenya; } set { autor_resenya = value;  }
 }
 
 
 
-public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN Resenyado {
-        get { return resenyado; } set { resenyado = value;  }
+public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN Videojuego {
+        get { return videojuego; } set { videojuego = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> Mg {
-        get { return mg; } set { mg = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> Interacciones {
+        get { return interacciones; } set { interacciones = value;  }
 }
 
 
@@ -116,25 +116,25 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 public ResenyaEN()
 {
-        mg = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+        interacciones = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
 }
 
 
 
-public ResenyaEN(int id, string titulo, string texto, int likes, int dislikes, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN escribe, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN resenyado, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> mg
+public ResenyaEN(int id, string titulo, string texto, int likes_contador, int dislikes_contador, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> interacciones
                  )
 {
-        this.init (Id, titulo, texto, likes, dislikes, escribe, resenyado, mg);
+        this.init (Id, titulo, texto, likes_contador, dislikes_contador, autor_resenya, videojuego, interacciones);
 }
 
 
 public ResenyaEN(ResenyaEN resenya)
 {
-        this.init (resenya.Id, resenya.Titulo, resenya.Texto, resenya.Likes, resenya.Dislikes, resenya.Escribe, resenya.Resenyado, resenya.Mg);
+        this.init (resenya.Id, resenya.Titulo, resenya.Texto, resenya.Likes_contador, resenya.Dislikes_contador, resenya.Autor_resenya, resenya.Videojuego, resenya.Interacciones);
 }
 
 private void init (int id
-                   , string titulo, string texto, int likes, int dislikes, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN escribe, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN resenyado, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> mg)
+                   , string titulo, string texto, int likes_contador, int dislikes_contador, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_resenya, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> interacciones)
 {
         this.Id = id;
 
@@ -143,15 +143,15 @@ private void init (int id
 
         this.Texto = texto;
 
-        this.Likes = likes;
+        this.Likes_contador = likes_contador;
 
-        this.Dislikes = dislikes;
+        this.Dislikes_contador = dislikes_contador;
 
-        this.Escribe = escribe;
+        this.Autor_resenya = autor_resenya;
 
-        this.Resenyado = resenyado;
+        this.Videojuego = videojuego;
 
-        this.Mg = mg;
+        this.Interacciones = interacciones;
 }
 
 public override bool Equals (object obj)

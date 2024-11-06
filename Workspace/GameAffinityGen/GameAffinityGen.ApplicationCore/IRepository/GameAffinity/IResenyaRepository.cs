@@ -25,11 +25,11 @@ void Destroy (int id
               );
 
 
-System.Collections.Generic.IList<ResenyaEN> Leer_resenya (int first, int size);
+System.Collections.Generic.IList<ResenyaEN> GetAll (int first, int size);
 
 
-ResenyaEN Leer_OID_resenya (int id
-                            );
+ResenyaEN GetByOID (int id
+                    );
 
 
 int New_ (ResenyaEN resenya);

@@ -27,16 +27,16 @@ private bool default_;
 
 
 /**
- *	Atributo crea
+ *	Atributo autor_lista
  */
-private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN crea;
+private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista;
 
 
 
 /**
- *	Atributo listado
+ *	Atributo videojuegos
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> listado;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos;
 
 
 
@@ -68,14 +68,14 @@ public virtual bool Default_ {
 
 
 
-public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Crea {
-        get { return crea; } set { crea = value;  }
+public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Autor_lista {
+        get { return autor_lista; } set { autor_lista = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Listado {
-        get { return listado; } set { listado = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos {
+        get { return videojuegos; } set { videojuegos = value;  }
 }
 
 
@@ -90,25 +90,25 @@ public virtual int Id {
 
 public ListaEN()
 {
-        listado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+        videojuegos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
 }
 
 
 
-public ListaEN(int id, string nombre, string descripcion, bool default_, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN crea, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> listado
+public ListaEN(int id, string nombre, string descripcion, bool default_, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos
                )
 {
-        this.init (Id, nombre, descripcion, default_, crea, listado);
+        this.init (Id, nombre, descripcion, default_, autor_lista, videojuegos);
 }
 
 
 public ListaEN(ListaEN lista)
 {
-        this.init (lista.Id, lista.Nombre, lista.Descripcion, lista.Default_, lista.Crea, lista.Listado);
+        this.init (lista.Id, lista.Nombre, lista.Descripcion, lista.Default_, lista.Autor_lista, lista.Videojuegos);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, bool default_, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN crea, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> listado)
+                   , string nombre, string descripcion, bool default_, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos)
 {
         this.Id = id;
 
@@ -119,9 +119,9 @@ private void init (int id
 
         this.Default_ = default_;
 
-        this.Crea = crea;
+        this.Autor_lista = autor_lista;
 
-        this.Listado = listado;
+        this.Videojuegos = videojuegos;
 }
 
 public override bool Equals (object obj)

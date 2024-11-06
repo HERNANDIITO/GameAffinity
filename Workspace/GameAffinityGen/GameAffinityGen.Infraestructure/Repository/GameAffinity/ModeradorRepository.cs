@@ -209,7 +209,7 @@ public void Destroy (int id
         }
 }
 
-public System.Collections.Generic.IList<ModeradorEN> Leer_moderador (int first, int size)
+public System.Collections.Generic.IList<ModeradorEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ModeradorEN> result = null;
         try
@@ -239,10 +239,10 @@ public System.Collections.Generic.IList<ModeradorEN> Leer_moderador (int first, 
         return result;
 }
 
-//Sin e: Leer_OID_moderador
+//Sin e: GetByOID
 //Con e: ModeradorEN
-public ModeradorEN Leer_OID_moderador (int id
-                                       )
+public ModeradorEN GetByOID (int id
+                             )
 {
         ModeradorEN moderadorEN = null;
 

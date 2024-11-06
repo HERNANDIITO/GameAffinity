@@ -389,10 +389,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: Leer_OID_registrado
+//Sin e: GetByOID
 //Con e: RegistradoEN
-public RegistradoEN Leer_OID_registrado (int id
-                                         )
+public RegistradoEN GetByOID (int id
+                              )
 {
         RegistradoEN registradoEN = null;
 
@@ -415,15 +415,15 @@ public RegistradoEN Leer_OID_registrado (int id
         return registradoEN;
 }
 
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> Leer_mentores (bool ? es_mentor)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
 {
         System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM RegistradoNH self where FROM RegistradoNH";
+                //String sql = @"FROM RegistradoNH self where FROM RegistradoNH WHERE es_mentor = :es_mentor";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("RegistradoNHleer_mentoresHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("RegistradoNHgetMentoresHQL");
                 query.SetParameter ("es_mentor", es_mentor);
 
                 result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN>();
@@ -445,24 +445,24 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
-public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
 {
         GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN hecho_porENAux = null;
-                if (registradoEN.Hecho_por == null) {
-                        registradoEN.Hecho_por = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN likeENAux = null;
+                if (registradoEN.Like == null) {
+                        registradoEN.Like = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
                 }
 
-                foreach (int item in p_hecho_por_OIDs) {
-                        hecho_porENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN ();
-                        hecho_porENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
-                        hecho_porENAux.User_liked = registradoEN;
+                foreach (int item in p_like_OIDs) {
+                        likeENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN ();
+                        likeENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
+                        likeENAux.Autor = registradoEN;
 
-                        registradoEN.Hecho_por.Add (hecho_porENAux);
+                        registradoEN.Like.Add (likeENAux);
                 }
 
 
@@ -484,7 +484,7 @@ public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int>
         }
 }
 
-public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
 {
         try
         {
@@ -492,16 +492,16 @@ public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<i
                 GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
                 registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
 
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN hecho_porENAux = null;
-                if (registradoEN.Hecho_por != null) {
-                        foreach (int item in p_hecho_por_OIDs) {
-                                hecho_porENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
-                                if (registradoEN.Hecho_por.Contains (hecho_porENAux) == true) {
-                                        registradoEN.Hecho_por.Remove (hecho_porENAux);
-                                        hecho_porENAux.User_liked = null;
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN likeENAux = null;
+                if (registradoEN.Like != null) {
+                        foreach (int item in p_like_OIDs) {
+                                likeENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.LikeNH), item);
+                                if (registradoEN.Like.Contains (likeENAux) == true) {
+                                        registradoEN.Like.Remove (likeENAux);
+                                        likeENAux.Autor = null;
                                 }
                                 else
-                                        throw new ModelException ("The identifier " + item + " in p_hecho_por_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
+                                        throw new ModelException ("The identifier " + item + " in p_like_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
                         }
                 }
 
@@ -522,24 +522,24 @@ public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<i
                 SessionClose ();
         }
 }
-public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs)
 {
         GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN perteneceENAux = null;
-                if (registradoEN.Pertenece == null) {
-                        registradoEN.Pertenece = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN valoracionesENAux = null;
+                if (registradoEN.Valoraciones == null) {
+                        registradoEN.Valoraciones = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
                 }
 
-                foreach (int item in p_pertenece_OIDs) {
-                        perteneceENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN ();
-                        perteneceENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH), item);
-                        perteneceENAux.Valora = registradoEN;
+                foreach (int item in p_valoraciones_OIDs) {
+                        valoracionesENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN ();
+                        valoracionesENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH), item);
+                        valoracionesENAux.Autor_valoracion = registradoEN;
 
-                        registradoEN.Pertenece.Add (perteneceENAux);
+                        registradoEN.Valoraciones.Add (valoracionesENAux);
                 }
 
 
@@ -561,7 +561,7 @@ public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IL
         }
 }
 
-public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs)
 {
         try
         {
@@ -569,16 +569,16 @@ public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic
                 GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN registradoEN = null;
                 registradoEN = (RegistradoEN)session.Load (typeof(RegistradoNH), p_Registrado_OID);
 
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN perteneceENAux = null;
-                if (registradoEN.Pertenece != null) {
-                        foreach (int item in p_pertenece_OIDs) {
-                                perteneceENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH), item);
-                                if (registradoEN.Pertenece.Contains (perteneceENAux) == true) {
-                                        registradoEN.Pertenece.Remove (perteneceENAux);
-                                        perteneceENAux.Valora = null;
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN valoracionesENAux = null;
+                if (registradoEN.Valoraciones != null) {
+                        foreach (int item in p_valoraciones_OIDs) {
+                                valoracionesENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH), item);
+                                if (registradoEN.Valoraciones.Contains (valoracionesENAux) == true) {
+                                        registradoEN.Valoraciones.Remove (valoracionesENAux);
+                                        valoracionesENAux.Autor_valoracion = null;
                                 }
                                 else
-                                        throw new ModelException ("The identifier " + item + " in p_pertenece_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
+                                        throw new ModelException ("The identifier " + item + " in p_valoraciones_OIDs you are trying to unrelationer, doesn't exist in RegistradoEN");
                         }
                 }
 

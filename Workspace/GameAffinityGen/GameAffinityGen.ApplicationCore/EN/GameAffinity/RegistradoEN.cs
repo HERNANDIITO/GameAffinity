@@ -48,23 +48,23 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
 
 
 /**
- *	Atributo escrita
+ *	Atributo resenya
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> escrita;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya;
 
 
 
 /**
- *	Atributo pertenece
+ *	Atributo valoraciones
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> pertenece;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones;
 
 
 
 /**
- *	Atributo creada
+ *	Atributo listas
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> creada;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas;
 
 
 
@@ -83,9 +83,9 @@ private String contrasenya;
 
 
 /**
- *	Atributo hecho_por
+ *	Atributo like
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> hecho_por;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like;
 
 
 
@@ -128,20 +128,20 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> Escrita {
-        get { return escrita; } set { escrita = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> Resenya {
+        get { return resenya; } set { resenya = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> Pertenece {
-        get { return pertenece; } set { pertenece = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> Valoraciones {
+        get { return valoraciones; } set { valoraciones = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> Creada {
-        get { return creada; } set { creada = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> Listas {
+        get { return listas; } set { listas = value;  }
 }
 
 
@@ -158,8 +158,8 @@ public virtual String Contrasenya {
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> Hecho_por {
-        get { return hecho_por; } set { hecho_por = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> Like {
+        get { return like; } set { like = value;  }
 }
 
 
@@ -169,28 +169,28 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 public RegistradoEN()
 {
         seguidos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN>();
-        escrita = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN>();
-        pertenece = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
-        creada = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN>();
-        hecho_por = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
+        resenya = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN>();
+        valoraciones = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
+        listas = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN>();
+        like = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN>();
 }
 
 
 
-public RegistradoEN(int id, string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> escrita, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> pertenece, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> creada, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> hecho_por
+public RegistradoEN(int id, string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like
                     )
 {
-        this.init (Id, nombre, email, nick, es_mentor, seguidos, escrita, pertenece, creada, notificaciones, contrasenya, hecho_por);
+        this.init (Id, nombre, email, nick, es_mentor, seguidos, resenya, valoraciones, listas, notificaciones, contrasenya, like);
 }
 
 
 public RegistradoEN(RegistradoEN registrado)
 {
-        this.init (registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, registrado.Es_mentor, registrado.Seguidos, registrado.Escrita, registrado.Pertenece, registrado.Creada, registrado.Notificaciones, registrado.Contrasenya, registrado.Hecho_por);
+        this.init (registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, registrado.Es_mentor, registrado.Seguidos, registrado.Resenya, registrado.Valoraciones, registrado.Listas, registrado.Notificaciones, registrado.Contrasenya, registrado.Like);
 }
 
 private void init (int id
-                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> escrita, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> pertenece, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> creada, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> hecho_por)
+                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like)
 {
         this.Id = id;
 
@@ -205,17 +205,17 @@ private void init (int id
 
         this.Seguidos = seguidos;
 
-        this.Escrita = escrita;
+        this.Resenya = resenya;
 
-        this.Pertenece = pertenece;
+        this.Valoraciones = valoraciones;
 
-        this.Creada = creada;
+        this.Listas = listas;
 
         this.Notificaciones = notificaciones;
 
         this.Contrasenya = contrasenya;
 
-        this.Hecho_por = hecho_por;
+        this.Like = like;
 }
 
 public override bool Equals (object obj)

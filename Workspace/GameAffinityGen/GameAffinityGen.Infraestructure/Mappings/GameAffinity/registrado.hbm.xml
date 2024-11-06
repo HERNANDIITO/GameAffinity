@@ -39,7 +39,7 @@
 			
 			
 		  			
-						<bag name="Escrita" >
+						<bag name="Resenya" >
 							<key>
 							
 								
@@ -50,7 +50,7 @@
 					
 			
 		  			
-						<bag name="Pertenece" cascade="delete">
+						<bag name="Valoraciones" cascade="delete">
 							<key>
 							
 								
@@ -61,7 +61,7 @@
 					
 			
 		  			
-						<bag name="Creada" >
+						<bag name="Listas" >
 							<key>
 							
 								
@@ -74,7 +74,7 @@
 			
 			
 		  			
-						<bag name="Hecho_por" >
+						<bag name="Like" >
 							<key>
 							
 								
@@ -110,6 +110,6 @@
 		 </class>	
 		  
 		  <query name="RegistradoNHReadAllHQL">from RegistradoNH</query>
-		  <query name="RegistradoNHleer_mentoresHQL"><![CDATA[FROM RegistradoNH]]></query>
+		  <query name="RegistradoNHgetMentoresHQL"><![CDATA[FROM RegistradoNH WHERE es_mentor = :es_mentor]]></query>
 		</hibernate-mapping>
 	

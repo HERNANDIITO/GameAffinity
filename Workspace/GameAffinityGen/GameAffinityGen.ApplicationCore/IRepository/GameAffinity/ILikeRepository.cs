@@ -5,29 +5,32 @@ using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.IRepository.GameAffinity
 {
-    public partial interface ILikeRepository
-    {
-        void setSessionCP(GenericSessionCP session);
+public partial interface ILikeRepository
+{
+void setSessionCP (GenericSessionCP session);
 
-        LikeEN ReadOIDDefault(int id);
+LikeEN ReadOIDDefault (int id
+                       );
 
-        void ModifyDefault(LikeEN like);
+void ModifyDefault (LikeEN like);
 
-        System.Collections.Generic.IList<LikeEN> ReadAllDefault(int first, int size);
-
-
-
-        void Modify(LikeEN like);
+System.Collections.Generic.IList<LikeEN> ReadAllDefault (int first, int size);
 
 
-        void Destroy(int id);
+
+void Modify (LikeEN like);
 
 
-        int New_(LikeEN like);
+void Destroy (int id
+              );
 
-        LikeEN ReadOID(int id);
+
+int New_ (LikeEN like);
+
+LikeEN GetByOID (int id
+                 );
 
 
-        System.Collections.Generic.IList<LikeEN> ReadAll(int first, int size);
-    }
+System.Collections.Generic.IList<LikeEN> GetAll (int first, int size);
+}
 }

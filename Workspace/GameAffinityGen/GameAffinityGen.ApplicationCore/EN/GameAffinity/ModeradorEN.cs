@@ -14,20 +14,20 @@ public ModeradorEN() : base ()
 
 
 public ModeradorEN(int id,
-                   string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> escrita, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> pertenece, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> creada, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> hecho_por
+                   string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like
                    )
 {
-        this.init (Id, nombre, email, nick, es_mentor, seguidos, escrita, pertenece, creada, notificaciones, contrasenya, hecho_por);
+        this.init (Id, nombre, email, nick, es_mentor, seguidos, resenya, valoraciones, listas, notificaciones, contrasenya, like);
 }
 
 
 public ModeradorEN(ModeradorEN moderador)
 {
-        this.init (moderador.Id, moderador.Nombre, moderador.Email, moderador.Nick, moderador.Es_mentor, moderador.Seguidos, moderador.Escrita, moderador.Pertenece, moderador.Creada, moderador.Notificaciones, moderador.Contrasenya, moderador.Hecho_por);
+        this.init (moderador.Id, moderador.Nombre, moderador.Email, moderador.Nick, moderador.Es_mentor, moderador.Seguidos, moderador.Resenya, moderador.Valoraciones, moderador.Listas, moderador.Notificaciones, moderador.Contrasenya, moderador.Like);
 }
 
 private void init (int id
-                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> escrita, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> pertenece, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> creada, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> hecho_por)
+                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.LikeEN> like)
 {
         this.Id = id;
 
@@ -42,17 +42,17 @@ private void init (int id
 
         this.Seguidos = seguidos;
 
-        this.Escrita = escrita;
+        this.Resenya = resenya;
 
-        this.Pertenece = pertenece;
+        this.Valoraciones = valoraciones;
 
-        this.Creada = creada;
+        this.Listas = listas;
 
         this.Notificaciones = notificaciones;
 
         this.Contrasenya = contrasenya;
 
-        this.Hecho_por = hecho_por;
+        this.Like = like;
 }
 
 public override bool Equals (object obj)

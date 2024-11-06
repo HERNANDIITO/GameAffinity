@@ -19,13 +19,13 @@ System.Collections.Generic.IList<ListaEN> ReadAllDefault (int first, int size);
 
 
 
-void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs);
+void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 
-System.Collections.Generic.IList<ListaEN> Leer_lista (int first, int size);
+System.Collections.Generic.IList<ListaEN> GetAll (int first, int size);
 
 
-ListaEN Leer_OID_lista (int id
-                        );
+ListaEN GetByOID (int id
+                  );
 
 
 int New_ (ListaEN lista);
@@ -43,6 +43,6 @@ void Cambiar_nombre (ListaEN lista);
 void Cambiar_descripcion (ListaEN lista);
 
 
-void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs);
+void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 }
 }

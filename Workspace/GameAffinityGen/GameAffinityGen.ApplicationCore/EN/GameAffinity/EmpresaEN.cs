@@ -34,16 +34,16 @@ private int id;
 
 
 /**
- *	Atributo desarrollado
+ *	Atributo videojuegos
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> desarrollado;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos;
 
 
 
 /**
- *	Atributo trabaja
+ *	Atributo individuos
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> trabaja;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos;
 
 
 
@@ -74,14 +74,14 @@ public virtual int Id {
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Desarrollado {
-        get { return desarrollado; } set { desarrollado = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos {
+        get { return videojuegos; } set { videojuegos = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Trabaja {
-        get { return trabaja; } set { trabaja = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Individuos {
+        get { return individuos; } set { individuos = value;  }
 }
 
 
@@ -90,26 +90,26 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 public EmpresaEN()
 {
-        desarrollado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
-        trabaja = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN>();
+        videojuegos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+        individuos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN>();
 }
 
 
 
-public EmpresaEN(int id, string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> desarrollado, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> trabaja
+public EmpresaEN(int id, string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos
                  )
 {
-        this.init (Id, nombre, descripcion, nota, desarrollado, trabaja);
+        this.init (Id, nombre, descripcion, nota, videojuegos, individuos);
 }
 
 
 public EmpresaEN(EmpresaEN empresa)
 {
-        this.init (empresa.Id, empresa.Nombre, empresa.Descripcion, empresa.Nota, empresa.Desarrollado, empresa.Trabaja);
+        this.init (empresa.Id, empresa.Nombre, empresa.Descripcion, empresa.Nota, empresa.Videojuegos, empresa.Individuos);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> desarrollado, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> trabaja)
+                   , string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos)
 {
         this.Id = id;
 
@@ -120,9 +120,9 @@ private void init (int id
 
         this.Nota = nota;
 
-        this.Desarrollado = desarrollado;
+        this.Videojuegos = videojuegos;
 
-        this.Trabaja = trabaja;
+        this.Individuos = individuos;
 }
 
 public override bool Equals (object obj)

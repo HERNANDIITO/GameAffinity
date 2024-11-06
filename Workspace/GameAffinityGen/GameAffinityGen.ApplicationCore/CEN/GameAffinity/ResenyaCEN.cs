@@ -30,7 +30,7 @@ public IResenyaRepository get_IResenyaRepository ()
         return this._IResenyaRepository;
 }
 
-public void Modify (int p_Resenya_OID, string p_titulo, string p_texto, int p_likes, int p_dislikes)
+public void Modify (int p_Resenya_OID, string p_titulo, string p_texto, int p_likes_contador, int p_dislikes_contador)
 {
         ResenyaEN resenyaEN = null;
 
@@ -39,8 +39,8 @@ public void Modify (int p_Resenya_OID, string p_titulo, string p_texto, int p_li
         resenyaEN.Id = p_Resenya_OID;
         resenyaEN.Titulo = p_titulo;
         resenyaEN.Texto = p_texto;
-        resenyaEN.Likes = p_likes;
-        resenyaEN.Dislikes = p_dislikes;
+        resenyaEN.Likes_contador = p_likes_contador;
+        resenyaEN.Dislikes_contador = p_dislikes_contador;
         //Call to ResenyaRepository
 
         _IResenyaRepository.Modify (resenyaEN);
@@ -52,23 +52,23 @@ public void Destroy (int id
         _IResenyaRepository.Destroy (id);
 }
 
-public System.Collections.Generic.IList<ResenyaEN> Leer_resenya (int first, int size)
+public System.Collections.Generic.IList<ResenyaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ResenyaEN> list = null;
 
-        list = _IResenyaRepository.Leer_resenya (first, size);
+        list = _IResenyaRepository.GetAll (first, size);
         return list;
 }
-public ResenyaEN Leer_OID_resenya (int id
-                                   )
+public ResenyaEN GetByOID (int id
+                           )
 {
         ResenyaEN resenyaEN = null;
 
-        resenyaEN = _IResenyaRepository.Leer_OID_resenya (id);
+        resenyaEN = _IResenyaRepository.GetByOID (id);
         return resenyaEN;
 }
 
-public int New_ (string p_titulo, string p_texto, int p_likes, int p_dislikes, int p_escribe, int p_resenyado)
+public int New_ (string p_titulo, string p_texto, int p_likes_contador, int p_dislikes_contador, int p_autor_resenya, int p_videojuego)
 {
         ResenyaEN resenyaEN = null;
         int oid;
@@ -79,24 +79,24 @@ public int New_ (string p_titulo, string p_texto, int p_likes, int p_dislikes, i
 
         resenyaEN.Texto = p_texto;
 
-        resenyaEN.Likes = p_likes;
+        resenyaEN.Likes_contador = p_likes_contador;
 
-        resenyaEN.Dislikes = p_dislikes;
+        resenyaEN.Dislikes_contador = p_dislikes_contador;
 
 
-        if (p_escribe != -1) {
-                // El argumento p_escribe -> Property escribe es oid = false
+        if (p_autor_resenya != -1) {
+                // El argumento p_autor_resenya -> Property autor_resenya es oid = false
                 // Lista de oids id
-                resenyaEN.Escribe = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
-                resenyaEN.Escribe.Id = p_escribe;
+                resenyaEN.Autor_resenya = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
+                resenyaEN.Autor_resenya.Id = p_autor_resenya;
         }
 
 
-        if (p_resenyado != -1) {
-                // El argumento p_resenyado -> Property resenyado es oid = false
+        if (p_videojuego != -1) {
+                // El argumento p_videojuego -> Property videojuego es oid = false
                 // Lista de oids id
-                resenyaEN.Resenyado = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
-                resenyaEN.Resenyado.Id = p_resenyado;
+                resenyaEN.Videojuego = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                resenyaEN.Videojuego.Id = p_videojuego;
         }
 
 

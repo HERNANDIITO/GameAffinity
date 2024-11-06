@@ -27,25 +27,21 @@ void Destroy (int id
               );
 
 
-System.Collections.Generic.IList<IndividuoEN> Leer_individuo (int first, int size);
+System.Collections.Generic.IList<IndividuoEN> GetAll (int first, int size);
 
 
-IndividuoEN Leer_OID_individuo (int id
-                                );
+IndividuoEN GetByOID (int id
+                      );
 
 
-System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Leer_por_rol (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum ? rol);
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> GetByRol (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum ? rol);
 
 
-System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Leer_por_pais (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum ? papis);
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> GetByPais (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum ? pais);
 
 
-void AnyadirAEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs);
+void AnyadirVideojuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 
-void EliminarDeEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs);
-
-void AnyadirAJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs);
-
-void EilminarDeJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs);
+void EilminarVideojuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 }
 }

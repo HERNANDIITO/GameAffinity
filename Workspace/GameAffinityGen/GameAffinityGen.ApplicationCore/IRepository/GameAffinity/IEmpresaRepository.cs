@@ -27,15 +27,19 @@ void Destroy (int id
               );
 
 
-EmpresaEN Leer_OID_empresa (int id
-                            );
+EmpresaEN GetByOID (int id
+                    );
 
 
-System.Collections.Generic.IList<EmpresaEN> Leer_empresa (int first, int size);
+System.Collections.Generic.IList<EmpresaEN> GetAll (int first, int size);
 
 
-void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs);
+void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 
-void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs);
+void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
+
+void AnyadirIndividuo (int p_Empresa_OID, System.Collections.Generic.IList<int> p_individuos_OIDs);
+
+void EliminarIndividuo (int p_Empresa_OID, System.Collections.Generic.IList<int> p_individuos_OIDs);
 }
 }

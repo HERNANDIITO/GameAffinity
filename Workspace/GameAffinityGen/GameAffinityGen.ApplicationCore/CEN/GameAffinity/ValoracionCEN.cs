@@ -30,20 +30,20 @@ public IValoracionRepository get_IValoracionRepository ()
         return this._IValoracionRepository;
 }
 
-public ValoracionEN Leer_OID_valoracion (int id
-                                         )
+public ValoracionEN GetByOID (int id
+                              )
 {
         ValoracionEN valoracionEN = null;
 
-        valoracionEN = _IValoracionRepository.Leer_OID_valoracion (id);
+        valoracionEN = _IValoracionRepository.GetByOID (id);
         return valoracionEN;
 }
 
-public System.Collections.Generic.IList<ValoracionEN> Leer_valoracion (int first, int size)
+public System.Collections.Generic.IList<ValoracionEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ValoracionEN> list = null;
 
-        list = _IValoracionRepository.Leer_valoracion (first, size);
+        list = _IValoracionRepository.GetAll (first, size);
         return list;
 }
 }

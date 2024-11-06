@@ -126,24 +126,24 @@ public void ModifyDefault (ListaEN lista)
 }
 
 
-public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs)
+public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listaEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 listaEN = (ListaEN)session.Load (typeof(ListaNH), p_Lista_OID);
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN listadoENAux = null;
-                if (listaEN.Listado == null) {
-                        listaEN.Listado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuegosENAux = null;
+                if (listaEN.Videojuegos == null) {
+                        listaEN.Videojuegos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
                 }
 
-                foreach (int item in p_listado_OIDs) {
-                        listadoENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
-                        listadoENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
-                        listadoENAux.Lista.Add (listaEN);
+                foreach (int item in p_videojuegos_OIDs) {
+                        videojuegosENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                        videojuegosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                        videojuegosENAux.Lista.Add (listaEN);
 
-                        listaEN.Listado.Add (listadoENAux);
+                        listaEN.Videojuegos.Add (videojuegosENAux);
                 }
 
 
@@ -165,7 +165,7 @@ public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int>
         }
 }
 
-public System.Collections.Generic.IList<ListaEN> Leer_lista (int first, int size)
+public System.Collections.Generic.IList<ListaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ListaEN> result = null;
         try
@@ -195,10 +195,10 @@ public System.Collections.Generic.IList<ListaEN> Leer_lista (int first, int size
         return result;
 }
 
-//Sin e: Leer_OID_lista
+//Sin e: GetByOID
 //Con e: ListaEN
-public ListaEN Leer_OID_lista (int id
-                               )
+public ListaEN GetByOID (int id
+                         )
 {
         ListaEN listaEN = null;
 
@@ -228,12 +228,12 @@ public int New_ (ListaEN lista)
         try
         {
                 SessionInitializeTransaction ();
-                if (lista.Crea != null) {
+                if (lista.Autor_lista != null) {
                         // Argumento OID y no colección.
                         listaNH
-                        .Crea = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), lista.Crea.Id);
+                        .Autor_lista = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), lista.Autor_lista.Id);
 
-                        listaNH.Crea.Creada
+                        listaNH.Autor_lista.Listas
                         .Add (listaNH);
                 }
 
@@ -378,7 +378,7 @@ public void Cambiar_descripcion (ListaEN lista)
                 SessionClose ();
         }
 }
-public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs)
+public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         try
         {
@@ -386,16 +386,16 @@ public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int
                 GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listaEN = null;
                 listaEN = (ListaEN)session.Load (typeof(ListaNH), p_Lista_OID);
 
-                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN listadoENAux = null;
-                if (listaEN.Listado != null) {
-                        foreach (int item in p_listado_OIDs) {
-                                listadoENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
-                                if (listaEN.Listado.Contains (listadoENAux) == true) {
-                                        listaEN.Listado.Remove (listadoENAux);
-                                        listadoENAux.Lista.Remove (listaEN);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuegosENAux = null;
+                if (listaEN.Videojuegos != null) {
+                        foreach (int item in p_videojuegos_OIDs) {
+                                videojuegosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                                if (listaEN.Videojuegos.Contains (videojuegosENAux) == true) {
+                                        listaEN.Videojuegos.Remove (videojuegosENAux);
+                                        videojuegosENAux.Lista.Remove (listaEN);
                                 }
                                 else
-                                        throw new ModelException ("The identifier " + item + " in p_listado_OIDs you are trying to unrelationer, doesn't exist in ListaEN");
+                                        throw new ModelException ("The identifier " + item + " in p_videojuegos_OIDs you are trying to unrelationer, doesn't exist in ListaEN");
                         }
                 }
 

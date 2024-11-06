@@ -27,13 +27,13 @@ void Destroy (int id
               );
 
 
-VideojuegoEN Leer_OID (int id
+VideojuegoEN GetByoID (int id
                        );
 
 
-System.Collections.Generic.IList<VideojuegoEN> Leer (int first, int size);
+System.Collections.Generic.IList<VideojuegoEN> GetAll (int first, int size);
 
 
-System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Leer_por_genero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero);
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByGenero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero);
 }
 }

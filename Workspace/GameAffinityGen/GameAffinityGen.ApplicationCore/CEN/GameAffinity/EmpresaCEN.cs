@@ -70,33 +70,45 @@ public void Destroy (int id
         _IEmpresaRepository.Destroy (id);
 }
 
-public EmpresaEN Leer_OID_empresa (int id
-                                   )
+public EmpresaEN GetByOID (int id
+                           )
 {
         EmpresaEN empresaEN = null;
 
-        empresaEN = _IEmpresaRepository.Leer_OID_empresa (id);
+        empresaEN = _IEmpresaRepository.GetByOID (id);
         return empresaEN;
 }
 
-public System.Collections.Generic.IList<EmpresaEN> Leer_empresa (int first, int size)
+public System.Collections.Generic.IList<EmpresaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<EmpresaEN> list = null;
 
-        list = _IEmpresaRepository.Leer_empresa (first, size);
+        list = _IEmpresaRepository.GetAll (first, size);
         return list;
 }
-public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+public void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         //Call to EmpresaRepository
 
-        _IEmpresaRepository.AnyadirJuegoDesarrollado (p_Empresa_OID, p_desarrollado_OIDs);
+        _IEmpresaRepository.AnyadirJuegoDesarrollado (p_Empresa_OID, p_videojuegos_OIDs);
 }
-public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_desarrollado_OIDs)
+public void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         //Call to EmpresaRepository
 
-        _IEmpresaRepository.EilminarJuegoDesarrollado (p_Empresa_OID, p_desarrollado_OIDs);
+        _IEmpresaRepository.EilminarJuegoDesarrollado (p_Empresa_OID, p_videojuegos_OIDs);
+}
+public void AnyadirIndividuo (int p_Empresa_OID, System.Collections.Generic.IList<int> p_individuos_OIDs)
+{
+        //Call to EmpresaRepository
+
+        _IEmpresaRepository.AnyadirIndividuo (p_Empresa_OID, p_individuos_OIDs);
+}
+public void EliminarIndividuo (int p_Empresa_OID, System.Collections.Generic.IList<int> p_individuos_OIDs)
+{
+        //Call to EmpresaRepository
+
+        _IEmpresaRepository.EliminarIndividuo (p_Empresa_OID, p_individuos_OIDs);
 }
 }
 }

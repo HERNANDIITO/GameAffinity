@@ -98,7 +98,6 @@ public void ModifyDefault (LikeEN like)
                 LikeNH likeNH = (LikeNH)session.Load (typeof(LikeNH), like.Id);
 
 
-
                 likeNH.Disliked = like.Disliked;
 
 
@@ -106,6 +105,7 @@ public void ModifyDefault (LikeEN like)
 
 
                 likeNH.Id_resenya = like.Id_resenya;
+
 
                 session.Update (likeNH);
                 SessionCommit ();
@@ -190,12 +190,12 @@ public int New_ (LikeEN like)
         try
         {
                 SessionInitializeTransaction ();
-                if (like.User_liked != null) {
+                if (like.Autor != null) {
                         // Argumento OID y no colección.
                         likeNH
-                        .User_liked = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), like.User_liked.Id);
+                        .Autor = (GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN), like.Autor.Id);
 
-                        likeNH.User_liked.Hecho_por
+                        likeNH.Autor.Like
                         .Add (likeNH);
                 }
                 if (like.Resenya != null) {
@@ -203,7 +203,7 @@ public int New_ (LikeEN like)
                         likeNH
                         .Resenya = (GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN), like.Resenya.Id);
 
-                        likeNH.Resenya.Mg
+                        likeNH.Resenya.Interacciones
                         .Add (likeNH);
                 }
 
@@ -227,10 +227,10 @@ public int New_ (LikeEN like)
         return likeNH.Id;
 }
 
-//Sin e: ReadOID
+//Sin e: GetByOID
 //Con e: LikeEN
-public LikeEN ReadOID (int id
-                       )
+public LikeEN GetByOID (int id
+                        )
 {
         LikeEN likeEN = null;
 
@@ -253,7 +253,7 @@ public LikeEN ReadOID (int id
         return likeEN;
 }
 
-public System.Collections.Generic.IList<LikeEN> ReadAll (int first, int size)
+public System.Collections.Generic.IList<LikeEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<LikeEN> result = null;
         try

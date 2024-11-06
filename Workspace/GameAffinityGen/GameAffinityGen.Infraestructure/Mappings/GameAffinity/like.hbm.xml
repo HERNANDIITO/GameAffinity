@@ -25,19 +25,19 @@
 			
 			
 		  			
-						<many-to-one name="User_liked" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
+						<many-to-one name="Autor" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
 								<column name="FK_idRegistrado_idRegistrado"/> 
 						</many-to-one>
 											 					
+			
+			
+			
 			
 		  			
 						<many-to-one name="Resenya" class="GameAffinityGen.Infraestructure.EN.GameAffinity.ResenyaNH" >	
 								<column name="FK_idResenya_idResenya"/> 
 						</many-to-one>
 											 					
-			
-			
-			
 					
 					
 					

@@ -91,42 +91,42 @@ public void Destroy (int id
         _IRegistradoRepository.Destroy (id);
 }
 
-public RegistradoEN Leer_OID_registrado (int id
-                                         )
+public RegistradoEN GetByOID (int id
+                              )
 {
         RegistradoEN registradoEN = null;
 
-        registradoEN = _IRegistradoRepository.Leer_OID_registrado (id);
+        registradoEN = _IRegistradoRepository.GetByOID (id);
         return registradoEN;
 }
 
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> Leer_mentores (bool ? es_mentor)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
 {
-        return _IRegistradoRepository.Leer_mentores (es_mentor);
+        return _IRegistradoRepository.GetMentores (es_mentor);
 }
-public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+public void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
 {
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.DarLike (p_Registrado_OID, p_hecho_por_OIDs);
+        _IRegistradoRepository.DarLike (p_Registrado_OID, p_like_OIDs);
 }
-public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_hecho_por_OIDs)
+public void QuitarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_like_OIDs)
 {
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.QuitarLike (p_Registrado_OID, p_hecho_por_OIDs);
+        _IRegistradoRepository.QuitarLike (p_Registrado_OID, p_like_OIDs);
 }
-public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+public void CrearValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs)
 {
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.CrearValoracion (p_Registrado_OID, p_pertenece_OIDs);
+        _IRegistradoRepository.CrearValoracion (p_Registrado_OID, p_valoraciones_OIDs);
 }
-public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_pertenece_OIDs)
+public void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<int> p_valoraciones_OIDs)
 {
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.EliminarValoracion (p_Registrado_OID, p_pertenece_OIDs);
+        _IRegistradoRepository.EliminarValoracion (p_Registrado_OID, p_valoraciones_OIDs);
 }
 }
 }

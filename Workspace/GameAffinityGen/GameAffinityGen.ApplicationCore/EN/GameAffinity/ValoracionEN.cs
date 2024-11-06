@@ -20,16 +20,16 @@ private int id;
 
 
 /**
- *	Atributo valora
+ *	Atributo autor_valoracion
  */
-private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN valora;
+private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion;
 
 
 
 /**
- *	Atributo aportado
+ *	Atributo videojuego_valorado
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> aportado;
+private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuego_valorado;
 
 
 
@@ -48,14 +48,14 @@ public virtual int Id {
 
 
 
-public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Valora {
-        get { return valora; } set { valora = value;  }
+public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Autor_valoracion {
+        get { return autor_valoracion; } set { autor_valoracion = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Aportado {
-        get { return aportado; } set { aportado = value;  }
+public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuego_valorado {
+        get { return videojuego_valorado; } set { videojuego_valorado = value;  }
 }
 
 
@@ -64,34 +64,34 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 public ValoracionEN()
 {
-        aportado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+        videojuego_valorado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
 }
 
 
 
-public ValoracionEN(int id, int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN valora, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> aportado
+public ValoracionEN(int id, int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuego_valorado
                     )
 {
-        this.init (Id, nota, valora, aportado);
+        this.init (Id, nota, autor_valoracion, videojuego_valorado);
 }
 
 
 public ValoracionEN(ValoracionEN valoracion)
 {
-        this.init (valoracion.Id, valoracion.Nota, valoracion.Valora, valoracion.Aportado);
+        this.init (valoracion.Id, valoracion.Nota, valoracion.Autor_valoracion, valoracion.Videojuego_valorado);
 }
 
 private void init (int id
-                   , int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN valora, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> aportado)
+                   , int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuego_valorado)
 {
         this.Id = id;
 
 
         this.Nota = nota;
 
-        this.Valora = valora;
+        this.Autor_valoracion = autor_valoracion;
 
-        this.Aportado = aportado;
+        this.Videojuego_valorado = videojuego_valorado;
 }
 
 public override bool Equals (object obj)

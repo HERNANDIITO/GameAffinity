@@ -30,7 +30,7 @@ public IVideojuegoRepository get_IVideojuegoRepository ()
         return this._IVideojuegoRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero, GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN p_aporta)
+public int New_ (string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero, GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN p_valoracion)
 {
         VideojuegoEN videojuegoEN = null;
         int oid;
@@ -45,7 +45,7 @@ public int New_ (string p_nombre, string p_descripcion, float p_nota_media, Game
 
         videojuegoEN.Genero = p_genero;
 
-        videojuegoEN.Aporta = p_aporta;
+        videojuegoEN.Valoracion = p_valoracion;
 
 
 
@@ -75,25 +75,25 @@ public void Destroy (int id
         _IVideojuegoRepository.Destroy (id);
 }
 
-public VideojuegoEN Leer_OID (int id
+public VideojuegoEN GetByoID (int id
                               )
 {
         VideojuegoEN videojuegoEN = null;
 
-        videojuegoEN = _IVideojuegoRepository.Leer_OID (id);
+        videojuegoEN = _IVideojuegoRepository.GetByoID (id);
         return videojuegoEN;
 }
 
-public System.Collections.Generic.IList<VideojuegoEN> Leer (int first, int size)
+public System.Collections.Generic.IList<VideojuegoEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<VideojuegoEN> list = null;
 
-        list = _IVideojuegoRepository.Leer (first, size);
+        list = _IVideojuegoRepository.GetAll (first, size);
         return list;
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Leer_por_genero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByGenero (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum ? genero)
 {
-        return _IVideojuegoRepository.Leer_por_genero (genero);
+        return _IVideojuegoRepository.GetByGenero (genero);
 }
 }
 }

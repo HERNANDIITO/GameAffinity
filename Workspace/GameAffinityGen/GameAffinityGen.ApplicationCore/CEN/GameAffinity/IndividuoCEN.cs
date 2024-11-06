@@ -79,53 +79,41 @@ public void Destroy (int id
         _IIndividuoRepository.Destroy (id);
 }
 
-public System.Collections.Generic.IList<IndividuoEN> Leer_individuo (int first, int size)
+public System.Collections.Generic.IList<IndividuoEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<IndividuoEN> list = null;
 
-        list = _IIndividuoRepository.Leer_individuo (first, size);
+        list = _IIndividuoRepository.GetAll (first, size);
         return list;
 }
-public IndividuoEN Leer_OID_individuo (int id
-                                       )
+public IndividuoEN GetByOID (int id
+                             )
 {
         IndividuoEN individuoEN = null;
 
-        individuoEN = _IIndividuoRepository.Leer_OID_individuo (id);
+        individuoEN = _IIndividuoRepository.GetByOID (id);
         return individuoEN;
 }
 
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Leer_por_rol (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum ? rol)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> GetByRol (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum ? rol)
 {
-        return _IIndividuoRepository.Leer_por_rol (rol);
+        return _IIndividuoRepository.GetByRol (rol);
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Leer_por_pais (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum ? papis)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> GetByPais (GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum ? pais)
 {
-        return _IIndividuoRepository.Leer_por_pais (papis);
+        return _IIndividuoRepository.GetByPais (pais);
 }
-public void AnyadirAEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs)
+public void AnyadirVideojuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         //Call to IndividuoRepository
 
-        _IIndividuoRepository.AnyadirAEmpresa (p_Individuo_OID, p_trabajador_OIDs);
+        _IIndividuoRepository.AnyadirVideojuego (p_Individuo_OID, p_videojuegos_OIDs);
 }
-public void EliminarDeEmpresa (int p_Individuo_OID, System.Collections.Generic.IList<int> p_trabajador_OIDs)
+public void EilminarVideojuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
 {
         //Call to IndividuoRepository
 
-        _IIndividuoRepository.EliminarDeEmpresa (p_Individuo_OID, p_trabajador_OIDs);
-}
-public void AnyadirAJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs)
-{
-        //Call to IndividuoRepository
-
-        _IIndividuoRepository.AnyadirAJuego (p_Individuo_OID, p_participe_OIDs);
-}
-public void EilminarDeJuego (int p_Individuo_OID, System.Collections.Generic.IList<int> p_participe_OIDs)
-{
-        //Call to IndividuoRepository
-
-        _IIndividuoRepository.EilminarDeJuego (p_Individuo_OID, p_participe_OIDs);
+        _IIndividuoRepository.EilminarVideojuego (p_Individuo_OID, p_videojuegos_OIDs);
 }
 }
 }

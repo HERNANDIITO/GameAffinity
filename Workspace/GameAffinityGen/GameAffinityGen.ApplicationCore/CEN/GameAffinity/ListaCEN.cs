@@ -30,23 +30,23 @@ public IListaRepository get_IListaRepository ()
         return this._IListaRepository;
 }
 
-public System.Collections.Generic.IList<ListaEN> Leer_lista (int first, int size)
+public System.Collections.Generic.IList<ListaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ListaEN> list = null;
 
-        list = _IListaRepository.Leer_lista (first, size);
+        list = _IListaRepository.GetAll (first, size);
         return list;
 }
-public ListaEN Leer_OID_lista (int id
-                               )
+public ListaEN GetByOID (int id
+                         )
 {
         ListaEN listaEN = null;
 
-        listaEN = _IListaRepository.Leer_OID_lista (id);
+        listaEN = _IListaRepository.GetByOID (id);
         return listaEN;
 }
 
-public int New_ (string p_nombre, string p_descripcion, bool p_default, int p_crea)
+public int New_ (string p_nombre, string p_descripcion, bool p_default, int p_autor_lista)
 {
         ListaEN listaEN = null;
         int oid;
@@ -60,11 +60,11 @@ public int New_ (string p_nombre, string p_descripcion, bool p_default, int p_cr
         listaEN.Default_ = p_default;
 
 
-        if (p_crea != -1) {
-                // El argumento p_crea -> Property crea es oid = false
+        if (p_autor_lista != -1) {
+                // El argumento p_autor_lista -> Property autor_lista es oid = false
                 // Lista de oids id
-                listaEN.Crea = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
-                listaEN.Crea.Id = p_crea;
+                listaEN.Autor_lista = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
+                listaEN.Autor_lista.Id = p_autor_lista;
         }
 
 

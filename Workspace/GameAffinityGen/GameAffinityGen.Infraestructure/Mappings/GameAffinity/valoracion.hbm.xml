@@ -20,13 +20,13 @@
 			
 			
 		  			
-						<many-to-one name="Valora" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
+						<many-to-one name="Autor_valoracion" class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH" >	
 								<column name="FK_idRegistrado_idRegistrado"/> 
 						</many-to-one>
 											 					
 			
 		  			
-						<bag name="Aportado" >
+						<bag name="Videojuego_valorado" >
 							<key>
 							
 								

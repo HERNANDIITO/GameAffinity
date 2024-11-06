@@ -28,7 +28,7 @@
 			
 			
 		  			
-						<bag name="Desarrollado" table="[videojuego_empresa]" inverse="true" >
+						<bag name="Videojuegos" table="[videojuego_empresa]" inverse="true" >
 							<key>
 								
 									<column name="FK_idEmpresa_idEmpresa"/> 
@@ -39,7 +39,7 @@
     					</bag>
 			
 		  			
-						<bag name="Trabaja" table="[empresa_individuo]"  >
+						<bag name="Individuos" table="[individuo_empresa]" inverse="true" >
 							<key>
 								
 									<column name="FK_idEmpresa_idEmpresa"/> 
