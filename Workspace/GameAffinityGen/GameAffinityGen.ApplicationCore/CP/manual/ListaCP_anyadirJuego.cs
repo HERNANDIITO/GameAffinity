@@ -32,7 +32,7 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                 ListaEN lista = listaCEN.get_IListaRepository().ReadOIDDefault(p_Lista_OID);
                 lista.Videojuegos.Add(videojuego);
 
-                listaCEN.get_IListaRepository().AnyadirJuego(p_Lista_OID, p_videojuegos_OIDs, videojuego_OID);
+                listaCEN.get_IListaRepository().AnyadirJuego(p_Lista_OID, p_videojuegos_OIDs);
 
                 CPSession.Commit();
             }
