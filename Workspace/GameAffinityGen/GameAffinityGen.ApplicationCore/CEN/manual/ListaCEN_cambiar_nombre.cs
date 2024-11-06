@@ -19,13 +19,17 @@ public void Cambiar_nombre (int p_Lista_OID, string p_nombre, string p_descripci
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Lista_cambiar_nombre_customized) START*/
 
-            //Initialized ListaEN
-            ListaCEN listaCEN = new ListaCEN(_IListaRepository);
-            ListaEN lista = listaCEN.Leer_OID_lista(p_Lista_OID);
-            lista.Nombre = p_nombre;
-            //Call to ListaRepository
+        ListaEN listaEN = null;
 
-            _IListaRepository.Cambiar_nombre(lista);
+        //Initialized ListaEN
+        listaEN = new ListaEN ();
+        listaEN.Id = p_Lista_OID;
+        listaEN.Nombre = p_nombre;
+        listaEN.Descripcion = p_descripcion;
+        listaEN.Default_ = p_default;
+        //Call to ListaRepository
+
+        _IListaRepository.Cambiar_nombre (listaEN);
 
         /*PROTECTED REGION END*/
 }

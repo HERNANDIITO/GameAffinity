@@ -147,7 +147,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_j1tsEIvLEe-pLNMe1S3yHw" name="isDefault" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_j1tsEYvLEe-pLNMe1S3yHw" name="p_oid" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_rLOhEIvLEe-pLNMe1S3yHw" name="anyadirJuego" operationType="Relationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_rLOhEIvLEe-pLNMe1S3yHw" name="anyadirJuego" operationType="Relationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg" customizedTransaction="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_JHvpIJwoEe-okMAsAo2Cbg" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_JHvpIZwoEe-okMAsAo2Cbg" name="p_listado_OIDs" type="OID" collectionType="List" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
       </operations>
@@ -182,7 +182,7 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_CUNiMpd6Ee-CS8zeF6JosQ" name="p_descripcion"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_CUNiM5d6Ee-CS8zeF6JosQ" name="p_default" type="Boolean"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_LAM_kJwoEe-okMAsAo2Cbg" name="eliminarJuego" operationType="Unrelationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_LAM_kJwoEe-okMAsAo2Cbg" name="eliminarJuego" operationType="Unrelationer" type="Void" relatedRol="_oYD_EZLgEe-_daHzEkTCPg" customizedTransaction="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_P5r3AJwoEe-okMAsAo2Cbg" name="p_Lista_OID" type="OID" typeObject="_DgzaQIvLEe-pLNMe1S3yHw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_P5r3AZwoEe-okMAsAo2Cbg" name="p_listado_OIDs" type="OID" collectionType="List" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
       </operations>

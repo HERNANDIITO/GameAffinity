@@ -30,12 +30,6 @@ public IListaRepository get_IListaRepository ()
         return this._IListaRepository;
 }
 
-public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs)
-{
-        //Call to ListaRepository
-
-        _IListaRepository.AnyadirJuego (p_Lista_OID, p_listado_OIDs);
-}
 public System.Collections.Generic.IList<ListaEN> Leer_lista (int first, int size)
 {
         System.Collections.Generic.IList<ListaEN> list = null;
@@ -98,13 +92,6 @@ public void Destroy (int id
                      )
 {
         _IListaRepository.Destroy (id);
-}
-
-public void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_listado_OIDs)
-{
-        //Call to ListaRepository
-
-        _IListaRepository.EliminarJuego (p_Lista_OID, p_listado_OIDs);
 }
 }
 }
