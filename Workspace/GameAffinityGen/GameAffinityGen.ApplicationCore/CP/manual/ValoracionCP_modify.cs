@@ -55,8 +55,9 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 videojuegoEN.Nota_media = notaMedia;
 
                 // Aplicamos cambios
+                valoracionCEN.get_IValoracionRepository().ModifyDefault(valoracionEN);
                 videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuegoEN);
-                valoracionCEN.get_IValoracionRepository().Destroy(p_Valoracion_OID);
+
 
 
 

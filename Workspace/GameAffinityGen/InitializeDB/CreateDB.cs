@@ -141,9 +141,22 @@ namespace InitializeDB
 
                 //Prueba a valorar videojuego
                 ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
-                ValoracionEN valoracionEN = valoracionCP.New_(8, reg1, videojuego1);
+                ValoracionEN valoracion1 = valoracionCP.New_(8, reg1, videojuego1);
 
                 Console.WriteLine("Nota media del videojuego: " + lastOfUs.Nota_media);
+                ValoracionEN valoracion2 = valoracionCP.New_(4, reg1, videojuego1);
+                Console.WriteLine("Nota media del con dos notas: " + lastOfUs.Nota_media);
+
+                //Prueba de valoracion_modify
+
+                valoracionCP.Modify(valoracion1.Id, 9);
+
+                Console.WriteLine("Nota media del videojuego tras modify: " + lastOfUs.Nota_media);
+
+                //Prueba de valoracion_destroy
+
+                valoracionCP.Destroy(valoracion1.Id);
+                Console.WriteLine("Nota media del videojuego tras destroy: " + lastOfUs.Nota_media);
 
 
                 /*PROTECTED REGION END*/
