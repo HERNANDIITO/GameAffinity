@@ -43,6 +43,7 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 //videojuegoCEN = new VideojuegoCEN(valoracionEN.Videojuego_valorado);
 
 
+
                 CPSession.Commit ();
         }
         catch (Exception ex)

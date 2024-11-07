@@ -47,7 +47,7 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                 videojuego.Nota_media = notaMedia;
 
                 // Aplicamos cambios
-                videojuegoCEN.get_IVideojuegoRepository().Modify(videojuego);
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuego);
                 valoracionCEN.get_IValoracionRepository().Destroy(p_Valoracion_OID);
 
                 CPSession.Commit();
