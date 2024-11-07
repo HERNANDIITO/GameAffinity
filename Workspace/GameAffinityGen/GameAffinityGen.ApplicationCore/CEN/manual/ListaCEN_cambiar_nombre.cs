@@ -27,7 +27,7 @@ public void Cambiar_nombre (int p_Lista_OID, string p_nombre)
         listaEN.Nombre = p_nombre;
         //Call to ListaRepository
 
-        _IListaRepository.Modify (listaEN);
+        _IListaRepository.Cambiar_nombre (listaEN);
 
         /*PROTECTED REGION END*/
 }
