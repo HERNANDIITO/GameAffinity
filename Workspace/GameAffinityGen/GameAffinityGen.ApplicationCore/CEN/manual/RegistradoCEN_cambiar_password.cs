@@ -21,12 +21,11 @@ public void Cambiar_password (int p_oid, string new_password)
 
         // Write here your custom code...
 
-        RegistradoCEN registradoCEN = new RegistradoCEN (_IRegistradoRepository);
-        RegistradoEN registrado = registradoCEN.GetByOID (p_oid);
+        RegistradoEN registrado = this.GetByOID (p_oid);
 
         registrado.Contrasenya = new_password;
 
-        throw new NotImplementedException ("Method Cambiar_password() not yet implemented.");
+        this.get_IRegistradoRepository().ModifyDefault (registrado);
 
         /*PROTECTED REGION END*/
 }
