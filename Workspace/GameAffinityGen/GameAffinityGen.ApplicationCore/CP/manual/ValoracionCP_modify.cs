@@ -23,23 +23,24 @@ public void Modify (int p_Valoracion_OID, int p_nota)
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_modify) ENABLED START*/
 
         ValoracionCEN valoracionCEN = null;
-
-
+        ValoracionEN valoracionEN = null;
+        VideojuegoCEN videojuegoCEN = null;
 
         try
         {
                 CPSession.SessionInitializeTransaction ();
+                // CEN
                 valoracionCEN = new  ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
 
+                // EN
+                valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
 
-
-
-                ValoracionEN valoracionEN = null;
-                //Initialized ValoracionEN
-                valoracionEN = new ValoracionEN ();
-                valoracionEN.Id = p_Valoracion_OID;
+                // Cambio de nota
                 valoracionEN.Nota = p_nota;
-                valoracionCEN.get_IValoracionRepository ().Modify (valoracionEN);
+                valoracionCEN.get_IValoracionRepository().ModifyDefault(valoracionEN);
+
+                //recalcular media del videojuego
+                //videojuegoCEN = new VideojuegoCEN(valoracionEN.Videojuego_valorado);
 
 
                 CPSession.Commit ();
