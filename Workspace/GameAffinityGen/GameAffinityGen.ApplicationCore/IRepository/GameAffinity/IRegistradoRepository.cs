@@ -23,7 +23,6 @@ System.Collections.Generic.IList<RegistradoEN> ReadAllDefault (int first, int si
 
 
 
-
 void Seguir_perfiles (int p_Registrado_OID, System.Collections.Generic.IList<int> p_seguidos_OIDs);
 
 void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.Generic.IList<int> p_seguidos_OIDs);
@@ -48,7 +47,6 @@ RegistradoEN GetByOID (int id
 
 
 System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor);
-
 
 
 void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs);

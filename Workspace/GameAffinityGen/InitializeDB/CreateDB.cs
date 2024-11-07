@@ -109,19 +109,19 @@ public static void InitializeData ()
                 int reg1 = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
                 RegistradoCEN registradoCEN = new RegistradoCEN (registradorepository);
                 registradoCEN.Aceptar_mentoria (reg1);
-                RegistradoEN registradoEN = registradocen.GetByOID(reg1);
+                RegistradoEN registradoEN = registradocen.GetByOID (reg1);
 
                 Console.WriteLine ("Es mentor: " + registradoEN.Es_mentor);
 
-                int lista = listacen.New_("juegos favs", "mi lista de juegos favs", false, reg1);
-                ListaEN listaEN = listacen.GetByOID(lista);
+                int lista = listacen.New_ ("juegos favs", "mi lista de juegos favs", false, reg1);
+                ListaEN listaEN = listacen.GetByOID (lista);
 
-                Console.WriteLine("Lista: " + listaEN.Nombre);
-                Console.WriteLine("Lista: " + listaEN.Descripcion);
-                Console.WriteLine("Lista: " + registradoCEN.GetByOID(listaEN.Autor_lista.Id).Nombre);
+                Console.WriteLine ("Lista: " + listaEN.Nombre);
+                Console.WriteLine ("Lista: " + listaEN.Descripcion);
+                Console.WriteLine ("Lista: " + registradoCEN.GetByOID (listaEN.Autor_lista.Id).Nombre);
 
                 /*PROTECTED REGION END*/
-            }
+        }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
