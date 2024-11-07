@@ -23,7 +23,7 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Interaccion_new_) ENABLED START*/
 
         InteraccionCEN interaccionCEN = null;
-
+        ResenyaCEN resenyaCEN = null;
         GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN result = null;
 
 
@@ -31,7 +31,7 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p
         {
                 CPSession.SessionInitializeTransaction ();
                 interaccionCEN = new  InteraccionCEN (CPSession.UnitRepo.InteraccionRepository);
-
+                resenyaCEN = new ResenyaCEN(CPSession.UnitRepo.ResenyaRepository);
 
 
 
@@ -57,7 +57,15 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p
                         interaccionEN.Resenya.Id = p_resenya;
                 }
 
+                //da like
+                if (interaccionEN.Liked) {
+                    interaccionEN.Resenya.Likes_contador++;
+                } 
+                else if (interaccionEN.Disliked) {
+                    interaccionEN.Resenya.Dislikes_contador++;
+                }
 
+                resenyaCEN.get_IResenyaRepository().Modify(interaccionEN.Resenya);
 
                 oid = interaccionCEN.get_IInteraccionRepository ().New_ (interaccionEN);
 
