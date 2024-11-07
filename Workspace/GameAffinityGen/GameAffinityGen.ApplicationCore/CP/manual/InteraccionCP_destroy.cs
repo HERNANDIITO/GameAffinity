@@ -33,15 +33,14 @@ public void Destroy (int p_Interaccion_OID)
                 resenyaCEN = new ResenyaCEN (CPSession.UnitRepo.ResenyaRepository);
 
                 InteraccionEN interaccion = interaccionCEN.GetByOID (p_Interaccion_OID);
-                if (interaccion.Disliked)
-                {
-                    interaccion.Resenya.Dislikes_contador--;
+                if (interaccion.Disliked) {
+                        interaccion.Resenya.Dislikes_contador--;
                 }
                 else if (interaccion.Liked) {
-                    interaccion.Resenya.Likes_contador--;
+                        interaccion.Resenya.Likes_contador--;
                 }
 
-                resenyaCEN.get_IResenyaRepository().Modify(interaccion.Resenya);
+                resenyaCEN.get_IResenyaRepository ().Modify (interaccion.Resenya);
                 interaccionCEN.get_IInteraccionRepository ().Destroy (p_Interaccion_OID);
 
 

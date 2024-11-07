@@ -65,7 +65,7 @@
     					</bag>
 			
 		  			
-						<bag name="Valoracion" cascade="delete">
+						<bag name="Valoracion" >
 							<key>
 							
 								

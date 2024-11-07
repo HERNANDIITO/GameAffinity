@@ -48,7 +48,7 @@ public void Aceptar_mentoria (int registrado_oid)
 
         //Initialized RegistradoEN
         registradoEN = new RegistradoEN ();
-        registradoEN.Es_mentor = true;
+        registradoEN.Registrado_oid = registrado_oid;
         //Call to RegistradoRepository
 
         _IRegistradoRepository.Aceptar_mentoria (registradoEN);

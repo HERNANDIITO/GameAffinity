@@ -28,9 +28,9 @@ public void Destroy (int p_Valoracion_OID)
                 ValoracionCEN valoracionCEN = new  ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
 
-                valoracionCEN.GetByOID(p_Valoracion_OID);
+                valoracionCEN.GetByOID (p_Valoracion_OID);
 
-                
+
 
 
                 valoracionCEN.get_IValoracionRepository ().Destroy (p_Valoracion_OID);
