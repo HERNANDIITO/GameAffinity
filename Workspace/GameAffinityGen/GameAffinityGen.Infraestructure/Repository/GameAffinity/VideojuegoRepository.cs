@@ -139,11 +139,6 @@ public int New_ (VideojuegoEN videojuego)
         try
         {
                 SessionInitializeTransaction ();
-                if (videojuego.Valoracion != null) {
-                        // p_valoracion
-                        videojuego.Valoracion.Videojuego_valorado.Add (videojuegoNH);
-                        session.Save (videojuegoNH.Valoracion);
-                }
 
                 session.Save (videojuegoNH);
                 SessionCommit ();

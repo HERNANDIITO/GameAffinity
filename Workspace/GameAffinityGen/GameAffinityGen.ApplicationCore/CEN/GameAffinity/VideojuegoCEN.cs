@@ -30,7 +30,7 @@ public IVideojuegoRepository get_IVideojuegoRepository ()
         return this._IVideojuegoRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero, GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN p_valoracion)
+public int New_ (string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero)
 {
         VideojuegoEN videojuegoEN = null;
         int oid;
@@ -44,8 +44,6 @@ public int New_ (string p_nombre, string p_descripcion, float p_nota_media, Game
         videojuegoEN.Nota_media = p_nota_media;
 
         videojuegoEN.Genero = p_genero;
-
-        videojuegoEN.Valoracion = p_valoracion;
 
 
 

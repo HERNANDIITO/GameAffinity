@@ -26,15 +26,10 @@
 											 					
 			
 		  			
-						<bag name="Videojuego_valorado" >
-							<key>
-							
-								
-								<column name="FK_idValoracion_idValoracion"/>
-					      	</key>
-							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH"/>
-					    </bag>
-					
+						<many-to-one name="Videojuego_valorado" class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH" >	
+								<column name="FK_idVideojuego_idVideojuego"/> 
+						</many-to-one>
+											 					
 					
 					
 					

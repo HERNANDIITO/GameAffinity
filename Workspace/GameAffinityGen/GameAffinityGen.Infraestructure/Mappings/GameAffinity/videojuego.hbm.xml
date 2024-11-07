@@ -65,10 +65,15 @@
     					</bag>
 			
 		  			
-						<many-to-one name="Valoracion" class="GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH" cascade="delete">	
-								<column name="FK_idValoracion_idValoracion"/> 
-						</many-to-one>
-											 					
+						<bag name="Valoracion" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idVideojuego_idVideojuego"/>
+					      	</key>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.ValoracionNH"/>
+					    </bag>
+					
 			
 		  			
 						<bag name="Individuos" table="[individuo_videojuego]" inverse="true" >

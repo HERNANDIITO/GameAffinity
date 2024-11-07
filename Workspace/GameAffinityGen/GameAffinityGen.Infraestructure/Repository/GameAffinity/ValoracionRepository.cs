@@ -191,6 +191,14 @@ public int New_ (ValoracionEN valoracion)
                         valoracionNH.Autor_valoracion.Valoraciones
                         .Add (valoracionNH);
                 }
+                if (valoracion.Videojuego_valorado != null) {
+                        // Argumento OID y no colección.
+                        valoracionNH
+                        .Videojuego_valorado = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN), valoracion.Videojuego_valorado.Id);
+
+                        valoracionNH.Videojuego_valorado.Valoracion
+                        .Add (valoracionNH);
+                }
 
                 session.Save (valoracionNH);
                 SessionCommit ();

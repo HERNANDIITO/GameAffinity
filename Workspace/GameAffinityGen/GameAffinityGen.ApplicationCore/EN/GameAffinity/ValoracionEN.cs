@@ -29,7 +29,7 @@ private GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valor
 /**
  *	Atributo videojuego_valorado
  */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuego_valorado;
+private GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego_valorado;
 
 
 
@@ -54,7 +54,7 @@ public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN Auto
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuego_valorado {
+public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN Videojuego_valorado {
         get { return videojuego_valorado; } set { videojuego_valorado = value;  }
 }
 
@@ -64,12 +64,11 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 public ValoracionEN()
 {
-        videojuego_valorado = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
 }
 
 
 
-public ValoracionEN(int id, int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuego_valorado
+public ValoracionEN(int id, int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego_valorado
                     )
 {
         this.init (Id, nota, autor_valoracion, videojuego_valorado);
@@ -82,7 +81,7 @@ public ValoracionEN(ValoracionEN valoracion)
 }
 
 private void init (int id
-                   , int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuego_valorado)
+                   , int nota, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_valoracion, GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuego_valorado)
 {
         this.Id = id;
 
