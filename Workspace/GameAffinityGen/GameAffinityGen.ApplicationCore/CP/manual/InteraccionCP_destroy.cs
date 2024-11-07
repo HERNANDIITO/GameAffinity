@@ -23,17 +23,25 @@ public void Destroy (int p_Interaccion_OID)
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Interaccion_destroy) ENABLED START*/
 
         InteraccionCEN interaccionCEN = null;
-
+        ResenyaCEN resenyaCEN = null;
 
 
         try
         {
                 CPSession.SessionInitializeTransaction ();
                 interaccionCEN = new  InteraccionCEN (CPSession.UnitRepo.InteraccionRepository);
+                resenyaCEN = new ResenyaCEN (CPSession.UnitRepo.ResenyaRepository);
 
+                InteraccionEN interaccion = interaccionCEN.GetByOID (p_Interaccion_OID);
+                if (interaccion.Disliked)
+                {
+                    interaccion.Resenya.Dislikes_contador--;
+                }
+                else if (interaccion.Liked) {
+                    interaccion.Resenya.Likes_contador--;
+                }
 
-
-
+                resenyaCEN.get_IResenyaRepository().Modify(interaccion.Resenya);
                 interaccionCEN.get_IInteraccionRepository ().Destroy (p_Interaccion_OID);
 
 
