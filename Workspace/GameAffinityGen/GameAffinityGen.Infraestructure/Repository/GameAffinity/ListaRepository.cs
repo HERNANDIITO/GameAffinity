@@ -126,37 +126,6 @@ public void ModifyDefault (ListaEN lista)
 }
 
 
-public void AnyadirJuego (int p_Lista_OID, int p_videojuego_oid)
-{
-        GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listaEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                listaEN = (ListaEN)session.Load (typeof(ListaNH), p_Lista_OID);
-                listaEN.Videojuegos = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), p_videojuego_oid);
-
-                listaEN.Videojuegos.Lista.Add (listaEN);
-
-
-
-                session.Update (listaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
-                        throw;
-                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in ListaRepository.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
 public System.Collections.Generic.IList<ListaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ListaEN> result = null;
@@ -425,6 +394,44 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
         }
 
         return result;
+}
+public void AnyadirVideojuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN listaEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                listaEN = (ListaEN)session.Load (typeof(ListaNH), p_Lista_OID);
+                GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN videojuegosENAux = null;
+                if (listaEN.Videojuegos == null) {
+                        listaEN.Videojuegos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                }
+
+                foreach (int item in p_videojuegos_OIDs) {
+                        videojuegosENAux = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                        videojuegosENAux = (GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN)session.Load (typeof(GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH), item);
+                        videojuegosENAux.Lista.Add (listaEN);
+
+                        listaEN.Videojuegos.Add (videojuegosENAux);
+                }
+
+
+                session.Update (listaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in ListaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
 }
 }
 }

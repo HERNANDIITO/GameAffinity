@@ -19,13 +19,14 @@ public void Alternar_notificaciones (int registrado_OID)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_alternar_notificaciones_customized) START*/
 
+        RegistradoEN registradoEN = null;
 
         //Initialized RegistradoEN
-        RegistradoEN registrado = this.GetByOID (registrado_OID);
-        registrado.Notificaciones = !registrado.Notificaciones;
+        registradoEN = new RegistradoEN ();
+        registradoEN.Registrado_OID = registrado_OID;
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.ModifyDefault (registrado);
+        _IRegistradoRepository.Alternar_notificaciones (registradoEN);
 
         /*PROTECTED REGION END*/
 }
