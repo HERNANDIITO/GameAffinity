@@ -146,6 +146,7 @@ public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int>
                         listaEN.Videojuegos.Add (videojuegosENAux);
                 }
 
+                System.Console.WriteLine("changetocommit");
 
                 session.Update (listaEN);
                 SessionCommit ();
