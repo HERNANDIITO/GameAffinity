@@ -5570,11 +5570,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+      "projectUniqueName": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
       "projectName": "GameAffinityGen.Infraestructure",
-      "projectPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+      "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
       "packagesPath": "C:\\Users\\Maximo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
+      "outputPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Maximo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5592,8 +5592,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+            "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
             }
           }
         }

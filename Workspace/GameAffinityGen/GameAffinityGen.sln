@@ -8,6 +8,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameAffinityGen.Infraestruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameAffinityGen.ApplicationCore", "GameAffinityGen.ApplicationCore\GameAffinityGen.ApplicationCore.csproj", "{90231390-4B92-44F5-9DBF-5EB51527E734}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_GameAffinity", "Web_GameAffinity\Web_GameAffinity.csproj", "{E4875DE4-4E84-44AC-B61B-EAB8489B784A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +28,15 @@ Global
 		{90231390-4B92-44F5-9DBF-5EB51527E734}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90231390-4B92-44F5-9DBF-5EB51527E734}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90231390-4B92-44F5-9DBF-5EB51527E734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4875DE4-4E84-44AC-B61B-EAB8489B784A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4875DE4-4E84-44AC-B61B-EAB8489B784A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4875DE4-4E84-44AC-B61B-EAB8489B784A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4875DE4-4E84-44AC-B61B-EAB8489B784A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FD2F3D9-9019-4385-B8B5-069D34CF1641}
 	EndGlobalSection
 EndGlobal

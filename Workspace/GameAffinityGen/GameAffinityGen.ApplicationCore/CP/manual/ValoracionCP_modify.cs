@@ -25,22 +25,38 @@ public void Modify (int p_Valoracion_OID, int p_nota)
         ValoracionCEN valoracionCEN = null;
         ValoracionEN valoracionEN = null;
         VideojuegoCEN videojuegoCEN = null;
+        VideojuegoEN videojuegoEN = null;
 
         try
         {
                 CPSession.SessionInitializeTransaction ();
                 // CEN
                 valoracionCEN = new  ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
+                videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
 
                 // EN
                 valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
+                videojuegoEN = videojuegoCEN.GetByoID(valoracionEN.Videojuego_valorado.Id);
+
 
                 // Cambio de nota
                 valoracionEN.Nota = p_nota;
-                valoracionCEN.get_IValoracionRepository().ModifyDefault(valoracionEN);
 
                 //recalcular media del videojuego
-                //videojuegoCEN = new VideojuegoCEN(valoracionEN.Videojuego_valorado);
+                int notaMedia = 0;
+                foreach (ValoracionEN videojuego_valoracion in videojuegoEN.Valoracion)
+                {
+                    notaMedia += videojuego_valoracion.Nota;
+                }
+
+                notaMedia = notaMedia / videojuegoEN.Valoracion.Count;
+
+                // Sobreescribimos la nota media
+                videojuegoEN.Nota_media = notaMedia;
+
+                // Aplicamos cambios
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuegoEN);
+                valoracionCEN.get_IValoracionRepository().Destroy(p_Valoracion_OID);
 
 
 

@@ -5953,9 +5953,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
+      "projectUniqueName": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
       "projectName": "Web_GameAffinity",
-      "projectPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
+      "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
       "packagesPath": "C:\\Users\\Maximo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\obj\\",
       "projectStyle": "PackageReference",
@@ -5975,11 +5975,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+            "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
             },
-            "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj"
+            "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj"
             }
           }
         }
