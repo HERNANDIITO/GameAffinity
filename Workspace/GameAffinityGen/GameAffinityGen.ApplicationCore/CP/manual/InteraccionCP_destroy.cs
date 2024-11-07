@@ -16,48 +16,50 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class InteraccionCP : GenericBasicCP
-{
-public void Destroy (int p_Interaccion_OID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Interaccion_destroy) ENABLED START*/
-
-        InteraccionCEN interaccionCEN = null;
-        ResenyaCEN resenyaCEN = null;
-
-
-        try
+    public partial class InteraccionCP : GenericBasicCP
+    {
+        public void Destroy(int p_Interaccion_OID)
         {
-                CPSession.SessionInitializeTransaction ();
-                interaccionCEN = new  InteraccionCEN (CPSession.UnitRepo.InteraccionRepository);
-                resenyaCEN = new ResenyaCEN (CPSession.UnitRepo.ResenyaRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Interaccion_destroy) ENABLED START*/
 
-                InteraccionEN interaccion = interaccionCEN.GetByOID (p_Interaccion_OID);
-                if (interaccion.Disliked) {
-                        interaccion.Resenya.Dislikes_contador--;
+            InteraccionCEN interaccionCEN = null;
+            ResenyaCEN resenyaCEN = null;
+
+
+            try
+            {
+                CPSession.SessionInitializeTransaction();
+                interaccionCEN = new InteraccionCEN(CPSession.UnitRepo.InteraccionRepository);
+                resenyaCEN = new ResenyaCEN(CPSession.UnitRepo.ResenyaRepository);
+
+                InteraccionEN interaccion = interaccionCEN.GetByOID(p_Interaccion_OID);
+                if (interaccion.Disliked)
+                {
+                    interaccion.Resenya.Dislikes_contador--;
                 }
-                else if (interaccion.Liked) {
-                        interaccion.Resenya.Likes_contador--;
+                else if (interaccion.Liked)
+                {
+                    interaccion.Resenya.Likes_contador--;
                 }
 
-                resenyaCEN.get_IResenyaRepository ().Modify (interaccion.Resenya);
-                interaccionCEN.get_IInteraccionRepository ().Destroy (p_Interaccion_OID);
+                resenyaCEN.get_IResenyaRepository().ModifyDefault(interaccion.Resenya);
+                interaccionCEN.get_IInteraccionRepository().Destroy(p_Interaccion_OID);
 
 
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

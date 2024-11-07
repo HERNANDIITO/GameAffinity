@@ -21,14 +21,16 @@ public void Dar_de_baja (int p_oid)
 
         // Write here your custom code...
 
-        RegistradoEN registrado = _IRegistradoRepository.GetByOID (p_oid);
+        RegistradoEN registrado = this.GetByOID (p_oid);
 
-        registrado.Email = "An�nimo";
-        registrado.Contrasenya = "An�nimo";
-        registrado.Nick = "An�nimo";
+        registrado.Email = "Anonimo";
+        registrado.Contrasenya = "Anonimo";
+        registrado.Nick = "Anonimo";
         registrado.Es_mentor = false;
-        registrado.Nombre = "An�nimo";
+        registrado.Nombre = "Anonimo";
         registrado.Seguidos = [];
+
+        this.get_IRegistradoRepository().ModifyDefault(registrado);
 
         /*PROTECTED REGION END*/
 }
