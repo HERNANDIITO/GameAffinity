@@ -21,7 +21,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
             /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Moderador_banear_usuarios) ENABLED START*/
 
             // Write here your custom code...
-            this
+            //this
 
             RegistradoEN listillo = this.GetByOID(user_ID);
 
