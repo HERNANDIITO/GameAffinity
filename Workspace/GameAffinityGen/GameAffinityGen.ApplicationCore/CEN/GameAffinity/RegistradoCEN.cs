@@ -46,12 +46,12 @@ public void Aceptar_mentoria (int registrado_oid)
 {
         RegistradoEN registradoEN = null;
 
-        //Initialized RegistradoEN
-        registradoEN = new RegistradoEN ();
-        registradoEN.Registrado_oid = registrado_oid;
+            //Initialized RegistradoEN
+            registradoEN = this.GetByOID(registrado_oid);
+        registradoEN.Es_mentor = true;
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.Aceptar_mentoria (registradoEN);
+        _IRegistradoRepository.ModifyDefault (registradoEN);
 }
 
 public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)

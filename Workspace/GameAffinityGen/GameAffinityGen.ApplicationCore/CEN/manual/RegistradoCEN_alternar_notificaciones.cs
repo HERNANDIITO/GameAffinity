@@ -13,22 +13,20 @@ using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
-public partial class RegistradoCEN
-{
-public void Alternar_notificaciones (int registrado_OID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_alternar_notificaciones_customized) START*/
+    public partial class RegistradoCEN
+    {
+        public void Alternar_notificaciones(int registrado_OID)
+        {
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_alternar_notificaciones_customized) START*/
 
-        RegistradoEN registradoEN = null;
+            //Initialized RegistradoEN
+            RegistradoEN registradoEN = this.GetByOID(registrado_OID);
+            registradoEN.Notificaciones = !registradoEN.Notificaciones;
+            //Call to RegistradoRepository
 
-        //Initialized RegistradoEN
-        registradoEN = new RegistradoEN ();
-        registradoEN.Registrado_OID = registrado_OID;
-        //Call to RegistradoRepository
+            _IRegistradoRepository.ModifyDefault(registradoEN);
 
-        _IRegistradoRepository.Alternar_notificaciones (registradoEN);
-
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
