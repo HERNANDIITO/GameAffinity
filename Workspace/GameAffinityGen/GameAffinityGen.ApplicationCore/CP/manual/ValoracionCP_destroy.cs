@@ -22,16 +22,15 @@ public void Destroy (int p_Valoracion_OID)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_destroy) ENABLED START*/
 
-        ValoracionCEN valoracionCEN = null;
-
-
-
         try
         {
                 CPSession.SessionInitializeTransaction ();
-                valoracionCEN = new  ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
+                ValoracionCEN valoracionCEN = new  ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
 
+                valoracionCEN.GetByOID(p_Valoracion_OID);
 
+                
 
 
                 valoracionCEN.get_IValoracionRepository ().Destroy (p_Valoracion_OID);

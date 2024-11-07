@@ -22,7 +22,6 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
             // Write here your custom code...
 
             RegistradoEN listillo = this.GetByOID(user_ID);
-            RegistradoCEN cen = RegistradoCEN.
 
             if (listillo == null)
             {
