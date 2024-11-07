@@ -53,6 +53,7 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 
                 notaMedia = notaMedia / videojuego.Valoracion.Count;
 
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuego);
                 oid = valoracionCEN.get_IValoracionRepository().New_(valoracionEN);
                 result = valoracionCEN.get_IValoracionRepository().ReadOIDDefault(oid);
 

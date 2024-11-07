@@ -106,14 +106,17 @@ namespace InitializeDB
 
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
-
+                //Creación de un usuario
                 int reg1 = registradocen.New_("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
                 RegistradoCEN registradoCEN = new RegistradoCEN(registradorepository);
+
+                //Prueba de aceptar_mentoria
                 registradoCEN.Aceptar_mentoria(reg1);
                 RegistradoEN registradoEN = registradocen.GetByOID(reg1);
 
                 Console.WriteLine("Es mentor: " + registradoEN.Es_mentor);
 
+                //Creacion de una lista para el ususario anterior y comprobacion de sus campos
                 int lista = listacen.New_("juegos favs", "mi lista de juegos favs", false, reg1);
                 ListaEN listaEN = listacen.GetByOID(lista);
 
@@ -121,19 +124,27 @@ namespace InitializeDB
                 Console.WriteLine("Lista: " + listaEN.Descripcion);
                 Console.WriteLine("Lista: " + registradoCEN.GetByOID(listaEN.Autor_lista.Id).Nombre);
 
+                //Prueba de cambiar descripcion
                 listacen.Cambiar_descripcion(lista, "David, curra");
                 listaEN = listacen.GetByOID(lista);
                 Console.WriteLine("Lista: " + listaEN.Descripcion);
 
+                //Creacion de un juego y prueba de sus campos
                 int videojuego1 = videojuegocen.New_("The Last of Us", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
                 VideojuegoEN lastOfUs = videojuegocen.GetByoID(videojuego1);
                 Console.WriteLine("Videojuego nombre: " + lastOfUs.Nombre);
 
+                //Prueba de anyadirJuego, con la lista anterior
                 listacen.AnyadirJuego(lista, videojuego1);
-
                 registradoEN = registradocen.GetByOID(reg1);
+                Console.WriteLine("Lista jorge: " + registradoEN.Listas[0].Nombre);
 
-                Console.WriteLine("Lista jorge: ", registradoEN.Listas[0].Nombre);
+                //Prueba a valorar videojuego
+                ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                ValoracionEN valoracionEN = valoracionCP.New_(8, reg1, videojuego1);
+
+                Console.WriteLine("Nota media del videojuego: " + lastOfUs.Nota_media);
+
 
                 /*PROTECTED REGION END*/
             }
