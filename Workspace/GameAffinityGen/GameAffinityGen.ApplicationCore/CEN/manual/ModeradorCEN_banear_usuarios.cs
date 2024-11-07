@@ -21,7 +21,15 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 
             // Write here your custom code...
 
-            throw new NotImplementedException("Method Banear_usuarios() not yet implemented.");
+            RegistradoEN listillo = this.GetByOID(user_ID);
+            RegistradoCEN cen = RegistradoCEN.
+
+            if (listillo == null)
+            {
+                throw new Exception("ID del usuario no existente");
+            }
+
+            
 
             /*PROTECTED REGION END*/
         }
