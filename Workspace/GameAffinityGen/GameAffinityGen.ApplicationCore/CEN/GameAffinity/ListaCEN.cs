@@ -30,11 +30,11 @@ public IListaRepository get_IListaRepository ()
         return this._IListaRepository;
 }
 
-public void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs)
+public void AnyadirJuego (int p_Lista_OID, int p_videojuego_oid)
 {
         //Call to ListaRepository
 
-        _IListaRepository.AnyadirJuego (p_Lista_OID, p_videojuegos_OIDs);
+        _IListaRepository.AnyadirJuego (p_Lista_OID, p_videojuego_oid);
 }
 public System.Collections.Generic.IList<ListaEN> GetAll (int first, int size)
 {

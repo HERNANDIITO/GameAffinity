@@ -19,7 +19,7 @@ System.Collections.Generic.IList<ListaEN> ReadAllDefault (int first, int size);
 
 
 
-void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
+void AnyadirJuego (int p_Lista_OID, int p_videojuego_oid);
 
 System.Collections.Generic.IList<ListaEN> GetAll (int first, int size);
 

@@ -30,7 +30,7 @@ public void Dar_de_baja (int p_oid)
         registrado.Nombre = "Anonimo";
         registrado.Seguidos = [];
 
-        this.get_IRegistradoRepository().ModifyDefault(registrado);
+        this.get_IRegistradoRepository ().ModifyDefault (registrado);
 
         /*PROTECTED REGION END*/
 }

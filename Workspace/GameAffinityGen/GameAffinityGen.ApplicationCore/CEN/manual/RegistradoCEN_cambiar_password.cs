@@ -25,7 +25,7 @@ public void Cambiar_password (int p_oid, string new_password)
 
         registrado.Contrasenya = new_password;
 
-        this.get_IRegistradoRepository().ModifyDefault (registrado);
+        this.get_IRegistradoRepository ().ModifyDefault (registrado);
 
         /*PROTECTED REGION END*/
 }
