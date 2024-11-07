@@ -18,7 +18,6 @@ System.Collections.Generic.IList<ListaEN> ReadAllDefault (int first, int size);
 
 
 
-
 System.Collections.Generic.IList<ListaEN> GetAll (int first, int size);
 
 
