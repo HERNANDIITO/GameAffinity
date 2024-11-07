@@ -39,7 +39,7 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 valoracionEN = new ValoracionEN ();
                 valoracionEN.Id = p_Valoracion_OID;
                 valoracionEN.Nota = p_nota;
-                valoracionCEN.get_IValoracionRepository ().Modify (valoracionEN);
+                valoracionCEN.get_IValoracionRepository ().ModifyDefault (valoracionEN);
 
 
                 CPSession.Commit ();

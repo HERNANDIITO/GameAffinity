@@ -32,6 +32,8 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                 ListaEN lista = listaCEN.get_IListaRepository().ReadOIDDefault(p_Lista_OID);
                 lista.Videojuegos.Remove(videojuego);
 
+                listaCEN.get_IListaRepository().ModifyDefault(lista);
+
                 CPSession.Commit();
             }
             catch (Exception ex)
