@@ -55,13 +55,6 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
 
 
 /**
- *	Atributo lista
- */
-private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista;
-
-
-
-/**
  *	Atributo valoracion
  */
 private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion;
@@ -120,12 +113,6 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
-public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> Lista {
-        get { return lista; } set { lista = value;  }
-}
-
-
-
 public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> Valoracion {
         get { return valoracion; } set { valoracion = value;  }
 }
@@ -144,27 +131,26 @@ public VideojuegoEN()
 {
         resenyas = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN>();
         empresas = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN>();
-        lista = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN>();
         valoracion = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
         individuos = new System.Collections.Generic.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN>();
 }
 
 
 
-public VideojuegoEN(int id, string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos
+public VideojuegoEN(int id, string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos
                     )
 {
-        this.init (Id, nombre, descripcion, nota_media, genero, resenyas, empresas, lista, valoracion, individuos);
+        this.init (Id, nombre, descripcion, nota_media, genero, resenyas, empresas, valoracion, individuos);
 }
 
 
 public VideojuegoEN(VideojuegoEN videojuego)
 {
-        this.init (videojuego.Id, videojuego.Nombre, videojuego.Descripcion, videojuego.Nota_media, videojuego.Genero, videojuego.Resenyas, videojuego.Empresas, videojuego.Lista, videojuego.Valoracion, videojuego.Individuos);
+        this.init (videojuego.Id, videojuego.Nombre, videojuego.Descripcion, videojuego.Nota_media, videojuego.Genero, videojuego.Resenyas, videojuego.Empresas, videojuego.Valoracion, videojuego.Individuos);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos)
+                   , string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos)
 {
         this.Id = id;
 
@@ -180,8 +166,6 @@ private void init (int id
         this.Resenyas = resenyas;
 
         this.Empresas = empresas;
-
-        this.Lista = lista;
 
         this.Valoracion = valoracion;
 

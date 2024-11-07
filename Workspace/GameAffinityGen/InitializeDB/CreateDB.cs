@@ -125,6 +125,16 @@ namespace InitializeDB
                 listaEN = listacen.GetByOID(lista);
                 Console.WriteLine("Lista: " + listaEN.Descripcion);
 
+                int videojuego1 = videojuegocen.New_("The Last of Us", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                VideojuegoEN lastOfUs = videojuegocen.GetByoID(videojuego1);
+                Console.WriteLine("Videojuego nombre: " + lastOfUs.Nombre);
+
+                listacen.AnyadirJuego(lista, videojuego1);
+
+                registradoEN = registradocen.GetByOID(reg1);
+
+                Console.WriteLine("Lista jorge: ", registradoEN.Listas[0].Nombre);
+
                 /*PROTECTED REGION END*/
             }
             catch (Exception ex)
