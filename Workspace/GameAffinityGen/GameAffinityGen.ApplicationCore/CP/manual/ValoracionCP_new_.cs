@@ -16,61 +16,71 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class ValoracionCP : GenericBasicCP
-{
-public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_nota, int p_autor_valoracion, int p_videojuego_valorado)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_new_) ENABLED START*/
-
-        GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN result = null;
-
-
-        try
+    public partial class ValoracionCP : GenericBasicCP
+    {
+        public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_(int p_nota, int p_autor_valoracion, int p_videojuego_valorado)
         {
-                CPSession.SessionInitializeTransaction ();
-                ValoracionCEN valoracionCEN = new ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
-                VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_new_) ENABLED START*/
+
+            GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN result = null;
+
+
+            try
+            {
+                CPSession.SessionInitializeTransaction();
+                ValoracionCEN valoracionCEN = new ValoracionCEN(CPSession.UnitRepo.ValoracionRepository);
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
+
+                VideojuegoEN videojuego = videojuegoCEN.GetByoID(p_videojuego_valorado);
 
                 int oid;
                 //Initialized ValoracionEN
                 ValoracionEN valoracionEN;
-                valoracionEN = new ValoracionEN ();
+                valoracionEN = new ValoracionEN();
                 valoracionEN.Nota = p_nota;
 
-                if (p_autor_valoracion != -1) {
-                        valoracionEN.Autor_valoracion = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
-                        valoracionEN.Autor_valoracion.Id = p_autor_valoracion;
+                if (p_autor_valoracion != -1)
+                {
+                    valoracionEN.Autor_valoracion = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN();
+                    valoracionEN.Autor_valoracion.Id = p_autor_valoracion;
                 }
 
-                VideojuegoEN videojuego = videojuegoCEN.GetByoID (p_videojuego_valorado);
 
                 int notaMedia = 0;
-                foreach (ValoracionEN videojuego_valoracion in videojuego.Valoracion) {
-                        notaMedia += videojuego_valoracion.Nota;
+                foreach (ValoracionEN videojuego_valoracion in videojuego.Valoracion)
+                {
+                    notaMedia += videojuego_valoracion.Nota;
                 }
 
-                notaMedia = notaMedia / videojuego.Valoracion.Count;
+                if (videojuego.Valoracion.Count > 0)
+                {
+                    notaMedia = notaMedia / videojuego.Valoracion.Count;
+                } else
+                {
+                    notaMedia = p_nota;
+                }
 
-                oid = valoracionCEN.get_IValoracionRepository ().New_ (valoracionEN);
-                result = valoracionCEN.get_IValoracionRepository ().ReadOIDDefault (oid);
+                videojuego.Nota_media = notaMedia;
 
+                oid = valoracionCEN.get_IValoracionRepository().New_(valoracionEN);
+                result = valoracionCEN.get_IValoracionRepository().ReadOIDDefault(oid);
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuego);
 
-
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
-        return result;
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
+            return result;
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

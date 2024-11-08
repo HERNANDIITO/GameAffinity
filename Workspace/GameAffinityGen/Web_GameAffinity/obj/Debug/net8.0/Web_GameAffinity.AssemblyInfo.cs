@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Web_GameAffinity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bcf350b61a0fe2503af1ca17b3fcb33eea5e6a29")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e95fbccca2b108c64e3ff408af09cfa7a86ff58")]
 [assembly: System.Reflection.AssemblyProductAttribute("Web_GameAffinity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Web_GameAffinity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

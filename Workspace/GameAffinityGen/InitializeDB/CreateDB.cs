@@ -15,6 +15,7 @@ using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository;
 using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using NHibernate;
+using Microsoft.Win32;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -145,16 +146,36 @@ namespace InitializeDB
 
                 Console.WriteLine("Notis: " + jorge.Notificaciones);
                 listacen.Cambiar_nombre(juegosFavsJorgeID, "Peores juegos");
+                juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                Console.WriteLine("JUEGOS FAV JORGE NOMBRE CAMBIADO: " + juegosFavsJorge.Nombre);
 
                 registradocen.Dar_de_baja(jorgeID);
                 jorge = registradocen.GetByOID(jorgeID);
 
                 Console.WriteLine(jorge.Nombre + "\n" + jorge.Email);
 
+                ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                VideojuegoEN tlouGame = videojuegocen.GetByoID(tlouID);
+
+                Console.WriteLine(tlouGame.Nombre);
+                Console.WriteLine("tlou antes de jorge: " + tlouGame.Nota_media.ToString());
+
+                ValoracionEN valoracionTlouJorge = valoracionCP.New_(10, jorgeID, tlouID);
+
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("tlou despues de jorge: " + tlouGame.Nota_media.ToString());
+
+                //valoracionCP.Modify(valoracionTlouJorge.Id, 5);
+                //tlouGame = videojuegocen.GetByoID(tlouID);
+                //Console.WriteLine("tlou despues de modificar: " + tlouGame.Nota_media.ToString());
+
+                InteraccionCP interaccionCP = new InteraccionCP(new SessionCPNHibernate());
+                InteraccionEN inter1 = interaccionCP.New_(jorgeID, true, false, resenyatlouID, resenyatlouID);
+
                 /*PROTECTED REGION END*/
             }
             catch (Exception ex)
-            {
+            {       
                 System.Console.WriteLine(ex.InnerException);
                 throw;
             }
