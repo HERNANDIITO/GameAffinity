@@ -32,21 +32,22 @@
 						</many-to-one>
 											 					
 			
+		  			
+						<bag name="Videojuegos" table="[videojuego_0_lista]" inverse="true" >
+							<key>
+								
+									<column name="FK_idLista_idLista"/> 
+							</key>
+      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH">
+									<column name="FK_idVideojuego_idVideojuego_0"/> 
+      						</many-to-many>
+    					</bag>
 			
 					
 					
 					
 					
 					
-					
-						<bag name="Videojuegos" table="[videojuego_0_lista]" >
-							<key>
-									<column name="FK_idLista_idLista"/> 
-							</key>
-      						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.VideojuegoNH">
-									<column name="FK_idVideojuego_idVideojuego_0"/> 
-      						</many-to-many>
-    					</bag>		
 					
 		
 		 </class>	

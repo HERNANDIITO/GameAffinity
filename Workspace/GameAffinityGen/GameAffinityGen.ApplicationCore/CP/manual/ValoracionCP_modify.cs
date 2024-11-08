@@ -22,43 +22,43 @@ public void Modify (int p_Valoracion_OID, int p_nota)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_modify) ENABLED START*/
 
-        ValoracionCEN valoracionCEN = null;
-        ValoracionEN valoracionEN = null;
-        VideojuegoCEN videojuegoCEN = null;
-        VideojuegoEN videojuegoEN = null;
-
         try
         {
                 CPSession.SessionInitializeTransaction ();
                 // CEN
-                valoracionCEN = new  ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
-                videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
+                ValoracionCEN valoracionCEN = new ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
 
                 // EN
-                valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
-                videojuegoEN = videojuegoCEN.GetByoID(valoracionEN.Videojuego_valorado.Id);
-
+                ValoracionEN valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
+                VideojuegoEN videojuegoEN = videojuegoCEN.GetByoID (valoracionEN.Videojuego_valorado.Id);
 
                 // Cambio de nota
                 valoracionEN.Nota = p_nota;
 
                 //recalcular media del videojuego
                 int notaMedia = 0;
+                IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego(videojuegoEN.Id);
                 foreach (ValoracionEN videojuego_valoracion in videojuegoEN.Valoracion)
                 {
                     notaMedia += videojuego_valoracion.Nota;
                 }
 
-                notaMedia = notaMedia / videojuegoEN.Valoracion.Count;
+                if (videojuegoEN.Valoracion.Count > 0)
+                {
+                    notaMedia = notaMedia / videojuegoEN.Valoracion.Count;
+                }
+                else
+                {
+                    notaMedia = p_nota;
+                }
 
                 // Sobreescribimos la nota media
                 videojuegoEN.Nota_media = notaMedia;
 
                 // Aplicamos cambios
-                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuegoEN);
-                valoracionCEN.get_IValoracionRepository().Destroy(p_Valoracion_OID);
-
-
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault (videojuegoEN);
+                valoracionCEN.get_IValoracionRepository ().ModifyDefault (valoracionEN);
 
                 CPSession.Commit ();
         }

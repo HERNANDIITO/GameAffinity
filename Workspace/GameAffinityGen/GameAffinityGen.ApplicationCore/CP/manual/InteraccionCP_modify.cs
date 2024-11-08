@@ -42,6 +42,8 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                 interaccionEN.Liked = p_liked;
                 interaccionEN.Id_resenya = p_id_resenya;
 
+                ResenyaEN resenyaEN = resenyaCEN.get_IResenyaRepository().ReadOIDDefault(p_id_resenya);
+
                 if (p_id_resenya != -1)
                 {
                     interaccionEN.Resenya = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN();
@@ -50,17 +52,18 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 
                 if (interaccionEN.Liked)
                 {
-                    interaccionEN.Resenya.Dislikes_contador--;
-                    interaccionEN.Resenya.Likes_contador++;
+                    resenyaEN.Dislikes_contador--;
+                    resenyaEN.Likes_contador++;
                 }
                 else if (interaccionEN.Disliked)
                 {
-                    interaccionEN.Resenya.Dislikes_contador++;
-                    interaccionEN.Resenya.Likes_contador--;
+                    resenyaEN.Dislikes_contador++;
+                    resenyaEN.Likes_contador--;
                 }
 
+
                 interaccionCEN.get_IInteraccionRepository().ModifyDefault(interaccionEN);
-                resenyaCEN.get_IResenyaRepository().Modify(interaccionEN.Resenya);
+                resenyaCEN.get_IResenyaRepository().ModifyDefault(resenyaEN);
 
                 CPSession.Commit();
             }

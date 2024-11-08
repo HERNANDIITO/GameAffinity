@@ -5565,19 +5565,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Maximo\\.nuget\\packages\\": {}
+    "C:\\Users\\donsi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+      "projectUniqueName": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
       "projectName": "GameAffinityGen.Infraestructure",
-      "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
-      "packagesPath": "C:\\Users\\Maximo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
+      "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+      "packagesPath": "C:\\Users\\donsi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Maximo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\donsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5592,8 +5592,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+            "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
             }
           }
         }

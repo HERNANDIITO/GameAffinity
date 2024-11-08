@@ -28,25 +28,36 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                 ValoracionCEN valoracionCEN = new ValoracionCEN(CPSession.UnitRepo.ValoracionRepository);
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
 
-                ValoracionEN valoracion = valoracionCEN.GetByOID(p_Valoracion_OID);
-                VideojuegoEN videojuego = videojuegoCEN.GetByoID(valoracion.Videojuego_valorado.Id);
-
-                // Eliminamos la valoracion de la lista
-                videojuego.Valoracion.Remove(valoracion);
+                Console.WriteLine("VALORACION DESTROY ID: " + p_Valoracion_OID);
+                ValoracionEN valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
+                VideojuegoEN videojuego = videojuegoCEN.GetByoID(valoracionEN.Videojuego_valorado.Id);
 
                 // Recalculamos la nota media
                 int notaMedia = 0;
-                foreach (ValoracionEN videojuego_valoracion in videojuego.Valoracion)
+                IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego(videojuego.Id);
+                listaValoraciones.Remove(valoracionEN);
+
+                foreach (ValoracionEN videojuego_valoracion in listaValoraciones)
                 {
                     notaMedia += videojuego_valoracion.Nota;
                 }
 
-                notaMedia = notaMedia / videojuego.Valoracion.Count;
+                if (videojuego.Valoracion.Count > 0)
+                {
+                    notaMedia = notaMedia / videojuego.Valoracion.Count;
+                }
+                else
+                {
+                    notaMedia = 0;
+                }
 
-                // Sobreescribimos la nota media
+                //Sobreescribimos la nota media
                 videojuego.Nota_media = notaMedia;
 
-                // Aplicamos cambios
+                //Sobreescribimos la nota media
+                videojuego.Nota_media = notaMedia;
+
+                //Aplicamos cambios
                 videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuego);
                 valoracionCEN.get_IValoracionRepository().Destroy(p_Valoracion_OID);
 

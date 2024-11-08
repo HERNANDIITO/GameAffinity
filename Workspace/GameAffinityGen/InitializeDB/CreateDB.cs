@@ -13,6 +13,9 @@ using GameAffinityGen.ApplicationCore.Exceptions;
 
 using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository;
+using GameAffinityGen.Infraestructure.EN.GameAffinity;
+using NHibernate;
+using Microsoft.Win32;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -107,33 +110,97 @@ namespace InitializeDB
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
 
-                int reg1 = registradocen.New_("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
-                RegistradoCEN registradoCEN = new RegistradoCEN(registradorepository);
-                registradoCEN.Aceptar_mentoria(reg1);
-                RegistradoEN registradoEN = registradocen.GetByOID(reg1);
+                int jorgeID = registradocen.New_("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
+                registradocen.Aceptar_mentoria(jorgeID);
+                RegistradoEN jorge = registradocen.GetByOID(jorgeID);
 
-                Console.WriteLine("Es mentor: " + registradoEN.Es_mentor);
+                Console.WriteLine("Es mentor: " + jorge.Es_mentor);
 
-                int lista = listacen.New_("juegos favs", "mi lista de juegos favs", false, reg1);
-                ListaEN listaEN = listacen.GetByOID(lista);
+                int juegosFavsJorgeID = listacen.New_("juegos favs", "mi lista de juegos favs", false, jorgeID);
+                ListaEN juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
 
-                Console.WriteLine("Lista: " + listaEN.Nombre);
-                Console.WriteLine("Lista: " + listaEN.Descripcion);
-                Console.WriteLine("Lista: " + registradoCEN.GetByOID(listaEN.Autor_lista.Id).Nombre);
+                Console.WriteLine("Lista: " + juegosFavsJorge.Nombre);
+                Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
+                Console.WriteLine("Lista: " + registradocen.GetByOID(juegosFavsJorge.Autor_lista.Id).Nombre);
 
-                listacen.Cambiar_descripcion(lista, "David, curra");
-                listaEN = listacen.GetByOID(lista);
-                Console.WriteLine("Lista: " + listaEN.Descripcion);
+                listacen.Cambiar_descripcion(juegosFavsJorgeID, "David, curra");
+                juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
 
-                int videojuego1 = videojuegocen.New_("The Last of Us", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                VideojuegoEN lastOfUs = videojuegocen.GetByoID(videojuego1);
-                Console.WriteLine("Videojuego nombre: " + lastOfUs.Nombre);
+                int tlouID = videojuegocen.New_("TLOU", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
 
-                listacen.AnyadirJuego(lista, videojuego1);
+                int resenyatlouID = resenyacen.New_("Bombastico", "Es un juego excelente", 0, 0, jorgeID, tlouID);
 
-                registradoEN = registradocen.GetByOID(reg1);
+                ResenyaEN resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("resenyatlou: " + resenyatlou.Titulo);
 
-                Console.WriteLine("Lista jorge: ", registradoEN.Listas[0].Nombre);
+                Console.WriteLine("Notis: " + jorge.Notificaciones);
+                registradocen.Alternar_notificaciones(jorgeID);
+                jorge = registradocen.GetByOID(jorgeID);
+                Console.WriteLine("Notis: " + jorge.Notificaciones);
+
+                Console.WriteLine("Notis: " + jorge.Notificaciones);
+                listacen.Cambiar_nombre(juegosFavsJorgeID, "Peores juegos");
+                juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                Console.WriteLine("JUEGOS FAV JORGE NOMBRE CAMBIADO: " + juegosFavsJorge.Nombre);
+
+                registradocen.Dar_de_baja(jorgeID);
+                jorge = registradocen.GetByOID(jorgeID);
+
+                Console.WriteLine(jorge.Nombre + "\n" + jorge.Email);
+
+                ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                VideojuegoEN tlouGame = videojuegocen.GetByoID(tlouID);
+
+                Console.WriteLine(tlouGame.Nombre);
+                Console.WriteLine("TLOU ANTES DE JORGE: " + tlouGame.Nota_media.ToString());
+
+                ValoracionEN valoracionTlouJorge = valoracionCP.New_(10, jorgeID, tlouID);
+                valoracionTlouJorge = valoracioncen.get_IValoracionRepository().GetByOID(valoracionTlouJorge.Id);
+
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("TLOU DEPSUES DE JORGE: " + tlouGame.Nota_media.ToString());
+
+                Console.WriteLine("VALORACION TLOU ID: " + valoracionTlouJorge.Id);
+                valoracionCP.Modify(valoracionTlouJorge.Id, 5);
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("TLOU DESPUES DE MODIFICAR: " + tlouGame.Nota_media.ToString());
+
+                valoracionCP.Destroy(valoracionTlouJorge.Id);
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("TLOU DESPUES DE DESTRUIR: " + tlouGame.Nota_media.ToString());
+
+
+                InteraccionCP interaccionCP = new InteraccionCP(new SessionCPNHibernate());
+                InteraccionEN inter1 = interaccionCP.New_(jorgeID, true, false, resenyatlouID, resenyatlouID);
+
+                RegistradoEN autorResenya = registradocen.GetByOID(inter1.Autor.Id);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("RESENYA TLOU LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine("RESENYA TLOU DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                interaccionCP.Modify(inter1.Id, false, true, inter1.Id_resenya);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("RESENYA TLOU MODIF LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine("RESENYA TLOU MODIF DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                interaccionCP.Destroy(inter1.Id);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("RESENYA TLOU MODIF LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine("RESENYA TLOU MODIF DISLIKES: " + resenyatlou.Dislikes_contador);
+
+
+
+
+                //PRUEBA ELIMINAR JUEGO: Crea un Videojuego, lo muestra por pantalla y lo elimina, después lo muestra por pantalla
+                Console.WriteLine("ARRIKITAUNTAUNTAUN OFÚ ILLO OFÚ, Y OLÉ");
+                int superMarioID = videojuegocen.New_("Super Mario", "YAHOOOOO!!!", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles);
+                VideojuegoEN videojuegoMarioEn = videojuegocen.GetByoID(superMarioID);
+                Console.WriteLine("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre);
+                Console.WriteLine("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id);
+
+                VideojuegoCEN superMarioCEN = new VideojuegoCEN(videojuegorepository);
+                superMarioCEN.Destroy(videojuegoMarioEn.Id);
 
                 /*PROTECTED REGION END*/
             }

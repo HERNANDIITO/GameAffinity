@@ -16,34 +16,35 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class InteraccionCP : GenericBasicCP
-{
-public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p_autor, bool p_disliked, bool p_liked, int p_id_resenya, int p_resenya)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Interaccion_new_) ENABLED START*/
-
-        InteraccionCEN interaccionCEN = null;
-        ResenyaCEN resenyaCEN = null;
-
-        GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN result = null;
-
-
-        try
+    public partial class InteraccionCP : GenericBasicCP
+    {
+        public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_(int p_autor, bool p_disliked, bool p_liked, int p_id_resenya, int p_resenya)
         {
-                CPSession.SessionInitializeTransaction ();
-                interaccionCEN = new  InteraccionCEN (CPSession.UnitRepo.InteraccionRepository);
-                resenyaCEN = new ResenyaCEN (CPSession.UnitRepo.ResenyaRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Interaccion_new_) ENABLED START*/
+
+            InteraccionCEN interaccionCEN = null;
+            ResenyaCEN resenyaCEN = null;
+
+            GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN result = null;
 
 
+            try
+            {
+                CPSession.SessionInitializeTransaction();
+                interaccionCEN = new InteraccionCEN(CPSession.UnitRepo.InteraccionRepository);
+                resenyaCEN = new ResenyaCEN(CPSession.UnitRepo.ResenyaRepository);
+
+                ResenyaEN resenyaEN = resenyaCEN.get_IResenyaRepository().ReadOIDDefault(p_resenya);
 
                 int oid;
                 //Initialized InteraccionEN
                 InteraccionEN interaccionEN;
-                interaccionEN = new InteraccionEN ();
+                interaccionEN = new InteraccionEN();
 
-                if (p_autor != -1) {
-                        interaccionEN.Autor = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN ();
-                        interaccionEN.Autor.Id = p_autor;
+                if (p_autor != -1)
+                {
+                    interaccionEN.Autor = new GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN();
+                    interaccionEN.Autor.Id = p_autor;
                 }
 
                 interaccionEN.Disliked = p_disliked;
@@ -53,42 +54,49 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p
                 interaccionEN.Id_resenya = p_id_resenya;
 
 
-                if (p_resenya != -1) {
-                        interaccionEN.Resenya = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN ();
-                        interaccionEN.Resenya.Id = p_resenya;
+                if (p_resenya != -1)
+                {
+                    interaccionEN.Resenya = new GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN();
+                    interaccionEN.Resenya.Id = p_resenya;
                 }
 
                 //da like
-                if (interaccionEN.Liked) {
-                        interaccionEN.Resenya.Likes_contador++;
+                if (interaccionEN.Liked)
+                {
+                    // interaccionEN.Resenya.Likes_contador++;
+                    resenyaEN.Likes_contador++;
                 }
-                else if (interaccionEN.Disliked) {
-                        interaccionEN.Resenya.Dislikes_contador++;
+                else if (interaccionEN.Disliked)
+                {
+                    //interaccionEN.Resenya.Dislikes_contador++;
+                    resenyaEN.Dislikes_contador++;
                 }
 
-                resenyaCEN.get_IResenyaRepository ().Modify (interaccionEN.Resenya);
 
-                oid = interaccionCEN.get_IInteraccionRepository ().New_ (interaccionEN);
+                // aqui salta un error GameAffinityGen.ApplicationCore.Exceptions.DataLayerException: 'Error in ResenyaRepository.'
+                resenyaCEN.get_IResenyaRepository().Modify(resenyaEN);
 
-                result = interaccionCEN.get_IInteraccionRepository ().ReadOIDDefault (oid);
+                oid = interaccionCEN.get_IInteraccionRepository().New_(interaccionEN);
+
+                result = interaccionCEN.get_IInteraccionRepository().ReadOIDDefault(oid);
 
 
 
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
-        return result;
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
+            return result;
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
