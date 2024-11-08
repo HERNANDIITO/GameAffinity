@@ -46,5 +46,9 @@ public System.Collections.Generic.IList<ValoracionEN> GetAll (int first, int siz
         list = _IValoracionRepository.GetAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesJuego (int p_id_juego)
+{
+        return _IValoracionRepository.DameValoracionesJuego (p_id_juego);
+}
 }
 }
