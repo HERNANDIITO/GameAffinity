@@ -192,16 +192,43 @@ namespace InitializeDB
 
 
 
-                //PRUEBA ELIMINAR JUEGO: Crea un Videojuego, lo muestra por pantalla y lo elimina, después lo muestra por pantalla
-                Console.WriteLine("ARRIKITAUNTAUNTAUN OFÚ ILLO OFÚ, Y OLÉ");
+                //PRUEBA ANYADIR_JUEGO: Crea dos videojuegos, los añade a una lista y muestra la lista 
+                Console.WriteLine("\nPRUEBA ANYADIR_VIDEOJUEGO: ");
                 int superMarioID = videojuegocen.New_("Super Mario", "YAHOOOOO!!!", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles);
                 VideojuegoEN videojuegoMarioEn = videojuegocen.GetByoID(superMarioID);
-                Console.WriteLine("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre);
-                Console.WriteLine("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id);
+                Console.WriteLine("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre + "\n");
+                Console.WriteLine("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id + "\n");
 
-                VideojuegoCEN superMarioCEN = new VideojuegoCEN(videojuegorepository);
-                superMarioCEN.Destroy(videojuegoMarioEn.Id);
+                int sonicID = videojuegocen.New_("Sonic Heroes", "U're too slow.", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                VideojuegoEN sonicEN = videojuegocen.GetByoID(sonicID);
+                Console.WriteLine("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
+                Console.WriteLine("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
 
+                int silvaID = registradocen.New_("Silva", "silva@gmail.com", "laCalva", false, false, "arrikitaun");
+                RegistradoEN silva = registradocen.GetByOID(jorgeID);
+
+                ListaCEN listaSilvaCEN = new ListaCEN(listarepository);
+                int listaJuegosSilvaID = listaSilvaCEN.New_("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID);
+                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID(listaJuegosSilvaID);
+
+                Console.WriteLine("Lista: " + listaJuegosSilvaEN.Nombre + "\n");
+                Console.WriteLine("Lista: " + listaJuegosSilvaEN.Descripcion + "\n");
+                Console.WriteLine("Lista: " + registradocen.GetByOID(listaJuegosSilvaEN.Autor_lista.Id).Nombre + "\n");
+
+                listaSilvaCEN.AnyadirVideojuego(listaJuegosSilvaID, new List<int> { sonicID, superMarioID });
+
+                //Console.WriteLine("\nLista después de añadir juegos: " + listaJuegosSilvaEN.Nombre + "\n");
+                //Console.WriteLine("Videojuegos en la lista:\n");
+                //Console.WriteLine(listaJuegosSilvaEN.Videojuegos.Count + "\n");
+
+                //PRUEBA ELIMINAR_JUEGO: Elimina un juego de la lista y luego muestra la lista por consola
+                Console.WriteLine("\nPRUEBA ELIMINAR_JUEGO: ");
+
+                listaSilvaCEN.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID});
+
+                //Console.WriteLine("\nLista después de eliminar juego: " + listaJuegosSilvaEN.Nombre + "\n");
+                //Console.WriteLine("Videojuegos en la lista:\n");
+                //Console.WriteLine(listaJuegosSilvaEN.Videojuegos.Count + "\n");
                 /*PROTECTED REGION END*/
             }
             catch (Exception ex)

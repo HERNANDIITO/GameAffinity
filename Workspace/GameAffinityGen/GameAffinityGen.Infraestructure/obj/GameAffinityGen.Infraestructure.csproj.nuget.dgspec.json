@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {}
+    "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+    "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
         "projectName": "GameAffinityGen.ApplicationCore",
-        "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
+        "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\donsi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\obj\\",
+        "outputPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\donsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
+    "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
         "projectName": "GameAffinityGen.Infraestructure",
-        "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+        "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
         "packagesPath": "C:\\Users\\donsi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
+        "outputPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\donsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -96,8 +96,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+              "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\donsi\\Desktop\\MALFA\\UNI\\AÑO 3\\DSM\\PUTA_MIERDA_DE_GIT\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
               }
             }
           }
