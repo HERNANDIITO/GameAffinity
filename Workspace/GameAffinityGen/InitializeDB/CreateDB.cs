@@ -16,6 +16,8 @@ using GameAffinityGen.Infraestructure.Repository;
 using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using NHibernate;
 using Microsoft.Win32;
+using NHibernate.Criterion;
+using static System.Collections.Specialized.BitVector32;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -217,14 +219,43 @@ namespace InitializeDB
 
                 listaSilvaCEN.AnyadirVideojuego(listaJuegosSilvaID, new List<int> { sonicID, superMarioID });
 
-                //Console.WriteLine("\nLista después de añadir juegos: " + listaJuegosSilvaEN.Nombre + "\n");
-                //Console.WriteLine("Videojuegos en la lista:\n");
-                //Console.WriteLine(listaJuegosSilvaEN.Videojuegos.Count + "\n");
+                Console.WriteLine("\nLista después de añadir juegos: " + listaJuegosSilvaEN.Nombre + "\n");
+                Console.WriteLine("Videojuegos en la lista:\n");
+                using (var session = NHibernateHelper.OpenSession()) // Abre la sesión
+                {
+                    var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
+                    session.Refresh(listaJuegosSilva); // Asegúrate de cargar la colección Videojuegos si está perezosamente cargada
+
+                    // Ahora puedes acceder a la colección sin el error de LazyInitializationException
+                    Console.WriteLine("\n\nNúmero de videojuegos en la lista: " + listaJuegosSilva.Videojuegos.Count);
+
+                    // O recorrer la colección
+                    foreach (var videojuego in listaJuegosSilva.Videojuegos)
+                    {
+                        Console.WriteLine(videojuego.Nombre);
+                    }
+                }
+
 
                 //PRUEBA ELIMINAR_JUEGO: Elimina un juego de la lista y luego muestra la lista por consola
                 Console.WriteLine("\nPRUEBA ELIMINAR_JUEGO: ");
 
                 listaSilvaCEN.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID});
+
+                using (var session = NHibernateHelper.OpenSession()) // Abre la sesión
+                {
+                    var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
+                    session.Refresh(listaJuegosSilva); // Asegúrate de cargar la colección Videojuegos si está perezosamente cargada
+
+                    // Ahora puedes acceder a la colección sin el error de LazyInitializationException
+                    Console.WriteLine("\n\nNúmero de videojuegos en la lista después de eliminar uno: " + listaJuegosSilva.Videojuegos.Count);
+
+                    // O recorrer la colección
+                    foreach (var videojuego in listaJuegosSilva.Videojuegos)
+                    {
+                        Console.WriteLine(videojuego.Nombre);
+                    }
+                }
 
                 //Console.WriteLine("\nLista después de eliminar juego: " + listaJuegosSilvaEN.Nombre + "\n");
                 //Console.WriteLine("Videojuegos en la lista:\n");
