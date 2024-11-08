@@ -15,15 +15,25 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class RegistradoCEN
 {
-public void Recuperar_password (int p_oid)
+public string Recuperar_password (int p_oid)
 {
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_recuperar_password) ENABLED START*/
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_recuperar_password) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        throw new NotImplementedException ("Method Recuperar_password() not yet implemented.");
+            // Obtenemos el usuario por su ID
+            RegistradoEN registrado = this.GetByOID(p_oid);
 
-        /*PROTECTED REGION END*/
-}
+            // Verificamos si el usuario existe
+            if (registrado == null)
+            {
+                throw new Exception("Usuario no encontrado.");
+            }
+
+            // Devolvemos la contraseña del usuario
+            return registrado.Contrasenya;
+
+            /*PROTECTED REGION END*/
+        }
 }
 }
