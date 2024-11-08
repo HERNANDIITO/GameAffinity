@@ -44,6 +44,11 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                         valoracionEN.Autor_valoracion.Id = p_autor_valoracion;
                 }
 
+                if (p_videojuego_valorado != -1) {
+                    valoracionEN.Videojuego_valorado = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN();
+                    valoracionEN.Videojuego_valorado.Id = p_videojuego_valorado;
+                }
+
 
                 int notaMedia = 0;
                 IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego (p_videojuego_valorado);

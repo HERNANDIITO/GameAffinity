@@ -16,53 +16,65 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 
 namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
 {
-public partial class ValoracionCP : GenericBasicCP
-{
-public void Destroy (int p_Valoracion_OID)
-{
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_destroy) ENABLED START*/
-
-        try
+    public partial class ValoracionCP : GenericBasicCP
+    {
+        public void Destroy(int p_Valoracion_OID)
         {
-                CPSession.SessionInitializeTransaction ();
-                ValoracionCEN valoracionCEN = new ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
-                VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
+            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CP.GameAffinity_Valoracion_destroy) ENABLED START*/
 
-                ValoracionEN valoracion = valoracionCEN.GetByOID (p_Valoracion_OID);
-                VideojuegoEN videojuego = videojuegoCEN.GetByoID (valoracion.Videojuego_valorado.Id);
+            try
+            {
+                CPSession.SessionInitializeTransaction();
+                ValoracionCEN valoracionCEN = new ValoracionCEN(CPSession.UnitRepo.ValoracionRepository);
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
 
-                // Eliminamos la valoracion de la lista
-                videojuego.Valoracion.Remove (valoracion);
+                Console.WriteLine("VALORACION DESTROY ID: " + p_Valoracion_OID);
+                ValoracionEN valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
+                VideojuegoEN videojuego = videojuegoCEN.GetByoID(valoracionEN.Videojuego_valorado.Id);
 
                 // Recalculamos la nota media
                 int notaMedia = 0;
-                foreach (ValoracionEN videojuego_valoracion in videojuego.Valoracion) {
-                        notaMedia += videojuego_valoracion.Nota;
+                IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego(videojuego.Id);
+                listaValoraciones.Remove(valoracionEN);
+
+                foreach (ValoracionEN videojuego_valoracion in listaValoraciones)
+                {
+                    notaMedia += videojuego_valoracion.Nota;
                 }
 
-                notaMedia = notaMedia / videojuego.Valoracion.Count;
+                if (videojuego.Valoracion.Count > 0)
+                {
+                    notaMedia = notaMedia / videojuego.Valoracion.Count;
+                }
+                else
+                {
+                    notaMedia = 0;
+                }
 
-                // Sobreescribimos la nota media
+                //Sobreescribimos la nota media
                 videojuego.Nota_media = notaMedia;
 
-                // Aplicamos cambios
-                videojuegoCEN.get_IVideojuegoRepository ().ModifyDefault (videojuego);
-                valoracionCEN.get_IValoracionRepository ().Destroy (p_Valoracion_OID);
+                //Sobreescribimos la nota media
+                videojuego.Nota_media = notaMedia;
 
-                CPSession.Commit ();
-        }
-        catch (Exception ex)
-        {
-                CPSession.RollBack ();
+                //Aplicamos cambios
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuego);
+                valoracionCEN.get_IValoracionRepository().Destroy(p_Valoracion_OID);
+
+                CPSession.Commit();
+            }
+            catch (Exception ex)
+            {
+                CPSession.RollBack();
                 throw ex;
-        }
-        finally
-        {
-                CPSession.SessionClose ();
-        }
+            }
+            finally
+            {
+                CPSession.SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
