@@ -307,7 +307,7 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ValoracionNH self where FROM ValoracionNH as v where v.Videojuego_valorado=:p_id_usu";
+                //String sql = @"FROM ValoracionNH self where FROM ValoracionNH as v where v.Autor_valoracion=:p_id_usu";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ValoracionNHdameValoracionesUsuHQL");
                 query.SetParameter ("p_id_usu", p_id_usu);
