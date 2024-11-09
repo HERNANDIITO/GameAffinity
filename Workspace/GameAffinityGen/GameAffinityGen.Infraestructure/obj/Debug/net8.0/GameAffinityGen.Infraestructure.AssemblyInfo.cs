@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameAffinityGen.Infraestructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ddff3d4cc676895ae171df5a6d37cf797312cfd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df9d9d20d0982002f42896284e50edd0ff440744")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameAffinityGen.Infraestructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameAffinityGen.Infraestructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
