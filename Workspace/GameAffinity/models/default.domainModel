@@ -15,7 +15,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_s440cIsVEe-275Ydh23WGw" name="dar_de_baja" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_s45bgIsVEe-275Ydh23WGw" name="p_oid" type="OID" typeObject="_aYpzcIsVEe-275Ydh23WGw"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_DyAhQIsWEe-275Ydh23WGw" name="consultar_afinidades" type="Integer">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_DyAhQIsWEe-275Ydh23WGw" name="consultar_afinidades" operationType="CustomTransaction" type="Integer">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_DyBIUIsWEe-275Ydh23WGw" name="p_oid" type="OID" typeObject="_aYpzcIsVEe-275Ydh23WGw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_iT65sJdyEe-CS8zeF6JosQ" name="user_ID" type="OID" typeObject="_aYpzcIsVEe-275Ydh23WGw"/>
       </operations>
