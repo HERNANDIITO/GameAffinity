@@ -40,8 +40,8 @@ static void Main (string[] args)
 
                 CreateDB.InitializeData ();
                 System.Console.WriteLine ("-----------------------------------------");
-                System.Console.WriteLine ("The data has been inserted successfully!!");
                 System.Console.WriteLine ("-----------------------------------------");
+                System.Console.WriteLine ("The data has been inserted successfully!!");
         }
         /*PROTECTED REGION END*/
         catch (Exception e)

@@ -131,9 +131,29 @@ namespace InitializeDB
 
                 listacen.AnyadirJuego(lista, videojuego1);
 
-                registradoEN = registradocen.GetByOID(reg1);
+                //registradoEN = registradocen.GetByOID(reg1);
 
-                Console.WriteLine("Lista jorge: ", registradoEN.Listas[0].Nombre);
+                //Console.WriteLine("Lista jorge: ", registradoEN.Listas[0].Nombre);
+
+                //comprobacion consultar afinidades
+                // Creamos dos usuarios para comparar afinidades
+                int reg2 = registradocen.New_("david", "david@example.com", "securepassword", false, false, "pass123");
+                RegistradoEN registradoEN2 = registradocen.GetByOID(reg2);
+
+                Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ");
+
+                // Añadimos una reseña a cada usuario para simular afinidades
+                int videojuego2 = videojuegocen.New_("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int resenya1 = resenyacen.New_("Buena historia", "Reseña del juego", 5, 1, videojuego1, reg1);
+
+                int resenya2 = resenyacen.New_("Excelente jugabilidad", "Reseña del juego", 4, 2, videojuego2, reg2);
+                int resenya3 = resenyacen.New_("Pedazo historia", "Reseña del juego", 7, 2, videojuego1, reg2);
+
+                // Llamamos al método `Consultar_afinidades` entre los dos usuarios y mostramos el resultado
+                int afinidad = registradocen.Consultar_afinidades(reg1, reg2);
+                Console.WriteLine("Afinidad entre usuario Jorge y usuario David: " + afinidad);
+
+
 
                 /*PROTECTED REGION END*/
             }

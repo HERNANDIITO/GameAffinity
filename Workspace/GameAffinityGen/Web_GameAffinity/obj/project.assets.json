@@ -5948,19 +5948,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Maximo\\.nuget\\packages\\": {}
+    "C:\\Users\\david\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
+      "projectUniqueName": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
       "projectName": "Web_GameAffinity",
-      "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
-      "packagesPath": "C:\\Users\\Maximo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maximo\\source\\repos\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\obj\\",
+      "projectPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\Web_GameAffinity.csproj",
+      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\Web_GameAffinity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Maximo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5975,11 +5975,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+            "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
             },
-            "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Maximo\\Source\\Repos\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj"
+            "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj"
             }
           }
         }
@@ -6023,7 +6023,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

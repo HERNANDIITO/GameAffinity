@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {}
+    "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+    "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
         "projectName": "GameAffinityGen.ApplicationCore",
-        "projectPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\obj\\",
+        "projectPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,21 +67,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
+    "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
         "projectName": "GameAffinityGen.Infraestructure",
-        "projectPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
-        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
+        "projectPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\GameAffinityGen.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,8 +96,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
-                "projectPath": "C:\\onedrive\\OneDrive - UNIVERSIDAD ALICANTE\\DSM\\2024\\Practicas\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
+              "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\david\\OneDrive\\Documentos\\GitHub\\GameAffinity\\Workspace\\GameAffinityGen\\GameAffinityGen.ApplicationCore\\GameAffinityGen.ApplicationCore.csproj"
               }
             }
           }
@@ -150,7 +150,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
