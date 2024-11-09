@@ -16,8 +16,6 @@ using GameAffinityGen.Infraestructure.Repository;
 using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using NHibernate;
 using Microsoft.Win32;
-using NHibernate.Criterion;
-using static System.Collections.Specialized.BitVector32;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -225,10 +223,8 @@ namespace InitializeDB
                 {
                     var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
                     session.Refresh(listaJuegosSilva); // Asegúrate de cargar la colección Videojuegos si está perezosamente cargada
-
                     // Ahora puedes acceder a la colección sin el error de LazyInitializationException
                     Console.WriteLine("\n\nNúmero de videojuegos en la lista: " + listaJuegosSilva.Videojuegos.Count);
-
                     // O recorrer la colección
                     foreach (var videojuego in listaJuegosSilva.Videojuegos)
                     {
@@ -236,20 +232,17 @@ namespace InitializeDB
                     }
                 }
 
-
                 //PRUEBA ELIMINAR_JUEGO: Elimina un juego de la lista y luego muestra la lista por consola
                 Console.WriteLine("\nPRUEBA ELIMINAR_JUEGO: ");
 
-                listaSilvaCEN.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID});
+                listaSilvaCEN.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID });
 
                 using (var session = NHibernateHelper.OpenSession()) // Abre la sesión
                 {
                     var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
                     session.Refresh(listaJuegosSilva); // Asegúrate de cargar la colección Videojuegos si está perezosamente cargada
-
                     // Ahora puedes acceder a la colección sin el error de LazyInitializationException
                     Console.WriteLine("\n\nNúmero de videojuegos en la lista después de eliminar uno: " + listaJuegosSilva.Videojuegos.Count);
-
                     // O recorrer la colección
                     foreach (var videojuego in listaJuegosSilva.Videojuegos)
                     {
@@ -257,150 +250,93 @@ namespace InitializeDB
                     }
                 }
 
-                //Console.WriteLine("\nLista después de eliminar juego: " + listaJuegosSilvaEN.Nombre + "\n");
-                //Console.WriteLine("Videojuegos en la lista:\n");
-                //Console.WriteLine(listaJuegosSilvaEN.Videojuegos.Count + "\n");
-
-
-                //comporobacion de recuperar password
-                // Recuperar la contraseña del usuario creado
-               
-
+                //PRUEBA RECUPERAR_PASSWORD: Recuperar contraseña de Pablo
+                Console.WriteLine("\n\nPRUEBA RECUPERAR_PASSWORD");
                 int pabloID = registradocen.New_("pablo", "pablo@example.com", "hernan", false, false, "pass123");
                 RegistradoEN registradoEN3 = registradocen.GetByOID(pabloID);
+                string passwordPablo = registradoEN3.Contrasenya.ToString();
+                Console.WriteLine("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
 
-                string password = registradocen.Recuperar_password(pabloID);
-                Console.WriteLine("\n\nContraseña de Pablo recuperada: " + password);
-
-
-
-
-                //comprobacion consultar afinidades
-
-
-                using (var session = NHibernateHelper.OpenSession())
-                {
-                    // Cargar usuarios y videojuegos
-                    int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
-
-                    // Añadir videojuegos y reseñas, similar al código que ya tienes
-                    int darkSoulsID = videojuegocen.New_("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                    int unchartedID = videojuegocen.New_("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-
-                    int resenyaPablo = resenyacen.New_("Buen gameplay", "Reseña del juego", 5, 1, pabloID, darkSoulsID);
-                    int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "Reseña del juego", 4, 2, davidID, unchartedID);
-                    int resenyaDavidB = resenyacen.New_("Pedazo historia", "Reseña del juego", 7, 2, davidID, darkSoulsID);
-
-                    // Inicializar las reseñas para evitar el error de lazy loading
-                    var pablo = session.Get<RegistradoEN>(pabloID);
-                    var david = session.Get<RegistradoEN>(davidID);
-                    NHibernateUtil.Initialize(pablo.Resenya);
-                    NHibernateUtil.Initialize(david.Resenya);
-
-                    // Consultar afinidades
-                    int afinidad = registradocen.Consultar_afinidades(pabloID, davidID);
-                    Console.WriteLine("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
-                }
+                string passwordPabloRecuperada = registradocen.Recuperar_password(pabloID);
+                Console.WriteLine("CONTRASENYA PABLO RECUPERADA: " + registradoEN3.Contrasenya + "\n");
 
 
 
+                //ESTE APARTADO ESTÁ HECHO POR SILVA
+
+                ////PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
+                //Console.WriteLine("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
+                /////// Cargar usuarios y videojuegos
+                //int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
+                //// Añadir videojuegos y reseñas, similar al código que ya tienes
+                //int darkSoulsID = videojuegocen.New_("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                //int unchartedID = videojuegocen.New_("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                //int resenyaPablo = resenyacen.New_("Buen gameplay", "Reseña del juego", 5, 1, pabloID, darkSoulsID);
+                //int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "Reseña del juego", 4, 2, davidID, unchartedID);
+                //int resenyaDavidB = resenyacen.New_("Pedazo historia", "Reseña del juego", 7, 2, davidID, darkSoulsID);
+
+
+                //// Abrimos una sesión de NHibernate
+                //using (var session = NHibernateHelper.OpenSession())
+                //{
+                //    // Asegúrate de que la operación de afinidad también use la sesión abierta
+                //    registradocen.Session = session;
+
+                //    // Inicializar las reseñas para evitar el error de lazy loading
+                //    RegistradoEN registradoPablo = session.Get<RegistradoEN>(pabloID);
+                //    session.Refresh(registradoPablo);
+
+                //    // Consultar afinidades con la sesión abierta
+                //    int afinidad = registradocen.Consultar_afinidades(pabloID, davidID);
+
+                //    // Mostrar el resultado
+                //    Console.WriteLine("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
+                //}
+
+                
 
 
 
-
-
-
-
-
-
+                //ESTE APARTADO ESTÁ HECHO POR DAVID
 
                 //// Creación de usuarios para comparar afinidades
                 //int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
                 //RegistradoEN registradoDavidEN = registradocen.GetByOID(davidID);
                 //RegistradoEN registradoPabloEN = registradocen.GetByOID(pabloID);
-
                 //// Añadimos videojuegos a los que los usuarios van a hacer reseñas
                 //int darkSoulsID = videojuegocen.New_("Dark Souls", "Juego desafiante", 9, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
                 //int unchartedID = videojuegocen.New_("Uncharted", "Aventura épica", 8, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-
                 //// Creación de reseñas para el usuario David
                 //int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "El juego está muy bien hecho", 4, 2, davidID, unchartedID);
                 //int resenyaDavidB = resenyacen.New_("Historia profunda", "Una experiencia memorable", 5, 2, davidID, darkSoulsID);
-
                 //// Creación de reseñas para el usuario Pablo
                 //int resenyaPabloA = resenyacen.New_("Buen gameplay", "Jugabilidad sólida y adictiva", 5, 1, pabloID, darkSoulsID);
-
                 //// Mostrar reseñas de cada usuario
                 //Console.WriteLine("\nReseñas del usuario David:");
                 //using (var session = NHibernateHelper.OpenSession()) // Abre la sesión
                 //{
                 //    var usuarioDavid = session.Get<RegistradoEN>(davidID); // Obtenemos el usuario David por su ID
                 //    session.Refresh(usuarioDavid); // Cargar la colección de reseñas si está en modo "lazy"
-
                 //    Console.WriteLine("Número de reseñas de David: " + usuarioDavid.Resenya.Count);
                 //    foreach (var resenya in usuarioDavid.Resenya)
                 //    {
                 //        Console.WriteLine("Título: " + resenya.Titulo + " - Videojuego: " + resenya.Videojuego.Nombre);
                 //    }
                 //}
-
                 //Console.WriteLine("\nReseñas del usuario Pablo:");
                 //using (var session = NHibernateHelper.OpenSession()) // Abre la sesión
                 //{
                 //    var usuarioPablo = session.Get<RegistradoEN>(pabloID); // Obtenemos el usuario Pablo por su ID
                 //    session.Refresh(usuarioPablo); // Cargar la colección de reseñas si está en modo "lazy"
-
                 //    Console.WriteLine("Número de reseñas de Pablo: " + usuarioPablo.Resenya.Count);
                 //    foreach (var resenya in usuarioPablo.Resenya)
                 //    {
                 //        Console.WriteLine("Título: " + resenya.Titulo + " - Videojuego: " + resenya.Videojuego.Nombre);
                 //    }
                 //}
-
                 //// Llamamos al método Consultar_afinidades entre los dos usuarios y mostramos el resultado
                 //int afinidad = registradocen.Consultar_afinidades(davidID, pabloID);
                 //Console.WriteLine("\nAfinidad entre usuario David y usuario Pablo: " + afinidad);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                //// Creamos dos usuarios para comparar afinidades
-                //int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
-                //RegistradoEN registradoEN2 = registradocen.GetByOID(davidID);
-
-                //Console.WriteLine("\n\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ");
-
-                //// Anyadimos videojuegos
-                //int darkSoulsID = videojuegocen.New_("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //int unchartedID = videojuegocen.New_("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //Console.WriteLine("\n\nEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ");
-
-                //// anyadimos resenyas a cada usuario
-                //int resenya1 = resenyacen.New_("Buen gamepplay", "Resenya del juego", 5, 1, pabloID, darkSoulsID);
-
-                //int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "Resenya del juego", 4, 2, davidID, unchartedID);
-                //int resenyaDavidB = resenyacen.New_("Pedazo historia", "Resenya del juego", 7, 2, davidID, darkSoulsID);
-
-
-                //Console.WriteLine("\n\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBb ");
-
-                //// Llamamos al método Consultar_afinidades entre los dos usuarios y mostramos el resultado
-                //int afinidadA = registradocen.Consultar_afinidades(davidID, pabloID);
-                //Console.WriteLine("\n\nAfinidad entre usuario Jorge y usuario David: " + afinidadA);
-
-
 
                 /*PROTECTED REGION END*/
             }
