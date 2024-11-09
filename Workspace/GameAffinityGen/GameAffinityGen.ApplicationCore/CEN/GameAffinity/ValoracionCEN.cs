@@ -50,9 +50,9 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 {
         return _IValoracionRepository.DameValoracionesJuego (p_id_juego);
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesUsu (int p_id_juego)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesUsu (int p_id_usu)
 {
-        return _IValoracionRepository.DameValoracionesUsu (p_id_juego);
+        return _IValoracionRepository.DameValoracionesUsu (p_id_usu);
 }
 }
 }

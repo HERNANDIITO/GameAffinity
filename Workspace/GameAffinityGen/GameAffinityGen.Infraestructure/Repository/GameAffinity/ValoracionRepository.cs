@@ -301,7 +301,7 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesUsu (int p_id_juego)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesUsu (int p_id_usu)
 {
         System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> result;
         try
@@ -310,7 +310,7 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
                 //String sql = @"FROM ValoracionNH self where FROM ValoracionNH as v where v.Videojuego_valorado=:p_id_usu";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ValoracionNHdameValoracionesUsuHQL");
-                query.SetParameter ("p_id_juego", p_id_juego);
+                query.SetParameter ("p_id_usu", p_id_usu);
 
                 result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
                 SessionCommit ();
