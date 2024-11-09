@@ -109,6 +109,7 @@ namespace InitializeDB
 
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
+                //Creacion de Registrado y prueba de Aceptar_Mentoria
 
                 int jorgeID = registradocen.New_("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
                 registradocen.Aceptar_mentoria(jorgeID);
@@ -337,6 +338,88 @@ namespace InitializeDB
                 //// Llamamos al m�todo Consultar_afinidades entre los dos usuarios y mostramos el resultado
                 //int afinidad = registradocen.Consultar_afinidades(davidID, pabloID);
                 //Console.WriteLine("\nAfinidad entre usuario David y usuario Pablo: " + afinidad);
+                //Prueba de Cambio de Contrase�a
+                Console.WriteLine("Contrase�a antes de cambiar: " + jorge.Contrasenya);
+                registradocen.Cambiar_password(jorge.Id, "ElNano33");
+                jorge = registradocen.GetByOID(jorgeID);
+                Console.WriteLine("Contrase�a cambiada: " + jorge.Contrasenya);
+
+                //Crea una Lista de juegos para Jorge y Comprueba sus campos
+                juegosFavsJorgeID = listacen.New_("juegos favs", "mi lista de juegos favs", false, jorgeID);
+                juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                Console.WriteLine("Lista: " + juegosFavsJorge.Nombre);
+                Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
+                Console.WriteLine("Lista: " + registradocen.GetByOID(juegosFavsJorge.Autor_lista.Id).Nombre);
+
+                //Prueba de Cambiar_descripcion de la Lista
+                listacen.Cambiar_descripcion(juegosFavsJorgeID, "David, curra");
+                juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
+
+                //Crea un Videojuego y le a�ade una Rese�a del usuario Jorge, y la muestra por Pantalla
+                tlouID = videojuegocen.New_("TLOU", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                resenyatlouID = resenyacen.New_("Bombastico", "Es un juego excelente", 0, 0, jorgeID, tlouID);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("resenyatlou: " + resenyatlou.Titulo);
+
+                //Prueba del Alternar_notificaciones
+                Console.WriteLine("Notis: " + jorge.Notificaciones);
+                registradocen.Alternar_notificaciones(jorgeID);
+                jorge = registradocen.GetByOID(jorgeID);
+                Console.WriteLine("Notis: " + jorge.Notificaciones);
+
+                //Prueba el Cambiar_Nombre de Lista
+                listacen.Cambiar_nombre(juegosFavsJorgeID, "Peores juegos");
+                juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                Console.WriteLine("JUEGOS FAV JORGE NOMBRE CAMBIADO: " + juegosFavsJorge.Nombre);
+
+                //Prueba el Dar de Baja con el usuario Jorge
+                registradocen.Dar_de_baja(jorgeID);
+                jorge = registradocen.GetByOID(jorgeID);
+                Console.WriteLine(jorge.Nombre + "\n" + jorge.Email);
+
+                //Prueba a�adir una valoracion del usuario Jorge a un Juego
+                valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine(tlouGame.Nombre);
+                Console.WriteLine("TLOU ANTES DE JORGE: " + tlouGame.Nota_media.ToString());
+                valoracionTlouJorge = valoracionCP.New_(10, jorgeID, tlouID);
+                valoracionTlouJorge = valoracioncen.get_IValoracionRepository().GetByOID(valoracionTlouJorge.Id);
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("TLOU DESPUES DE JORGE: " + tlouGame.Nota_media.ToString());
+
+                //Prueba el cambio de Valoracion
+                Console.WriteLine("VALORACION TLOU ID: " + valoracionTlouJorge.Id);
+                valoracionCP.Modify(valoracionTlouJorge.Id, 5);
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("TLOU DESPUES DE MODIFICAR: " + tlouGame.Nota_media.ToString());
+
+                //Prueba el eliminar una Valoracion
+                valoracionCP.Destroy(valoracionTlouJorge.Id);
+                tlouGame = videojuegocen.GetByoID(tlouID);
+                Console.WriteLine("TLOU DESPUES DE DESTRUIR: " + tlouGame.Nota_media.ToString());
+
+                //Prueba el a�adir una interaccion a una Rese�a
+                interaccionCP = new InteraccionCP(new SessionCPNHibernate());
+                inter1 = interaccionCP.New_(jorgeID, true, false, resenyatlouID, resenyatlouID);
+                autorResenya = registradocen.GetByOID(inter1.Autor.Id);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("RESENYA TLOU LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine("RESENYA TLOU DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                //Modifica el dislike, poniendo un like, y lo prueba
+                interaccionCP.Modify(inter1.Id, false, true, inter1.Id_resenya);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("RESENYA TLOU MODIF LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine("RESENYA TLOU MODIF DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                //Destruye la interaccion
+                interaccionCP.Destroy(inter1.Id);
+                resenyatlou = resenyacen.GetByOID(resenyatlouID);
+                Console.WriteLine("RESENYA TLOU MODIF LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine("RESENYA TLOU MODIF DISLIKES: " + resenyatlou.Dislikes_contador);
+
+
 
                 /*PROTECTED REGION END*/
             }
