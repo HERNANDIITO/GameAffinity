@@ -301,5 +301,35 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 
         return result;
 }
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesUsu (int p_id_juego)
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ValoracionNH self where FROM ValoracionNH as v where v.Videojuego_valorado=:p_id_usu";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ValoracionNHdameValoracionesUsuHQL");
+                query.SetParameter ("p_id_juego", p_id_juego);
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in ValoracionRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

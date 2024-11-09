@@ -44,14 +44,13 @@ public void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.G
 }
 public void Aceptar_mentoria (int registrado_oid)
 {
-        RegistradoEN registradoEN = null;
+        RegistradoEN registradoEN = this.GetByOID(registrado_oid);
 
         //Initialized RegistradoEN
-        registradoEN = new RegistradoEN ();
-        registradoEN.Id = registrado_oid;
+        registradoEN.Es_mentor = true;
         //Call to RegistradoRepository
 
-        _IRegistradoRepository.Aceptar_mentoria (registradoEN);
+        _IRegistradoRepository.ModifyDefault (registradoEN);
 }
 
 public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)

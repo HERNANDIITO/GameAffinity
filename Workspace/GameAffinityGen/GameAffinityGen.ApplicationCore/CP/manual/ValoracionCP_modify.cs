@@ -30,7 +30,7 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
 
                 // EN
-                ValoracionEN valoracionEN = valoracionCEN.GetByOID(p_Valoracion_OID);
+                ValoracionEN valoracionEN = valoracionCEN.GetByOID (p_Valoracion_OID);
                 VideojuegoEN videojuegoEN = videojuegoCEN.GetByoID (valoracionEN.Videojuego_valorado.Id);
 
                 // Cambio de nota
@@ -38,26 +38,23 @@ public void Modify (int p_Valoracion_OID, int p_nota)
 
                 //recalcular media del videojuego
                 int notaMedia = 0;
-                IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego(videojuegoEN.Id);
-                foreach (ValoracionEN videojuego_valoracion in videojuegoEN.Valoracion)
-                {
-                    notaMedia += videojuego_valoracion.Nota;
+                IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego (videojuegoEN.Id);
+                foreach (ValoracionEN videojuego_valoracion in videojuegoEN.Valoracion) {
+                        notaMedia += videojuego_valoracion.Nota;
                 }
 
-                if (videojuegoEN.Valoracion.Count > 0)
-                {
-                    notaMedia = notaMedia / videojuegoEN.Valoracion.Count;
+                if (videojuegoEN.Valoracion.Count > 0) {
+                        notaMedia = notaMedia / videojuegoEN.Valoracion.Count;
                 }
-                else
-                {
-                    notaMedia = p_nota;
+                else{
+                        notaMedia = p_nota;
                 }
 
                 // Sobreescribimos la nota media
                 videojuegoEN.Nota_media = notaMedia;
 
                 // Aplicamos cambios
-                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault (videojuegoEN);
+                videojuegoCEN.get_IVideojuegoRepository ().ModifyDefault (videojuegoEN);
                 valoracionCEN.get_IValoracionRepository ().ModifyDefault (valoracionEN);
 
                 CPSession.Commit ();
