@@ -198,46 +198,6 @@ namespace InitializeDB
                 int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "Rese�a del juego", 4, 2, davidID, unchartedID);
                 int resenyaDavidB = resenyacen.New_("Pedazo historia", "Rese�a del juego", 7, 2, davidID, darkSoulsID);
 
-                //ESTE APARTADO EST� HECHO POR DAVID
-
-                //// Creaci�n de usuarios para comparar afinidades
-                //int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
-                //RegistradoEN registradoDavidEN = registradocen.GetByOID(davidID);
-                //RegistradoEN registradoPabloEN = registradocen.GetByOID(pabloID);
-                //// A�adimos videojuegos a los que los usuarios van a hacer rese�as
-                //int darkSoulsID = videojuegocen.New_("Dark Souls", "Juego desafiante", 9, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //int unchartedID = videojuegocen.New_("Uncharted", "Aventura �pica", 8, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //// Creaci�n de rese�as para el usuario David
-                //int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "El juego est� muy bien hecho", 4, 2, davidID, unchartedID);
-                //int resenyaDavidB = resenyacen.New_("Historia profunda", "Una experiencia memorable", 5, 2, davidID, darkSoulsID);
-                //// Creaci�n de rese�as para el usuario Pablo
-                //int resenyaPabloA = resenyacen.New_("Buen gameplay", "Jugabilidad s�lida y adictiva", 5, 1, pabloID, darkSoulsID);
-                //// Mostrar rese�as de cada usuario
-                //Console.WriteLine("\nRese�as del usuario David:");
-                //using (var session = NHibernateHelper.OpenSession()) // Abre la sesi�n
-                //{
-                //    var usuarioDavid = session.Get<RegistradoEN>(davidID); // Obtenemos el usuario David por su ID
-                //    session.Refresh(usuarioDavid); // Cargar la colecci�n de rese�as si est� en modo "lazy"
-                //    Console.WriteLine("N�mero de rese�as de David: " + usuarioDavid.Resenya.Count);
-                //    foreach (var resenya in usuarioDavid.Resenya)
-                //    {
-                //        Console.WriteLine("T�tulo: " + resenya.Titulo + " - Videojuego: " + resenya.Videojuego.Nombre);
-                //    }
-                //}
-                //Console.WriteLine("\nRese�as del usuario Pablo:");
-                //using (var session = NHibernateHelper.OpenSession()) // Abre la sesi�n
-                //{
-                //    var usuarioPablo = session.Get<RegistradoEN>(pabloID); // Obtenemos el usuario Pablo por su ID
-                //    session.Refresh(usuarioPablo); // Cargar la colecci�n de rese�as si est� en modo "lazy"
-                //    Console.WriteLine("N�mero de rese�as de Pablo: " + usuarioPablo.Resenya.Count);
-                //    foreach (var resenya in usuarioPablo.Resenya)
-                //    {
-                //        Console.WriteLine("T�tulo: " + resenya.Titulo + " - Videojuego: " + resenya.Videojuego.Nombre);
-                //    }
-                //}
-                //// Llamamos al m�todo Consultar_afinidades entre los dos usuarios y mostramos el resultado
-                //int afinidad = registradocen.Consultar_afinidades(davidID, pabloID);
-                //Console.WriteLine("\nAfinidad entre usuario David y usuario Pablo: " + afinidad);
                 //Prueba de Cambio de Contrase�a
                 Console.WriteLine("Contrase�a antes de cambiar: " + jorge.Contrasenya);
                 registradocen.Cambiar_password(jorge.Id, "ElNano33");
