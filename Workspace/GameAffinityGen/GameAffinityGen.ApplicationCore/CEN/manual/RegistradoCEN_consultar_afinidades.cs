@@ -15,7 +15,7 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
 {
 public partial class RegistradoCEN
 {
-public void Consultar_afinidades (int p_oid, int user_ID)
+public int Consultar_afinidades (int p_oid, int user_ID)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_consultar_afinidades) ENABLED START*/
 
@@ -28,6 +28,7 @@ public void Consultar_afinidades (int p_oid, int user_ID)
         if (otro == null) {
                 throw new Exception ("ID del usuario no existente");
         }
+
 
 
         //obtengo 2 vars: todas las resenyas del user_ID y todas las mias, y 1 var:  integers del numero de resenyas que tengo (para hacer luego el calculo)
@@ -49,7 +50,11 @@ public void Consultar_afinidades (int p_oid, int user_ID)
 
         //creo var afinidad (int), y divido el numero de resenyas que tengo entre el numero de coincidencias con mi colega, el valor que obtenga es la afinidad
         var afinidad = 0;
-        afinidad = NumResenyasMias / coincidencias;
+        if (coincidencias != 0)
+            {
+                afinidad = NumResenyasMias / coincidencias;
+            }
+        return afinidad;
 
         // que se imprima la afinidad por pantalla o algo asi
 
