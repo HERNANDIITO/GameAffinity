@@ -1,0 +1,55 @@
+﻿// Este modelo va a permitr mostrar unicamente lo que nos interesa en una pagina concreta
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+//// using nuestro
+//using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
+//using GameAffinityGen.ApplicationCore.EN.GameAffinity;
+//using GameAffinityGen.Infraestructure.Repository.GameAffinity;
+
+namespace Web_GameAffinity.Models
+{
+    public class VideojuegoViewModel
+    {
+        // Declaramos la id del Model en el ViewModel
+        [ScaffoldColumn(false)] // indicamos que no debe mostrarse en las vistas
+        public int Id { get; set; } // he quitado set porque no le veo el sentido a cambiarlo
+
+        [Display(
+            Prompt = "Da nombre al videojuego", // texto para el input vacio
+            Description = "Descripción del videojuego", // texto para el alt
+            Name = "Nombre" // nombre para el label
+            )]
+        [Required(ErrorMessage = "Es obligatorio indicar un nombre.")]
+        [StringLength(maximumLength: 200, ErrorMessage = "El nombre no puede superar 200 caracteres.")]
+        public string Nombre { get; set; }
+
+        // Declaracion de la descripcion
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta descripcion tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display( 
+            Prompt = "Describe el artículo", // texto para el input vacio
+            Description = "Descripción del artículo", // texto para el alt
+            Name = "Descripción" // nombre para el label
+            )]
+        [Required(ErrorMessage = "Es obligatorio indicar una descripcion.")]
+        [StringLength(maximumLength:200, ErrorMessage = "La descripcion no puede superar 200 caracteres.")]
+        public string Descripcion { get; set; }
+
+        //[Display(
+        //    Prompt = "Introduce el precio del artículo", // texto para el input vacio
+        //    Description = "Precio del artículo", // texto para el alt
+        //    Name = "Precio" // nombre para el label
+        //    )]
+        //[Required(ErrorMessage = "Es obligatorio indicar un precio.")]
+        //[Range(minimum:0, maximum: 200, ErrorMessage = "El precio debe estar entre 0 y 10.000.")]
+        //public string Precio { get; set; }
+
+
+        public GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum Genero { get; set; }
+
+        
+    }
+}
