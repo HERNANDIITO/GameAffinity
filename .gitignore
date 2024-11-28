@@ -15,3 +15,5 @@ Workspace/GameAffinityGen/GameAffinityGen.Infraestructure/obj/Debug/net8.0/GameA
 Workspace/GameAffinityGen/GameAffinityGen.Infraestructure/obj/Debug/net8.0/GameAffinityGen.Infraestructure.assets.cache
 Workspace/GameAffinityGen/GameAffinityGen.Infraestructure/obj/Debug/net8.0/GameAffinityGen.Infraestructure.csproj.AssemblyReference.cache
 Workspace/GameAffinityGen/GameAffinityGen.Infraestructure/obj/Debug/net8.0/GameAffinityGen.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+/Workspace/GameAffinityGen/GameAffinityGen.ApplicationCore/bin/Debug
+/Workspace/GameAffinityGen/GameAffinityGen.ApplicationCore/bin
