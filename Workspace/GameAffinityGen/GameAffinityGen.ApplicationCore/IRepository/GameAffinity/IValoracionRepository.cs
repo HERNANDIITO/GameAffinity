@@ -32,5 +32,11 @@ void Modify (ValoracionEN valoracion);
 
 void Destroy (int id
               );
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesJuego (int p_id_juego);
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> DameValoracionesUsu (int p_id_usu);
 }
 }

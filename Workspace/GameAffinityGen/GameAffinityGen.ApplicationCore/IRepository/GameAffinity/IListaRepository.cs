@@ -18,9 +18,6 @@ System.Collections.Generic.IList<ListaEN> ReadAllDefault (int first, int size);
 
 
 
-
-void AnyadirJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
-
 System.Collections.Generic.IList<ListaEN> GetAll (int first, int size);
 
 
@@ -46,5 +43,8 @@ void Cambiar_descripcion (ListaEN lista);
 void EliminarJuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 
 System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> GetByAutor (int ? user);
+
+
+void AnyadirVideojuego (int p_Lista_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 }
 }

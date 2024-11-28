@@ -66,3 +66,68 @@ C:\Users\Maximo\Source\Repos\GameAffinity\Workspace\GameAffinityGen\GameAffinity
 C:\Users\Maximo\Source\Repos\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\refint\GameAffinityGen.Infraestructure.dll
 C:\Users\Maximo\Source\Repos\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
 C:\Users\Maximo\Source\Repos\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\ref\GameAffinityGen.Infraestructure.dll
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\hibernate.cfg.xml
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.deps.json
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.dll
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.AssemblyReference.cache
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfoInputs.cache
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfo.cs
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.CoreCompileInputs.cache
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.CopyComplete
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\refint\GameAffinityGen.Infraestructure.dll
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\ooh4ria\DSM2024\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\ref\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\hibernate.cfg.xml
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.deps.json
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfo.cs
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffi.A0191E23.Up2Date
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\refint\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity-Pablo\GameAffinity-Pablo\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\ref\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\hibernate.cfg.xml
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.deps.json
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfo.cs
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffi.A0191E23.Up2Date
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\refint\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\ref\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\hibernate.cfg.xml
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.deps.json
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\bin\Debug\net8.0\GameAffinityGen.ApplicationCore.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.AssemblyInfo.cs
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.sourcelink.json
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffi.A0191E23.Up2Date
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\refint\GameAffinityGen.Infraestructure.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\GameAffinityGen.Infraestructure.pdb
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\GameAffinityGen.Infraestructure\obj\Debug\net8.0\ref\GameAffinityGen.Infraestructure.dll

@@ -21,7 +21,15 @@ public void Recuperar_password (int p_oid)
 
         // Write here your custom code...
 
-        throw new NotImplementedException ("Method Recuperar_password() not yet implemented.");
+        // Obtenemos el usuario por su ID
+        RegistradoEN registrado = this.GetByOID (p_oid);
+
+        // Verificamos si el usuario existe
+        if (registrado == null) {
+                throw new Exception ("Usuario no encontrado.");
+        }
+
+        // Devolvemos la contrase�a del usuario
 
         /*PROTECTED REGION END*/
 }

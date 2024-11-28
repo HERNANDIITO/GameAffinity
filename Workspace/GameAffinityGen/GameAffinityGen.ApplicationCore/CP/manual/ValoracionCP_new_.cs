@@ -31,6 +31,8 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                 ValoracionCEN valoracionCEN = new ValoracionCEN(CPSession.UnitRepo.ValoracionRepository);
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
 
+                VideojuegoEN videojuego = videojuegoCEN.GetByoID(p_videojuego_valorado);
+
                 int oid;
                 //Initialized ValoracionEN
                 ValoracionEN valoracionEN;
@@ -43,20 +45,43 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
                     valoracionEN.Autor_valoracion.Id = p_autor_valoracion;
                 }
 
-                VideojuegoEN videojuego = videojuegoCEN.GetByoID(p_videojuego_valorado);
-
-                int notaMedia = 0;
-                foreach (ValoracionEN videojuego_valoracion in videojuego.Valoracion)
+                if (p_videojuego_valorado != -1)
                 {
-                    notaMedia += videojuego_valoracion.Nota;
+                    valoracionEN.Videojuego_valorado = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN();
+                    valoracionEN.Videojuego_valorado.Id = p_videojuego_valorado;
                 }
 
-                notaMedia = notaMedia / videojuego.Valoracion.Count;
+
+                int notaMedia = 0;
+                IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego(p_videojuego_valorado);
+                //aqui necesitais una lista de valoraciones de un videojuego. ya que videojuego.Valoracion no es una lista
+                if (listaValoraciones.Count > 0)
+                {
+                    foreach (ValoracionEN val in listaValoraciones)
+                    {
+                        notaMedia += val.Nota;
+                    }
+                }
+                else
+                {
+                    notaMedia = p_nota;
+                }
+
+
+                if (videojuego.Valoracion.Count > 0)
+                {
+                    notaMedia = notaMedia / videojuego.Valoracion.Count;
+                }
+                else
+                {
+                    notaMedia = p_nota;
+                }
+
+                videojuego.Nota_media = notaMedia;
 
                 oid = valoracionCEN.get_IValoracionRepository().New_(valoracionEN);
                 result = valoracionCEN.get_IValoracionRepository().ReadOIDDefault(oid);
-
-
+                videojuegoCEN.get_IVideojuegoRepository().ModifyDefault(videojuego);
 
                 CPSession.Commit();
             }

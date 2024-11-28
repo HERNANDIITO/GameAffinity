@@ -31,10 +31,10 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p
         try
         {
                 CPSession.SessionInitializeTransaction ();
-                interaccionCEN = new  InteraccionCEN (CPSession.UnitRepo.InteraccionRepository);
+                interaccionCEN = new InteraccionCEN (CPSession.UnitRepo.InteraccionRepository);
                 resenyaCEN = new ResenyaCEN (CPSession.UnitRepo.ResenyaRepository);
 
-
+                ResenyaEN resenyaEN = resenyaCEN.get_IResenyaRepository ().ReadOIDDefault (p_resenya);
 
                 int oid;
                 //Initialized InteraccionEN
@@ -60,13 +60,17 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN New_ (int p
 
                 //da like
                 if (interaccionEN.Liked) {
-                        interaccionEN.Resenya.Likes_contador++;
+                        // interaccionEN.Resenya.Likes_contador++;
+                        resenyaEN.Likes_contador++;
                 }
                 else if (interaccionEN.Disliked) {
-                        interaccionEN.Resenya.Dislikes_contador++;
+                        //interaccionEN.Resenya.Dislikes_contador++;
+                        resenyaEN.Dislikes_contador++;
                 }
 
-                resenyaCEN.get_IResenyaRepository ().Modify (interaccionEN.Resenya);
+
+                // aqui salta un error GameAffinityGen.ApplicationCore.Exceptions.DataLayerException: 'Error in ResenyaRepository.'
+                resenyaCEN.get_IResenyaRepository ().Modify (resenyaEN);
 
                 oid = interaccionCEN.get_IInteraccionRepository ().New_ (interaccionEN);
 
