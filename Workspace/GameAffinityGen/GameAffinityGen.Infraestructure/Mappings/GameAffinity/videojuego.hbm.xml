@@ -107,8 +107,8 @@
 		  <query name="VideojuegoNHgetByGeneroHQL"><![CDATA[FROM VideojuegoNH WHERE genero = :genero]]></query>
 		  <query name="VideojuegoNHgetByEmpresaHQL"><![CDATA[FROM VideojuegoNH]]></query>
 		  <query name="VideojuegoNHgetByIndividuoHQL"><![CDATA[FROM VideojuegoNH]]></query>
-		  <query name="VideojuegoNHgetRecentHQL"><![CDATA[FROM VideojuegoNH WHERE fechaDeLanzamiento <= CURRENT_DATE ORDER BY fechaDeLanzamiento DESC LIMIT 20]]></query>
-		  <query name="VideojuegoNHgetPopularHQL"><![CDATA[FROM VideojuegoNH ORDER BY nota_media DESC LIMIT 10]]></query>
-		  <query name="VideojuegoNHgetLanzamientosProximosHQL"><![CDATA[FROM VideojuegoNH WHERE fechaDeLanzamiento > CURRENT_DATE ORDER BY fechaDeLanzamiento ASC LIMIT 10]]></query>
+		  <query name="VideojuegoNHgetRecienPublicadosHQL"><![CDATA[FROM VideojuegoNH v WHERE v.fechaDeLanzamiento <= CURRENT_DATE ORDER BY v.fechaDeLanzamiento DESC LIMIT 20]]></query>
+		  <query name="VideojuegoNHgetPopularHQL"><![CDATA[FROM VideojuegoNH v ORDER BY v.nota_media DESC LIMIT 10]]></query>
+		  <query name="VideojuegoNHgetLanzamientosProximosHQL"><![CDATA[FROM VideojuegoNH v WHERE v.fechaDeLanzamiento > CURRENT_DATE ORDER BY v.fechaDeLanzamiento ASC LIMIT 10]]></query>
 		</hibernate-mapping>
 	
