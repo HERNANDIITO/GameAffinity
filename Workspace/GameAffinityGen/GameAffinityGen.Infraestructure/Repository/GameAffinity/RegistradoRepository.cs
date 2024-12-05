@@ -379,7 +379,34 @@ public RegistradoEN GetByOID (int id
         return registradoEN;
 }
 
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
+        public RegistradoEN GetByEmail(string email
+                              )
+        {
+            RegistradoEN registradoEN = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                registradoEN = session.CreateCriteria<RegistradoNH>()
+                                      .Add(Restrictions.Eq("Email", email))
+                                      .UniqueResult<RegistradoEN>();
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw new DataLayerException("Error in RegistradoRepository.", ex);
+            }
+            finally
+            {
+                SessionClose();
+            }
+
+            return registradoEN;
+        }
+
+
+        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
 {
         System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> result;
         try

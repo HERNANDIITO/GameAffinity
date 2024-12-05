@@ -112,11 +112,111 @@ namespace InitializeDB
                 RegistradoEN jorge = registradocen.GetByOID(jorgeID);
                 Console.WriteLine("Es mentor: " + jorge.Es_mentor);
 
+<<<<<<< Updated upstream
                 //Prueba de Cambio de Contraseña
                 Console.WriteLine("Contraseña antes de cambiar: " + jorge.Contrasenya);
                 registradocen.Cambiar_password(jorge.Id, "ElNano33");
                 jorge = registradocen.GetByOID(jorgeID);
                 Console.WriteLine("Contraseña cambiada: " + jorge.Contrasenya);
+=======
+                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, false, "123");
+                registradocen.Aceptar_mentoria (jorgeID);
+                if (registradocen.Login("jpb80@gmail.com", "123")  !=  null)
+                {
+                    Console.WriteLine("Login correcto");
+                }
+                else
+                {
+                    Console.WriteLine("Login incorrecto");
+                }
+                    RegistradoEN jorge = registradocen.GetByEmail("jpb80@gmail.com");
+                    Console.WriteLine ("Es mentor: " + jorge.Es_mentor);
+
+                //PRUEBA ANYADIR_JUEGO: Crea dos videojuegos, los aï¿½ade a una lista y muestra la lista
+                Console.WriteLine ("\nPRUEBA ANYADIR_VIDEOJUEGO: ");
+                int superMarioID = videojuegocen.New_ ("Super Mario", "YAHOOOOO!!!", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles);
+                VideojuegoEN videojuegoMarioEn = videojuegocen.GetByoID (superMarioID);
+                Console.WriteLine ("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre + "\n");
+                Console.WriteLine ("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id + "\n");
+
+                int sonicID = videojuegocen.New_ ("Sonic Heroes", "U're too slow.", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                VideojuegoEN sonicEN = videojuegocen.GetByoID (sonicID);
+                Console.WriteLine ("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
+                Console.WriteLine ("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
+
+                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", false, false, "arrikitaun");
+                RegistradoEN silva = registradocen.GetByOID (jorgeID);
+
+                ListaCEN listaSilvaCEN = new ListaCEN (listarepository);
+                int listaJuegosSilvaID = listaSilvaCEN.New_ ("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID);
+                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID (listaJuegosSilvaID);
+
+                Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Nombre + "\n");
+                Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Descripcion + "\n");
+                Console.WriteLine ("Lista: " + registradocen.GetByOID (listaJuegosSilvaEN.Autor_lista.Id).Nombre + "\n");
+
+                listaSilvaCEN.AnyadirVideojuego (listaJuegosSilvaID, new List<int> { sonicID, superMarioID });
+
+                Console.WriteLine ("\nLista despuï¿½s de aï¿½adir juegos: " + listaJuegosSilvaEN.Nombre + "\n");
+                Console.WriteLine ("Videojuegos en la lista:\n");
+                using (var session = NHibernateHelper.OpenSession ()) // Abre la sesiï¿½n
+                {
+                        var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
+                        session.Refresh (listaJuegosSilva); // Asegï¿½rate de cargar la colecciï¿½n Videojuegos si estï¿½ perezosamente cargada
+                                                            // Ahora puedes acceder a la colecciï¿½n sin el error de LazyInitializationException
+                        Console.WriteLine ("\n\nNï¿½mero de videojuegos en la lista: " + listaJuegosSilva.Videojuegos.Count);
+                        // O recorrer la colecciï¿½n
+                        foreach (var videojuego in listaJuegosSilva.Videojuegos) {
+                                Console.WriteLine (videojuego.Nombre);
+                        }
+                }
+
+                //PRUEBA ELIMINAR_JUEGO: Elimina un juego de la lista y luego muestra la lista por consola
+                Console.WriteLine ("\nPRUEBA ELIMINAR_JUEGO: ");
+
+                listaSilvaCEN.EliminarJuego (listaJuegosSilvaID, new List<int> { sonicID });
+
+                using (var session = NHibernateHelper.OpenSession ()) // Abre la sesiï¿½n
+                {
+                        var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
+                        session.Refresh (listaJuegosSilva); // Asegï¿½rate de cargar la colecciï¿½n Videojuegos si estï¿½ perezosamente cargada
+                                                            // Ahora puedes acceder a la colecciï¿½n sin el error de LazyInitializationException
+                        Console.WriteLine ("\n\nNï¿½mero de videojuegos en la lista despuï¿½s de eliminar uno: " + listaJuegosSilva.Videojuegos.Count);
+                        // O recorrer la colecciï¿½n
+                        foreach (var videojuego in listaJuegosSilva.Videojuegos) {
+                                Console.WriteLine (videojuego.Nombre);
+                        }
+                }
+
+                //PRUEBA RECUPERAR_PASSWORD: Recuperar contraseï¿½a de Pablo
+                Console.WriteLine ("\n\nPRUEBA RECUPERAR_PASSWORD");
+                int pabloID = registradocen.New_ ("pablo", "pablo@example.com", "hernan", false, false, "pass123");
+                RegistradoEN registradoEN3 = registradocen.GetByOID (pabloID);
+                string passwordPablo = registradoEN3.Contrasenya.ToString ();
+                Console.WriteLine ("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
+
+                registradocen.Recuperar_password (pabloID);
+                Console.WriteLine ("CONTRASENYA PABLO RECUPERADA: " + registradoEN3.Contrasenya + "\n");
+
+                //ESTE APARTADO ESTï¿½ HECHO POR SILVA
+
+                //PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
+                Console.WriteLine ("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
+                ///// Cargar usuarios y videojuegos
+                int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", false, false, "pass123");
+                // Aï¿½adir videojuegos y reseï¿½as, similar al cï¿½digo que ya tienes
+                int darkSoulsID = videojuegocen.New_ ("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int unchartedID = videojuegocen.New_ ("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int resenyaPablo = resenyacen.New_ ("Buen gameplay", "Reseï¿½a del juego", 5, 1, pabloID, darkSoulsID);
+                int resenyaDavidA = resenyacen.New_ ("Excelente jugabilidad", "Reseï¿½a del juego", 4, 2, davidID, unchartedID);
+                int resenyaDavidB = resenyacen.New_ ("Pedazo historia", "Reseï¿½a del juego", 7, 2, davidID, darkSoulsID);
+
+                //Prueba de Cambio de Contraseï¿½a
+                Console.WriteLine ("Contraseï¿½a antes de cambiar: " + jorge.Contrasenya);
+                registradocen.Cambiar_password (jorge.Id, "ElNano33");
+                jorge = registradocen.GetByOID (jorgeID);
+                Console.WriteLine ("Contraseï¿½a cambiada: " + jorge.Contrasenya);
+>>>>>>> Stashed changes
 
                 //Crea una Lista de juegos para Jorge y Comprueba sus campos
                 int juegosFavsJorgeID = listacen.New_("juegos favs", "mi lista de juegos favs", false, jorgeID);

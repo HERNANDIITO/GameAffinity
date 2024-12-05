@@ -45,6 +45,8 @@ void Destroy (int id
 RegistradoEN GetByOID (int id
                        );
 
+RegistradoEN GetByEmail(string email);
+
 
 System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor);
 
