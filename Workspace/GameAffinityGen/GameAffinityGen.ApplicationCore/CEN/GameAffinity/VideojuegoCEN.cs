@@ -104,17 +104,17 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 {
         return _IVideojuegoRepository.GetByIndividuo (individuo_id);
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetRecent ()
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetRecent (string arg0)
 {
-        return _IVideojuegoRepository.GetRecent ();
+        return _IVideojuegoRepository.GetRecent (arg0);
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetPopular ()
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetPopular (string arg0)
 {
-        return _IVideojuegoRepository.GetPopular ();
+        return _IVideojuegoRepository.GetPopular (arg0);
 }
-public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetLanzamientosProximos ()
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetLanzamientosProximos (string arg0)
 {
-        return _IVideojuegoRepository.GetLanzamientosProximos ();
+        return _IVideojuegoRepository.GetLanzamientosProximos (arg0);
 }
 }
 }
