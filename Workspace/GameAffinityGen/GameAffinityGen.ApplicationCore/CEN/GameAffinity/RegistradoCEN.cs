@@ -48,8 +48,8 @@ public void Aceptar_mentoria (int registrado_oid)
 
         //Initialized RegistradoEN
         registradoEN.Es_mentor = true;
-        //Call to RegistradoRepository
 
+        //Call to RegistradoRepository
         _IRegistradoRepository.ModifyDefault (registradoEN);
 }
 
@@ -150,6 +150,16 @@ public void EliminarLista (int p_Registrado_OID, System.Collections.Generic.ILis
         //Call to RegistradoRepository
 
         _IRegistradoRepository.EliminarLista (p_Registrado_OID, p_listas_OIDs);
+}
+public string Login (int p_Registrado_OID, string p_pass)
+{
+        string result = null;
+        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (p_Registrado_OID);
+
+        if (en != null && en.Contrasenya.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
+                result = this.GetToken (en.Id);
+
+        return result;
 }
 }
 }
