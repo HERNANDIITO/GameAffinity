@@ -8,6 +8,7 @@ using GameAffinityGen.ApplicationCore.Exceptions;
 
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
+using Newtonsoft.Json;
 
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
@@ -160,6 +161,68 @@ public string Login (int p_Registrado_OID, string p_pass)
                 result = this.GetToken (en.Id);
 
         return result;
+}
+
+
+
+
+private string Encode (int id)
+{
+        var payload = new Dictionary<string, object>(){
+                { "id", id }
+        };
+        string token = Jose.JWT.Encode (payload, Utils.Util.getKey (), Jose.JwsAlgorithm.HS256);
+
+        return token;
+}
+
+public string GetToken (int id)
+{
+        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (id);
+        string token = Encode (en.Id);
+
+        return token;
+}
+public int CheckToken (string token)
+{
+        int result = -1;
+
+        try
+        {
+                string decodedToken = Utils.Util.Decode (token);
+
+
+
+                int id = (int)ObtenerID (decodedToken);
+
+                RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (id);
+
+                if (en != null && ((long)en.Id).Equals (ObtenerID (decodedToken))
+                    ) {
+                        result = id;
+                }
+                else throw new ModelException ("El token es incorrecto");
+        } catch (Exception)
+        {
+                throw new ModelException ("El token es incorrecto");
+        }
+
+        return result;
+}
+
+
+public long ObtenerID (string decodedToken)
+{
+        try
+        {
+                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object> >(decodedToken);
+                long id = (long)results ["id"];
+                return id;
+        }
+        catch
+        {
+                throw new Exception ("El token enviado no es correcto");
+        }
 }
 }
 }
