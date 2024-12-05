@@ -1,0 +1,73 @@
+.videogame {
+    position: relative;
+    width: fit-content;
+    padding: 0 !important;
+
+    border-radius: 8px;
+
+    display: flex;
+    flex-flow: column;
+
+    overflow-x: hidden;
+    transition: all .25s;
+
+
+    &:hover
+{
+    transform: scale(1.05);
+    filter: drop-shadow(0 0px 5px black);
+    transition: all .25s;
+}
+
+    .videogameName {
+                       font-size: 18px;
+                       font-weight: 80px;
+                       padding: 4px 8px;
+                       color: var(--ga-white);
+                       background: var(--ga-blue);
+                   }
+    
+    .videogameScore {
+                        position: absolute;
+
+                        top: 0;
+                        right: 0;
+
+                        margin: 0;
+
+                        width: 45px;
+                        height: 45px;
+
+                        background: var(--ga-blue);
+
+                        color: var(--ga-white);
+
+                        border-radius: 50%;
+
+                        display: flex;
+
+                        margin: 8px;
+
+                        .score {
+
+                                   height: fit-content;
+                                   width: fit-content;
+                                   margin: auto;
+                                   font-weight: bold;
+                                   
+                               }
+                    }
+
+
+}
+
+.videogameList {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-flow: row;
+    gap: 1.5rem;
+    padding: 25px 40px;
+    overflow-x: scroll;
+    overflow-y: visible;
+}
