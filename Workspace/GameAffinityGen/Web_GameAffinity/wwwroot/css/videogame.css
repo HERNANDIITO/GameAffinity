@@ -12,8 +12,7 @@
     transition: all .25s;
 
 
-    &:hover
-{
+    &:hover {
     transform: scale(1.05);
     filter: drop-shadow(0 0px 5px black);
     transition: all .25s;
@@ -21,7 +20,7 @@
 
     .videogameName {
                        font-size: 18px;
-                       font-weight: 80px;
+                       font-weight: 80;
                        padding: 4px 8px;
                        color: var(--ga-white);
                        background: var(--ga-blue);
