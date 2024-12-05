@@ -4,39 +4,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Nombre)
-                </th>
-                @* <th>
-                    @Html.DisplayNameFor(Model => Model.Empresas)
-                </th> *@
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Descripcion)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    @* <td>
-                        @Html.DisplayFor(modelItem => item.Empresas)
-                    </td> *@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descripcion)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    
+<section class="row">
+    <h1>Últimas novedades</h1>
 
-</div>
+    <div class="videogameList row">
+    @for (int i = 0; i < 20; i++)
+    {
+        <div class="col-4 col-md-3 col-lg-2 videogame">
+            <section class="videogameScore"><span class="score">9.9</span></section>
+            <img src="https://s01.riotpixels.net/data/b5/de/b5de7a3a-dbf1-4d43-8e52-811db4b4c400.jpg.240p.jpg" class="videogameImage" />
+            <span class="videogameName">Elden Ring</span>
+        </div>
+    }
+    </div>
+</section>
+
