@@ -75,6 +75,13 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
 
 
 
+/**
+ *	Atributo fechaDeLanzamiento
+ */
+private Nullable<DateTime> fechaDeLanzamiento;
+
+
+
 
 
 
@@ -138,6 +145,12 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
+public virtual Nullable<DateTime> FechaDeLanzamiento {
+        get { return fechaDeLanzamiento; } set { fechaDeLanzamiento = value;  }
+}
+
+
+
 
 
 public VideojuegoEN()
@@ -151,20 +164,20 @@ public VideojuegoEN()
 
 
 
-public VideojuegoEN(int id, string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos
+public VideojuegoEN(int id, string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos, Nullable<DateTime> fechaDeLanzamiento
                     )
 {
-        this.init (Id, nombre, descripcion, nota_media, genero, resenyas, empresas, lista, valoracion, individuos);
+        this.init (Id, nombre, descripcion, nota_media, genero, resenyas, empresas, lista, valoracion, individuos, fechaDeLanzamiento);
 }
 
 
 public VideojuegoEN(VideojuegoEN videojuego)
 {
-        this.init (videojuego.Id, videojuego.Nombre, videojuego.Descripcion, videojuego.Nota_media, videojuego.Genero, videojuego.Resenyas, videojuego.Empresas, videojuego.Lista, videojuego.Valoracion, videojuego.Individuos);
+        this.init (videojuego.Id, videojuego.Nombre, videojuego.Descripcion, videojuego.Nota_media, videojuego.Genero, videojuego.Resenyas, videojuego.Empresas, videojuego.Lista, videojuego.Valoracion, videojuego.Individuos, videojuego.FechaDeLanzamiento);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos)
+                   , string nombre, string descripcion, float nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum genero, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenyas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoracion, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos, Nullable<DateTime> fechaDeLanzamiento)
 {
         this.Id = id;
 
@@ -186,6 +199,8 @@ private void init (int id
         this.Valoracion = valoracion;
 
         this.Individuos = individuos;
+
+        this.FechaDeLanzamiento = fechaDeLanzamiento;
 }
 
 public override bool Equals (object obj)

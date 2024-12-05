@@ -113,6 +113,9 @@ public void ModifyDefault (VideojuegoEN videojuego)
 
 
 
+
+                videojuegoNH.FechaDeLanzamiento = videojuego.FechaDeLanzamiento;
+
                 session.Update (videojuegoNH);
                 SessionCommit ();
         }
@@ -177,6 +180,9 @@ public void Modify (VideojuegoEN videojuego)
 
 
                 videojuegoNH.Genero = videojuego.Genero;
+
+
+                videojuegoNH.FechaDeLanzamiento = videojuego.FechaDeLanzamiento;
 
                 session.Update (videojuegoNH);
                 SessionCommit ();
@@ -346,6 +352,93 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetByIndividuoHQL");
                 query.SetParameter ("individuo_id", individuo_id);
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in VideojuegoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetRecent ()
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH WHERE fechaDeLanzamiento <= CURRENT_DATE ORDER BY fechaDeLanzamiento DESC LIMIT 20";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetRecentHQL");
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in VideojuegoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetPopular ()
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH ORDER BY nota_media DESC LIMIT 10";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetPopularHQL");
+
+                result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in VideojuegoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetLanzamientosProximos ()
+{
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH where fechaDeLanzamiento > CURRENT_DATE ORDER BY fechaDeLanzamiento ASC LIMIT 10";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetLanzamientosProximosHQL");
 
                 result = query.List<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>();
                 SessionCommit ();

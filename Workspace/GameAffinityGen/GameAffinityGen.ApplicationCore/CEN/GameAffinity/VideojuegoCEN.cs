@@ -30,7 +30,7 @@ public IVideojuegoRepository get_IVideojuegoRepository ()
         return this._IVideojuegoRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero)
+public int New_ (string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero, Nullable<DateTime> p_fechaDeLanzamiento)
 {
         VideojuegoEN videojuegoEN = null;
         int oid;
@@ -45,13 +45,15 @@ public int New_ (string p_nombre, string p_descripcion, float p_nota_media, Game
 
         videojuegoEN.Genero = p_genero;
 
+        videojuegoEN.FechaDeLanzamiento = p_fechaDeLanzamiento;
+
 
 
         oid = _IVideojuegoRepository.New_ (videojuegoEN);
         return oid;
 }
 
-public void Modify (int p_Videojuego_OID, string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero)
+public void Modify (int p_Videojuego_OID, string p_nombre, string p_descripcion, float p_nota_media, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum p_genero, Nullable<DateTime> p_fechaDeLanzamiento)
 {
         VideojuegoEN videojuegoEN = null;
 
@@ -62,6 +64,7 @@ public void Modify (int p_Videojuego_OID, string p_nombre, string p_descripcion,
         videojuegoEN.Descripcion = p_descripcion;
         videojuegoEN.Nota_media = p_nota_media;
         videojuegoEN.Genero = p_genero;
+        videojuegoEN.FechaDeLanzamiento = p_fechaDeLanzamiento;
         //Call to VideojuegoRepository
 
         _IVideojuegoRepository.Modify (videojuegoEN);
@@ -100,6 +103,18 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByIndividuo (int ? individuo_id)
 {
         return _IVideojuegoRepository.GetByIndividuo (individuo_id);
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetRecent ()
+{
+        return _IVideojuegoRepository.GetRecent ();
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetPopular ()
+{
+        return _IVideojuegoRepository.GetPopular ();
+}
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetLanzamientosProximos ()
+{
+        return _IVideojuegoRepository.GetLanzamientosProximos ();
 }
 }
 }

@@ -41,5 +41,14 @@ System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity
 
 
 System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetByIndividuo (int ? individuo_id);
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetRecent ();
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetPopular ();
+
+
+System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetLanzamientosProximos ();
 }
 }
