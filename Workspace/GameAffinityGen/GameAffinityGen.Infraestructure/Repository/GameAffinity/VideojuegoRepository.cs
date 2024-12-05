@@ -378,7 +378,7 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH v WHERE v.FechaDeLanzamiento <= CURRENT_DATE ORDER BY v.FechaDeLanzamiento DESC";
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH v WHERE v.FechaDeLanzamiento <= current_date() ORDER BY v.FechaDeLanzamiento DESC";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetRecienPublicadosHQL");
 
@@ -436,7 +436,7 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH v WHERE v.FechaDeLanzamiento > CURRENT_DATE ORDER BY v.FechaDeLanzamiento ASC";
+                //String sql = @"FROM VideojuegoNH self where FROM VideojuegoNH v WHERE v.FechaDeLanzamiento > current_date() ORDER BY v.FechaDeLanzamiento ASC";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("VideojuegoNHgetLanzamientosProximosHQL");
 
