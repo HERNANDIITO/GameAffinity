@@ -22,9 +22,37 @@ namespace Web_GameAffinity.Controllers
         {
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-            IList<VideojuegoEN> listaVideojuegos = videojuegoCEN.GetAll(0, -1);
+            IList<VideojuegoEN> ultimasNovedades = videojuegoCEN.GetRecienPublicados();
+            IList<VideojuegoEN> popular = videojuegoCEN.GetPopular();
+            IList<VideojuegoEN> proximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
 
-            return View(listaVideojuegos);
+            return View(ultimasNovedades);
+        }
+
+        public IActionResult getUltimasNovedades()
+        {
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<VideojuegoEN> ultimasNovedades = videojuegoCEN.GetRecienPublicados();
+
+            return View(ultimasNovedades);
+        }
+
+        public IActionResult getPopular()
+        {
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<VideojuegoEN> popular = videojuegoCEN.GetPopular();
+
+            return View(popular);
+        }
+        public IActionResult getProximosLanzamientos()
+        {
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<VideojuegoEN> proximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
+
+            return View(proximosLanzamientos);
         }
 
         public IActionResult Privacy()

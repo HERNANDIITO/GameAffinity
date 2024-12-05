@@ -110,7 +110,7 @@ public static void InitializeData ()
 
                 //Creacion de Registrado y prueba de Aceptar_Mentoria
 
-                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
+                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgsasadsa");
                 registradocen.Aceptar_mentoria (jorgeID);
                 RegistradoEN jorge = registradocen.GetByOID (jorgeID);
 
@@ -118,12 +118,12 @@ public static void InitializeData ()
 
                 //PRUEBA ANYADIR_JUEGO: Crea dos videojuegos, los a�ade a una lista y muestra la lista
                 Console.WriteLine ("\nPRUEBA ANYADIR_VIDEOJUEGO: ");
-                int superMarioID = videojuegocen.New_ ("Super Mario", "YAHOOOOO!!!", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles);
+                int superMarioID = videojuegocen.New_ ("Super Mario", "YAHOOOOO!!!", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles, DateTime.Parse("06/04/2025"));
                 VideojuegoEN videojuegoMarioEn = videojuegocen.GetByoID (superMarioID);
                 Console.WriteLine ("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre + "\n");
                 Console.WriteLine ("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id + "\n");
 
-                int sonicID = videojuegocen.New_ ("Sonic Heroes", "U're too slow.", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int sonicID = videojuegocen.New_ ("Sonic Heroes", "U're too slow.", 10, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion, DateTime.Parse("15/04/2012"));
                 VideojuegoEN sonicEN = videojuegocen.GetByoID (sonicID);
                 Console.WriteLine ("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
                 Console.WriteLine ("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
@@ -189,8 +189,8 @@ public static void InitializeData ()
                 ///// Cargar usuarios y videojuegos
                 int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", false, false, "pass123");
                 // A�adir videojuegos y rese�as, similar al c�digo que ya tienes
-                int darkSoulsID = videojuegocen.New_ ("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                int unchartedID = videojuegocen.New_ ("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int darkSoulsID = videojuegocen.New_ ("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion, DateTime.Parse("06/04/2020"));
+                int unchartedID = videojuegocen.New_ ("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion, DateTime.Parse("06/04/2025"));
                 int resenyaPablo = resenyacen.New_ ("Buen gameplay", "Rese�a del juego", 5, 1, pabloID, darkSoulsID);
                 int resenyaDavidA = resenyacen.New_ ("Excelente jugabilidad", "Rese�a del juego", 4, 2, davidID, unchartedID);
                 int resenyaDavidB = resenyacen.New_ ("Pedazo historia", "Rese�a del juego", 7, 2, davidID, darkSoulsID);
@@ -214,7 +214,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Lista: " + juegosFavsJorge.Descripcion);
 
                 //Crea un Videojuego y le a�ade una Rese�a del usuario Jorge, y la muestra por Pantalla
-                int tlouID = videojuegocen.New_ ("TLOU", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int tlouID = videojuegocen.New_ ("TLOU", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion, DateTime.Parse("06/04/2013"));
                 int resenyatlouID = resenyacen.New_ ("Bombastico", "Es un juego excelente", 0, 0, jorgeID, tlouID);
                 ResenyaEN resenyatlou = resenyacen.GetByOID (resenyatlouID);
                 Console.WriteLine ("resenyatlou: " + resenyatlou.Titulo);
