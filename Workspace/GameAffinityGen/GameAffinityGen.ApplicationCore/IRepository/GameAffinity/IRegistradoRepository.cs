@@ -45,8 +45,10 @@ void Destroy (int id
 RegistradoEN GetByOID (int id
                        );
 
+        RegistradoEN GetByEmail(string email);
 
-System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor);
+
+        System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor);
 
 
 void DarLike (int p_Registrado_OID, System.Collections.Generic.IList<int> p_interaccion_OIDs);
