@@ -1,0 +1,80 @@
+﻿@model Web_GameAffinity.Models.RegistroRegistradoViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-container">
+    <div class="titles-container">
+        <div class="title">
+            <h2>Registro</h2>
+        </div>
+    </div>
+        <div class="login-container">
+            <form asp-action="Registro" class="login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="inputs-container">
+                    <div>
+                        <label asp-for="nombre" class="label">Nombre<span class="need">*</span></label>
+                        <input asp-for="nombre" class="form-control form-control-lg" id="exampleInputNombre" />
+                        <span asp-validation-for="nombre" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="email" class="label">Email<span class="need">*</span></label>
+                        <input asp-for="email" class="form-control form-control-lg" id="exampleInputEmail1" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="nick" class="label">Nick<span class="need">*</span></label>
+                        <input asp-for="nick" class="form-control form-control-lg" id="exampleInputNick" />
+                        <span asp-validation-for="nick" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="password" class="label">Contraseña<span class="need">*</span></label>
+                        <input asp-for="password" class="form-control form-control-lg" id="exampleInputPassword1" />
+                        <span asp-validation-for="password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="login-button">
+                    <input type="submit" value="Registrarse" class="btn btn-primary btn-sm" />
+                    <span><a>¿Ya tienes cuenta? Inicia sesión</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="errorModalLabel">Error al realizar el registro</h4>
+                <button type="button" class="close" onclick="$('#myModal').modal('hide');" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Credenciales inválidas. Por favor, inténtelo de nuevo.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="$('#myModal').modal('hide');">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function() {
+            var showErrorModal = @Model.ShowErrorModal.ToString().ToLower();
+            console.log("ShowErrorModal: " + showErrorModal);
+            if (showErrorModal == true) {
+                $('#myModal').modal('show');
+            }
+        });
+    </script>
+}

@@ -56,7 +56,7 @@ public void Aceptar_mentoria (int registrado_oid)
         _IRegistradoRepository.ModifyDefault (registradoEN);
 }
 
-public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public int New_ (string p_nombre, string p_email, string p_nick, String p_contrasenya)
 {
         RegistradoEN registradoEN = null;
         int oid;
@@ -69,9 +69,9 @@ public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mento
 
         registradoEN.Nick = p_nick;
 
-        registradoEN.Es_mentor = p_es_mentor;
+        registradoEN.Es_mentor = false;
 
-        registradoEN.Notificaciones = p_notificaciones;
+        registradoEN.Notificaciones = true;
 
         registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
 

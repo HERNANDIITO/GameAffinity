@@ -110,7 +110,7 @@ public static void InitializeData ()
 
                 //Creacion de Registrado y prueba de Aceptar_Mentoria
 
-                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgsasadsa");
+                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", "wdefrgsasadsa");
                 registradocen.Aceptar_mentoria (jorgeID);
                 RegistradoEN jorge = registradocen.GetByOID (jorgeID);
 
@@ -140,7 +140,7 @@ public static void InitializeData ()
                 Console.WriteLine ("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
                 Console.WriteLine ("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
 
-                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", false, false, "arrikitaun");
+                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", "arrikitaun");
                 RegistradoEN silva = registradocen.GetByOID (jorgeID);
 
                 ListaCEN listaSilvaCEN = new ListaCEN (listarepository);
@@ -186,7 +186,7 @@ public static void InitializeData ()
 
                 //PRUEBA RECUPERAR_PASSWORD: Recuperar contrase�a de Pablo
                 Console.WriteLine ("\n\nPRUEBA RECUPERAR_PASSWORD");
-                int pabloID = registradocen.New_ ("pablo", "pablo@example.com", "hernan", false, false, "pass123");
+                int pabloID = registradocen.New_ ("pablo", "pablo@example.com", "hernan", "pass123");
                 RegistradoEN registradoEN3 = registradocen.GetByOID (pabloID);
                 string passwordPablo = registradoEN3.Contrasenya.ToString ();
                 Console.WriteLine ("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
@@ -199,7 +199,7 @@ public static void InitializeData ()
                 //PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
                 Console.WriteLine ("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
                 ///// Cargar usuarios y videojuegos
-                int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", false, false, "pass123");
+                int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", "pass123");
                 // A�adir videojuegos y rese�as, similar al c�digo que ya tienes
                 int darkSoulsID = videojuegocen.New_ (
                     "darkSouls",

@@ -38,6 +38,32 @@ namespace Web_GameAffinity.Controllers
         }
 
 
+
+        // GET: RegistradoController/Registro
+        public ActionResult Registro()
+        {
+            return View(new RegistroRegistradoViewModel { nombre = string.Empty, email = string.Empty, nick = string.Empty, password = string.Empty, ShowErrorModal = false });
+        }
+
+        // POST: RegistradoController/Login
+        [HttpPost]
+        public ActionResult Registro(RegistroRegistradoViewModel model)
+        {
+            RegistradoRepository repo = new RegistradoRepository();
+            RegistradoCEN cen = new RegistradoCEN(repo);
+
+            if (cen.New_(model.nombre, model.email, model.nick, model.password) != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                model.ShowErrorModal = true;
+                return View(model);
+            }
+        }
+
+
         // GET: RegistradoController/Details/5
         public ActionResult Details(int id)
         {
