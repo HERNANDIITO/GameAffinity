@@ -17,7 +17,16 @@ html {
 
 html, body {
   background: var(--ga-white);
+}
 
+.title {
+  font-family: 'Berlin Sans FB';
+  font-weight: bolder
+}
+
+.nav-link {
+font-size: 1.5rem;
+font-family: 'Berlin Sans FB'
 }
 
 html {
