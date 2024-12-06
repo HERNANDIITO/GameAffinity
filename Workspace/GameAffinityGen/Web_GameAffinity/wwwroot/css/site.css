@@ -20,7 +20,7 @@ html, body {
   background: var(--ga-white);
 }
 
-.title {
+.nav-title {
   font-family: 'Berlin Sans FB';
   font-weight: bolder
 }
