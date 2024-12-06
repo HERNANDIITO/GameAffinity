@@ -17,7 +17,7 @@ namespace Web_GameAffinity.Controllers
         // GET: RegistradoController/Login
         public ActionResult Login()
         {
-            return View(new LoginRegistradoViewModel { email = string.Empty, password = string.Empty, ShowErrorModal = false });
+            return View(new LoginRegistradoViewModel { email = string.Empty, password = string.Empty });
         }
 
         // POST: RegistradoController/Login
@@ -28,6 +28,7 @@ namespace Web_GameAffinity.Controllers
             RegistradoCEN cen = new RegistradoCEN(repo);
             if (cen.Login(model.email, model.password) != null)
             {
+                HttpContext.Session.Set("email", model.email);
                 return RedirectToAction("Index", "Home");
             }
             else
