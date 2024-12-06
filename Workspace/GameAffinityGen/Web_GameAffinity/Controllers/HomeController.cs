@@ -22,11 +22,15 @@ namespace Web_GameAffinity.Controllers
         {
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-            IList<VideojuegoEN> ultimasNovedades = videojuegoCEN.GetRecienPublicados();
-            IList<VideojuegoEN> popular = videojuegoCEN.GetPopular();
-            IList<VideojuegoEN> proximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
 
-            return View(ultimasNovedades);
+            var viewModel = new HomeViewModel
+            {
+                UltimasNovedades = videojuegoCEN.GetRecienPublicados(),
+                Popular = videojuegoCEN.GetPopular(),
+                ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos()
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult getUltimasNovedades()

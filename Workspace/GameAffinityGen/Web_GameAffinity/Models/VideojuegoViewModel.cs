@@ -38,6 +38,17 @@ namespace Web_GameAffinity.Models
         [StringLength(maximumLength:200, ErrorMessage = "La descripcion no puede superar 200 caracteres.")]
         public string Descripcion { get; set; }
 
+        // Declaracion de la imagen
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Describe el videojuego", // texto para el input vacio
+            Description = "Descripción del videojuego", // texto para el alt
+            Name = "Descripción" // nombre para el label
+            )]
+        [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
+        public string Imagen { get; set; }
+
         // Declaracion de la descripcion
         // Display define unos atributos que nos ayudan a la hora de mostrar esta descripcion tanto si 
         // es de la BD o si es un formulario para introducirla
@@ -68,8 +79,6 @@ namespace Web_GameAffinity.Models
         //[Required(ErrorMessage = "Es obligatorio indicar un precio.")]
         //[Range(minimum:0, maximum: 200, ErrorMessage = "El precio debe estar entre 0 y 10.000.")]
         //public string Precio { get; set; }
-
-
         public GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum Genero { get; set; }
 
         

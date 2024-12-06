@@ -1,21 +1,33 @@
 ﻿<!-- Obtenemos referencia a los videojuegos -->
-@model IEnumerable<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>
+@model Web_GameAffinity.Models.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <section class="row">
     <h1>Últimas novedades</h1>
-
     <div class="videogameList row">
-        @foreach (var item in Model)
+        @foreach (var item in Model.UltimasNovedades)
         {
-            <div class="col-4 col-md-3 col-lg-2 videogame">
-                <section class="videogameScore"><span class="score">@Html.DisplayFor(modelItem => item.Nota_media)</span></section>
-                <img src="https://s01.riotpixels.net/data/b5/de/b5de7a3a-dbf1-4d43-8e52-811db4b4c400.jpg.240p.jpg" class="videogameImage" />
-                <span class="videogameName">@Html.DisplayFor(modelItem => item.Nombre)</span>
-            </div>
+            @Html.Partial("videojuegoCard", item)
         }
     </div>
 </section>
-
+<section class="row">
+    <h1>Próximos lanzamientos</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.ProximosLanzamientos)
+        {
+            @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>
+<section class="row">
+    <h1>Mejor puntuados</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.Popular)
+        {
+            @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>
