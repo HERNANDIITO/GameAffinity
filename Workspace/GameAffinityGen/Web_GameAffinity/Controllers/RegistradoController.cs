@@ -17,7 +17,7 @@ namespace Web_GameAffinity.Controllers
         // GET: RegistradoController/Login
         public ActionResult Login()
         {
-            return View();
+            return View(new LoginRegistradoViewModel { email = string.Empty, password = string.Empty, ShowErrorModal = false });
         }
 
         // POST: RegistradoController/Login
@@ -32,7 +32,8 @@ namespace Web_GameAffinity.Controllers
             }
             else
             {
-                return View();
+                model.ShowErrorModal = true;
+                return View(model);
             }
         }
 

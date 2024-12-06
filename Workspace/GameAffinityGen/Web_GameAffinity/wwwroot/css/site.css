@@ -1,5 +1,6 @@
 @import 'videogame.css';
-@import 'theme.css'
+@import 'theme.css';
+@import 'Login.css';
 
 html {
   font-size: 14px;
