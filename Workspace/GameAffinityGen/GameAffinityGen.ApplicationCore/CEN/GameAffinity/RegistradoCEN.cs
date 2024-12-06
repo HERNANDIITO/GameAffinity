@@ -75,8 +75,6 @@ public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mento
 
         registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
 
-
-
         oid = _IRegistradoRepository.New_ (registradoEN);
         return oid;
 }
