@@ -116,6 +116,9 @@ public void ModifyDefault (VideojuegoEN videojuego)
 
                 videojuegoNH.FechaDeLanzamiento = videojuego.FechaDeLanzamiento;
 
+
+                videojuegoNH.Imagen = videojuego.Imagen;
+
                 session.Update (videojuegoNH);
                 SessionCommit ();
         }
@@ -183,6 +186,9 @@ public void Modify (VideojuegoEN videojuego)
 
 
                 videojuegoNH.FechaDeLanzamiento = videojuego.FechaDeLanzamiento;
+
+
+                videojuegoNH.Imagen = videojuego.Imagen;
 
                 session.Update (videojuegoNH);
                 SessionCommit ();

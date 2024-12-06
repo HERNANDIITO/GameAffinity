@@ -354,25 +354,27 @@
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_Zv0gAJHzEe-rGeD3KQ9geQ" name="lista_0_registrado" alias="lista_0_registrado" rolOrigin="_Zv0gAZHzEe-rGeD3KQ9geQ" rolTarget="_Zv0gApHzEe-rGeD3KQ9geQ" classTarget="_DgzaQIvLEe-pLNMe1S3yHw" classOrigin="_aYpzcIsVEe-275Ydh23WGw" rolOriginName="listas" rolTargetName="autor_lista" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_LGW_kJLgEe-_daHzEkTCPg" name="Videojuego" alias="Videojuego" asociationTarget="_ghtG0JLgEe-_daHzEkTCPg _mOKTUJLgEe-_daHzEkTCPg _oYD_EJLgEe-_daHzEkTCPg _2FZRwJLgEe-_daHzEkTCPg" associationOrigin="_6EYJEJxSEe-6ftHalwCqnA">
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_TuYlUZLgEe-_daHzEkTCPg" name="new" operationType="New" type="Object" typeObject="_LGW_kJLgEe-_daHzEkTCPg">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opMLMpEe--GKy4JiS8nw" name="p_nombre"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opMbMpEe--GKy4JiS8nw" name="p_descripcion"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opMrMpEe--GKy4JiS8nw" name="p_nota_media" type="Float"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opM7MpEe--GKy4JiS8nw" name="p_genero" type="Enum" typeEnum="_WVcgEJdzEe-CS8zeF6JosQ"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opNLMpEe--GKy4JiS8nw" name="p_fechaDeLanzamiento" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxQtwLPCEe-_VaXTRH6JuQ" name="p_nombre"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxQtwbPCEe-_VaXTRH6JuQ" name="p_descripcion"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxQtwrPCEe-_VaXTRH6JuQ" name="p_nota_media" type="Float"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxQtw7PCEe-_VaXTRH6JuQ" name="p_genero" type="Enum" typeEnum="_WVcgEJdzEe-CS8zeF6JosQ"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxQtxLPCEe-_VaXTRH6JuQ" name="p_fechaDeLanzamiento" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxQtxbPCEe-_VaXTRH6JuQ" name="p_imagen"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_TuYlVpLgEe-_daHzEkTCPg" name="modify" operationType="Modifier" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opNbMpEe--GKy4JiS8nw" name="p_Videojuego_OID" type="OID" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opNrMpEe--GKy4JiS8nw" name="p_nombre"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opN7MpEe--GKy4JiS8nw" name="p_descripcion"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opOLMpEe--GKy4JiS8nw" name="p_nota_media" type="Float"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opObMpEe--GKy4JiS8nw" name="p_genero" type="Enum" typeEnum="_WVcgEJdzEe-CS8zeF6JosQ"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opOrMpEe--GKy4JiS8nw" name="p_fechaDeLanzamiento" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaewLPCEe-_VaXTRH6JuQ" name="p_Videojuego_OID" type="OID" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaewbPCEe-_VaXTRH6JuQ" name="p_nombre"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaewrPCEe-_VaXTRH6JuQ" name="p_descripcion"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Xxaew7PCEe-_VaXTRH6JuQ" name="p_nota_media" type="Float"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaexLPCEe-_VaXTRH6JuQ" name="p_genero" type="Enum" typeEnum="_WVcgEJdzEe-CS8zeF6JosQ"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaexbPCEe-_VaXTRH6JuQ" name="p_fechaDeLanzamiento" type="Date"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaexrPCEe-_VaXTRH6JuQ" name="p_imagen"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_TuYlXJLgEe-_daHzEkTCPg" name="destroy" operationType="Destroy" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opO7MpEe--GKy4JiS8nw" name="p_Videojuego_OID" type="OID" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Xxaex7PCEe-_VaXTRH6JuQ" name="p_Videojuego_OID" type="OID" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_U8sykJLgEe-_daHzEkTCPg" name="getByoID" operationType="ReadOID" type="Object" typeObject="_LGW_kJLgEe-_daHzEkTCPg">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_N2opPLMpEe--GKy4JiS8nw" name="p_Videojuego_OID" type="OID" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_XxaeyLPCEe-_VaXTRH6JuQ" name="p_Videojuego_OID" type="OID" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_X00PMJLgEe-_daHzEkTCPg" name="getAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="_LGW_kJLgEe-_daHzEkTCPg"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_s9Q6IJd2Ee-CS8zeF6JosQ" name="getByGenero" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_LGW_kJLgEe-_daHzEkTCPg" filter="FROM VideojuegoNH WHERE genero = :genero" automaticSynchronize="false">
@@ -398,6 +400,7 @@
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_2FZRwpLgEe-_daHzEkTCPg" alias="idValoracion" lower="0" upper="*" associationTarget="_2FZRwJLgEe-_daHzEkTCPg" name="valoracion" type="Object" collectionType="List"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_6EYJEZxSEe-6ftHalwCqnA" alias="idIndividuo" lower="0" upper="*" associationOrigin="_6EYJEJxSEe-6ftHalwCqnA" name="individuos" type="Object"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_MBlzILMpEe--GKy4JiS8nw" alias="fechaDeLanzamiento" visibility="Public" name="fechaDeLanzamiento" type="Date"/>
+      <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_U75qMLPCEe-_VaXTRH6JuQ" alias="imagen" name="imagen"/>
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_ghtG0JLgEe-_daHzEkTCPg" name="videojuego_reseña" alias="videojuego_reseña" rolOrigin="_ghz0gJLgEe-_daHzEkTCPg" rolTarget="_ghz0gZLgEe-_daHzEkTCPg" classTarget="_LGW_kJLgEe-_daHzEkTCPg" classOrigin="_zOFkQIvLEe-pLNMe1S3yHw" rolOriginName="videojuego" rolTargetName="resenyas" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_mOKTUJLgEe-_daHzEkTCPg" name="videojuego_empresa" alias="videojuego_empresa" rolOrigin="_mOKTUZLgEe-_daHzEkTCPg" rolTarget="_mOKTUpLgEe-_daHzEkTCPg" classTarget="_LGW_kJLgEe-_daHzEkTCPg" classOrigin="_AuOg8Iv3Ee-QdJTiQzsgXw" rolOriginName="videojuegos" rolTargetName="empresas" rolOriginMultiplicity="0..*" rolTargetMultiplicity="0..*"/>
@@ -1284,6 +1287,10 @@
         <children xmi:type="notation:Shape" xmi:id="_MBlzLrMpEe--GKy4JiS8nw" type="3003" element="_MBlzILMpEe--GKy4JiS8nw" fontName="Segoe UI">
           <children xmi:type="notation:DecorationNode" xmi:id="_MBlzMLMpEe--GKy4JiS8nw" type="5007"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MBlzL7MpEe--GKy4JiS8nw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_U8oC8LPCEe-_VaXTRH6JuQ" type="3003" element="_U75qMLPCEe-_VaXTRH6JuQ" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_U8oC8rPCEe-_VaXTRH6JuQ" type="5007"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U8oC8bPCEe-_VaXTRH6JuQ"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_LGW_mJLgEe-_daHzEkTCPg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_LGW_mZLgEe-_daHzEkTCPg"/>

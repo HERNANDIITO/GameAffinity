@@ -27,6 +27,9 @@
 					<property name="FechaDeLanzamiento" type="date"> 
 						<column name="fechaDeLanzamiento"  not-null="true"/>
 					</property>
+					<property name="Imagen" type="string"> 
+						<column name="imagen"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -89,6 +92,8 @@
       						</many-to-many>
     					</bag>
 			
+			
+					
 					
 					
 					
