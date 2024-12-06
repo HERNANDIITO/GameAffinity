@@ -32,7 +32,6 @@ namespace Web_GameAffinity.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Usuario o contraseña incorrectos" + res);
                 return View();
             }
         }
