@@ -30,13 +30,35 @@ namespace Web_GameAffinity.Models
         // Display define unos atributos que nos ayudan a la hora de mostrar esta descripcion tanto si 
         // es de la BD o si es un formulario para introducirla
         [Display( 
-            Prompt = "Describe el artículo", // texto para el input vacio
-            Description = "Descripción del artículo", // texto para el alt
+            Prompt = "Describe el videojuego", // texto para el input vacio
+            Description = "Descripción del videojuego", // texto para el alt
             Name = "Descripción" // nombre para el label
             )]
         [Required(ErrorMessage = "Es obligatorio indicar una descripcion.")]
         [StringLength(maximumLength:200, ErrorMessage = "La descripcion no puede superar 200 caracteres.")]
         public string Descripcion { get; set; }
+
+        // Declaracion de la descripcion
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta descripcion tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Nota media del videojuego", // texto para el input vacio
+            Description = "Nota media del videojuego", // texto para el alt
+            Name = "Nota media" // nombre para el label
+            )]
+        [Required(ErrorMessage = "Es obligatorio indicar una Nota media.")]
+        public float NotaMedia { get; set; }
+
+        // Declaracion de la descripcion
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta descripcion tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Fecha de lanzamiento del videojuego", // texto para el input vacio
+            Description = "Fecha de lanzamiento del videojuego", // texto para el alt
+            Name = "Fecha de lanzamiento" // nombre para el label
+            )]
+        [Required(ErrorMessage = "Es obligatorio indicar una Fecha de lanzamiento.")]
+        public DateTime? FechaLanzamiento { get; set; }
 
         //[Display(
         //    Prompt = "Introduce el precio del artículo", // texto para el input vacio
