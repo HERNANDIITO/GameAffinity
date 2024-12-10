@@ -2,6 +2,7 @@
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 using Web_GameAffinity.Models;
 
 namespace Web_GameAffinity.Controllers
@@ -24,10 +25,13 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public ActionResult Login(LoginRegistradoViewModel model)
         {
+            string token = null;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
-            if (cen.Login(model.email, model.password) != null)
+            token = cen.Login(model.email, model.password);
+            if (token != null)
             {
+                HttpContext.Session.SetString("token", token);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -35,6 +39,13 @@ namespace Web_GameAffinity.Controllers
                 model.ShowErrorModal = true;
                 return View(model);
             }
+        }
+
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("token");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -65,9 +76,25 @@ namespace Web_GameAffinity.Controllers
 
 
         // GET: RegistradoController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
-            return View();
+            var token = HttpContext.Session.GetString("token");
+            if (string.IsNullOrEmpty(token))
+            {
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            RegistradoRepository repo = new RegistradoRepository();
+            RegistradoCEN cen = new RegistradoCEN(repo);
+            int userId = cen.CheckToken(token);
+
+            if (userId == -1)
+            {
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            var user = cen.GetByOID(userId);
+            return View(user);
         }
 
         // GET: RegistradoController/Create
