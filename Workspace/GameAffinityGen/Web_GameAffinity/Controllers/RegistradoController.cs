@@ -60,11 +60,14 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public ActionResult Registro(RegistroRegistradoViewModel model)
         {
+            int NuevoUser = 0;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
+            NuevoUser = cen.New_(model.nombre, model.email, model.nick, model.password);
 
-            if (cen.New_(model.nombre, model.email, model.nick, model.password) != null)
+            if (NuevoUser != 0)
             {
+                HttpContext.Session.SetString("token", cen.GetToken(NuevoUser));
                 return RedirectToAction("Index", "Home");
             }
             else
