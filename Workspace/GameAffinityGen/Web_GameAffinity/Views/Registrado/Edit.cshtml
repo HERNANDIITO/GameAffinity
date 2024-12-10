@@ -1,0 +1,85 @@
+﻿@model Web_GameAffinity.Models.ConfiguracionPerfilViewModel
+
+@{
+    ViewData["Title"] = "Configuración";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Modificar datos de perfil</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nick" class="control-label"></label>
+                <input asp-for="nick" class="form-control" />
+                <span asp-validation-for="nick" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="notificaciones" /> @Html.DisplayNameFor(model => model.notificaciones)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="errorModalLabel">Cambios realizados con éxito</h4>
+                <button type="button" class="close" onclick="$('#myModal').modal('hide');" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Los cambios se han guardado correctamente.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="redirectToHome()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            var showSaveModal = @Model.ShowSaveModal.ToString().ToLower();
+            console.log("ShowSaveModal: " + showSaveModal);
+            if (showSaveModal) {
+                $('#myModal').modal('show');
+            }
+        });
+
+
+        function redirectToHome() {
+            window.location.href = '/Home/Index';
+        }
+    </script>
+}

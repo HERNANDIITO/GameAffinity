@@ -1,14 +1,25 @@
 ﻿using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
+using GameAffinityGen.ApplicationCore.CP.GameAffinity;
+using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NHibernate;
+using NHibernate.Engine;
 using NuGet.Common;
+using System.Reflection;
+using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+
 
 namespace Web_GameAffinity.Controllers
 {
     public class RegistradoController : Controller
     {
+
+        private GenericSessionCP CPSession;
+
+
         // GET: RegistradoController
         public ActionResult Index()
         {
@@ -56,7 +67,7 @@ namespace Web_GameAffinity.Controllers
             return View(new RegistroRegistradoViewModel { nombre = string.Empty, email = string.Empty, nick = string.Empty, password = string.Empty, ShowErrorModal = false });
         }
 
-        // POST: RegistradoController/Login
+        // POST: RegistradoController/Registro
         [HttpPost]
         public ActionResult Registro(RegistroRegistradoViewModel model)
         {
@@ -124,17 +135,28 @@ namespace Web_GameAffinity.Controllers
         // GET: RegistradoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            RegistradoRepository regRepo = new RegistradoRepository();
+            RegistradoCEN regCen = new RegistradoCEN(regRepo);
+            RegistradoEN regEn = regCen.GetByOID(id);
+            ConfiguracionPerfilViewModel configView = new RegistradoAssembler().ConvertirENToViewModel(regEn);
+
+            return View(configView);
         }
+
 
         // POST: RegistradoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ConfiguracionPerfilViewModel configView)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                RegistradoRepository regRepo = new RegistradoRepository();
+                RegistradoCEN regCEN = new RegistradoCEN(regRepo);
+                regCEN.Modify(id, configView.nombre, configView.email, configView.nick, configView.mentor, configView.notificaciones, configView.password);
+                configView.ShowSaveModal = true;
+
+                return View(configView);
             }
             catch
             {

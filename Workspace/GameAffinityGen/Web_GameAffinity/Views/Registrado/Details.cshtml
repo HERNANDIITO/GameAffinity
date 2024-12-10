@@ -34,5 +34,14 @@
         <dd class="col-sm-10">
             @(Model.Es_mentor ? "Sí" : "No")
         </dd>
+        <dt class="col-sm-2">
+            Notificaciones
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Notificaciones ? "Activadas" : "Desactivadas")
+        </dd>
+        <dd class="col-sm-10">
+            @Html.ActionLink("Configuración", "Edit", new{id = Model.Id})
+        </dd>
     </dl>
 </div>

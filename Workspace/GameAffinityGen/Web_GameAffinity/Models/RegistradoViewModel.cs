@@ -49,4 +49,41 @@ namespace Web_GameAffinity.Models
 
         public bool ShowErrorModal { get; set; } = false;
     }
+
+
+
+
+    public class ConfiguracionPerfilViewModel
+    {
+        [ScaffoldColumn(false)]
+        public int id { get; set; }
+
+        [Display(Prompt = "Nombre del User", Description = "Nombre del usuario", Name = "Nombre")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacío")]
+        [StringLength(maximumLength: 20, ErrorMessage = "El nombre no puede tener más de 20 caracteres")]
+        public string nombre { get; set; }
+
+        [Display(Prompt = "Email del User", Description = "Email del usuario", Name = "Email")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacío")]
+        public string email { get; set; }
+
+        [Display(Prompt = "Nick del User", Description = "Nick del usuario", Name = "Nick")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacío")]
+        [StringLength(maximumLength: 20, ErrorMessage = "El Nick no puede tener más de 20 caracteres")]
+        public string nick { get; set; }
+
+        [Display(Prompt = "Contraseña", Description = "Contraseña del usuario", Name = "Password")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacío")]
+        public string password { get; set; }
+
+        [Display(Prompt = "Mentoria", Description = "Mentoria del usuario", Name = "Mentoria")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacío")]
+        public bool mentor { get; set; }
+
+        [Display(Prompt = "Notificaciones", Description = "Notificaciones del usuario", Name = "Notificaciones")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacío")]
+        public bool notificaciones { get; set; }
+
+        public bool ShowSaveModal { get; set; } = false;
+    }
 }
