@@ -66,3 +66,15 @@ C:\ooh4ria\DSM2024\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\scopedcss\p
 C:\ooh4ria\DSM2024\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.csproj.CopyComplete
 C:\ooh4ria\DSM2024\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.genruntimeconfig.cache
 C:\ooh4ria\DSM2024\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\ref\Web_GameAffinity.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.csproj.AssemblyReference.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.AssemblyInfoInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.AssemblyInfo.cs
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.csproj.CoreCompileInputs.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.RazorAssemblyInfo.cache
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.RazorAssemblyInfo.cs
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.sourcelink.json
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\refint\Web_GameAffinity.dll
+C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity\obj\Debug\net8.0\Web_GameAffinity.pdb
