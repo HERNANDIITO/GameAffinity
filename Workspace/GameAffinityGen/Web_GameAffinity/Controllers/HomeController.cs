@@ -24,7 +24,49 @@ namespace Web_GameAffinity.Controllers
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
             IList<VideojuegoEN> listaVideojuegos = videojuegoCEN.GetAll(0, -1);
 
+<<<<<<< Updated upstream
             return View(listaVideojuegos);
+=======
+            EmpresaRepository empRepository = new EmpresaRepository();
+            EmpresaCEN empCEN = new EmpresaCEN(empRepository);
+
+            var viewModel = new HomeViewModel
+            {
+                UltimasNovedades = videojuegoCEN.GetRecienPublicados(),
+                Popular = videojuegoCEN.GetPopular(),
+                ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos(),
+
+                empresasDestacadas = empCEN.GetAll(0, 2)
+            };
+
+            return View(viewModel);
+        }
+
+        public IActionResult getUltimasNovedades()
+        {
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<VideojuegoEN> ultimasNovedades = videojuegoCEN.GetRecienPublicados();
+
+            return View(ultimasNovedades);
+        }
+
+        public IActionResult getPopular()
+        {
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<VideojuegoEN> popular = videojuegoCEN.GetPopular();
+
+            return View(popular);
+        }
+        public IActionResult getProximosLanzamientos()
+        {
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<VideojuegoEN> proximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
+
+            return View(proximosLanzamientos);
+>>>>>>> Stashed changes
         }
 
         public IActionResult Privacy()

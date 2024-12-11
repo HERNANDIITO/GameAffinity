@@ -1,0 +1,15 @@
+﻿@model GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN
+
+<div class="col-4 col-md-3 col-lg-2 videogame">
+    <section class="empresaScore">
+        <span class="score">@Html.DisplayFor(modelItem => Model.Nota)</span>
+    </section>
+    <span class="empresaName">
+        @Html.ActionLink(
+            linkText: Model.Nombre, // El texto del enlace será el nombre de la empresa
+            actionName: "DetailsEmpresa", // El nombre de la acción del controlador
+            controllerName: "Empresa", // El nombre del controlador
+            routeValues: new { id = Model.Id } // Parámetro que se enviará a la acción
+        )
+    </span>
+</div>
