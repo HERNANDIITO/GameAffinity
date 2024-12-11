@@ -1,5 +1,6 @@
-@import 'theme.css';
 @import 'videogame.css';
+@import 'theme.css';
+@import 'Login.css';
 
 html {
   font-size: 14px;
@@ -17,7 +18,16 @@ html {
 
 html, body {
   background: var(--ga-white);
+}
 
+.nav-title {
+  font-family: 'Berlin Sans FB';
+  font-weight: bolder
+}
+
+.nav-link {
+font-size: 1.5rem;
+font-family: 'Berlin Sans FB'
 }
 
 html {

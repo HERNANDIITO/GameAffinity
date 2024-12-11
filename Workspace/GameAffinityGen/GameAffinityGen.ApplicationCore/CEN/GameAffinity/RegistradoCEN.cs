@@ -56,7 +56,7 @@ public void Aceptar_mentoria (int registrado_oid)
         _IRegistradoRepository.ModifyDefault (registradoEN);
 }
 
-public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public int New_ (string p_nombre, string p_email, string p_nick, String p_contrasenya)
 {
         RegistradoEN registradoEN = null;
         int oid;
@@ -69,13 +69,11 @@ public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mento
 
         registradoEN.Nick = p_nick;
 
-        registradoEN.Es_mentor = p_es_mentor;
+        registradoEN.Es_mentor = false;
 
-        registradoEN.Notificaciones = p_notificaciones;
+        registradoEN.Notificaciones = true;
 
         registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
-
-
 
         oid = _IRegistradoRepository.New_ (registradoEN);
         return oid;
@@ -159,7 +157,7 @@ public string Login (string p_email, string p_pass)
         RegistradoEN en = _IRegistradoRepository.GetByEmail (p_email);
 
         if (en != null && en.Contrasenya.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
-                result = "Logged";
+                result = this.GetToken(en.Id);
 
         return result;
 }
@@ -167,63 +165,65 @@ public string Login (string p_email, string p_pass)
 
 
 
-//private string Encode (int id)
-//{
-//        var payload = new Dictionary<string, object>(){
-//                { "id", id }
-//        };
-//        string token = Jose.JWT.Encode (payload, Utils.Util.getKey (), Jose.JwsAlgorithm.HS256);
+        private string Encode(int id)
+        {
+            var payload = new Dictionary<string, object>(){
+                { "id", id }
+        };
+            string token = Jose.JWT.Encode(payload, Utils.Util.getKey(), Jose.JwsAlgorithm.HS256);
 
-//        return token;
-//}
+            return token;
+        }
 
-//public string GetToken (int id)
-//{
-//        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (id);
-//        string token = Encode (en.Id);
+        public string GetToken(int id)
+        {
+            RegistradoEN en = _IRegistradoRepository.ReadOIDDefault(id);
+            string token = Encode(en.Id);
 
-//        return token;
-//}
-//public int CheckToken (string token)
-//{
-//        int result = -1;
+            return token;
+        }
+        public int CheckToken(string token)
+        {
+            int result = -1;
 
-//        try
-//        {
-//                string decodedToken = Utils.Util.Decode (token);
-
-
-
-//                int id = (int)ObtenerID (decodedToken);
-
-//                RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (id);
-
-//                if (en != null && ((long)en.Id).Equals (ObtenerID (decodedToken))
-//                    ) {
-//                        result = id;
-//                }
-//                else throw new ModelException ("El token es incorrecto");
-//        } catch (Exception)
-//        {
-//                throw new ModelException ("El token es incorrecto");
-//        }
-
-//        return result;
-//}
+            try
+            {
+                string decodedToken = Utils.Util.Decode(token);
 
 
-//public long ObtenerID (string decodedToken)
-//{
-//        try
-//        {
-//                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object> >(decodedToken);
-//                long id = (long)results ["id"];
-//                return id;
-//        }
-//        catch
-//        {
-//                throw new Exception ("El token enviado no es correcto");
-//        }
-//}
-}
+
+                int id = (int)ObtenerID(decodedToken);
+
+                RegistradoEN en = _IRegistradoRepository.ReadOIDDefault(id);
+
+                if (en != null && ((long)en.Id).Equals(ObtenerID(decodedToken))
+                    )
+                {
+                    result = id;
+                }
+                else throw new ModelException("El token es incorrecto");
+            }
+            catch (Exception)
+            {
+                throw new ModelException("El token es incorrecto");
+            }
+
+            return result;
+        }
+
+
+        public long ObtenerID(string decodedToken)
+        {
+            try
+            {
+                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object>>(decodedToken);
+                long id = (long)results["id"];
+                return id;
+            }
+            catch
+            {
+                throw new Exception("El token enviado no es correcto");
+            }
+        }
+    }
 }

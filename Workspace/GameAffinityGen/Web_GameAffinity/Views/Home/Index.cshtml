@@ -1,43 +1,33 @@
 ﻿<!-- Obtenemos referencia a los videojuegos -->
-@model IEnumerable<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>
+@model Web_GameAffinity.Models.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Nombre)
-                </th>
-                @* <th>
-                    @Html.DisplayNameFor(Model => Model.Empresas)
-                </th> *@
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Descripcion)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    @* <td>
-                        @Html.DisplayFor(modelItem => item.Empresas)
-                    </td> *@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descripcion)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <button type="button" class="btn btn-primary">Primary</button>
-    
-
-</div>
+<section class="row">
+    <h1>Últimas novedades</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.UltimasNovedades)
+        {
+            @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>
+<section class="row">
+    <h1>Próximos lanzamientos</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.ProximosLanzamientos)
+        {
+            @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>
+<section class="row">
+    <h1>Mejor puntuados</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.Popular)
+        {
+            @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>

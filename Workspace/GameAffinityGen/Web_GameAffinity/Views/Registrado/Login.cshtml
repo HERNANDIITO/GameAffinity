@@ -2,34 +2,68 @@
 
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Login</h1>
-
-<h4>LoginRegistradoViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
+<div class="page-container">
+    <div class="titles-container">
+        <div class="title">
+            <h2>Inicio de Sesión</h2>
+        </div>
+    </div>
+    <div class="login-container">
+        <form asp-action="Login" class="login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
+            <div class="inputs-container">
+                <div>
+                    <label asp-for="email" class="label">Email<span class="need">*</span></label>
+                    <input asp-for="email" class="form-control form-control-lg" id="exampleInputEmail1" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="password" class="label">Contraseña<span class="need">*</span></label>
+                    <input asp-for="password" class="form-control form-control-lg" id="exampleInputPassword1" />
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="password" class="control-label"></label>
-                <input asp-for="password" class="form-control" />
-                <span asp-validation-for="password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="login-button">
+                <input type="submit" value="Entrar" class="btn btn-primary btn-sm" />
+                <span><a asp-controller="Registrado" asp-action="Registro">¿Todavía no tienes cuenta?</a></span>
             </div>
         </form>
     </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="errorModalLabel">Error de Inicio de Sesión</h4>
+                <button type="button" class="close" onclick="$('#myModal').modal('hide');" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Credenciales inválidas. Por favor, inténtelo de nuevo.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="$('#myModal').modal('hide');">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function() {
+            var showErrorModal = @Model.ShowErrorModal.ToString().ToLower();
+            console.log("ShowErrorModal: " + showErrorModal);
+            if (showErrorModal == true) {
+                $('#myModal').modal('show');
+            }
+        });
+    </script>
 }

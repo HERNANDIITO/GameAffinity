@@ -1,0 +1,47 @@
+﻿@model GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN
+
+@{
+    ViewData["Title"] = "Perfil del Usuario";
+}
+
+<h2>Perfil del Usuario</h2>
+
+<div>
+    <h4>Detalles del Usuario</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Nombre
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Email
+        </dd>
+        <dt class="col-sm-2">
+            Nick
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Nick
+        </dd>
+        <dt class="col-sm-2">
+            Es Mentor
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Es_mentor ? "Sí" : "No")
+        </dd>
+        <dt class="col-sm-2">
+            Notificaciones
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Notificaciones ? "Activadas" : "Desactivadas")
+        </dd>
+        <dd class="col-sm-10">
+            @Html.ActionLink("Configuración", "Edit", new{id = Model.Id})
+        </dd>
+    </dl>
+</div>
