@@ -54,7 +54,7 @@ namespace Web_GameAffinity.Controllers
             {
                 VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-                videojuegoCEN.New_(videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero);
+                videojuegoCEN.New_(videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero, videojuego.FechaLanzamiento, videojuego.Imagen);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,7 +87,7 @@ namespace Web_GameAffinity.Controllers
             {
                 VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-                videojuegoCEN.Modify(id, videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero);
+                videojuegoCEN.Modify(id, videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero, videojuego.FechaLanzamiento, videojuego.Imagen);
                 return RedirectToAction(nameof(Index));
             }
             catch

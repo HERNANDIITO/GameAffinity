@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>VideojuegoViewModel</h4>
+    <h4>Videojuego</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -21,6 +21,24 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NotaMedia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NotaMedia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaLanzamiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaLanzamiento)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Genero)
