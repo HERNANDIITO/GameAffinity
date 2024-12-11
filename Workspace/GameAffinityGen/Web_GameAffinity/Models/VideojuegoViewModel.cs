@@ -79,6 +79,13 @@ namespace Web_GameAffinity.Models
         //[Required(ErrorMessage = "Es obligatorio indicar un precio.")]
         //[Range(minimum:0, maximum: 200, ErrorMessage = "El precio debe estar entre 0 y 10.000.")]
         //public string Precio { get; set; }
+
+        [Display(
+            Prompt = "Da un género el videojuego", // texto para el input vacio
+            Description = "Género del videojuego", // texto para el alt
+            Name = "Género" // nombre para el label
+            )]
+        [Required(ErrorMessage = "Es obligatorio indicar un genero.")]
         public GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum Genero { get; set; }
 
         
