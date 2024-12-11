@@ -14,6 +14,7 @@ namespace Web_GameAffinity.Assembler
             videojuego.Nombre = en.Nombre;
             videojuego.Descripcion = en.Descripcion;
             videojuego.Genero = en.Genero;
+            videojuego.Imagen = en.Imagen;
             videojuego.NotaMedia = en.Nota_media;
             videojuego.FechaLanzamiento = en.FechaDeLanzamiento;
             return videojuego;
