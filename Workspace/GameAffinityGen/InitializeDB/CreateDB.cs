@@ -194,7 +194,7 @@ public static void InitializeData ()
                 registradocen.Recuperar_password (pabloID);
                 Console.WriteLine ("CONTRASENYA PABLO RECUPERADA: " + registradoEN3.Contrasenya + "\n");
 
-                //ESTE APARTADO EST� HECHO POR SILVA
+                //ESTE APARTADO ESTa HECHO POR SILVA
 
                 //PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
                 Console.WriteLine ("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
@@ -340,6 +340,16 @@ public static void InitializeData ()
                 int afinidad = registradoCP.Consultar_afinidades (pabloID, davidID);
 
                 Console.WriteLine ("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
+
+                // prueba creacion individuo
+                int idHideo =   individuocen.New_("Hideo", "Kojima", new DateTime(1963, 08, 23),
+                                GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum.Espanya,
+                                GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director,
+                                "Es el legendario diseñador de videojuegos detrás de la saga Metal Gear y el videojuego Death Stranding. En 2016, durante la gala de The Game Awards, fue galardonado con el premio honorífico a ícono de la industria de los videojuegos."
+                                );
+                IndividuoEN Hideo = individuocen.GetByOID (idHideo);
+                Console.WriteLine("Este es Hideo Kojima: " + Hideo.Biografia);
+
 
                 /*PROTECTED REGION END*/
         }
