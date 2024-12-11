@@ -75,7 +75,6 @@ namespace Web_GameAffinity.Controllers
 
             SessionClose();
             return View(videojuegoView);
-
         }
 
         // POST: VideojuegoController/Edit/5

@@ -19,7 +19,7 @@ namespace Web_GameAffinity.Models
 
         [Display(
             Prompt = "Da nombre al videojuego", // texto para el input vacio
-            Description = "Descripción del videojuego", // texto para el alt
+            Description = "Nombre del videojuego", // texto para el alt
             Name = "Nombre" // nombre para el label
             )]
         [Required(ErrorMessage = "Es obligatorio indicar un nombre.")]
