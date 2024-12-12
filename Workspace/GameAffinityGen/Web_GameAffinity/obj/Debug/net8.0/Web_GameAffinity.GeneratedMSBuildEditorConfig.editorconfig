@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\donsi\Desktop\MALFA\UNI\AÑO 3\DSM\PUTA_MIERDA_DE_GIT\GameAffinity\Workspace\GameAffinityGen\Web_GameAffinity
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/donsi/Desktop/MALFA/UNI/AÑO 3/DSM/PUTA_MIERDA_DE_GIT/GameAffinity/Workspace/GameAffinityGen/Web_GameAffinity/Views/Empresa/DetailsEmpresa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxEZXRhaWxzRW1wcmVzYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/donsi/Desktop/MALFA/UNI/AÑO 3/DSM/PUTA_MIERDA_DE_GIT/GameAffinity/Workspace/GameAffinityGen/Web_GameAffinity/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -28,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/donsi/Desktop/MALFA/UNI/AÑO 3/DSM/PUTA_MIERDA_DE_GIT/GameAffinity/Workspace/GameAffinityGen/Web_GameAffinity/Views/Registrado/ConfiguracionPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmFkb1xDb25maWd1cmFjaW9uUGVyZmlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/donsi/Desktop/MALFA/UNI/AÑO 3/DSM/PUTA_MIERDA_DE_GIT/GameAffinity/Workspace/GameAffinityGen/Web_GameAffinity/Views/Shared/empresaCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXGVtcHJlc2FDYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/donsi/Desktop/MALFA/UNI/AÑO 3/DSM/PUTA_MIERDA_DE_GIT/GameAffinity/Workspace/GameAffinityGen/Web_GameAffinity/Views/Shared/Error.cshtml]
