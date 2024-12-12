@@ -24,9 +24,7 @@ namespace Web_GameAffinity.Controllers
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
             IList<VideojuegoEN> listaVideojuegos = videojuegoCEN.GetAll(0, -1);
 
-<<<<<<< Updated upstream
-            return View(listaVideojuegos);
-=======
+
             EmpresaRepository empRepository = new EmpresaRepository();
             EmpresaCEN empCEN = new EmpresaCEN(empRepository);
 
@@ -66,7 +64,6 @@ namespace Web_GameAffinity.Controllers
             IList<VideojuegoEN> proximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
 
             return View(proximosLanzamientos);
->>>>>>> Stashed changes
         }
 
         public IActionResult Privacy()

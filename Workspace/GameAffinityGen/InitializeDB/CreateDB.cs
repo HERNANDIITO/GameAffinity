@@ -109,14 +109,12 @@ namespace InitializeDB
 
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
-<<<<<<< Updated upstream
-=======
+
                 //Creacion de Empresa
                 int nintendoID = empresacen.New_("Nintendo", "Juego pa toa la famili", 10);
                 int santamonicaID = empresacen.New_("Santa Monica", "Solo se nos conoce por el gow", 9);
 
                 //Creacion de Registrado y prueba de Aceptar_Mentoria
->>>>>>> Stashed changes
 
                 int jorgeID = registradocen.New_("jorge", "jpb80@gmail.com", "deevo", false, false, "wdefrgs");
                 registradocen.Aceptar_mentoria(jorgeID);
@@ -131,21 +129,11 @@ namespace InitializeDB
                 Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
                 Console.WriteLine("Lista: " + registradocen.GetByOID(juegosFavsJorge.Autor_lista.Id).Nombre);
 
-<<<<<<< Updated upstream
+
                 listacen.Cambiar_descripcion(juegosFavsJorgeID, "David, curra");
                 juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
                 Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
-=======
 
-                // Crear una lista con el ID del videojuego
-                var videojuegoIDs = new List<int> { superMarioID };
-
-                // Llamar al método pasándole el ID de la empresa y la lista de IDs de videojuegos
-                empresacen.AnyadirJuegoDesarrollado(nintendoID, videojuegoIDs);
-
-                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", "arrikitaun");
-                RegistradoEN silva = registradocen.GetByOID (jorgeID);
->>>>>>> Stashed changes
 
                 int tlouID = videojuegocen.New_("TLOU", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
 
@@ -226,6 +214,13 @@ namespace InitializeDB
 
                 int silvaID = registradocen.New_("Silva", "silva@gmail.com", "laCalva", false, false, "arrikitaun");
                 RegistradoEN silva = registradocen.GetByOID(jorgeID);
+
+
+                // Crear una lista con el ID del videojuego
+                var videojuegoIDs = new List<int> { superMarioID };
+
+                // Llamar al método pasándole el ID de la empresa y la lista de IDs de videojuegos
+                empresacen.AnyadirJuegoDesarrollado(nintendoID, videojuegoIDs);
 
                 ListaCEN listaSilvaCEN = new ListaCEN(listarepository);
                 int listaJuegosSilvaID = listaSilvaCEN.New_("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID);
