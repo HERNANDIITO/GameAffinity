@@ -122,37 +122,36 @@ namespace Web_GameAffinity.Controllers
                 return View();
             }
         }
-    }
 
-        
-
-    public ActionResult DetailsEmpresa(int id)
-    {
-        SessionInitialize();
-
-        EmpresaRepository empRepo = new EmpresaRepository(session);
-        EmpresaCEN empCen = new EmpresaCEN(empRepo);
-
-        // Obtienes la empresa por su ID
-        EmpresaEN empresaEN = empCen.GetByOID(id);
-
-        if (empresaEN.Videojuegos != null)
+        //codigo silva
+        public ActionResult DetailsEmpresa(int id)
         {
-            NHibernateUtil.Initialize(empresaEN.Videojuegos);
+            SessionInitialize();
+
+            EmpresaRepository empRepo = new EmpresaRepository(session);
+            EmpresaCEN empCen = new EmpresaCEN(empRepo);
+
+            // Obtienes la empresa por su ID
+            EmpresaEN empresaEN = empCen.GetByOID(id);
+
+            if (empresaEN.Videojuegos != null)
+            {
+                NHibernateUtil.Initialize(empresaEN.Videojuegos);
+            }
+
+            // Creas el modelo que pasas a la vista
+            var model = new DetailsEmpresaViewModel
+            {
+                nombre = empresaEN.Nombre,
+                descripcion = empresaEN.Descripcion,
+                nota = empresaEN.Nota,
+                videojuegos = empresaEN.Videojuegos
+            };
+
+            SessionClose();
+
+            return View(model);
         }
-
-        // Creas el modelo que pasas a la vista
-        var model = new EmpresaViewModel
-        {
-            nombre = empresaEN.Nombre,
-            descripcion = empresaEN.Descripcion,
-            nota = empresaEN.Nota,
-            videojuegos = empresaEN.Videojuegos
-        };
-
-        SessionClose();  
-
-        return View(model);
     }
 
 
