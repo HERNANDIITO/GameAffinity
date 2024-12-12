@@ -112,8 +112,8 @@ namespace InitializeDB
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
                 //Creacion de Empresa
-                int nintendoID = empresacen.New_("Nintendo", "Juego pa toa la famili", 10);
-                int santamonicaID = empresacen.New_("Santa Monica", "Solo se nos conoce por el gow", 9);
+                int nintendoID = empresacen.New_("Nintendo", "Juego pa toa la famili", 10, "");
+                int santamonicaID = empresacen.New_("Santa Monica", "Solo se nos conoce por el gow", 9, "");
 
                 // Llamar al método pasándole el ID de la empresa y la lista de IDs de videojuegos
 
@@ -154,11 +154,11 @@ namespace InitializeDB
                 var videojuegoIDs = new List<int> { superMarioID };
                 empresacen.AnyadirJuegoDesarrollado(nintendoID, videojuegoIDs);
 
-                int silvaID = registradocen.New_("Silva", "silva@gmail.com", "laCalva", "arrikitaun");
+                int silvaID = registradocen.New_("Silva", "silva@gmail.com", "laCalva", false, true, "arrikitaun", "");
                 RegistradoEN silva = registradocen.GetByOID(jorgeID);
 
                 ListaCEN listaSilvaCEN = new ListaCEN(listarepository);
-                int listaJuegosSilvaID = listaSilvaCEN.New_("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID);
+                int listaJuegosSilvaID = listaSilvaCEN.New_("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID, "");
                 ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID(listaJuegosSilvaID);
 
                 Console.WriteLine("Lista: " + listaJuegosSilvaEN.Nombre + "\n");

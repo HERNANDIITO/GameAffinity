@@ -55,7 +55,7 @@ namespace Web_GameAffinity.Controllers
             {
                 EmpresaRepository empresaRepository = new EmpresaRepository();
                 EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
-                empresaCEN.New_(empresa.Nombre, empresa.Descripcion, empresa.Nota);
+                empresaCEN.New_(empresa.Nombre, empresa.Descripcion, empresa.Nota, "");
 
                 return RedirectToAction(nameof(Index));
             }
@@ -88,7 +88,7 @@ namespace Web_GameAffinity.Controllers
             {
                 EmpresaRepository empresaRepository = new EmpresaRepository();
                 EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
-                empresaCEN.Modify(id, empresa.Nombre, empresa.Descripcion, empresa.Nota);
+                empresaCEN.Modify(id, empresa.Nombre, empresa.Descripcion, empresa.Nota, "");
 
                 return RedirectToAction(nameof(Index));
             }
