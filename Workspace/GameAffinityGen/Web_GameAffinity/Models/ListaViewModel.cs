@@ -26,7 +26,15 @@ namespace Web_GameAffinity.Models
 
         public  System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos { get; set; }
 
-        public string Imagen { get; set; }
+        // Declaracion de la imagen
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Pega aquí la ruta de la portada de la lista.",
+            Description = "Portada de la lista.",
+            Name = "Imagen")]
+        [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
+        public IFormFile Imagen { get; set; }
 
     }
 }

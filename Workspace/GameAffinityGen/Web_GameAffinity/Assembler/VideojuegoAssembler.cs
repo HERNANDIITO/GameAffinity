@@ -33,7 +33,6 @@ namespace Web_GameAffinity.Assembler
                 filePath = "wwwroot/Images/missing_img.jpg";
             }
 
-            // Obtener el tipo MIME basado en la extensión
             string contentType = GetContentType(filePath);
 
             var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
@@ -60,7 +59,7 @@ namespace Web_GameAffinity.Assembler
                 ".bmp" => "image/bmp",
                 ".tiff" => "image/tiff",
                 ".webp" => "image/webp",
-                _ => "application/octet-stream" // Valor predeterminado para tipos desconocidos
+                _ => "application/octet-stream"
             };
         }
 
