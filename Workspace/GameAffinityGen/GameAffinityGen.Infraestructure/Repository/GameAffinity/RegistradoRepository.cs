@@ -646,5 +646,36 @@ public void EliminarLista (int p_Registrado_OID, System.Collections.Generic.ILis
                 SessionClose ();
         }
 }
+public GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN GetByEmail (string email)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM RegistradoNH self where FROM RegistradoNH WHERE email = :email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("RegistradoNHgetByEmailHQL");
+                query.SetParameter ("email", email);
+
+
+                result = query.UniqueResult<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -16,6 +16,7 @@ protected IEmpresaRepository empresarepository;
 protected IIndividuoRepository individuorepository;
 protected IVideojuegoRepository videojuegorepository;
 protected IInteraccionRepository interaccionrepository;
+protected IPaisesRepository paisesrepository;
 
 
 public abstract IRegistradoRepository RegistradoRepository {
@@ -43,6 +44,9 @@ public abstract IVideojuegoRepository VideojuegoRepository {
         get;
 }
 public abstract IInteraccionRepository InteraccionRepository {
+        get;
+}
+public abstract IPaisesRepository PaisesRepository {
         get;
 }
 }

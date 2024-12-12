@@ -39,7 +39,8 @@ namespace Web_GameAffinity.Controllers
             string token = null;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
-            token = cen.Login(model.email, model.password);
+            RegistradoEN reg = cen.GetByEmail(model.email);
+            token = cen.Login(reg.Id, model.password);
             if (token != null)
             {
                 HttpContext.Session.SetString("token", token);
@@ -74,7 +75,7 @@ namespace Web_GameAffinity.Controllers
             int NuevoUser = 0;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
-            NuevoUser = cen.New_(model.nombre, model.email, model.nick, model.password);
+            NuevoUser = cen.New_(model.nombre, model.email, model.nick, false, true, model.password, "");
 
             if (NuevoUser != 0)
             {
@@ -153,7 +154,7 @@ namespace Web_GameAffinity.Controllers
             {
                 RegistradoRepository regRepo = new RegistradoRepository();
                 RegistradoCEN regCEN = new RegistradoCEN(regRepo);
-                regCEN.Modify(id, configView.nombre, configView.email, configView.nick, configView.mentor, configView.notificaciones, configView.password);
+                regCEN.Modify(id, configView.nombre, configView.email, configView.nick, configView.mentor, configView.notificaciones, configView.password, "");
                 configView.ShowSaveModal = true;
 
                 return View(configView);

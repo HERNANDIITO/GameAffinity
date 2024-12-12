@@ -99,6 +99,15 @@ public override IInteraccionRepository InteraccionRepository {
                 return this.interaccionrepository;
         }
 }
+
+public override IPaisesRepository PaisesRepository {
+        get
+        {
+                this.paisesrepository = new PaisesRepository ();
+                this.paisesrepository.setSessionCP (session);
+                return this.paisesrepository;
+        }
+}
 }
 }
 

@@ -60,5 +60,8 @@ void EliminarValoracion (int p_Registrado_OID, System.Collections.Generic.IList<
 void CrearLista (int p_Registrado_OID, System.Collections.Generic.IList<int> p_listas_OIDs);
 
 void EliminarLista (int p_Registrado_OID, System.Collections.Generic.IList<int> p_listas_OIDs);
+
+
+GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN GetByEmail (string email);
 }
 }

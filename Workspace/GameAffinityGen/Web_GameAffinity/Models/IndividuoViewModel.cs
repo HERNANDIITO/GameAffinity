@@ -60,6 +60,7 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Es obligatorio indicar una biografía.")]
         [StringLength(maximumLength: 1000, ErrorMessage = "La descripcion no puede superar 1000 caracteres.")]
         public string Biografia { get; set; }
+        public string Imagen { get; set; }
 
     }
 }

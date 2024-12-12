@@ -103,6 +103,8 @@ public static void InitializeData ()
                 VideojuegoCEN videojuegocen = new VideojuegoCEN (videojuegorepository);
                 InteraccionRepository interaccionrepository = new InteraccionRepository ();
                 InteraccionCEN interaccioncen = new InteraccionCEN (interaccionrepository);
+                PaisesRepository paisesrepository = new PaisesRepository ();
+                PaisesCEN paisescen = new PaisesCEN (paisesrepository);
 
 
 
@@ -110,7 +112,7 @@ public static void InitializeData ()
 
                 //Creacion de Registrado y prueba de Aceptar_Mentoria
 
-                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", "wdefrgsasadsa");
+                int jorgeID = registradocen.New_ ("jorge", "jpb80@gmail.com", "deevo", false, true, "wdefrgsasadsa", "");
                 registradocen.Aceptar_mentoria (jorgeID);
                 RegistradoEN jorge = registradocen.GetByOID (jorgeID);
 
@@ -140,11 +142,11 @@ public static void InitializeData ()
                 Console.WriteLine ("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
                 Console.WriteLine ("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
 
-                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", "arrikitaun");
+                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", false, true, "arrikitaun", "");
                 RegistradoEN silva = registradocen.GetByOID (jorgeID);
 
                 ListaCEN listaSilvaCEN = new ListaCEN (listarepository);
-                int listaJuegosSilvaID = listaSilvaCEN.New_ ("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID);
+                int listaJuegosSilvaID = listaSilvaCEN.New_ ("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID, "");
                 ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID (listaJuegosSilvaID);
 
                 Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Nombre + "\n");
@@ -186,7 +188,7 @@ public static void InitializeData ()
 
                 //PRUEBA RECUPERAR_PASSWORD: Recuperar contrase�a de Pablo
                 Console.WriteLine ("\n\nPRUEBA RECUPERAR_PASSWORD");
-                int pabloID = registradocen.New_ ("pablo", "pablo@example.com", "hernan", "pass123");
+                int pabloID = registradocen.New_ ("pablo", "pablo@example.com", "hernan", false, true, "pass123", "");
                 RegistradoEN registradoEN3 = registradocen.GetByOID (pabloID);
                 string passwordPablo = registradoEN3.Contrasenya.ToString ();
                 Console.WriteLine ("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
@@ -199,7 +201,7 @@ public static void InitializeData ()
                 //PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
                 Console.WriteLine ("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
                 ///// Cargar usuarios y videojuegos
-                int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", "pass123");
+                int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", false, true, "pass123", "");
                 // A�adir videojuegos y rese�as, similar al c�digo que ya tienes
                 int darkSoulsID = videojuegocen.New_ (
                         "darkSouls",
@@ -228,7 +230,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Contrase�a cambiada: " + jorge.Contrasenya);
 
                 //Crea una Lista de juegos para Jorge y Comprueba sus campos
-                int juegosFavsJorgeID = listacen.New_ ("juegos favs", "mi lista de juegos favs", false, jorgeID);
+                int juegosFavsJorgeID = listacen.New_ ("juegos favs", "mi lista de juegos favs", false, jorgeID, "");
                 ListaEN juegosFavsJorge = listacen.GetByOID (juegosFavsJorgeID);
                 Console.WriteLine ("Lista: " + juegosFavsJorge.Nombre);
                 Console.WriteLine ("Lista: " + juegosFavsJorge.Descripcion);
@@ -341,11 +343,17 @@ public static void InitializeData ()
 
                 Console.WriteLine ("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
 
+                int idEspanya = paisescen.New_ ("España");
+
                 // prueba creacion individuo
-                int idHideo = individuocen.New_ ("Hideo", "Kojima", new DateTime (1963, 08, 23),
-                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum.Espanya,
+                int idHideo = individuocen.New_ (
+                        "Hideo",
+                        "Kojima",
+                        new DateTime (1963, 08, 23),
                         GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director,
-                        "Es el legendario diseñador de videojuegos detrás de la saga Metal Gear y el videojuego Death Stranding. En 2016, durante la gala de The Game Awards, fue galardonado con el premio honorífico a ícono de la industria de los videojuegos."
+                        "Es el legendario diseñador de videojuegos detrás de la saga Metal Gear y el videojuego Death Stranding. En 2016, durante la gala de The Game Awards, fue galardonado con el premio honorífico a ícono de la industria de los videojuegos.",
+                        "",
+                        idEspanya
                         );
                 IndividuoEN Hideo = individuocen.GetByOID (idHideo);
                 Console.WriteLine ("Este es Hideo Kojima: " + Hideo.Biografia);
@@ -355,25 +363,116 @@ public static void InitializeData ()
 
 
                 //creacion de listas por defecto y admin que las administra
-                int adminID = registradocen.New_ ("Admin", "admin@gmail.com", "elAdmin", "1234");
+                int adminID = registradocen.New_ ("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "");
                 RegistradoEN admin = registradocen.GetByOID (adminID);
 
-                int listaCompletados = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID);
+                int listaCompletados = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");
                 ListaEN completados = listacen.GetByOID (listaCompletados);
 
-                int listaEnProgreso = listacen.New_ ("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID);
+                int listaEnProgreso = listacen.New_ ("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID, "");
                 ListaEN enProgreso = listacen.GetByOID (listaEnProgreso);
 
-                int listaPendientes = listacen.New_ ("Juegos pendientes", "Juegos que el jugador quiere jugar pero no ha empezado", true, adminID);
+                int listaPendientes = listacen.New_ ("Juegos pendientes", "Juegos que el jugador quiere jugar pero no ha empezado", true, adminID, "");
                 ListaEN pendientes = listacen.GetByOID (listaPendientes);
 
 
+                // GENERACION DE PAISES
 
-
+                int idEstadosUnidos = paisescen.New_("Estados Unidos");
+                int idChina = paisescen.New_("China");
+                int idIndia = paisescen.New_("India");
+                int idAlemania = paisescen.New_("Alemania");
+                int idReinoUnido = paisescen.New_("Reino Unido");
+                int idFrancia = paisescen.New_("Francia");
+                int idItalia = paisescen.New_("Italia");
+                int idJapon = paisescen.New_("Japón");
+                int idAustralia = paisescen.New_("Australia");
+                int idCanada = paisescen.New_("Canadá");
+                int idBrasil = paisescen.New_("Brasil");
+                int idRusia = paisescen.New_("Rusia");
+                int idCoreaDelSur = paisescen.New_("Corea del Sur");
+                int idMexico = paisescen.New_("México");
+                int idSudafrica = paisescen.New_("Sudáfrica");
+                int idArgentina = paisescen.New_("Argentina");
+                int idArabiaSaudita = paisescen.New_("Arabia Saudita");
+                int idTurquia = paisescen.New_("Turquía");
+                int idIndonesia = paisescen.New_("Indonesia");
+                int idSuiza = paisescen.New_("Suiza");
+                int idHolanda = paisescen.New_("Holanda");
+                int idSuecia = paisescen.New_("Suecia");
+                int idNoruega = paisescen.New_("Noruega");
+                int idFinlandia = paisescen.New_("Finlandia");
+                int idDinamarca = paisescen.New_("Dinamarca");
+                int idBelgica = paisescen.New_("Bélgica");
+                int idAustria = paisescen.New_("Austria");
+                int idSingapur = paisescen.New_("Singapur");
+                int idNuevaZelanda = paisescen.New_("Nueva Zelanda");
+                int idMalasia = paisescen.New_("Malasia");
+                int idTailandia = paisescen.New_("Tailandia");
+                int idVietnam = paisescen.New_("Vietnam");
+                int idFilipinas = paisescen.New_("Filipinas");
+                int idBangladesh = paisescen.New_("Bangladesh");
+                int idEgipto = paisescen.New_("Egipto");
+                int idNigeria = paisescen.New_("Nigeria");
+                int idKenya = paisescen.New_("Kenia");
+                int idGhana = paisescen.New_("Ghana");
+                int idColombia = paisescen.New_("Colombia");
+                int idPeru = paisescen.New_("Perú");
+                int idChile = paisescen.New_("Chile");
+                int idVenezuela = paisescen.New_("Venezuela");
+                int idPolonia = paisescen.New_("Polonia");
+                int idUcrania = paisescen.New_("Ucrania");
+                int idGrecia = paisescen.New_("Grecia");
+                int idPortugal = paisescen.New_("Portugal");
+                int idIrlanda = paisescen.New_("Irlanda");
+                int idChequia = paisescen.New_("Chequia");
+                int idHungria = paisescen.New_("Hungría");
+                int idRumania = paisescen.New_("Rumania");
+                int idEslovaquia = paisescen.New_("Eslovaquia");
+                int idBulgaria = paisescen.New_("Bulgaria");
+                int idCroacia = paisescen.New_("Croacia");
+                int idEslovenia = paisescen.New_("Eslovenia");
+                int idEstonia = paisescen.New_("Estonia");
+                int idLetonia = paisescen.New_("Letonia");
+                int idLituania = paisescen.New_("Lituania");
+                int idIslandia = paisescen.New_("Islandia");
+                int idLuxemburgo = paisescen.New_("Luxemburgo");
+                int idMalta = paisescen.New_("Malta");
+                int idChipre = paisescen.New_("Chipre");
+                int idIsrael = paisescen.New_("Israel");
+                int idJordania = paisescen.New_("Jordania");
+                int idLibano = paisescen.New_("Líbano");
+                int idIrak = paisescen.New_("Irak");
+                int idIran = paisescen.New_("Irán");
+                int idPakistán = paisescen.New_("Pakistán");
+                int idAfganistan = paisescen.New_("Afganistán");
+                int idKazajistan = paisescen.New_("Kazajistán");
+                int idUzbekistan = paisescen.New_("Uzbekistán");
+                int idTurkmenistan = paisescen.New_("Turkmenistán");
+                int idKirguistan = paisescen.New_("Kirguistán");
+                int idTayikistan = paisescen.New_("Tayikistán");
+                int idMongolia = paisescen.New_("Mongolia");
+                int idSriLanka = paisescen.New_("Sri Lanka");
+                int idNepal = paisescen.New_("Nepal");
+                int idBhutan = paisescen.New_("Bután");
+                int idMaldivas = paisescen.New_("Maldivas");
+                int idMyanmar = paisescen.New_("Myanmar");
+                int idCamboya = paisescen.New_("Camboya");
+                int idLaos = paisescen.New_("Laos");
+                int idBrunei = paisescen.New_("Brunéi");
+                int idTimorOriental = paisescen.New_("Timor Oriental");
+                int idPapuaNuevaGuinea = paisescen.New_("Papúa Nueva Guinea");
+                int idFiyi = paisescen.New_("Fiyi");
+                int idSamoa = paisescen.New_("Samoa");
+                int idTonga = paisescen.New_("Tonga");
+                int idVanuatu = paisescen.New_("Vanuatu");
+                int idMicronesia = paisescen.New_("Micronesia");
+                int idPalau = paisescen.New_("Palaos");
+                int idIslasSalomon = paisescen.New_("Islas Salomón");
 
                 /*PROTECTED REGION END*/
-        }
-        catch (Exception ex)
+            }
+            catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
                 throw;

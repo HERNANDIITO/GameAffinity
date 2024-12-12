@@ -116,5 +116,6 @@
 		  
 		  <query name="RegistradoNHReadAllHQL">from RegistradoNH</query>
 		  <query name="RegistradoNHgetMentoresHQL"><![CDATA[FROM RegistradoNH WHERE es_mentor = :es_mentor]]></query>
+		  <query name="RegistradoNHgetByEmailHQL"><![CDATA[FROM RegistradoNH WHERE email = :email]]></query>
 		</hibernate-mapping>
 	

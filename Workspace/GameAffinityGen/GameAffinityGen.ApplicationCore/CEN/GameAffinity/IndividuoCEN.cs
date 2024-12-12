@@ -30,7 +30,7 @@ public IIndividuoRepository get_IIndividuoRepository ()
         return this._IIndividuoRepository;
 }
 
-public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum p_nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia, string p_img)
+public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia, string p_img, int p_nacionalidad)
 {
         IndividuoEN individuoEN = null;
         int oid;
@@ -43,8 +43,6 @@ public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaN
 
         individuoEN.FechaNac = p_fechaNac;
 
-        individuoEN.Nacionalidad = p_nacionalidad;
-
         individuoEN.Rol = p_rol;
 
         individuoEN.Biografia = p_biografia;
@@ -52,12 +50,20 @@ public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaN
         individuoEN.Img = p_img;
 
 
+        if (p_nacionalidad != -1) {
+                // El argumento p_nacionalidad -> Property nacionalidad es oid = false
+                // Lista de oids id
+                individuoEN.Nacionalidad = new GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN ();
+                individuoEN.Nacionalidad.Id = p_nacionalidad;
+        }
+
+
 
         oid = _IIndividuoRepository.New_ (individuoEN);
         return oid;
 }
 
-public void Modify (int p_Individuo_OID, string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum p_nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia, string p_img)
+public void Modify (int p_Individuo_OID, string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia, string p_img)
 {
         IndividuoEN individuoEN = null;
 
@@ -67,7 +73,6 @@ public void Modify (int p_Individuo_OID, string p_nombre, string p_apellido, Nul
         individuoEN.Nombre = p_nombre;
         individuoEN.Apellido = p_apellido;
         individuoEN.FechaNac = p_fechaNac;
-        individuoEN.Nacionalidad = p_nacionalidad;
         individuoEN.Rol = p_rol;
         individuoEN.Biografia = p_biografia;
         individuoEN.Img = p_img;

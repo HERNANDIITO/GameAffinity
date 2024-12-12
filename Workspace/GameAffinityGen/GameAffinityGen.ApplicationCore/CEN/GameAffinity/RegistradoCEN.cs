@@ -166,6 +166,10 @@ public string Login (int p_Registrado_OID, string p_pass)
         return result;
 }
 
+public GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN GetByEmail (string email)
+{
+        return _IRegistradoRepository.GetByEmail (email);
+}
 
 
 

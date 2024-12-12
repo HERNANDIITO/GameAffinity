@@ -106,9 +106,6 @@ public void ModifyDefault (IndividuoEN individuo)
                 individuoNH.FechaNac = individuo.FechaNac;
 
 
-                individuoNH.Nacionalidad = individuo.Nacionalidad;
-
-
                 individuoNH.Rol = individuo.Rol;
 
 
@@ -118,6 +115,7 @@ public void ModifyDefault (IndividuoEN individuo)
 
 
                 individuoNH.Img = individuo.Img;
+
 
                 session.Update (individuoNH);
                 SessionCommit ();
@@ -145,6 +143,14 @@ public int New_ (IndividuoEN individuo)
         try
         {
                 SessionInitializeTransaction ();
+                if (individuo.Nacionalidad != null) {
+                        // Argumento OID y no colección.
+                        individuoNH
+                        .Nacionalidad = (GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN)session.Load (typeof(GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN), individuo.Nacionalidad.Id);
+
+                        individuoNH.Nacionalidad.Individuos_de_nacion
+                        .Add (individuoNH);
+                }
 
                 session.Save (individuoNH);
                 SessionCommit ();
@@ -180,9 +186,6 @@ public void Modify (IndividuoEN individuo)
 
 
                 individuoNH.FechaNac = individuo.FechaNac;
-
-
-                individuoNH.Nacionalidad = individuo.Nacionalidad;
 
 
                 individuoNH.Rol = individuo.Rol;

@@ -55,7 +55,7 @@ namespace Web_GameAffinity.Controllers
             {
                 ListaRepository listRepo = new ListaRepository();
                 ListaCEN listCEN = new ListaCEN(listRepo);
-                listCEN.New_(list.Nombre, list.Descripcion, list.Por_defecto, -1);  //el -1 es el autor, si no es -1 el post no funciona no se por que
+                listCEN.New_(list.Nombre, list.Descripcion, list.Por_defecto, -1, list.Imagen);  //el -1 es el autor, si no es -1 el post no funciona no se por que
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -88,7 +88,13 @@ namespace Web_GameAffinity.Controllers
             {
                 ListaRepository listRepo = new ListaRepository();
                 ListaCEN listCEN = new ListaCEN(listRepo);
-                listCEN.Modify(id, list.Nombre, list.Descripcion, list.Por_defecto);
+                listCEN.Modify(
+                    id,
+                    list.Nombre,
+                    list.Descripcion,
+                    list.Por_defecto,
+                    list.Imagen
+                    );
                 return RedirectToAction(nameof(Index));
             }
             catch
