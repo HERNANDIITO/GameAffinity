@@ -5,11 +5,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
+using System.Collections.Specialized;
 
 namespace Web_GameAffinity.Controllers
 {
     public class VideojuegoController : BasicController
     {
+
+        private readonly IWebHostEnvironment _webHost;
+
+        public VideojuegoController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         // GET: VideojuegoController
         public ActionResult Index()
         {
@@ -48,13 +58,41 @@ namespace Web_GameAffinity.Controllers
         // POST: VideojuegoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(VideojuegoViewModel videojuego)
+        public async Task<ActionResult> Create(VideojuegoViewModel videojuego)
         {
+            string fileName = "", path = "";
+            if ( videojuego.Imagen != null && videojuego.Imagen.Length > 0 )
+            {
+                fileName = Path.GetFileName(videojuego.Imagen.FileName).Trim();
+
+                string directory = _webHost.WebRootPath + "/Images/";
+                path = Path.Combine((directory), fileName);
+
+                if ( !Directory.Exists(directory) )
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                using ( var stream = System.IO.File.Create(path))
+                {
+                    await videojuego.Imagen.CopyToAsync(stream);
+                }
+
+                fileName = "/Images/" + fileName;
+            }
+
             try
             {
                 VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-                videojuegoCEN.New_(videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero, videojuego.FechaLanzamiento, videojuego.Imagen);
+                videojuegoCEN.New_(
+                    videojuego.Nombre,
+                    videojuego.Descripcion,
+                    0.0f,
+                    videojuego.Genero,
+                    videojuego.FechaLanzamiento,
+                    fileName
+                );
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -72,7 +110,6 @@ namespace Web_GameAffinity.Controllers
 
             VideojuegoEN videojuegoEn =  videojuegoCEN.GetByoID(id);
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
-
             SessionClose();
             return View(videojuegoView);
         }
@@ -80,13 +117,42 @@ namespace Web_GameAffinity.Controllers
         // POST: VideojuegoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, VideojuegoViewModel videojuego)
+        public async Task<ActionResult> Edit(int id, VideojuegoViewModel videojuego)
         {
+            string fileName = "", path = "";
+            if (videojuego.Imagen != null && videojuego.Imagen.Length > 0)
+            {
+                fileName = Path.GetFileName(videojuego.Imagen.FileName).Trim();
+
+                string directory = _webHost.WebRootPath + "/Images/";
+                path = Path.Combine((directory), fileName);
+
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                using (var stream = System.IO.File.Create(path))
+                {
+                    await videojuego.Imagen.CopyToAsync(stream);
+                }
+
+                fileName = "/Images/" + fileName;
+            }
+
             try
             {
                 VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-                videojuegoCEN.Modify(id, videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero, videojuego.FechaLanzamiento, videojuego.Imagen);
+                videojuegoCEN.Modify(
+                    videojuego.Id,
+                    videojuego.Nombre,
+                    videojuego.Descripcion,
+                    0.0f,
+                    videojuego.Genero,
+                    videojuego.FechaLanzamiento,
+                    fileName
+                );
                 return RedirectToAction(nameof(Index));
             }
             catch
