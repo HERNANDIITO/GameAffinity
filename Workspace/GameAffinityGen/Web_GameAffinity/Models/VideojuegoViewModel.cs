@@ -44,9 +44,9 @@ namespace Web_GameAffinity.Models
         [Display(
             Prompt = "Pega aquí la ruta de la portada del videojuego.",
             Description = "Portada del videojuego.",
-            Name = "Portada")]
+            Name = "Imagen")]
         [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
-        public string Imagen { get; set; }
+        public IFormFile Imagen { get; set; }
 
         // Declaracion de la descripcion
         [Display(

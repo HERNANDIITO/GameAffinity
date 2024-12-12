@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="GameAffinityGen.Infraestructure"
+		                   namespace="GameAffinityGen.Infraestructure.EN.GameAffinity">
+		    
+		    
+			
+				<class name="PaisesNH" table="Paises"> 
+				  	
+						<id name="Id" column="idPaises" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<bag name="Individuos_de_nacion" >
+							<key>
+							
+								
+								<column name="FK_idPaises_idPaises"/>
+					      	</key>
+							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.IndividuoNH"/>
+					    </bag>
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PaisesNHReadAllHQL">from PaisesNH</query>
+		</hibernate-mapping>
+	

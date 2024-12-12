@@ -34,13 +34,6 @@ private Nullable<DateTime> fechaNac;
 
 
 /**
- *	Atributo nacionalidad
- */
-private GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad;
-
-
-
-/**
  *	Atributo rol
  */
 private GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol;
@@ -65,6 +58,20 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
  *	Atributo videojuegos
  */
 private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos;
+
+
+
+/**
+ *	Atributo img
+ */
+private string img;
+
+
+
+/**
+ *	Atributo nacionalidad
+ */
+private GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN nacionalidad;
 
 
 
@@ -95,12 +102,6 @@ public virtual Nullable<DateTime> FechaNac {
 
 
 
-public virtual GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum Nacionalidad {
-        get { return nacionalidad; } set { nacionalidad = value;  }
-}
-
-
-
 public virtual GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum Rol {
         get { return rol; } set { rol = value;  }
 }
@@ -125,6 +126,18 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
+public virtual string Img {
+        get { return img; } set { img = value;  }
+}
+
+
+
+public virtual GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN Nacionalidad {
+        get { return nacionalidad; } set { nacionalidad = value;  }
+}
+
+
+
 
 
 public IndividuoEN()
@@ -135,20 +148,20 @@ public IndividuoEN()
 
 
 
-public IndividuoEN(int id, string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos
+public IndividuoEN(int id, string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, string img, GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN nacionalidad
                    )
 {
-        this.init (Id, nombre, apellido, fechaNac, nacionalidad, rol, biografia, empresas, videojuegos);
+        this.init (Id, nombre, apellido, fechaNac, rol, biografia, empresas, videojuegos, img, nacionalidad);
 }
 
 
 public IndividuoEN(IndividuoEN individuo)
 {
-        this.init (individuo.Id, individuo.Nombre, individuo.Apellido, individuo.FechaNac, individuo.Nacionalidad, individuo.Rol, individuo.Biografia, individuo.Empresas, individuo.Videojuegos);
+        this.init (individuo.Id, individuo.Nombre, individuo.Apellido, individuo.FechaNac, individuo.Rol, individuo.Biografia, individuo.Empresas, individuo.Videojuegos, individuo.Img, individuo.Nacionalidad);
 }
 
 private void init (int id
-                   , string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos)
+                   , string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, string img, GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN nacionalidad)
 {
         this.Id = id;
 
@@ -159,8 +172,6 @@ private void init (int id
 
         this.FechaNac = fechaNac;
 
-        this.Nacionalidad = nacionalidad;
-
         this.Rol = rol;
 
         this.Biografia = biografia;
@@ -168,6 +179,10 @@ private void init (int id
         this.Empresas = empresas;
 
         this.Videojuegos = videojuegos;
+
+        this.Img = img;
+
+        this.Nacionalidad = nacionalidad;
 }
 
 public override bool Equals (object obj)

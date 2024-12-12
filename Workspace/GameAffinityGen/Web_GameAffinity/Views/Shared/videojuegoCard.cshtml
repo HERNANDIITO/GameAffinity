@@ -2,8 +2,6 @@
 
 <div class="col-4 col-md-3 col-lg-2 videogame">
     <section class="videogameScore"><span class="score">@Html.DisplayFor(modelItem => Model.Nota_media)</span></section>
-    <a asp-controller="Videojuego" asp-action="Details" asp-route-id="@Model.Id" class="a-videogame-enlace">
-        <img src="@Model.Imagen" class="videogameImage" />
-    </a>
+    <img src=@Model.Imagen class="videogameImage" onerror="this.src='Images/missing_img.jpg';" />
     <span class="videogameName">@Html.DisplayFor(modelItem => Model.Nombre)</span>
 </div>

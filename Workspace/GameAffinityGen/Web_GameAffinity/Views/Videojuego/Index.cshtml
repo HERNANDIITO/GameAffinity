@@ -37,6 +37,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <img class="caratula" src="Images/@item.Imagen.FileName" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
@@ -47,9 +50,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NotaMedia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaLanzamiento)

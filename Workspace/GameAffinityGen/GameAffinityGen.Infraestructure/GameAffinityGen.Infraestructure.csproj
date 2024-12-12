@@ -13,6 +13,7 @@
 	<EmbeddedResource Include="Mappings\GameAffinity\individuo.hbm.xml" />
 	<EmbeddedResource Include="Mappings\GameAffinity\videojuego.hbm.xml" />
 	<EmbeddedResource Include="Mappings\GameAffinity\interaccion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\GameAffinity\paises.hbm.xml" />
 	
 	
 

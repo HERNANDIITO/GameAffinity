@@ -107,6 +107,9 @@ public void ModifyDefault (ListaEN lista)
 
 
 
+
+                listaNH.Img = lista.Img;
+
                 session.Update (listaNH);
                 SessionCommit ();
         }
@@ -232,6 +235,9 @@ public void Modify (ListaEN lista)
 
 
                 listaNH.Por_defecto = lista.Por_defecto;
+
+
+                listaNH.Img = lista.Img;
 
                 session.Update (listaNH);
                 SessionCommit ();

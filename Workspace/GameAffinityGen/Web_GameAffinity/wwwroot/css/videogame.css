@@ -69,3 +69,10 @@
   overflow-x: auto;
   overflow-y: visible;
 }
+
+.caratula {
+    height: 250px;
+    width: 170px;
+
+    object-fit: contain;
+}

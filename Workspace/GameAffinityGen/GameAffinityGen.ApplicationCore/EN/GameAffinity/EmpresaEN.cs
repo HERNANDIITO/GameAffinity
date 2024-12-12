@@ -47,6 +47,13 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
 
 
 
+/**
+ *	Atributo img
+ */
+private string img;
+
+
+
 
 
 
@@ -86,6 +93,12 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
+public virtual string Img {
+        get { return img; } set { img = value;  }
+}
+
+
+
 
 
 public EmpresaEN()
@@ -96,20 +109,20 @@ public EmpresaEN()
 
 
 
-public EmpresaEN(int id, string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos
+public EmpresaEN(int id, string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos, string img
                  )
 {
-        this.init (Id, nombre, descripcion, nota, videojuegos, individuos);
+        this.init (Id, nombre, descripcion, nota, videojuegos, individuos, img);
 }
 
 
 public EmpresaEN(EmpresaEN empresa)
 {
-        this.init (empresa.Id, empresa.Nombre, empresa.Descripcion, empresa.Nota, empresa.Videojuegos, empresa.Individuos);
+        this.init (empresa.Id, empresa.Nombre, empresa.Descripcion, empresa.Nota, empresa.Videojuegos, empresa.Individuos, empresa.Img);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos)
+                   , string nombre, string descripcion, float nota, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> individuos, string img)
 {
         this.Id = id;
 
@@ -123,6 +136,8 @@ private void init (int id
         this.Videojuegos = videojuegos;
 
         this.Individuos = individuos;
+
+        this.Img = img;
 }
 
 public override bool Equals (object obj)

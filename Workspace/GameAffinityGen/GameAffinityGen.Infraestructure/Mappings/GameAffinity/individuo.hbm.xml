@@ -21,16 +21,15 @@
 					<property name="FechaNac" type="date"> 
 						<column name="fechaNac"  not-null="true"/>
 					</property>
-					<property name="Nacionalidad" > 
-						<column name="nacionalidad"  not-null="true"/>
-					</property>
 					<property name="Rol" > 
 						<column name="rol"  not-null="true"/>
 					</property>
 					<property name="Biografia" type="string"> 
 						<column name="biografia"  not-null="true"/>
 					</property>
-			
+					<property name="Img" type="string"> 
+						<column name="img"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -60,6 +59,14 @@
 									<column name="FK_idVideojuego_idVideojuego"/> 
       						</many-to-many>
     					</bag>
+			
+			
+		  			
+						<many-to-one name="Nacionalidad" class="GameAffinityGen.Infraestructure.EN.GameAffinity.PaisesNH" >	
+								<column name="FK_idPaises_idPaises"/> 
+						</many-to-one>
+											 					
+					
 					
 					
 					

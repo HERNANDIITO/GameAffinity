@@ -10,6 +10,13 @@ namespace Web_GameAffinity.Controllers
 {
     public class ListaController : BasicController
     {
+        private readonly IWebHostEnvironment _webHost;
+
+        public ListaController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         // GET: ListaController
         public ActionResult Index()
         {
@@ -49,13 +56,39 @@ namespace Web_GameAffinity.Controllers
         // POST: ListaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ListaViewModel list)
+        public async Task<ActionResult> Create(ListaViewModel list)
         {
+            string fileName = "", path = "";
+            if (list.Imagen != null && list.Imagen.Length > 0)
+            {
+                fileName = Path.GetFileName(list.Imagen.FileName).Trim();
+
+                string directory = _webHost.WebRootPath + "/Images/";
+                path = Path.Combine((directory), fileName);
+
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                using (var stream = System.IO.File.Create(path))
+                {
+                    await list.Imagen.CopyToAsync(stream);
+                }
+
+                fileName = "/Images/" + fileName;
+            }
             try
             {
                 ListaRepository listRepo = new ListaRepository();
                 ListaCEN listCEN = new ListaCEN(listRepo);
-                listCEN.New_(list.Nombre, list.Descripcion, list.Por_defecto, -1);  //el -1 es el autor, si no es -1 el post no funciona no se por que
+                listCEN.New_(
+                    list.Nombre,
+                    list.Descripcion,
+                    list.Por_defecto,
+                    -1,
+                    fileName
+                );  //el -1 es el autor, si no es -1 el post no funciona no se por que
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -82,13 +115,39 @@ namespace Web_GameAffinity.Controllers
         // POST: ListaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ListaViewModel list)
+        public async Task<ActionResult> Edit(int id, ListaViewModel list)
         {
+            string fileName = "", path = "";
+            if (list.Imagen != null && list.Imagen.Length > 0)
+            {
+                fileName = Path.GetFileName(list.Imagen.FileName).Trim();
+
+                string directory = _webHost.WebRootPath + "/Images/";
+                path = Path.Combine((directory), fileName);
+
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                using (var stream = System.IO.File.Create(path))
+                {
+                    await list.Imagen.CopyToAsync(stream);
+                }
+
+                fileName = "/Images/" + fileName;
+            }
             try
             {
                 ListaRepository listRepo = new ListaRepository();
                 ListaCEN listCEN = new ListaCEN(listRepo);
-                listCEN.Modify(id, list.Nombre, list.Descripcion, list.Por_defecto);
+                listCEN.Modify(
+                    list.Id,
+                    list.Nombre,
+                    list.Descripcion,
+                    list.Por_defecto,
+                    fileName
+                );
                 return RedirectToAction(nameof(Index));
             }
             catch

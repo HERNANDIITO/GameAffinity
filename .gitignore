@@ -48,3 +48,6 @@ Workspace/GameAffinityGen/Web_GameAffinity/bin/Debug/net8.0/Web_GameAffinity.exe
 Workspace/GameAffinityGen/Web_GameAffinity/bin/Debug/net8.0/Web_GameAffinity.pdb
 Workspace/GameAffinityGen/Web_GameAffinity/bin/Debug/net8.0/Web_GameAffinity.staticwebassets.runtime.json
 Workspace/GameAffinityGen/Web_GameAffinity/Web_GameAffinity.csproj.user
+
+/Workspace/GameAffinityGen/Web_GameAffinity/wwwroot/Images/*
+!/Workspace/GameAffinityGen/Web_GameAffinity/wwwroot/Images/missing_img.jpg

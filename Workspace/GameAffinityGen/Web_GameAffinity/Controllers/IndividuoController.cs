@@ -63,7 +63,15 @@ namespace Web_GameAffinity.Controllers
             {
                 IndividuoRepository individuoRepository = new IndividuoRepository();
                 IndividuoCEN individuoCEN = new IndividuoCEN(individuoRepository);
-                individuoCEN.New_(individuo.Nombre, individuo.Apellido, individuo.FechaNac, individuo.Nacionalidad, individuo.Rol, individuo.Biografia);
+                individuoCEN.New_(
+                    individuo.Nombre,
+                    individuo.Apellido,
+                    individuo.FechaNac,
+                    individuo.Rol,
+                    individuo.Biografia,
+                    individuo.Imagen,
+                    individuo.Nacionalidad.Id
+                    );
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -106,7 +114,15 @@ namespace Web_GameAffinity.Controllers
             {
                 IndividuoRepository individuoRepository = new IndividuoRepository();
                 IndividuoCEN individuoCEN = new IndividuoCEN(individuoRepository);
-                individuoCEN.Modify(id, individuo.Nombre, individuo.Apellido, individuo.FechaNac, individuo.Nacionalidad, individuo.Rol, individuo.Biografia);
+                individuoCEN.Modify(
+                    id, 
+                    individuo.Nombre, 
+                    individuo.Apellido, 
+                    individuo.FechaNac, 
+                    individuo.Rol, 
+                    individuo.Biografia,
+                    individuo.Imagen
+                    );
                 return RedirectToAction(nameof(Index));
             }
             catch

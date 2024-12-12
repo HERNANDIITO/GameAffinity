@@ -36,13 +36,7 @@ namespace Web_GameAffinity.Models
             )]
         public Nullable<DateTime> FechaNac { get; set; }
 
-        [Display(
-            Prompt = "Elige una nacionalidad. En caso de haber más de una indica la más apropiada.", // texto para el input vacio
-            Description = "Nacionalidad", // texto para el alt
-            Name = "Nacionalidad" // nombre para el label
-            )]
-        [Required(ErrorMessage = "Es obligatorio indicar una nacionalidad.")]
-        public GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum Nacionalidad { get; set; }
+        public GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN Nacionalidad { get; set; }
 
         [Display(
             Prompt = "Especifica un rol.", // texto para el input vacio
@@ -60,6 +54,7 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Es obligatorio indicar una biografía.")]
         [StringLength(maximumLength: 1000, ErrorMessage = "La descripcion no puede superar 1000 caracteres.")]
         public string Biografia { get; set; }
+        public string Imagen { get; set; }
 
     }
 }

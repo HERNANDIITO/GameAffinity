@@ -30,7 +30,7 @@ public IEmpresaRepository get_IEmpresaRepository ()
         return this._IEmpresaRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, float p_nota)
+public int New_ (string p_nombre, string p_descripcion, float p_nota, string p_img)
 {
         EmpresaEN empresaEN = null;
         int oid;
@@ -43,13 +43,15 @@ public int New_ (string p_nombre, string p_descripcion, float p_nota)
 
         empresaEN.Nota = p_nota;
 
+        empresaEN.Img = p_img;
+
 
 
         oid = _IEmpresaRepository.New_ (empresaEN);
         return oid;
 }
 
-public void Modify (int p_Empresa_OID, string p_nombre, string p_descripcion, float p_nota)
+public void Modify (int p_Empresa_OID, string p_nombre, string p_descripcion, float p_nota, string p_img)
 {
         EmpresaEN empresaEN = null;
 
@@ -59,6 +61,7 @@ public void Modify (int p_Empresa_OID, string p_nombre, string p_descripcion, fl
         empresaEN.Nombre = p_nombre;
         empresaEN.Descripcion = p_descripcion;
         empresaEN.Nota = p_nota;
+        empresaEN.Img = p_img;
         //Call to EmpresaRepository
 
         _IEmpresaRepository.Modify (empresaEN);

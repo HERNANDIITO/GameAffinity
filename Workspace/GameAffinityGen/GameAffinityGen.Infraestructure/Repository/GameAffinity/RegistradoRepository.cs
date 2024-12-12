@@ -119,6 +119,9 @@ public void ModifyDefault (RegistradoEN registrado)
                 registradoNH.Contrasenya = registrado.Contrasenya;
 
 
+
+                registradoNH.Img = registrado.Img;
+
                 session.Update (registradoNH);
                 SessionCommit ();
         }
@@ -311,6 +314,9 @@ public void Modify (RegistradoEN registrado)
 
                 registradoNH.Contrasenya = registrado.Contrasenya;
 
+
+                registradoNH.Img = registrado.Img;
+
                 session.Update (registradoNH);
                 SessionCommit ();
         }
@@ -379,34 +385,7 @@ public RegistradoEN GetByOID (int id
         return registradoEN;
 }
 
-        public RegistradoEN GetByEmail(string email
-                      )
-        {
-            RegistradoEN registradoEN = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                registradoEN = session.CreateCriteria<RegistradoNH>()
-                                      .Add(Restrictions.Eq("Email", email))
-                                      .UniqueResult<RegistradoEN>();
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw new DataLayerException("Error in RegistradoRepository.", ex);
-            }
-            finally
-            {
-                SessionClose();
-            }
-
-            return registradoEN;
-        }
-
-
-        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
 {
         System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> result;
         try
@@ -666,6 +645,37 @@ public void EliminarLista (int p_Registrado_OID, System.Collections.Generic.ILis
         {
                 SessionClose ();
         }
+}
+public GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN GetByEmail (string email)
+{
+        GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM RegistradoNH self where FROM RegistradoNH WHERE email = :email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("RegistradoNHgetByEmailHQL");
+                query.SetParameter ("email", email);
+
+
+                result = query.UniqueResult<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException ("Error in RegistradoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
 }
 }
 }

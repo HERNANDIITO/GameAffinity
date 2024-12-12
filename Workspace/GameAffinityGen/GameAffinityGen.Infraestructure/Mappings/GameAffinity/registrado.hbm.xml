@@ -30,6 +30,9 @@
 					<property name="Contrasenya" type="string"> 
 						<column name="contrasenya"  not-null="true"/>
 					</property>
+					<property name="Img" type="string"> 
+						<column name="img"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -83,6 +86,7 @@
 							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.InteraccionNH"/>
 					    </bag>
 					
+			
 					
 					
 					
@@ -106,10 +110,12 @@
 					
 					
 					
+					
 		
 		 </class>	
 		  
 		  <query name="RegistradoNHReadAllHQL">from RegistradoNH</query>
 		  <query name="RegistradoNHgetMentoresHQL"><![CDATA[FROM RegistradoNH WHERE es_mentor = :es_mentor]]></query>
+		  <query name="RegistradoNHgetByEmailHQL"><![CDATA[FROM RegistradoNH WHERE email = :email]]></query>
 		</hibernate-mapping>
 	
