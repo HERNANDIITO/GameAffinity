@@ -85,6 +85,14 @@ namespace Web_GameAffinity.Controllers
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
 
             SessionClose();
+
+            IList<SelectListItem> listaGeneros = new List<SelectListItem>();
+            listaGeneros.Add(new SelectListItem { Text = "Terror", Value = GenerosEnum.Terror.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Acción", Value = GenerosEnum.Accion.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Puzzles", Value = GenerosEnum.Puzzles.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Mundo Abierto", Value = GenerosEnum.Mundo_abierto.ToString() });
+            ViewData["GenerosItems"] = listaGeneros;
+
             return View(videojuegoView);
         }
 
