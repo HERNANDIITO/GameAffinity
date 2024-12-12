@@ -46,7 +46,7 @@ public ListaEN GetByOID (int id
         return listaEN;
 }
 
-public int New_ (string p_nombre, string p_descripcion, bool p_por_defecto, int p_autor_lista)
+public int New_ (string p_nombre, string p_descripcion, bool p_por_defecto, int p_autor_lista, string p_img)
 {
         ListaEN listaEN = null;
         int oid;
@@ -67,13 +67,15 @@ public int New_ (string p_nombre, string p_descripcion, bool p_por_defecto, int 
                 listaEN.Autor_lista.Id = p_autor_lista;
         }
 
+        listaEN.Img = p_img;
+
 
 
         oid = _IListaRepository.New_ (listaEN);
         return oid;
 }
 
-public void Modify (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_por_defecto)
+public void Modify (int p_Lista_OID, string p_nombre, string p_descripcion, bool p_por_defecto, string p_img)
 {
         ListaEN listaEN = null;
 
@@ -83,6 +85,7 @@ public void Modify (int p_Lista_OID, string p_nombre, string p_descripcion, bool
         listaEN.Nombre = p_nombre;
         listaEN.Descripcion = p_descripcion;
         listaEN.Por_defecto = p_por_defecto;
+        listaEN.Img = p_img;
         //Call to ListaRepository
 
         _IListaRepository.Modify (listaEN);

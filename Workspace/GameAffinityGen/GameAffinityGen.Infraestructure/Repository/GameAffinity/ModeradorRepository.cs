@@ -167,6 +167,9 @@ public void Modify (ModeradorEN moderador)
 
                 moderadorNH.Contrasenya = moderador.Contrasenya;
 
+
+                moderadorNH.Img = moderador.Img;
+
                 session.Update (moderadorNH);
                 SessionCommit ();
         }

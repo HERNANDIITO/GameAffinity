@@ -30,6 +30,9 @@
 					<property name="Contrasenya" type="string"> 
 						<column name="contrasenya"  not-null="true"/>
 					</property>
+					<property name="Img" type="string"> 
+						<column name="img"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -83,6 +86,7 @@
 							<one-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.InteraccionNH"/>
 					    </bag>
 					
+			
 					
 					
 					
@@ -100,6 +104,7 @@
       						</many-to-many>
     					</bag>
     				
+					
 					
 					
 					

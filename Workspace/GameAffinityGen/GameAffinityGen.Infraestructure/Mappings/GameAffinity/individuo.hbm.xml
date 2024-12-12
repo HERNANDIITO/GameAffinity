@@ -30,6 +30,9 @@
 					<property name="Biografia" type="string"> 
 						<column name="biografia"  not-null="true"/>
 					</property>
+					<property name="Img" type="string"> 
+						<column name="img"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -60,6 +63,8 @@
 									<column name="FK_idVideojuego_idVideojuego"/> 
       						</many-to-many>
     					</bag>
+			
+					
 					
 					
 					

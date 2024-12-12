@@ -107,6 +107,9 @@ public void ModifyDefault (EmpresaEN empresa)
 
 
 
+
+                empresaNH.Img = empresa.Img;
+
                 session.Update (empresaNH);
                 SessionCommit ();
         }
@@ -168,6 +171,9 @@ public void Modify (EmpresaEN empresa)
 
 
                 empresaNH.Nota = empresa.Nota;
+
+
+                empresaNH.Img = empresa.Img;
 
                 session.Update (empresaNH);
                 SessionCommit ();

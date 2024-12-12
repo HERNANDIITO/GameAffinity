@@ -21,6 +21,9 @@
 					<property name="Nota" type="float"> 
 						<column name="nota"  not-null="true"/>
 					</property>
+					<property name="Img" type="string"> 
+						<column name="img"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -48,6 +51,8 @@
 									<column name="FK_idIndividuo_idIndividuo"/> 
       						</many-to-many>
     					</bag>
+			
+					
 					
 					
 					

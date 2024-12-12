@@ -89,6 +89,13 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
 
 
 
+/**
+ *	Atributo img
+ */
+private string img;
+
+
+
 
 
 
@@ -164,6 +171,12 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
+public virtual string Img {
+        get { return img; } set { img = value;  }
+}
+
+
+
 
 
 public RegistradoEN()
@@ -177,20 +190,20 @@ public RegistradoEN()
 
 
 
-public RegistradoEN(int id, string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion
+public RegistradoEN(int id, string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion, string img
                     )
 {
-        this.init (Id, nombre, email, nick, es_mentor, seguidos, resenya, valoraciones, listas, notificaciones, contrasenya, interaccion);
+        this.init (Id, nombre, email, nick, es_mentor, seguidos, resenya, valoraciones, listas, notificaciones, contrasenya, interaccion, img);
 }
 
 
 public RegistradoEN(RegistradoEN registrado)
 {
-        this.init (registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, registrado.Es_mentor, registrado.Seguidos, registrado.Resenya, registrado.Valoraciones, registrado.Listas, registrado.Notificaciones, registrado.Contrasenya, registrado.Interaccion);
+        this.init (registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, registrado.Es_mentor, registrado.Seguidos, registrado.Resenya, registrado.Valoraciones, registrado.Listas, registrado.Notificaciones, registrado.Contrasenya, registrado.Interaccion, registrado.Img);
 }
 
 private void init (int id
-                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion)
+                   , string nombre, string email, string nick, bool es_mentor, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> seguidos, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ResenyaEN> resenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN> valoraciones, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN> listas, bool notificaciones, String contrasenya, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.InteraccionEN> interaccion, string img)
 {
         this.Id = id;
 
@@ -216,6 +229,8 @@ private void init (int id
         this.Contrasenya = contrasenya;
 
         this.Interaccion = interaccion;
+
+        this.Img = img;
 }
 
 public override bool Equals (object obj)

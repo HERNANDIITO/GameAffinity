@@ -30,7 +30,7 @@ public IIndividuoRepository get_IIndividuoRepository ()
         return this._IIndividuoRepository;
 }
 
-public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum p_nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia)
+public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum p_nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia, string p_img)
 {
         IndividuoEN individuoEN = null;
         int oid;
@@ -49,13 +49,15 @@ public int New_ (string p_nombre, string p_apellido, Nullable<DateTime> p_fechaN
 
         individuoEN.Biografia = p_biografia;
 
+        individuoEN.Img = p_img;
+
 
 
         oid = _IIndividuoRepository.New_ (individuoEN);
         return oid;
 }
 
-public void Modify (int p_Individuo_OID, string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum p_nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia)
+public void Modify (int p_Individuo_OID, string p_nombre, string p_apellido, Nullable<DateTime> p_fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum p_nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum p_rol, string p_biografia, string p_img)
 {
         IndividuoEN individuoEN = null;
 
@@ -68,6 +70,7 @@ public void Modify (int p_Individuo_OID, string p_nombre, string p_apellido, Nul
         individuoEN.Nacionalidad = p_nacionalidad;
         individuoEN.Rol = p_rol;
         individuoEN.Biografia = p_biografia;
+        individuoEN.Img = p_img;
         //Call to IndividuoRepository
 
         _IIndividuoRepository.Modify (individuoEN);

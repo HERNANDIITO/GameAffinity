@@ -47,6 +47,13 @@ private int id;
 
 
 
+/**
+ *	Atributo img
+ */
+private string img;
+
+
+
 
 
 
@@ -86,6 +93,12 @@ public virtual int Id {
 
 
 
+public virtual string Img {
+        get { return img; } set { img = value;  }
+}
+
+
+
 
 
 public ListaEN()
@@ -95,20 +108,20 @@ public ListaEN()
 
 
 
-public ListaEN(int id, string nombre, string descripcion, bool por_defecto, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos
+public ListaEN(int id, string nombre, string descripcion, bool por_defecto, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, string img
                )
 {
-        this.init (Id, nombre, descripcion, por_defecto, autor_lista, videojuegos);
+        this.init (Id, nombre, descripcion, por_defecto, autor_lista, videojuegos, img);
 }
 
 
 public ListaEN(ListaEN lista)
 {
-        this.init (lista.Id, lista.Nombre, lista.Descripcion, lista.Por_defecto, lista.Autor_lista, lista.Videojuegos);
+        this.init (lista.Id, lista.Nombre, lista.Descripcion, lista.Por_defecto, lista.Autor_lista, lista.Videojuegos, lista.Img);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, bool por_defecto, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos)
+                   , string nombre, string descripcion, bool por_defecto, GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN autor_lista, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, string img)
 {
         this.Id = id;
 
@@ -122,6 +135,8 @@ private void init (int id
         this.Autor_lista = autor_lista;
 
         this.Videojuegos = videojuegos;
+
+        this.Img = img;
 }
 
 public override bool Equals (object obj)

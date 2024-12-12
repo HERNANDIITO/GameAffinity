@@ -21,6 +21,9 @@
 					<property name="Por_defecto" type="boolean"> 
 						<column name="por_defecto"  not-null="true"/>
 					</property>
+					<property name="Img" type="string"> 
+						<column name="img"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -43,6 +46,8 @@
       						</many-to-many>
     					</bag>
 			
+			
+					
 					
 					
 					

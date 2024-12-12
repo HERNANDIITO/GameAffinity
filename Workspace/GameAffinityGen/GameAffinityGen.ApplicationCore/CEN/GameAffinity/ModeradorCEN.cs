@@ -30,7 +30,7 @@ public IModeradorRepository get_IModeradorRepository ()
         return this._IModeradorRepository;
 }
 
-public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya, string p_img)
 {
         ModeradorEN moderadorEN = null;
         int oid;
@@ -49,13 +49,15 @@ public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mento
 
         moderadorEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
 
+        moderadorEN.Img = p_img;
+
 
 
         oid = _IModeradorRepository.New_ (moderadorEN);
         return oid;
 }
 
-public void Modify (int p_Moderador_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public void Modify (int p_Moderador_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya, string p_img)
 {
         ModeradorEN moderadorEN = null;
 
@@ -68,6 +70,7 @@ public void Modify (int p_Moderador_OID, string p_nombre, string p_email, string
         moderadorEN.Es_mentor = p_es_mentor;
         moderadorEN.Notificaciones = p_notificaciones;
         moderadorEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
+        moderadorEN.Img = p_img;
         //Call to ModeradorRepository
 
         _IModeradorRepository.Modify (moderadorEN);

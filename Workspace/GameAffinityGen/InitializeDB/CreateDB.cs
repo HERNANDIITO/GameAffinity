@@ -119,23 +119,23 @@ public static void InitializeData ()
                 //PRUEBA ANYADIR_JUEGO: Crea dos videojuegos, los a�ade a una lista y muestra la lista
                 Console.WriteLine ("\nPRUEBA ANYADIR_VIDEOJUEGO: ");
                 int superMarioID = videojuegocen.New_ (
-                    "Super Mario",
-                    "YAHOOOOO!!!",
-                    10,
-                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles,
-                    DateTime.Parse("06/04/2025"),
-                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.3djuegos.com%2Fjuegos%2Fsuper-mario-bros%2Fcaratula%2F&psig=AOvVaw1mEslwQV2s1DzofAF-hrZP&ust=1733570082042000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjThPmBk4oDFQAAAAAdAAAAABAE");
+                        "Super Mario",
+                        "YAHOOOOO!!!",
+                        10,
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles,
+                        DateTime.Parse ("06/04/2025"),
+                        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.3djuegos.com%2Fjuegos%2Fsuper-mario-bros%2Fcaratula%2F&psig=AOvVaw1mEslwQV2s1DzofAF-hrZP&ust=1733570082042000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjThPmBk4oDFQAAAAAdAAAAABAE");
                 VideojuegoEN videojuegoMarioEn = videojuegocen.GetByoID (superMarioID);
                 Console.WriteLine ("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre + "\n");
                 Console.WriteLine ("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id + "\n");
 
                 int sonicID = videojuegocen.New_ (
-                    "Sonic Heroes",
-                    "U're too slow.",
-                    10,
-                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
-                    DateTime.Parse("15/04/2012"),
-                    "https://i.3djuegos.com/juegos/17734/sonic_the_hedgehog_2__2022_/fotos/ficha/sonic_the_hedgehog_2__2022_-5625245.webp");
+                        "Sonic Heroes",
+                        "U're too slow.",
+                        10,
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                        DateTime.Parse ("15/04/2012"),
+                        "https://i.3djuegos.com/juegos/17734/sonic_the_hedgehog_2__2022_/fotos/ficha/sonic_the_hedgehog_2__2022_-5625245.webp");
                 VideojuegoEN sonicEN = videojuegocen.GetByoID (sonicID);
                 Console.WriteLine ("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
                 Console.WriteLine ("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
@@ -202,20 +202,20 @@ public static void InitializeData ()
                 int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", "pass123");
                 // A�adir videojuegos y rese�as, similar al c�digo que ya tienes
                 int darkSoulsID = videojuegocen.New_ (
-                    "darkSouls",
-                    "Aventura",
-                    0,
-                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
-                    DateTime.Parse("06/04/2020"),
-                    "https://i.3djuegos.com/juegos/15484/dark_souls_remastered/fotos/ficha/dark_souls_remastered-3923945.webp");
+                        "darkSouls",
+                        "Aventura",
+                        0,
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                        DateTime.Parse ("06/04/2020"),
+                        "https://i.3djuegos.com/juegos/15484/dark_souls_remastered/fotos/ficha/dark_souls_remastered-3923945.webp");
 
                 int unchartedID = videojuegocen.New_ (
-                    "Uncharted",
-                    "Aventura",
-                    0,
-                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
-                    DateTime.Parse("06/04/2025"),
-                    "https://cloudfront-eu-central-1.images.arcpublishing.com/diarioas/UXT2MHW3GZIZVICCIMPIDDZEBQ.jpg");
+                        "Uncharted",
+                        "Aventura",
+                        0,
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                        DateTime.Parse ("06/04/2025"),
+                        "https://cloudfront-eu-central-1.images.arcpublishing.com/diarioas/UXT2MHW3GZIZVICCIMPIDDZEBQ.jpg");
 
                 int resenyaPablo = resenyacen.New_ ("Buen gameplay", "Rese�a del juego", 5, 1, pabloID, darkSoulsID);
                 int resenyaDavidA = resenyacen.New_ ("Excelente jugabilidad", "Rese�a del juego", 4, 2, davidID, unchartedID);
@@ -241,12 +241,12 @@ public static void InitializeData ()
 
                 //Crea un Videojuego y le a�ade una Rese�a del usuario Jorge, y la muestra por Pantalla
                 int tlouID = videojuegocen.New_ (
-                    "TLOU",
-                    "Zombies",
-                    0,
-                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
-                    DateTime.Parse("06/04/2013"),
-                    "https://i.3djuegos.com/juegos/8274/last_of_us/fotos/ficha/last_of_us-2190366.jpg");
+                        "TLOU",
+                        "Zombies",
+                        0,
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                        DateTime.Parse ("06/04/2013"),
+                        "https://i.3djuegos.com/juegos/8274/last_of_us/fotos/ficha/last_of_us-2190366.jpg");
                 int resenyatlouID = resenyacen.New_ ("Bombastico", "Es un juego excelente", 0, 0, jorgeID, tlouID);
                 ResenyaEN resenyatlou = resenyacen.GetByOID (resenyatlouID);
                 Console.WriteLine ("resenyatlou: " + resenyatlou.Titulo);
@@ -342,37 +342,37 @@ public static void InitializeData ()
                 Console.WriteLine ("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
 
                 // prueba creacion individuo
-                int idHideo =   individuocen.New_("Hideo", "Kojima", new DateTime(1963, 08, 23),
-                                GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum.Espanya,
-                                GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director,
-                                "Es el legendario diseñador de videojuegos detrás de la saga Metal Gear y el videojuego Death Stranding. En 2016, durante la gala de The Game Awards, fue galardonado con el premio honorífico a ícono de la industria de los videojuegos."
-                                );
+                int idHideo = individuocen.New_ ("Hideo", "Kojima", new DateTime (1963, 08, 23),
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum.Espanya,
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director,
+                        "Es el legendario diseñador de videojuegos detrás de la saga Metal Gear y el videojuego Death Stranding. En 2016, durante la gala de The Game Awards, fue galardonado con el premio honorífico a ícono de la industria de los videojuegos."
+                        );
                 IndividuoEN Hideo = individuocen.GetByOID (idHideo);
-                Console.WriteLine("Este es Hideo Kojima: " + Hideo.Biografia);
+                Console.WriteLine ("Este es Hideo Kojima: " + Hideo.Biografia);
 
 
 
 
 
                 //creacion de listas por defecto y admin que las administra
-                int adminID = registradocen.New_("Admin", "admin@gmail.com", "elAdmin", "1234");
-                RegistradoEN admin = registradocen.GetByOID(adminID);
+                int adminID = registradocen.New_ ("Admin", "admin@gmail.com", "elAdmin", "1234");
+                RegistradoEN admin = registradocen.GetByOID (adminID);
 
-                int listaCompletados = listacen.New_("Juegos completados", "Juegos que el jugador ha completado", true, adminID);
-                ListaEN completados = listacen.GetByOID(listaCompletados);
+                int listaCompletados = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID);
+                ListaEN completados = listacen.GetByOID (listaCompletados);
 
-                int listaEnProgreso = listacen.New_("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID);
-                ListaEN enProgreso = listacen.GetByOID(listaEnProgreso);
+                int listaEnProgreso = listacen.New_ ("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID);
+                ListaEN enProgreso = listacen.GetByOID (listaEnProgreso);
 
-                int listaPendientes = listacen.New_("Juegos pendientes", "Juegos que el jugador quiere jugar pero no ha empezado", true, adminID);
-                ListaEN pendientes = listacen.GetByOID(listaPendientes);
+                int listaPendientes = listacen.New_ ("Juegos pendientes", "Juegos que el jugador quiere jugar pero no ha empezado", true, adminID);
+                ListaEN pendientes = listacen.GetByOID (listaPendientes);
 
 
 
 
 
                 /*PROTECTED REGION END*/
-            }
+        }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

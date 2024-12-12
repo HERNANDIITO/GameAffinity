@@ -68,6 +68,13 @@ private System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.Game
 
 
 
+/**
+ *	Atributo img
+ */
+private string img;
+
+
+
 
 
 
@@ -125,6 +132,12 @@ public virtual System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.
 
 
 
+public virtual string Img {
+        get { return img; } set { img = value;  }
+}
+
+
+
 
 
 public IndividuoEN()
@@ -135,20 +148,20 @@ public IndividuoEN()
 
 
 
-public IndividuoEN(int id, string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos
+public IndividuoEN(int id, string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, string img
                    )
 {
-        this.init (Id, nombre, apellido, fechaNac, nacionalidad, rol, biografia, empresas, videojuegos);
+        this.init (Id, nombre, apellido, fechaNac, nacionalidad, rol, biografia, empresas, videojuegos, img);
 }
 
 
 public IndividuoEN(IndividuoEN individuo)
 {
-        this.init (individuo.Id, individuo.Nombre, individuo.Apellido, individuo.FechaNac, individuo.Nacionalidad, individuo.Rol, individuo.Biografia, individuo.Empresas, individuo.Videojuegos);
+        this.init (individuo.Id, individuo.Nombre, individuo.Apellido, individuo.FechaNac, individuo.Nacionalidad, individuo.Rol, individuo.Biografia, individuo.Empresas, individuo.Videojuegos, individuo.Img);
 }
 
 private void init (int id
-                   , string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos)
+                   , string nombre, string apellido, Nullable<DateTime> fechaNac, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum nacionalidad, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum rol, string biografia, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> empresas, System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> videojuegos, string img)
 {
         this.Id = id;
 
@@ -168,6 +181,8 @@ private void init (int id
         this.Empresas = empresas;
 
         this.Videojuegos = videojuegos;
+
+        this.Img = img;
 }
 
 public override bool Equals (object obj)

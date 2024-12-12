@@ -116,6 +116,9 @@ public void ModifyDefault (IndividuoEN individuo)
 
 
 
+
+                individuoNH.Img = individuo.Img;
+
                 session.Update (individuoNH);
                 SessionCommit ();
         }
@@ -186,6 +189,9 @@ public void Modify (IndividuoEN individuo)
 
 
                 individuoNH.Biografia = individuo.Biografia;
+
+
+                individuoNH.Img = individuo.Img;
 
                 session.Update (individuoNH);
                 SessionCommit ();

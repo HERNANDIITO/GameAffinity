@@ -9,8 +9,6 @@ using GameAffinityGen.ApplicationCore.Exceptions;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 using Newtonsoft.Json;
-using GameAffinityGen.ApplicationCore.CP.GameAffinity;
-using static System.Collections.Specialized.BitVector32;
 
 
 namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
@@ -47,16 +45,17 @@ public void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.G
 }
 public void Aceptar_mentoria (int registrado_oid)
 {
-        RegistradoEN registradoEN = this.GetByOID(registrado_oid);
+        RegistradoEN registradoEN = null;
 
         //Initialized RegistradoEN
-        registradoEN.Es_mentor = true;
-
+        registradoEN = new RegistradoEN ();
+        registradoEN.Id = registrado_oid;
         //Call to RegistradoRepository
-        _IRegistradoRepository.ModifyDefault (registradoEN);
+
+        _IRegistradoRepository.Aceptar_mentoria (registradoEN);
 }
 
-public int New_ (string p_nombre, string p_email, string p_nick, String p_contrasenya)
+public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya, string p_img)
 {
         RegistradoEN registradoEN = null;
         int oid;
@@ -69,17 +68,23 @@ public int New_ (string p_nombre, string p_email, string p_nick, String p_contra
 
         registradoEN.Nick = p_nick;
 
+        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_New_) ENABLED START*/
         registradoEN.Es_mentor = false;
 
         registradoEN.Notificaciones = true;
+        /*PROTECTED REGION END*/
 
         registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
+
+        registradoEN.Img = p_img;
+
+
 
         oid = _IRegistradoRepository.New_ (registradoEN);
         return oid;
 }
 
-public void Modify (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya)
+public void Modify (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya, string p_img)
 {
         RegistradoEN registradoEN = null;
 
@@ -92,6 +97,7 @@ public void Modify (int p_Registrado_OID, string p_nombre, string p_email, strin
         registradoEN.Es_mentor = p_es_mentor;
         registradoEN.Notificaciones = p_notificaciones;
         registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
+        registradoEN.Img = p_img;
         //Call to RegistradoRepository
 
         _IRegistradoRepository.Modify (registradoEN);
@@ -111,7 +117,8 @@ public RegistradoEN GetByOID (int id
         registradoEN = _IRegistradoRepository.GetByOID (id);
         return registradoEN;
 }
-        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
+
+public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN> GetMentores (bool ? es_mentor)
 {
         return _IRegistradoRepository.GetMentores (es_mentor);
 }
@@ -151,13 +158,13 @@ public void EliminarLista (int p_Registrado_OID, System.Collections.Generic.ILis
 
         _IRegistradoRepository.EliminarLista (p_Registrado_OID, p_listas_OIDs);
 }
-public string Login (string p_email, string p_pass)
+public string Login (int p_Registrado_OID, string p_pass)
 {
         string result = null;
-        RegistradoEN en = _IRegistradoRepository.GetByEmail (p_email);
+        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (p_Registrado_OID);
 
         if (en != null && en.Contrasenya.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
-                result = this.GetToken(en.Id);
+                result = this.GetToken (en.Id);
 
         return result;
 }
@@ -165,65 +172,63 @@ public string Login (string p_email, string p_pass)
 
 
 
-        private string Encode(int id)
-        {
-            var payload = new Dictionary<string, object>(){
+private string Encode (int id)
+{
+        var payload = new Dictionary<string, object>(){
                 { "id", id }
         };
-            string token = Jose.JWT.Encode(payload, Utils.Util.getKey(), Jose.JwsAlgorithm.HS256);
+        string token = Jose.JWT.Encode (payload, Utils.Util.getKey (), Jose.JwsAlgorithm.HS256);
 
-            return token;
-        }
+        return token;
+}
 
-        public string GetToken(int id)
+public string GetToken (int id)
+{
+        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (id);
+        string token = Encode (en.Id);
+
+        return token;
+}
+public int CheckToken (string token)
+{
+        int result = -1;
+
+        try
         {
-            RegistradoEN en = _IRegistradoRepository.ReadOIDDefault(id);
-            string token = Encode(en.Id);
-
-            return token;
-        }
-        public int CheckToken(string token)
-        {
-            int result = -1;
-
-            try
-            {
-                string decodedToken = Utils.Util.Decode(token);
+                string decodedToken = Utils.Util.Decode (token);
 
 
 
-                int id = (int)ObtenerID(decodedToken);
+                int id = (int)ObtenerID (decodedToken);
 
-                RegistradoEN en = _IRegistradoRepository.ReadOIDDefault(id);
+                RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (id);
 
-                if (en != null && ((long)en.Id).Equals(ObtenerID(decodedToken))
-                    )
-                {
-                    result = id;
+                if (en != null && ((long)en.Id).Equals (ObtenerID (decodedToken))
+                    ) {
+                        result = id;
                 }
-                else throw new ModelException("El token es incorrecto");
-            }
-            catch (Exception)
-            {
-                throw new ModelException("El token es incorrecto");
-            }
-
-            return result;
-        }
-
-
-        public long ObtenerID(string decodedToken)
+                else throw new ModelException ("El token es incorrecto");
+        } catch (Exception)
         {
-            try
-            {
-                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object>>(decodedToken);
-                long id = (long)results["id"];
-                return id;
-            }
-            catch
-            {
-                throw new Exception("El token enviado no es correcto");
-            }
+                throw new ModelException ("El token es incorrecto");
         }
-    }
+
+        return result;
+}
+
+
+public long ObtenerID (string decodedToken)
+{
+        try
+        {
+                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object> >(decodedToken);
+                long id = (long)results ["id"];
+                return id;
+        }
+        catch
+        {
+                throw new Exception ("El token enviado no es correcto");
+        }
+}
+}
 }
