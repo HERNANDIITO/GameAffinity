@@ -3,8 +3,10 @@ using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -42,7 +44,16 @@ namespace Web_GameAffinity.Controllers
         // GET: VideojuegoController/Create
         public ActionResult Create()
         {
+            //Obtener enums
+            IList<SelectListItem> listaGeneros = new List<SelectListItem>();
+            listaGeneros.Add(new SelectListItem { Text = "Terror", Value = GenerosEnum.Terror.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Acción", Value = GenerosEnum.Accion.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Puzzles", Value = GenerosEnum.Puzzles.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Mundo Abierto", Value = GenerosEnum.Mundo_abierto.ToString() });
+            ViewData["GenerosItems"] = listaGeneros;
+            
             return View();
+
         }
 
         // POST: VideojuegoController/Create
