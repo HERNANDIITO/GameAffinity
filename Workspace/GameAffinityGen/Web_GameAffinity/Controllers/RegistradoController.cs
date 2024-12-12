@@ -18,7 +18,12 @@ namespace Web_GameAffinity.Controllers
     {
 
         private GenericSessionCP CPSession;
+        private readonly IWebHostEnvironment _webHost;
 
+        public RegistradoController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
 
         // GET: RegistradoController
         public ActionResult Index()
@@ -45,8 +50,8 @@ namespace Web_GameAffinity.Controllers
             if (token != null)
             {
                 RegistradoEN user = cen.GetByOID(cen.CheckToken(token));
-                ConfiguracionPerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
-                HttpContext.Session.Set<ConfiguracionPerfilViewModel>("user", userlogged);
+                PerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
+                HttpContext.Session.Set<PerfilViewModel>("user", userlogged);
                 SessionClose();
                 return RedirectToAction("Index", "Home");
             }
@@ -70,24 +75,41 @@ namespace Web_GameAffinity.Controllers
         // GET: RegistradoController/Registro
         public ActionResult Registro()
         {
-            return View(new RegistroRegistradoViewModel { nombre = string.Empty, email = string.Empty, nick = string.Empty, password = string.Empty, ShowErrorModal = false });
+            return View(new RegistroRegistradoViewModel { 
+                nombre = string.Empty,
+                email = string.Empty,
+                nick = string.Empty,
+                password = string.Empty,
+                ShowErrorModal = false
+            });
         }
 
         // POST: RegistradoController/Registro
         [HttpPost]
-        public ActionResult Registro(RegistroRegistradoViewModel model)
+        public async Task<ActionResult> Registro(RegistroRegistradoViewModel model)
         {
+            string fileName = await FileHelper.GetFileName(model.Imagen, _webHost.WebRootPath);
+
             SessionInitialize();
             int NuevoUser = 0;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
-            NuevoUser = cen.New_(model.nombre, model.email, model.nick, false, true, model.password, "");
+
+            NuevoUser = cen.New_(
+                model.nombre,
+                model.email,
+                model.nick,
+                false,
+                true,
+                model.password,
+                fileName
+            );
 
             if (NuevoUser != 0)
             {
                 RegistradoEN user = cen.GetByOID(NuevoUser);
-                ConfiguracionPerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
-                HttpContext.Session.Set<ConfiguracionPerfilViewModel>("user", userlogged);
+                PerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
+                HttpContext.Session.Set<PerfilViewModel>("user", userlogged);
                 SessionClose();
                 return RedirectToAction("Index", "Home");
             }
@@ -103,7 +125,7 @@ namespace Web_GameAffinity.Controllers
         public ActionResult ConfiguracionPerfil()
         {
             // Verificar si la variable global contiene un ID válido
-            if (HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user") == null)
+            if (HttpContext.Session.Get<PerfilViewModel>("user") == null)
             {
                 // Manejar el caso en que no hay un usuario registrado
                 return RedirectToAction("Login", "Registrado");
@@ -114,7 +136,7 @@ namespace Web_GameAffinity.Controllers
             RegistradoCEN cen = new RegistradoCEN(repo);
 
             // Usar el ID para obtener la información del usuario
-            var usuario = cen.GetByOID(HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user").id);
+            var usuario = cen.GetByOID(HttpContext.Session.Get<PerfilViewModel>("user").id);
 
             if (usuario == null)
             {
@@ -131,7 +153,8 @@ namespace Web_GameAffinity.Controllers
                 id = usuario.Id,
                 password = usuario.Contrasenya,
                 mentor = usuario.Es_mentor,
-                notificaciones = usuario.Notificaciones
+                notificaciones = usuario.Notificaciones,
+                Imagen = FileHelper.ConvertToIFormFile(usuario.Img)
             };
 
             // Pasar el modelo a la vista
@@ -208,7 +231,7 @@ namespace Web_GameAffinity.Controllers
             RegistradoRepository regRepo = new RegistradoRepository();
             RegistradoCEN regCen = new RegistradoCEN(regRepo);
             RegistradoEN regEn = regCen.GetByOID(id);
-            ConfiguracionPerfilViewModel configView = new RegistradoAssembler().ConvertirENToViewModel(regEn);
+            PerfilViewModel configView = new RegistradoAssembler().ConvertirENToViewModel(regEn);
 
             return View(configView);
         }
@@ -217,13 +240,42 @@ namespace Web_GameAffinity.Controllers
         // POST: RegistradoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ConfiguracionPerfilViewModel configView)
+        public async Task<ActionResult> Edit(int id, ConfiguracionPerfilViewModel configView)
         {
+            string fileName = "", path = "";
+            if (configView.Imagen != null && configView.Imagen.Length > 0)
+            {
+                fileName = Path.GetFileName(configView.Imagen.FileName).Trim();
+
+                string directory = _webHost.WebRootPath + "/Images/";
+                path = Path.Combine((directory), fileName);
+
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                using (var stream = System.IO.File.Create(path))
+                {
+                    await configView.Imagen.CopyToAsync(stream);
+                }
+
+                fileName = "/Images/" + fileName;
+            }
             try
             {
                 RegistradoRepository regRepo = new RegistradoRepository();
                 RegistradoCEN regCEN = new RegistradoCEN(regRepo);
-                regCEN.Modify(id, configView.nombre, configView.email, configView.nick, configView.mentor, configView.notificaciones, configView.password, "");
+                regCEN.Modify(
+                    id,
+                    configView.nombre,
+                    configView.email,
+                    configView.nick,
+                    configView.mentor,
+                    configView.notificaciones,
+                    configView.password,
+                    fileName
+                );
                 configView.ShowSaveModal = true;
 
                 return View(configView);

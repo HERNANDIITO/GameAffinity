@@ -70,26 +70,7 @@ namespace Web_GameAffinity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(VideojuegoViewModel videojuego)
         {
-            string fileName = "", path = "";
-            if ( videojuego.Imagen != null && videojuego.Imagen.Length > 0 )
-            {
-                fileName = Path.GetFileName(videojuego.Imagen.FileName).Trim();
-
-                string directory = _webHost.WebRootPath + "/Images/";
-                path = Path.Combine((directory), fileName);
-
-                if ( !Directory.Exists(directory) )
-                {
-                    Directory.CreateDirectory(directory);
-                }
-
-                using ( var stream = System.IO.File.Create(path))
-                {
-                    await videojuego.Imagen.CopyToAsync(stream);
-                }
-
-                fileName = "/Images/" + fileName;
-            }
+            string fileName = await FileHelper.GetFileName(videojuego.Imagen, _webHost.WebRootPath);
 
             try
             {
@@ -137,26 +118,7 @@ namespace Web_GameAffinity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, VideojuegoViewModel videojuego)
         {
-            string fileName = "", path = "";
-            if (videojuego.Imagen != null && videojuego.Imagen.Length > 0)
-            {
-                fileName = Path.GetFileName(videojuego.Imagen.FileName).Trim();
-
-                string directory = _webHost.WebRootPath + "/Images/";
-                path = Path.Combine((directory), fileName);
-
-                if (!Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
-
-                using (var stream = System.IO.File.Create(path))
-                {
-                    await videojuego.Imagen.CopyToAsync(stream);
-                }
-
-                fileName = "/Images/" + fileName;
-            }
+            string fileName = await FileHelper.GetFileName(videojuego.Imagen, _webHost.WebRootPath);
 
             try
             {

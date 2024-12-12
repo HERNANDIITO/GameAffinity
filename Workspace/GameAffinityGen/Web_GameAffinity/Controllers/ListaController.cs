@@ -58,26 +58,8 @@ namespace Web_GameAffinity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ListaViewModel list)
         {
-            string fileName = "", path = "";
-            if (list.Imagen != null && list.Imagen.Length > 0)
-            {
-                fileName = Path.GetFileName(list.Imagen.FileName).Trim();
+            string fileName = await FileHelper.GetFileName(list.Imagen, _webHost.WebRootPath);
 
-                string directory = _webHost.WebRootPath + "/Images/";
-                path = Path.Combine((directory), fileName);
-
-                if (!Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
-
-                using (var stream = System.IO.File.Create(path))
-                {
-                    await list.Imagen.CopyToAsync(stream);
-                }
-
-                fileName = "/Images/" + fileName;
-            }
             try
             {
                 ListaRepository listRepo = new ListaRepository();
@@ -117,26 +99,8 @@ namespace Web_GameAffinity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, ListaViewModel list)
         {
-            string fileName = "", path = "";
-            if (list.Imagen != null && list.Imagen.Length > 0)
-            {
-                fileName = Path.GetFileName(list.Imagen.FileName).Trim();
+            string fileName = await FileHelper.GetFileName(list.Imagen, _webHost.WebRootPath);
 
-                string directory = _webHost.WebRootPath + "/Images/";
-                path = Path.Combine((directory), fileName);
-
-                if (!Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
-
-                using (var stream = System.IO.File.Create(path))
-                {
-                    await list.Imagen.CopyToAsync(stream);
-                }
-
-                fileName = "/Images/" + fileName;
-            }
             try
             {
                 ListaRepository listRepo = new ListaRepository();
