@@ -7,8 +7,8 @@ namespace Web_GameAffinity.Models
     public class ListaViewModel
     {
         //para generar id autogenerado
-        //[ScaffoldColumn(false)]
-
+        [ScaffoldColumn(false)]
+        public int Id { get; set; }
 
         [Display(Prompt = "Nombre de la lista", Description = "Nombre de la lista", Name = "Nombre")]
         [Required(ErrorMessage = "Debe indicar un nombre para la lista")]

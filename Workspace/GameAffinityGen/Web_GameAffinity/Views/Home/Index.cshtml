@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 <section class="row">
     <h1>Últimas novedades</h1>
     <div class="videogameList row">
@@ -28,6 +27,15 @@
         @foreach (var item in Model.Popular)
         {
             @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>
+<section class="row">
+    <h1>Empresas destacadas</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.empresasDestacadas)
+        {
+            @Html.Partial("empresaCard", item)
         }
     </div>
 </section>

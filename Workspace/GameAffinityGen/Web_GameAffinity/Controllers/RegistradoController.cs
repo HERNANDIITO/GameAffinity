@@ -88,6 +88,44 @@ namespace Web_GameAffinity.Controllers
             }
         }
 
+        // GET: RegistradoController/ConfiguracionPerfil
+        public ActionResult ConfiguracionPerfil()
+        {
+            // Verificar si la variable global contiene un ID válido
+            if (HttpContext.Session.GetString("token") == null)
+            {
+                // Manejar el caso en que no hay un usuario registrado
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            // Recuperar la información del usuario desde el repositorio
+            RegistradoRepository repo = new RegistradoRepository();
+            RegistradoCEN cen = new RegistradoCEN(repo);
+
+            // Usar el ID para obtener la información del usuario
+            var usuario = cen.GetByOID(cen.CheckToken(HttpContext.Session.GetString("token")));
+
+            if (usuario == null)
+            {
+                // Manejar el caso en que no se encuentra el usuario
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            // Crear el modelo para la vista
+            var viewModel = new ConfiguracionPerfilViewModel
+            {
+                nombre = usuario.Nombre,
+                email = usuario.Email,
+                nick = usuario.Nick,
+                id = usuario.Id,
+                password = usuario.Contrasenya,
+                mentor = usuario.Es_mentor,
+                notificaciones = usuario.Notificaciones
+            };
+
+            // Pasar el modelo a la vista
+            return View(viewModel);
+        }
 
         // GET: RegistradoController/Details/5
         public ActionResult Details()
@@ -132,8 +170,7 @@ namespace Web_GameAffinity.Controllers
             }
         }
 
-        // GET: RegistradoController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, IFormCollection collection)
         {
             RegistradoRepository regRepo = new RegistradoRepository();
             RegistradoCEN regCen = new RegistradoCEN(regRepo);

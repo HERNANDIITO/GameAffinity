@@ -1,9 +1,11 @@
-﻿using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
+using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web_GameAffinity.Assembler;
+using Web_GameAffinity.Models;
+using NHibernate;
 using Web_GameAffinity.Models;
 
 namespace Web_GameAffinity.Controllers
@@ -55,6 +57,7 @@ namespace Web_GameAffinity.Controllers
                 EmpresaRepository empresaRepository = new EmpresaRepository();
                 EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
                 empresaCEN.New_(empresa.Nombre, empresa.Descripcion, empresa.Nota);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,6 +90,7 @@ namespace Web_GameAffinity.Controllers
                 EmpresaRepository empresaRepository = new EmpresaRepository();
                 EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
                 empresaCEN.Modify(id, empresa.Nombre, empresa.Descripcion, empresa.Nota);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -119,4 +123,37 @@ namespace Web_GameAffinity.Controllers
             }
         }
     }
+
+        
+
+    public ActionResult DetailsEmpresa(int id)
+    {
+        SessionInitialize();
+
+        EmpresaRepository empRepo = new EmpresaRepository(session);
+        EmpresaCEN empCen = new EmpresaCEN(empRepo);
+
+        // Obtienes la empresa por su ID
+        EmpresaEN empresaEN = empCen.GetByOID(id);
+
+        if (empresaEN.Videojuegos != null)
+        {
+            NHibernateUtil.Initialize(empresaEN.Videojuegos);
+        }
+
+        // Creas el modelo que pasas a la vista
+        var model = new EmpresaViewModel
+        {
+            nombre = empresaEN.Nombre,
+            descripcion = empresaEN.Descripcion,
+            nota = empresaEN.Nota,
+            videojuegos = empresaEN.Videojuegos
+        };
+
+        SessionClose();  
+
+        return View(model);
+    }
+
+
 }
