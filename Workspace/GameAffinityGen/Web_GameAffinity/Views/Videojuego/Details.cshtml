@@ -4,51 +4,30 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<main class="main-content-profile">
+    <div class="full-profile-container">
+        <div class="perfil-usuario">
+            <div class="foto-usuario">
+                <img src="@Model.Imagen" alt="Imagen del Videojuego" />
+            </div>
+            <div class="info-usuario">
+                <h2 class="Name-User-Profile">@Model.Nombre</h2>
+                <h4>Descripción:</h4>
+                <p>@Model.Descripcion</p>
+                <h4>Nota Media:</h4>
+                <p>@Model.NotaMedia</p>
+                <h4>Fecha de Lanzamiento:</h4>
+                <p>@Model.FechaLanzamiento</p>
+                <h4>Género:</h4>
+                <p>@Model.Genero</p>
+                <div class="boton-configuracion">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <div>
-    <h4>Videojuego</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NotaMedia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NotaMedia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaLanzamiento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaLanzamiento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genero)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genero)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>

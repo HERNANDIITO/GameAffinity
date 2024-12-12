@@ -16,6 +16,11 @@
     cursor: pointer;
   }
 
+.a-videogame-enlace {
+    display: flex; /* Asegura que el enlace se comporte como un contenedor flex */
+    flex-grow: 1; /* Asegura que ocupe el espacio disponible */
+}
+
 .videogameImage {
   flex-grow: 1;
   object-fit: contain;

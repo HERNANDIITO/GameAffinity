@@ -111,7 +111,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 06 Dec 2024 12:26:51 GMT"
+          "Value": "Thu, 12 Dec 2024 18:26:09 GMT"
         }
       ],
       "EndpointProperties": [
@@ -148,7 +148,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 06 Dec 2024 12:26:51 GMT"
+          "Value": "Thu, 12 Dec 2024 18:26:09 GMT"
         }
       ],
       "EndpointProperties": [
@@ -193,7 +193,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 17:35:43 GMT"
+          "Value": "Thu, 12 Dec 2024 18:26:09 GMT"
         }
       ],
       "EndpointProperties": [
@@ -230,7 +230,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Dec 2024 17:35:43 GMT"
+          "Value": "Thu, 12 Dec 2024 18:26:09 GMT"
         }
       ],
       "EndpointProperties": [
@@ -2981,7 +2981,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Dec 2024 11:45:13 GMT"
+          "Value": "Thu, 12 Dec 2024 17:51:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3026,7 +3026,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 11 Dec 2024 11:45:13 GMT"
+          "Value": "Thu, 12 Dec 2024 17:51:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3133,7 +3133,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1271"
+          "Value": "1448"
         },
         {
           "Name": "Content-Type",
@@ -3141,22 +3141,22 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"by3W/K9aUHWRUNOLemFkSlzFIXkr/DxJbsKagVJPhtM=\""
+          "Value": "\"dvrPypOwpp3T8mntCEHl1357rbb8DUD+Maxkao/lYWA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 06 Dec 2024 11:55:16 GMT"
+          "Value": "Thu, 12 Dec 2024 18:37:17 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-by3W/K9aUHWRUNOLemFkSlzFIXkr/DxJbsKagVJPhtM="
+          "Value": "sha256-dvrPypOwpp3T8mntCEHl1357rbb8DUD+Maxkao/lYWA="
         }
       ]
     },
     {
-      "Route": "css/videogame.ho2gl30l16.css",
+      "Route": "css/videogame.qsgm7845kg.css",
       "AssetFile": "css/videogame.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3170,7 +3170,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1271"
+          "Value": "1448"
         },
         {
           "Name": "Content-Type",
@@ -3178,21 +3178,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"by3W/K9aUHWRUNOLemFkSlzFIXkr/DxJbsKagVJPhtM=\""
+          "Value": "\"dvrPypOwpp3T8mntCEHl1357rbb8DUD+Maxkao/lYWA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 06 Dec 2024 11:55:16 GMT"
+          "Value": "Thu, 12 Dec 2024 18:37:17 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ho2gl30l16"
+          "Value": "qsgm7845kg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-by3W/K9aUHWRUNOLemFkSlzFIXkr/DxJbsKagVJPhtM="
+          "Value": "sha256-dvrPypOwpp3T8mntCEHl1357rbb8DUD+Maxkao/lYWA="
         },
         {
           "Name": "label",
@@ -3309,7 +3309,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 06 Dec 2024 21:16:33 GMT"
+          "Value": "Thu, 12 Dec 2024 17:51:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3354,7 +3354,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 06 Dec 2024 21:16:33 GMT"
+          "Value": "Thu, 12 Dec 2024 17:51:27 GMT"
         }
       ],
       "EndpointProperties": [
