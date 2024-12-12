@@ -235,7 +235,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Lista: " + registradocen.GetByOID (juegosFavsJorge.Autor_lista.Id).Nombre);
 
                 //Prueba de Cambiar_descripcion de la Lista
-                listacen.Cambiar_descripcion (juegosFavsJorgeID, "David, curra");
+                listacen.Cambiar_descripcion (juegosFavsJorgeID, "Jorge, espabila");
                 juegosFavsJorge = listacen.GetByOID (juegosFavsJorgeID);
                 Console.WriteLine ("Lista: " + juegosFavsJorge.Descripcion);
 
@@ -351,8 +351,28 @@ public static void InitializeData ()
                 Console.WriteLine("Este es Hideo Kojima: " + Hideo.Biografia);
 
 
+
+
+
+                //creacion de listas por defecto y admin que las administra
+                int adminID = registradocen.New_("Admin", "admin@gmail.com", "elAdmin", "1234");
+                RegistradoEN admin = registradocen.GetByOID(adminID);
+
+                int listaCompletados = listacen.New_("Juegos completados", "Juegos que el jugador ha completado", true, adminID);
+                ListaEN completados = listacen.GetByOID(listaCompletados);
+
+                int listaEnProgreso = listacen.New_("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID);
+                ListaEN enProgreso = listacen.GetByOID(listaEnProgreso);
+
+                int listaPendientes = listacen.New_("Juegos pendientes", "Juegos que el jugador quiere jugar pero no ha empezado", true, adminID);
+                ListaEN pendientes = listacen.GetByOID(listaPendientes);
+
+
+
+
+
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

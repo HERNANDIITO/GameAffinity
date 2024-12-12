@@ -9,6 +9,7 @@ namespace Web_GameAffinity.Assembler
         public ListaViewModel ConvertirENToViewModel(ListaEN en)
         {
             ListaViewModel list = new ListaViewModel();
+            list.Id = en.Id;
             list.Nombre = en.Nombre;
             list.Descripcion = en.Descripcion;
             list.Por_defecto = en.Por_defecto;

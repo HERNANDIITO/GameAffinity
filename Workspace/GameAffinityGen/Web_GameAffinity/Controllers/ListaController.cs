@@ -28,7 +28,16 @@ namespace Web_GameAffinity.Controllers
         // GET: ListaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SessionInitialize();
+            ListaRepository listRepo = new ListaRepository(session);
+            ListaCEN listCEN = new ListaCEN(listRepo);
+
+            ListaEN listEN = listCEN.GetByOID(id);
+            Console.WriteLine(listEN);
+            ListaViewModel listView = new ListaAssembler().ConvertirENToViewModel(listEN);
+
+            SessionClose();
+            return View(listView);
         }
 
         // GET: ListaController/Create
@@ -40,10 +49,13 @@ namespace Web_GameAffinity.Controllers
         // POST: ListaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ListaViewModel list)
         {
             try
             {
+                ListaRepository listRepo = new ListaRepository();
+                ListaCEN listCEN = new ListaCEN(listRepo);
+                listCEN.New_(list.Nombre, list.Descripcion, list.Por_defecto, -1);  //el -1 es el autor, si no es -1 el post no funciona no se por que
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -55,16 +67,28 @@ namespace Web_GameAffinity.Controllers
         // GET: ListaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SessionInitialize();
+            ListaRepository listRepo = new ListaRepository(session);
+            ListaCEN listCEN = new ListaCEN(listRepo);
+
+            ListaEN listEN = listCEN.GetByOID(id);
+            Console.WriteLine(listEN);
+            ListaViewModel listView = new ListaAssembler().ConvertirENToViewModel(listEN);
+
+            SessionClose();
+            return View(listView);
         }
 
         // POST: ListaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ListaViewModel list)
         {
             try
             {
+                ListaRepository listRepo = new ListaRepository();
+                ListaCEN listCEN = new ListaCEN(listRepo);
+                listCEN.Modify(id, list.Nombre, list.Descripcion, list.Por_defecto);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -76,7 +100,10 @@ namespace Web_GameAffinity.Controllers
         // GET: ListaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ListaRepository listRepo = new ListaRepository();
+            ListaCEN listCEN = new ListaCEN(listRepo);
+            listCEN.Destroy(id);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: ListaController/Delete/5
