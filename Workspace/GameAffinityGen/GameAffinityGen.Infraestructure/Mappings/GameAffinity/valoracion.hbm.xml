@@ -39,5 +39,6 @@
 		  
 		  <query name="ValoracionNHReadAllHQL">from ValoracionNH</query>
 		  <query name="ValoracionNHdameValoracionesJuegoHQL"><![CDATA[FROM ValoracionNH as v where v.Videojuego_valorado=:p_id_juego]]></query>
+		  <query name="ValoracionNHdameValoracionesUsuHQL"><![CDATA[FROM ValoracionNH as v where v.Autor_valoracion=:p_id_usu]]></query>
 		</hibernate-mapping>
 	

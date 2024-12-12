@@ -45,8 +45,8 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                 }
 
                 if (p_videojuego_valorado != -1) {
-                    valoracionEN.Videojuego_valorado = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN();
-                    valoracionEN.Videojuego_valorado.Id = p_videojuego_valorado;
+                        valoracionEN.Videojuego_valorado = new GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN ();
+                        valoracionEN.Videojuego_valorado.Id = p_videojuego_valorado;
                 }
 
 

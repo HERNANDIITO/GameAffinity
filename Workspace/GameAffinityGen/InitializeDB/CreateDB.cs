@@ -20,95 +20,95 @@ using Microsoft.Win32;
 /*PROTECTED REGION END*/
 namespace InitializeDB
 {
-    public class CreateDB
-    {
-        public static void Create(string databaseArg, string userArg, string passArg)
-        {
-            String database = databaseArg;
-            String user = userArg;
-            String pass = passArg;
+public class CreateDB
+{
+public static void Create (string databaseArg, string userArg, string passArg)
+{
+        String database = databaseArg;
+        String user = userArg;
+        String pass = passArg;
 
-            // Conex DB
-            SqlConnection cnn = new SqlConnection(@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        // Conex DB
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
-            // Order T-SQL create user
-            String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
+        // Order T-SQL create user
+        String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
-                CREATE LOGIN [" + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-            END";
+                CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+            END"                                                                                                                                                                                                                                                                                    ;
 
-            //Order delete user if exist
-            String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
-            //Order create databas
-            string createBD = "CREATE DATABASE " + database;
-            //Order associate user with database
-            String associatedUser = @"USE [" + database + "];CREATE USER [" + user + "] FOR LOGIN [" + user + "];USE [" + database + "];EXEC sp_addrolemember N'db_owner', N'" + user + "'";
-            SqlCommand cmd = null;
+        //Order delete user if exist
+        String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
+        //Order create databas
+        string createBD = "CREATE DATABASE " + database;
+        //Order associate user with database
+        String associatedUser = @"USE [" + database + "];CREATE USER [" + user + "] FOR LOGIN [" + user + "];USE [" + database + "];EXEC sp_addrolemember N'db_owner', N'" + user + "'";
+        SqlCommand cmd = null;
 
-            try
-            {
+        try
+        {
                 // Open conex
-                cnn.Open();
+                cnn.Open ();
 
                 //Create user in SQLSERVER
-                cmd = new SqlCommand(createUser, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (createUser, cnn);
+                cmd.ExecuteNonQuery ();
 
                 //DELETE database if exist
-                cmd = new SqlCommand(deleteDataBase, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (deleteDataBase, cnn);
+                cmd.ExecuteNonQuery ();
 
                 //CREATE DB
-                cmd = new SqlCommand(createBD, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (createBD, cnn);
+                cmd.ExecuteNonQuery ();
 
                 //Associate user with db
-                cmd = new SqlCommand(associatedUser, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (associatedUser, cnn);
+                cmd.ExecuteNonQuery ();
 
-                System.Console.WriteLine("DataBase create sucessfully..");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                if (cnn.State == ConnectionState.Open)
-                {
-                    cnn.Close();
-                }
-            }
+                System.Console.WriteLine ("DataBase create sucessfully..");
         }
-
-        public static void InitializeData()
+        catch (Exception)
         {
-            try
-            {
+                throw;
+        }
+        finally
+        {
+                if (cnn.State == ConnectionState.Open) {
+                        cnn.Close ();
+                }
+        }
+}
+
+public static void InitializeData ()
+{
+        try
+        {
                 // Initialising  CENs
-                RegistradoRepository registradorepository = new RegistradoRepository();
-                RegistradoCEN registradocen = new RegistradoCEN(registradorepository);
-                ModeradorRepository moderadorrepository = new ModeradorRepository();
-                ModeradorCEN moderadorcen = new ModeradorCEN(moderadorrepository);
-                ListaRepository listarepository = new ListaRepository();
-                ListaCEN listacen = new ListaCEN(listarepository);
-                ResenyaRepository resenyarepository = new ResenyaRepository();
-                ResenyaCEN resenyacen = new ResenyaCEN(resenyarepository);
-                ValoracionRepository valoracionrepository = new ValoracionRepository();
-                ValoracionCEN valoracioncen = new ValoracionCEN(valoracionrepository);
-                EmpresaRepository empresarepository = new EmpresaRepository();
-                EmpresaCEN empresacen = new EmpresaCEN(empresarepository);
-                IndividuoRepository individuorepository = new IndividuoRepository();
-                IndividuoCEN individuocen = new IndividuoCEN(individuorepository);
-                VideojuegoRepository videojuegorepository = new VideojuegoRepository();
-                VideojuegoCEN videojuegocen = new VideojuegoCEN(videojuegorepository);
-                InteraccionRepository interaccionrepository = new InteraccionRepository();
-                InteraccionCEN interaccioncen = new InteraccionCEN(interaccionrepository);
+                RegistradoRepository registradorepository = new RegistradoRepository ();
+                RegistradoCEN registradocen = new RegistradoCEN (registradorepository);
+                ModeradorRepository moderadorrepository = new ModeradorRepository ();
+                ModeradorCEN moderadorcen = new ModeradorCEN (moderadorrepository);
+                ListaRepository listarepository = new ListaRepository ();
+                ListaCEN listacen = new ListaCEN (listarepository);
+                ResenyaRepository resenyarepository = new ResenyaRepository ();
+                ResenyaCEN resenyacen = new ResenyaCEN (resenyarepository);
+                ValoracionRepository valoracionrepository = new ValoracionRepository ();
+                ValoracionCEN valoracioncen = new ValoracionCEN (valoracionrepository);
+                EmpresaRepository empresarepository = new EmpresaRepository ();
+                EmpresaCEN empresacen = new EmpresaCEN (empresarepository);
+                IndividuoRepository individuorepository = new IndividuoRepository ();
+                IndividuoCEN individuocen = new IndividuoCEN (individuorepository);
+                VideojuegoRepository videojuegorepository = new VideojuegoRepository ();
+                VideojuegoCEN videojuegocen = new VideojuegoCEN (videojuegorepository);
+                InteraccionRepository interaccionrepository = new InteraccionRepository ();
+                InteraccionCEN interaccioncen = new InteraccionCEN (interaccionrepository);
 
 
 
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
+                //Creacion de Registrado y prueba de Aceptar_Mentoria
 
                 //Creacion de Empresa
                 int nintendoID = empresacen.New_("Nintendo", "Juego pa toa la famili", 10);
@@ -120,14 +120,31 @@ namespace InitializeDB
                 registradocen.Aceptar_mentoria(jorgeID);
                 RegistradoEN jorge = registradocen.GetByOID(jorgeID);
 
-                Console.WriteLine("Es mentor: " + jorge.Es_mentor);
+                Console.WriteLine ("Es mentor: " + jorge.Es_mentor);
 
-                int juegosFavsJorgeID = listacen.New_("juegos favs", "mi lista de juegos favs", false, jorgeID);
-                ListaEN juegosFavsJorge = listacen.GetByOID(juegosFavsJorgeID);
+                //PRUEBA ANYADIR_JUEGO: Crea dos videojuegos, los a�ade a una lista y muestra la lista
+                Console.WriteLine ("\nPRUEBA ANYADIR_VIDEOJUEGO: ");
+                int superMarioID = videojuegocen.New_ (
+                    "Super Mario",
+                    "YAHOOOOO!!!",
+                    10,
+                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Puzzles,
+                    DateTime.Parse("06/04/2025"),
+                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.3djuegos.com%2Fjuegos%2Fsuper-mario-bros%2Fcaratula%2F&psig=AOvVaw1mEslwQV2s1DzofAF-hrZP&ust=1733570082042000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjThPmBk4oDFQAAAAAdAAAAABAE");
+                VideojuegoEN videojuegoMarioEn = videojuegocen.GetByoID (superMarioID);
+                Console.WriteLine ("VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Nombre + "\n");
+                Console.WriteLine ("ID DEL VIDEOJUEGO SUPER MARIO: " + videojuegoMarioEn.Id + "\n");
 
-                Console.WriteLine("Lista: " + juegosFavsJorge.Nombre);
-                Console.WriteLine("Lista: " + juegosFavsJorge.Descripcion);
-                Console.WriteLine("Lista: " + registradocen.GetByOID(juegosFavsJorge.Autor_lista.Id).Nombre);
+                int sonicID = videojuegocen.New_ (
+                    "Sonic Heroes",
+                    "U're too slow.",
+                    10,
+                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                    DateTime.Parse("15/04/2012"),
+                    "https://i.3djuegos.com/juegos/17734/sonic_the_hedgehog_2__2022_/fotos/ficha/sonic_the_hedgehog_2__2022_-5625245.webp");
+                VideojuegoEN sonicEN = videojuegocen.GetByoID (sonicID);
+                Console.WriteLine ("VIDEOJUEGO SONIC HEROES: " + sonicEN.Nombre + "\n");
+                Console.WriteLine ("ID DEL VIDEOJUEGO SONIC HEROES: " + sonicEN.Id + "\n");
 
 
                 listacen.Cambiar_descripcion(juegosFavsJorgeID, "David, curra");
@@ -136,11 +153,18 @@ namespace InitializeDB
 
 
                 int tlouID = videojuegocen.New_("TLOU", "Zombies", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
+                int silvaID = registradocen.New_ ("Silva", "silva@gmail.com", "laCalva", "arrikitaun");
+                RegistradoEN silva = registradocen.GetByOID (jorgeID);
 
-                int resenyatlouID = resenyacen.New_("Bombastico", "Es un juego excelente", 0, 0, jorgeID, tlouID);
+                ListaCEN listaSilvaCEN = new ListaCEN (listarepository);
+                int listaJuegosSilvaID = listaSilvaCEN.New_ ("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID);
+                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID (listaJuegosSilvaID);
 
-                ResenyaEN resenyatlou = resenyacen.GetByOID(resenyatlouID);
-                Console.WriteLine("resenyatlou: " + resenyatlou.Titulo);
+                Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Nombre + "\n");
+                Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Descripcion + "\n");
+                Console.WriteLine ("Lista: " + registradocen.GetByOID (listaJuegosSilvaEN.Autor_lista.Id).Nombre + "\n");
+
+                listaSilvaCEN.AnyadirVideojuego (listaJuegosSilvaID, new List<int> { sonicID, superMarioID });
 
                 Console.WriteLine("Notis: " + jorge.Notificaciones);
                 registradocen.Alternar_notificaciones(jorgeID);
@@ -236,130 +260,227 @@ namespace InitializeDB
                 Console.WriteLine("Videojuegos en la lista:\n");
                 using (var session = NHibernateHelper.OpenSession()) // Abre la sesi�n
                 {
-                    var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
-                    session.Refresh(listaJuegosSilva); // Aseg�rate de cargar la colecci�n Videojuegos si est� perezosamente cargada
-                    // Ahora puedes acceder a la colecci�n sin el error de LazyInitializationException
-                    Console.WriteLine("\n\nN�mero de videojuegos en la lista: " + listaJuegosSilva.Videojuegos.Count);
-                    // O recorrer la colecci�n
-                    foreach (var videojuego in listaJuegosSilva.Videojuegos)
-                    {
-                        Console.WriteLine(videojuego.Nombre);
-                    }
+                        var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
+                        session.Refresh (listaJuegosSilva); // Aseg�rate de cargar la colecci�n Videojuegos si est� perezosamente cargada
+                                                            // Ahora puedes acceder a la colecci�n sin el error de LazyInitializationException
+                        Console.WriteLine ("\n\nN�mero de videojuegos en la lista: " + listaJuegosSilva.Videojuegos.Count);
+                        // O recorrer la colecci�n
+                        foreach (var videojuego in listaJuegosSilva.Videojuegos) {
+                                Console.WriteLine (videojuego.Nombre);
+                        }
                 }
 
                 //PRUEBA ELIMINAR_JUEGO: Elimina un juego de la lista y luego muestra la lista por consola
-                Console.WriteLine("\nPRUEBA ELIMINAR_JUEGO: ");
+                Console.WriteLine ("\nPRUEBA ELIMINAR_JUEGO: ");
 
-                listaSilvaCEN.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID });
+                listaSilvaCEN.EliminarJuego (listaJuegosSilvaID, new List<int> { sonicID });
 
-                using (var session = NHibernateHelper.OpenSession()) // Abre la sesi�n
+                using (var session = NHibernateHelper.OpenSession ()) // Abre la sesi�n
                 {
-                    var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
-                    session.Refresh(listaJuegosSilva); // Aseg�rate de cargar la colecci�n Videojuegos si est� perezosamente cargada
-                    // Ahora puedes acceder a la colecci�n sin el error de LazyInitializationException
-                    Console.WriteLine("\n\nN�mero de videojuegos en la lista despu�s de eliminar uno: " + listaJuegosSilva.Videojuegos.Count);
-                    // O recorrer la colecci�n
-                    foreach (var videojuego in listaJuegosSilva.Videojuegos)
-                    {
-                        Console.WriteLine(videojuego.Nombre);
-                    }
+                        var listaJuegosSilva = session.Get<ListaEN>(listaJuegosSilvaID); // Obtienes el objeto ListaEN por su ID
+                        session.Refresh (listaJuegosSilva); // Aseg�rate de cargar la colecci�n Videojuegos si est� perezosamente cargada
+                                                            // Ahora puedes acceder a la colecci�n sin el error de LazyInitializationException
+                        Console.WriteLine ("\n\nN�mero de videojuegos en la lista despu�s de eliminar uno: " + listaJuegosSilva.Videojuegos.Count);
+                        // O recorrer la colecci�n
+                        foreach (var videojuego in listaJuegosSilva.Videojuegos) {
+                                Console.WriteLine (videojuego.Nombre);
+                        }
                 }
 
                 //PRUEBA RECUPERAR_PASSWORD: Recuperar contrase�a de Pablo
-                Console.WriteLine("\n\nPRUEBA RECUPERAR_PASSWORD");
-                int pabloID = registradocen.New_("pablo", "pablo@example.com", "hernan", false, false, "pass123");
-                RegistradoEN registradoEN3 = registradocen.GetByOID(pabloID);
-                string passwordPablo = registradoEN3.Contrasenya.ToString();
-                Console.WriteLine("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
+                Console.WriteLine ("\n\nPRUEBA RECUPERAR_PASSWORD");
+                int pabloID = registradocen.New_ ("pablo", "pablo@example.com", "hernan", "pass123");
+                RegistradoEN registradoEN3 = registradocen.GetByOID (pabloID);
+                string passwordPablo = registradoEN3.Contrasenya.ToString ();
+                Console.WriteLine ("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
 
-                string passwordPabloRecuperada = registradocen.Recuperar_password(pabloID);
-                Console.WriteLine("CONTRASENYA PABLO RECUPERADA: " + registradoEN3.Contrasenya + "\n");
+                registradocen.Recuperar_password (pabloID);
+                Console.WriteLine ("CONTRASENYA PABLO RECUPERADA: " + registradoEN3.Contrasenya + "\n");
+
+                //ESTE APARTADO ESTa HECHO POR SILVA
+
+                //PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
+                Console.WriteLine ("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
+                ///// Cargar usuarios y videojuegos
+                int davidID = registradocen.New_ ("david", "david@example.com", "davidxx", "pass123");
+                // A�adir videojuegos y rese�as, similar al c�digo que ya tienes
+                int darkSoulsID = videojuegocen.New_ (
+                    "darkSouls",
+                    "Aventura",
+                    0,
+                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                    DateTime.Parse("06/04/2020"),
+                    "https://i.3djuegos.com/juegos/15484/dark_souls_remastered/fotos/ficha/dark_souls_remastered-3923945.webp");
+
+                int unchartedID = videojuegocen.New_ (
+                    "Uncharted",
+                    "Aventura",
+                    0,
+                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                    DateTime.Parse("06/04/2025"),
+                    "https://cloudfront-eu-central-1.images.arcpublishing.com/diarioas/UXT2MHW3GZIZVICCIMPIDDZEBQ.jpg");
+
+                int resenyaPablo = resenyacen.New_ ("Buen gameplay", "Rese�a del juego", 5, 1, pabloID, darkSoulsID);
+                int resenyaDavidA = resenyacen.New_ ("Excelente jugabilidad", "Rese�a del juego", 4, 2, davidID, unchartedID);
+                int resenyaDavidB = resenyacen.New_ ("Pedazo historia", "Rese�a del juego", 7, 2, davidID, darkSoulsID);
+
+                //Prueba de Cambio de Contrase�a
+                Console.WriteLine ("Contrase�a antes de cambiar: " + jorge.Contrasenya);
+                registradocen.Cambiar_password (jorge.Id, "ElNano33");
+                jorge = registradocen.GetByOID (jorgeID);
+                Console.WriteLine ("Contrase�a cambiada: " + jorge.Contrasenya);
+
+                //Crea una Lista de juegos para Jorge y Comprueba sus campos
+                int juegosFavsJorgeID = listacen.New_ ("juegos favs", "mi lista de juegos favs", false, jorgeID);
+                ListaEN juegosFavsJorge = listacen.GetByOID (juegosFavsJorgeID);
+                Console.WriteLine ("Lista: " + juegosFavsJorge.Nombre);
+                Console.WriteLine ("Lista: " + juegosFavsJorge.Descripcion);
+                Console.WriteLine ("Lista: " + registradocen.GetByOID (juegosFavsJorge.Autor_lista.Id).Nombre);
+
+                //Prueba de Cambiar_descripcion de la Lista
+                listacen.Cambiar_descripcion (juegosFavsJorgeID, "Jorge, espabila");
+                juegosFavsJorge = listacen.GetByOID (juegosFavsJorgeID);
+                Console.WriteLine ("Lista: " + juegosFavsJorge.Descripcion);
+
+                //Crea un Videojuego y le a�ade una Rese�a del usuario Jorge, y la muestra por Pantalla
+                int tlouID = videojuegocen.New_ (
+                    "TLOU",
+                    "Zombies",
+                    0,
+                    GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion,
+                    DateTime.Parse("06/04/2013"),
+                    "https://i.3djuegos.com/juegos/8274/last_of_us/fotos/ficha/last_of_us-2190366.jpg");
+                int resenyatlouID = resenyacen.New_ ("Bombastico", "Es un juego excelente", 0, 0, jorgeID, tlouID);
+                ResenyaEN resenyatlou = resenyacen.GetByOID (resenyatlouID);
+                Console.WriteLine ("resenyatlou: " + resenyatlou.Titulo);
+
+                //Prueba del Alternar_notificaciones
+                Console.WriteLine ("Notis: " + jorge.Notificaciones);
+                registradocen.Alternar_notificaciones (jorgeID);
+                jorge = registradocen.GetByOID (jorgeID);
+                Console.WriteLine ("Notis: " + jorge.Notificaciones);
+
+                //Prueba el Cambiar_Nombre de Lista
+                listacen.Cambiar_nombre (juegosFavsJorgeID, "Peores juegos");
+                juegosFavsJorge = listacen.GetByOID (juegosFavsJorgeID);
+                Console.WriteLine ("JUEGOS FAV JORGE NOMBRE CAMBIADO: " + juegosFavsJorge.Nombre);
+
+                //Prueba el Dar de Baja con el usuario Jorge
+                registradocen.Dar_de_baja (jorgeID);
+                jorge = registradocen.GetByOID (jorgeID);
+                Console.WriteLine (jorge.Nombre + "\n" + jorge.Email);
+
+                //Prueba a�adir una valoracion del usuario Jorge a un Juego
+                ValoracionCP valoracionCP = new ValoracionCP (new SessionCPNHibernate ());
+                VideojuegoEN tlouGame = videojuegocen.GetByoID (tlouID);
+                Console.WriteLine (tlouGame.Nombre);
+                Console.WriteLine ("TLOU ANTES DE JORGE: " + tlouGame.Nota_media.ToString ());
+                ValoracionEN valoracionTlouJorge = valoracionCP.New_ (10, jorgeID, tlouID);
+                valoracionTlouJorge = valoracioncen.get_IValoracionRepository ().GetByOID (valoracionTlouJorge.Id);
+                tlouGame = videojuegocen.GetByoID (tlouID);
+                Console.WriteLine ("TLOU DESPUES DE JORGE: " + tlouGame.Nota_media.ToString ());
+
+                IList<ValoracionEN> valoracionesJorge = valoracioncen.DameValoracionesUsu (jorgeID);
+                Console.WriteLine ("VALORACIONES JORGE: " + valoracionesJorge.Count);
+
+                //Prueba el cambio de Valoracion
+                Console.WriteLine ("VALORACION TLOU ID: " + valoracionTlouJorge.Id);
+                valoracionCP.Modify (valoracionTlouJorge.Id, 5);
+                tlouGame = videojuegocen.GetByoID (tlouID);
+                Console.WriteLine ("TLOU DESPUES DE MODIFICAR: " + tlouGame.Nota_media.ToString ());
+
+                //Prueba el eliminar una Valoracion
+                valoracionCP.Destroy (valoracionTlouJorge.Id);
+                tlouGame = videojuegocen.GetByoID (tlouID);
+                Console.WriteLine ("TLOU DESPUES DE DESTRUIR: " + tlouGame.Nota_media.ToString ());
+
+                //Prueba el a�adir una interaccion a una Rese�a
+                InteraccionCP interaccionCP = new InteraccionCP (new SessionCPNHibernate ());
+                InteraccionEN inter1 = interaccionCP.New_ (jorgeID, true, false, resenyatlouID, resenyatlouID);
+                RegistradoEN autorResenya = registradocen.GetByOID (inter1.Autor.Id);
+                resenyatlou = resenyacen.GetByOID (resenyatlouID);
+                Console.WriteLine ("RESENYA TLOU LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine ("RESENYA TLOU DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                //Modifica el dislike, poniendo un like, y lo prueba
+                interaccionCP.Modify (inter1.Id, false, true, inter1.Id_resenya);
+                resenyatlou = resenyacen.GetByOID (resenyatlouID);
+                Console.WriteLine ("RESENYA TLOU MODIF LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine ("RESENYA TLOU MODIF DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                //Destruye la interaccion
+                interaccionCP.Destroy (inter1.Id);
+                resenyatlou = resenyacen.GetByOID (resenyatlouID);
+                Console.WriteLine ("RESENYA TLOU MODIF LIKES: " + resenyatlou.Likes_contador);
+                Console.WriteLine ("RESENYA TLOU MODIF DISLIKES: " + resenyatlou.Dislikes_contador);
+
+                // Abrimos una sesi�n de NHibernate
+                RegistradoEN registradoPablo = registradocen.GetByOID (pabloID);
+
+                // Consultar afinidades con la sesi�n abierta
+                RegistradoCP registradoCP = new RegistradoCP (new SessionCPNHibernate ());
+
+                valoracionCP.New_ (7, pabloID, tlouID);
+                valoracionCP.New_ (7, davidID, tlouID);
+
+                valoracionCP.New_ (7, pabloID, darkSoulsID);
+                valoracionCP.New_ (7, davidID, sonicID);
+
+                IList<ValoracionEN> valoracionesPablo = valoracioncen.DameValoracionesUsu (pabloID);
+                Console.WriteLine ("VALORACIONES Pablo: \n");
+                foreach (var valoracion in valoracionesPablo) {
+                        VideojuegoEN juego = videojuegocen.GetByoID (valoracion.Videojuego_valorado.Id);
+                        Console.WriteLine ("TITULO: " + juego.Nombre + "\n" + "NOTA: " + valoracion.Nota);
+                }
+
+                IList<ValoracionEN> valoracionesDavid = valoracioncen.DameValoracionesUsu (davidID);
+                Console.WriteLine ("VALORACIONES David: \n");
+                foreach (var valoracion in valoracionesDavid) {
+                        VideojuegoEN juego = videojuegocen.GetByoID (valoracion.Videojuego_valorado.Id);
+                        Console.WriteLine ("TITULO: " + juego.Nombre + "\n" + "NOTA: " + valoracion.Nota);
+                }
+
+                int afinidad = registradoCP.Consultar_afinidades (pabloID, davidID);
+
+                Console.WriteLine ("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
+
+                // prueba creacion individuo
+                int idHideo =   individuocen.New_("Hideo", "Kojima", new DateTime(1963, 08, 23),
+                                GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.PaisesEnum.Espanya,
+                                GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director,
+                                "Es el legendario diseñador de videojuegos detrás de la saga Metal Gear y el videojuego Death Stranding. En 2016, durante la gala de The Game Awards, fue galardonado con el premio honorífico a ícono de la industria de los videojuegos."
+                                );
+                IndividuoEN Hideo = individuocen.GetByOID (idHideo);
+                Console.WriteLine("Este es Hideo Kojima: " + Hideo.Biografia);
 
 
 
-                //ESTE APARTADO EST� HECHO POR SILVA
-
-                ////PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
-                //Console.WriteLine("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
-                /////// Cargar usuarios y videojuegos
-                //int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
-                //// A�adir videojuegos y rese�as, similar al c�digo que ya tienes
-                //int darkSoulsID = videojuegocen.New_("darkSouls", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //int unchartedID = videojuegocen.New_("Uncharted", "Aventura", 0, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //int resenyaPablo = resenyacen.New_("Buen gameplay", "Rese�a del juego", 5, 1, pabloID, darkSoulsID);
-                //int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "Rese�a del juego", 4, 2, davidID, unchartedID);
-                //int resenyaDavidB = resenyacen.New_("Pedazo historia", "Rese�a del juego", 7, 2, davidID, darkSoulsID);
 
 
-                //// Abrimos una sesi�n de NHibernate
-                //using (var session = NHibernateHelper.OpenSession())
-                //{
-                //    // Aseg�rate de que la operaci�n de afinidad tambi�n use la sesi�n abierta
-                //    registradocen.Session = session;
+                //creacion de listas por defecto y admin que las administra
+                int adminID = registradocen.New_("Admin", "admin@gmail.com", "elAdmin", "1234");
+                RegistradoEN admin = registradocen.GetByOID(adminID);
 
-                //    // Inicializar las rese�as para evitar el error de lazy loading
-                //    RegistradoEN registradoPablo = session.Get<RegistradoEN>(pabloID);
-                //    session.Refresh(registradoPablo);
+                int listaCompletados = listacen.New_("Juegos completados", "Juegos que el jugador ha completado", true, adminID);
+                ListaEN completados = listacen.GetByOID(listaCompletados);
 
-                //    // Consultar afinidades con la sesi�n abierta
-                //    int afinidad = registradocen.Consultar_afinidades(pabloID, davidID);
+                int listaEnProgreso = listacen.New_("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID);
+                ListaEN enProgreso = listacen.GetByOID(listaEnProgreso);
 
-                //    // Mostrar el resultado
-                //    Console.WriteLine("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
-                //}
-
-                
+                int listaPendientes = listacen.New_("Juegos pendientes", "Juegos que el jugador quiere jugar pero no ha empezado", true, adminID);
+                ListaEN pendientes = listacen.GetByOID(listaPendientes);
 
 
 
-                //ESTE APARTADO EST� HECHO POR DAVID
 
-                //// Creaci�n de usuarios para comparar afinidades
-                //int davidID = registradocen.New_("david", "david@example.com", "davidxx", false, false, "pass123");
-                //RegistradoEN registradoDavidEN = registradocen.GetByOID(davidID);
-                //RegistradoEN registradoPabloEN = registradocen.GetByOID(pabloID);
-                //// A�adimos videojuegos a los que los usuarios van a hacer rese�as
-                //int darkSoulsID = videojuegocen.New_("Dark Souls", "Juego desafiante", 9, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //int unchartedID = videojuegocen.New_("Uncharted", "Aventura �pica", 8, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum.Accion);
-                //// Creaci�n de rese�as para el usuario David
-                //int resenyaDavidA = resenyacen.New_("Excelente jugabilidad", "El juego est� muy bien hecho", 4, 2, davidID, unchartedID);
-                //int resenyaDavidB = resenyacen.New_("Historia profunda", "Una experiencia memorable", 5, 2, davidID, darkSoulsID);
-                //// Creaci�n de rese�as para el usuario Pablo
-                //int resenyaPabloA = resenyacen.New_("Buen gameplay", "Jugabilidad s�lida y adictiva", 5, 1, pabloID, darkSoulsID);
-                //// Mostrar rese�as de cada usuario
-                //Console.WriteLine("\nRese�as del usuario David:");
-                //using (var session = NHibernateHelper.OpenSession()) // Abre la sesi�n
-                //{
-                //    var usuarioDavid = session.Get<RegistradoEN>(davidID); // Obtenemos el usuario David por su ID
-                //    session.Refresh(usuarioDavid); // Cargar la colecci�n de rese�as si est� en modo "lazy"
-                //    Console.WriteLine("N�mero de rese�as de David: " + usuarioDavid.Resenya.Count);
-                //    foreach (var resenya in usuarioDavid.Resenya)
-                //    {
-                //        Console.WriteLine("T�tulo: " + resenya.Titulo + " - Videojuego: " + resenya.Videojuego.Nombre);
-                //    }
-                //}
-                //Console.WriteLine("\nRese�as del usuario Pablo:");
-                //using (var session = NHibernateHelper.OpenSession()) // Abre la sesi�n
-                //{
-                //    var usuarioPablo = session.Get<RegistradoEN>(pabloID); // Obtenemos el usuario Pablo por su ID
-                //    session.Refresh(usuarioPablo); // Cargar la colecci�n de rese�as si est� en modo "lazy"
-                //    Console.WriteLine("N�mero de rese�as de Pablo: " + usuarioPablo.Resenya.Count);
-                //    foreach (var resenya in usuarioPablo.Resenya)
-                //    {
-                //        Console.WriteLine("T�tulo: " + resenya.Titulo + " - Videojuego: " + resenya.Videojuego.Nombre);
-                //    }
-                //}
-                //// Llamamos al m�todo Consultar_afinidades entre los dos usuarios y mostramos el resultado
-                //int afinidad = registradocen.Consultar_afinidades(davidID, pabloID);
-                //Console.WriteLine("\nAfinidad entre usuario David y usuario Pablo: " + afinidad);
 
                 /*PROTECTED REGION END*/
             }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.InnerException);
+        catch (Exception ex)
+        {
+                System.Console.WriteLine (ex.InnerException);
                 throw;
-            }
         }
-    }
+}
+}
 }

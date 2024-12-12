@@ -1,16 +1,24 @@
 ﻿using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
+using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NHibernate;
+using NHibernate.Engine;
+using NuGet.Common;
+using System.Reflection;
+using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+
 
 namespace Web_GameAffinity.Controllers
 {
-    public class RegistradoController : BasicController
+    public class RegistradoController : Controller
     {
-        // Variable global estática para almacenar el ID
-        private static int? globalRegistradoId;
+
+        private GenericSessionCP CPSession;
+
 
         // GET: RegistradoController
         public ActionResult Index()
@@ -28,10 +36,13 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public ActionResult Login(LoginRegistradoViewModel model)
         {
+            string token = null;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
-            if (cen.Login(model.email, model.password) != null)
+            token = cen.Login(model.email, model.password);
+            if (token != null)
             {
+                HttpContext.Session.SetString("token", token);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -39,6 +50,13 @@ namespace Web_GameAffinity.Controllers
                 model.ShowErrorModal = true;
                 return View(model);
             }
+        }
+
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("token");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -53,16 +71,14 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public ActionResult Registro(RegistroRegistradoViewModel model)
         {
+            int NuevoUser = 0;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
+            NuevoUser = cen.New_(model.nombre, model.email, model.nick, model.password);
 
-            var nuevoId = cen.New_(model.nombre, model.email, model.nick, model.password);
-
-            if (nuevoId != null)
+            if (NuevoUser != 0)
             {
-                // Asignar el ID a la variable global
-                globalRegistradoId = nuevoId;
-
+                HttpContext.Session.SetString("token", cen.GetToken(NuevoUser));
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -111,12 +127,26 @@ namespace Web_GameAffinity.Controllers
             return View(viewModel);
         }
 
-
-
         // GET: RegistradoController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
-            return View();
+            var token = HttpContext.Session.GetString("token");
+            if (string.IsNullOrEmpty(token))
+            {
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            RegistradoRepository repo = new RegistradoRepository();
+            RegistradoCEN cen = new RegistradoCEN(repo);
+            int userId = cen.CheckToken(token);
+
+            if (userId == -1)
+            {
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            var user = cen.GetByOID(userId);
+            return View(user);
         }
 
         // GET: RegistradoController/Create
@@ -140,20 +170,33 @@ namespace Web_GameAffinity.Controllers
             }
         }
 
-        // GET: RegistradoController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RegistradoController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
                 return RedirectToAction(nameof(Index));
+            RegistradoRepository regRepo = new RegistradoRepository();
+            RegistradoCEN regCen = new RegistradoCEN(regRepo);
+            RegistradoEN regEn = regCen.GetByOID(id);
+            ConfiguracionPerfilViewModel configView = new RegistradoAssembler().ConvertirENToViewModel(regEn);
+
+            return View(configView);
+        }
+
+
+        // POST: RegistradoController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ConfiguracionPerfilViewModel configView)
+        {
+            try
+            {
+                RegistradoRepository regRepo = new RegistradoRepository();
+                RegistradoCEN regCEN = new RegistradoCEN(regRepo);
+                regCEN.Modify(id, configView.nombre, configView.email, configView.nick, configView.mentor, configView.notificaciones, configView.password);
+                configView.ShowSaveModal = true;
+
+                return View(configView);
             }
             catch
             {
@@ -182,4 +225,5 @@ namespace Web_GameAffinity.Controllers
             }
         }
     }
+}
 }

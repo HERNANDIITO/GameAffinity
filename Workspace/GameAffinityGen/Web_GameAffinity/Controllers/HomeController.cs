@@ -22,7 +22,6 @@ namespace Web_GameAffinity.Controllers
         {
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-            IList<VideojuegoEN> listaVideojuegos = videojuegoCEN.GetAll(0, -1);
 
 
             EmpresaRepository empRepository = new EmpresaRepository();

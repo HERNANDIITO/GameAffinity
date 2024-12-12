@@ -1,0 +1,66 @@
+@import 'theme.css';
+
+.videogame {
+  position: relative;
+  padding: 0 !important;
+  border-radius: 8px;
+  display: flex;
+  flex-flow: column;
+  overflow-x: hidden;
+  transition: transform 0.25s, filter 0.25s;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0px 5px black);
+    transition: transform 0.25s, filter 0.25s;
+    cursor: pointer;
+  }
+
+.videogameImage {
+  flex-grow: 1;
+  object-fit: contain;
+  overflow: hidden;
+  background: var(--secondary);
+}
+
+  .videogameName {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 8px;
+    color: var(--light);
+    background: var(--primary);
+  }
+
+  .videogameScore {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    margin: 8px;
+    will-change: auto;
+    .score {
+      will-change: auto;
+      height: fit-content;
+      width: fit-content;
+      margin: auto;
+      font-weight: bold;
+    }
+  }
+}
+
+.videogameList {
+  width: 100%;
+  height: min-content;
+  display: flex;
+  flex-flow: row;
+  gap: 1.5rem;
+  padding: 25px 40px;
+  overflow-x: auto;
+  overflow-y: visible;
+}

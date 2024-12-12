@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Web_GameAffinity.Models.IndividuoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Individuos</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Biografia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Biografia)
+            </td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                    <a class="btn btn-info" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Eliminar</a>
+                </div>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

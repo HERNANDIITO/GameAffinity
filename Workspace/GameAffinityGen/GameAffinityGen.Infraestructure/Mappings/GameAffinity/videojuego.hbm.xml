@@ -24,6 +24,12 @@
 					<property name="Genero" > 
 						<column name="genero"  not-null="true"/>
 					</property>
+					<property name="FechaDeLanzamiento" type="date"> 
+						<column name="fechaDeLanzamiento"  not-null="true"/>
+					</property>
+					<property name="Imagen" type="string"> 
+						<column name="imagen"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -85,6 +91,10 @@
 									<column name="FK_idIndividuo_idIndividuo"/> 
       						</many-to-many>
     					</bag>
+			
+			
+					
+					
 					
 					
 					
@@ -102,5 +112,8 @@
 		  <query name="VideojuegoNHgetByGeneroHQL"><![CDATA[FROM VideojuegoNH WHERE genero = :genero]]></query>
 		  <query name="VideojuegoNHgetByEmpresaHQL"><![CDATA[FROM VideojuegoNH]]></query>
 		  <query name="VideojuegoNHgetByIndividuoHQL"><![CDATA[FROM VideojuegoNH]]></query>
+		  <query name="VideojuegoNHgetRecienPublicadosHQL"><![CDATA[FROM VideojuegoNH v WHERE v.FechaDeLanzamiento <= current_date() ORDER BY v.FechaDeLanzamiento DESC]]></query>
+		  <query name="VideojuegoNHgetPopularHQL"><![CDATA[FROM VideojuegoNH v ORDER BY v.Nota_media DESC]]></query>
+		  <query name="VideojuegoNHgetLanzamientosProximosHQL"><![CDATA[FROM VideojuegoNH v WHERE v.FechaDeLanzamiento > current_date() ORDER BY v.FechaDeLanzamiento ASC]]></query>
 		</hibernate-mapping>
 	

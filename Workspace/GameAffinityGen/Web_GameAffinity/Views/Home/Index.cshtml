@@ -1,47 +1,8 @@
 ﻿<!-- Obtenemos referencia a los videojuegos -->
-@model IEnumerable<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN>
+@model Web_GameAffinity.Models.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<<<<<<< Updated upstream
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Empresas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(Model => Model.Descripcion)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Empresas)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descripcion)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    
-
-</div>
-=======
 <section class="row">
     <h1>Últimas novedades</h1>
     <div class="videogameList row">
@@ -78,4 +39,3 @@
         }
     </div>
 </section>
->>>>>>> Stashed changes

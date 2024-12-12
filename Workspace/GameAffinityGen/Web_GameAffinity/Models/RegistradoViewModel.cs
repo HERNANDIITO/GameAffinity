@@ -60,8 +60,8 @@ namespace Web_GameAffinity.Models
 
         [Display(Prompt = "Nombre del User", Description = "Nombre del usuario", Name = "Nombre")]
         [Required(ErrorMessage = "Este campo no puede quedar vacío")]
-        [StringLength(maximumLength:20, ErrorMessage ="El nombre no puede tener más de 20 caracteres")]
-        public string nombre { get; set;}
+        [StringLength(maximumLength: 20, ErrorMessage = "El nombre no puede tener más de 20 caracteres")]
+        public string nombre { get; set; }
 
         [Display(Prompt = "Email del User", Description = "Email del usuario", Name = "Email")]
         [Required(ErrorMessage = "Este campo no puede quedar vacío")]
@@ -74,7 +74,6 @@ namespace Web_GameAffinity.Models
 
         [Display(Prompt = "Contraseña", Description = "Contraseña del usuario", Name = "Password")]
         [Required(ErrorMessage = "Este campo no puede quedar vacío")]
-        [StringLength(maximumLength: 20, ErrorMessage = "La contraseña no puede tener más de 20 caracteres")]
         public string password { get; set; }
 
         [Display(Prompt = "Mentoria", Description = "Mentoria del usuario", Name = "Mentoria")]
@@ -85,7 +84,6 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Este campo no puede quedar vacío")]
         public bool notificaciones { get; set; }
 
-
-
+        public bool ShowSaveModal { get; set; } = false;
     }
 }

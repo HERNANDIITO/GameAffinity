@@ -13,6 +13,8 @@ namespace Web_GameAffinity.Assembler
             config.nombre = registrado.Nombre;
             config.email = registrado.Email;
             config.nick = registrado.Nick;
+            config.password = registrado.Contrasenya;
+            config.notificaciones = registrado.Notificaciones;
 
             return config;
         }
