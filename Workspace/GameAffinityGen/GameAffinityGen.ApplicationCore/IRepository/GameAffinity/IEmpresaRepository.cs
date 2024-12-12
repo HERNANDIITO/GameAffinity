@@ -34,6 +34,7 @@ EmpresaEN GetByOID (int id
 System.Collections.Generic.IList<EmpresaEN> GetAll (int first, int size);
 
 
+
 void AnyadirJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);
 
 void EilminarJuegoDesarrollado (int p_Empresa_OID, System.Collections.Generic.IList<int> p_videojuegos_OIDs);

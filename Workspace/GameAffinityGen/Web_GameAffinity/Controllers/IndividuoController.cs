@@ -1,10 +1,13 @@
 ﻿using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -42,6 +45,12 @@ namespace Web_GameAffinity.Controllers
         // GET: IndividuoController/Create
         public ActionResult Create()
         {
+            IList<SelectListItem> listaRoles = new List<SelectListItem>();
+            listaRoles.Add(new SelectListItem { Text = "Illustrador", Value = RolesEnum.Ilustrador.ToString() });
+            listaRoles.Add(new SelectListItem { Text = "Director", Value = RolesEnum.Director.ToString() });
+            listaRoles.Add(new SelectListItem { Text = "Múscio", Value = RolesEnum.Musico.ToString() });
+            listaRoles.Add(new SelectListItem { Text = "Programador", Value = RolesEnum.Programador.ToString() });
+            ViewData["RolesItems"] = listaRoles;
             return View();
         }
 
@@ -74,6 +83,7 @@ namespace Web_GameAffinity.Controllers
         // GET: IndividuoController/Edit/5
         public ActionResult Edit(int id)
         {
+            // obtener valores existentes para ponerlos en los campos
             SessionInitialize();
             IndividuoRepository individuoRepository = new IndividuoRepository(session);
             IndividuoCEN individuoCEN = new IndividuoCEN(individuoRepository);
@@ -82,6 +92,16 @@ namespace Web_GameAffinity.Controllers
             IndividuoViewModel individuoView = new IndividuoAssembler().ConvertirENToViewModel(individuoEn);
 
             SessionClose();
+
+            // obtener roles
+            IList<SelectListItem> listaRoles = new List<SelectListItem>();
+            listaRoles.Add(new SelectListItem { Text = "Illustrador", Value = RolesEnum.Ilustrador.ToString() });
+            listaRoles.Add(new SelectListItem { Text = "Director", Value = RolesEnum.Director.ToString() });
+            listaRoles.Add(new SelectListItem { Text = "Múscio", Value = RolesEnum.Musico.ToString() });
+            listaRoles.Add(new SelectListItem { Text = "Programador", Value = RolesEnum.Programador.ToString() });
+            ViewData["RolesItems"] = listaRoles;
+
+            // retorno de valores a la vista
             return View(individuoView);
         }
 

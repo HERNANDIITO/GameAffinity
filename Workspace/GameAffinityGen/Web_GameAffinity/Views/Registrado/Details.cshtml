@@ -1,47 +1,129 @@
-﻿@model GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN
+﻿@model Web_GameAffinity.Models.RegistradoDetailsViewModel
+@using GameAffinityGen.ApplicationCore.EN.GameAffinity
 
 @{
     ViewData["Title"] = "Perfil del Usuario";
 }
 
-<h2>Perfil del Usuario</h2>
+<main class="main-content-profile">
+    <div class="full-profile-container">
+        <div class="perfil-usuario">
+            <div class="foto-usuario">
+                <img src="https://www.excelsior.com.mx/media/pictures/2024/11/21/3216015.jpg" alt="Foto del Usuario" />
+            </div>
+            <div class="info-usuario">
+                <h2 class="Name-User-Profile">@Model.Registrado.Nick</h2>
+                <h4>Juegos Completados:</h4><br />
+                <h4>Juegos Jugados:</h4>
+                <div class="boton-configuracion">
+                    @Html.ActionLink("Configuración", "Edit", new { id = Model.Registrado.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
 
-<div>
-    <h4>Detalles del Usuario</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            Nombre
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Nombre
-        </dd>
-        <dt class="col-sm-2">
-            Email
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Email
-        </dd>
-        <dt class="col-sm-2">
-            Nick
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Nick
-        </dd>
-        <dt class="col-sm-2">
-            Es Mentor
-        </dt>
-        <dd class="col-sm-10">
-            @(Model.Es_mentor ? "Sí" : "No")
-        </dd>
-        <dt class="col-sm-2">
-            Notificaciones
-        </dt>
-        <dd class="col-sm-10">
-            @(Model.Notificaciones ? "Activadas" : "Desactivadas")
-        </dd>
-        <dd class="col-sm-10">
-            @Html.ActionLink("Configuración", "Edit", new{id = Model.Id})
-        </dd>
-    </dl>
-</div>
+        <h4>Listas Predeterminadas</h4>
+        @if (Model.Listas != null && Model.Listas.Any(l => l.Por_defecto))
+        {
+            <div id="carouselPredeterminadas" class="carousel">
+                <div class="carousel-inner carousel-body-css">
+                    @for (int i = 0; i < Model.Listas.Where(l => l.Por_defecto).Count(); i++)
+                    {
+                        var lista = Model.Listas.Where(l => l.Por_defecto).ElementAt(i);
+                        <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                            @Html.Partial("ListaCard", lista)
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPredeterminadas" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselPredeterminadas" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <p>No hay listas predeterminadas disponibles.</p>
+        }
+
+        <h4>Listas Personalizadas</h4>
+        @if (Model.Listas != null && Model.Listas.Any(l => !l.Por_defecto))
+        {
+            <div id="carouselPersonalizadas" class="carousel">
+                <div class="carousel-inner carousel-body-css">
+                    @for (int i = 0; i < Model.Listas.Where(l => !l.Por_defecto).Count(); i++)
+                    {
+                        var lista = Model.Listas.Where(l => !l.Por_defecto).ElementAt(i);
+                        <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                            @Html.Partial("ListaCard", lista)
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev control-prev-next-type-class" type="button" data-bs-target="#carouselPersonalizadas" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselPersonalizadas" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <p>No hay listas personalizadas disponibles.</p>
+        }
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+        // Configuración común para ambos carruseles
+        function configureCarousel(carouselId) {
+            var carouselInner = $(carouselId + ' .carousel-inner');
+            var carouselItems = $(carouselId + ' .carousel-item');
+            var cardWidth = carouselItems.outerWidth(true); // Ancho del elemento incluyendo márgenes
+            var totalItems = carouselItems.length;
+            var currentIndex = 0; // Índice del elemento actualmente activo
+
+            function updateActiveClass() {
+                // Quita la clase 'active' de todos los elementos
+                carouselItems.removeClass('active');
+                // Añade la clase 'active' al elemento actual
+                carouselItems.eq(currentIndex).addClass('active');
+            }
+
+            $(carouselId + ' .carousel-control-next').on('click', function () {
+                if (currentIndex < totalItems - 1) {
+                    currentIndex++;
+                } else {
+                    // Comportamiento cíclico: del último al primero
+                    currentIndex = 0;
+                }
+                carouselInner.animate({ scrollLeft: cardWidth * currentIndex }, 600);
+                updateActiveClass();
+            });
+
+            $(carouselId + ' .carousel-control-prev').on('click', function () {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    // Comportamiento cíclico: del primero al último
+                    currentIndex = totalItems - 1;
+                }
+                carouselInner.animate({ scrollLeft: cardWidth * currentIndex }, 600);
+                updateActiveClass();
+            });
+
+            // Inicializa la clase activa en el primer elemento
+            updateActiveClass();
+        }
+
+        // Configura ambos carruseles
+        configureCarousel('#carouselPersonalizadas');
+        configureCarousel('#carouselPredeterminadas');
+    });
+</script>

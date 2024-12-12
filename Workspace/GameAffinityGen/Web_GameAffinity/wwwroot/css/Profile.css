@@ -1,0 +1,80 @@
+﻿@import "colors.css";
+
+.perfil-usuario {
+    display: flex;
+    align-items:flex-start;
+    margin-bottom: 40px;
+}
+
+.foto-usuario img {
+    width: 200px;
+    height: 300px;
+    margin-right: 20px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.info-usuario {
+    display: flex;
+    flex-direction: column;
+}
+
+    .info-usuario h3 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+.boton-configuracion {
+    margin-top: 30px;
+}
+
+.full-profile-container {
+    display: flex; /* Define el contenedor como flexbox */
+    flex-direction:column;
+    align-items:flex-start; /* Centra verticalmente */
+    height: 100vh;
+    width:80vh;
+    padding:40px;
+    writing-mode:horizontal-tb;
+    border-inline:1px solid black;
+    box-shadow:1px 4px 10px 2px #000;
+}
+
+.main-content-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.Name-User-Profile{
+    margin-bottom:40px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Cambia el color del fondo */
+    border-radius: 50%; /* Hace el fondo redondo */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: var(--ga-dark-blue); /* Color del fondo al pasar el ratón */
+}
+
+@media screen and (min-width:576px) {
+    .carousel-body-css {
+        display:flex;
+    }
+    
+    .carousel-item-block-2items  {
+        display:block;
+        margin-right: 15px;
+        flex: 0 0 calc(100%/2);
+    }
+}
+
+.carousel-body-css {
+    padding: 1em;
+}

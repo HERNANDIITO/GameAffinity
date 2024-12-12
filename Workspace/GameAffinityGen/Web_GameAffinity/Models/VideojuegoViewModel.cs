@@ -67,7 +67,7 @@ namespace Web_GameAffinity.Models
         public DateTime? FechaLanzamiento { get; set; }
 
         [Display(
-            Prompt = "Da un género el videojuego", // texto para el input vacio
+            Prompt = "Género del videojuego", // texto para el input vacio
             Description = "Género del videojuego", // texto para el alt
             Name = "Género" // nombre para el label
             )]

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    IEnumerable<SelectListItem> rolesItems = (IEnumerable<SelectListItem>)ViewData["RolesItems"];
 }
 
 <h1>Editar</h1>
@@ -34,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Rol" class="control-label"></label>
-                <input asp-for="Rol" class="form-control" />
+                <select class="form-select" asp-for="Rol" asp-items="rolesItems"></select>
                 <span asp-validation-for="Rol" class="text-danger"></span>
             </div>
             <div class="form-group">

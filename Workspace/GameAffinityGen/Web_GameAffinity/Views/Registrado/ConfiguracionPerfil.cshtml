@@ -1,0 +1,89 @@
+﻿@model Web_GameAffinity.Models.ConfiguracionPerfilViewModel
+
+@{
+    ViewData["Title"] = "ConfiguracionPerfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Configuración de perfil</h1>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class="col-sm-2">
+            Email:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class="col-sm-2">
+            Nick de usuario:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nick)
+        </dd>
+        <dt class="col-sm-2">
+            Contraseña:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt class="col-sm-2">
+            Mentoría:
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.mentor)
+            {
+                <span>Es mentor</span>
+            }
+            else
+            {
+                <span>No es mentor</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Notificaciones:
+        </dt>
+        <dd class="col-sm-10">
+            <span id="notificaciones-status">
+                @(Model.notificaciones ? "Activadas" : "Desactivadas")
+            </span>
+            <button id="toggle-notificaciones" class="btn btn-primary btn-sm">Cambiar</button>
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("toggle-notificaciones");
+        const statusSpan = document.getElementById("notificaciones-status");
+
+        // Cambiar el estado al hacer clic en el botón
+        toggleButton.addEventListener("click", function () {
+            const currentStatus = statusSpan.innerText.trim();
+
+            // Cambiar el texto basado en el estado actual
+            if (currentStatus === "Activadas") {
+                statusSpan.innerText = "Desactivadas";
+                @Model.notificaciones = false;
+                console.log("Estado de notificaciones: @Model.notificaciones");
+            } else {
+                statusSpan.innerText = "Activadas";
+                @Model.notificaciones = true;
+                console.log("Estado de notificaciones: @Model.notificaciones");
+            }
+
+            
+        });
+    });
+</script>
