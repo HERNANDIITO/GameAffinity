@@ -92,7 +92,7 @@ namespace Web_GameAffinity.Controllers
         public ActionResult ConfiguracionPerfil()
         {
             // Verificar si la variable global contiene un ID válido
-            if (globalRegistradoId == null)
+            if (HttpContext.Session.GetString("token") == null)
             {
                 // Manejar el caso en que no hay un usuario registrado
                 return RedirectToAction("Login", "Registrado");
@@ -103,7 +103,7 @@ namespace Web_GameAffinity.Controllers
             RegistradoCEN cen = new RegistradoCEN(repo);
 
             // Usar el ID para obtener la información del usuario
-            var usuario = cen.GetByOID(globalRegistradoId.Value);
+            var usuario = cen.GetByOID(cen.CheckToken(HttpContext.Session.GetString("token")));
 
             if (usuario == null)
             {
@@ -172,9 +172,6 @@ namespace Web_GameAffinity.Controllers
 
         public ActionResult Edit(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
             RegistradoRepository regRepo = new RegistradoRepository();
             RegistradoCEN regCen = new RegistradoCEN(regRepo);
             RegistradoEN regEn = regCen.GetByOID(id);
@@ -225,5 +222,4 @@ namespace Web_GameAffinity.Controllers
             }
         }
     }
-}
 }

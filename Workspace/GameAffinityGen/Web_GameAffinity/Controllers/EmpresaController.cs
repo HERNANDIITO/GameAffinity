@@ -9,7 +9,7 @@ using Web_GameAffinity.Models;
 
 namespace Web_GameAffinity.Controllers
 {
-    public class EmpresaController : Controller
+    public class EmpresaController : BasicController
     {
         // GET: EmpresaController
         public ActionResult Index()
@@ -90,11 +90,18 @@ namespace Web_GameAffinity.Controllers
 
     public ActionResult DetailsEmpresa(int id)
     {
-        EmpresaRepository empRepo = new EmpresaRepository();
+        SessionInitialize();
+
+        EmpresaRepository empRepo = new EmpresaRepository(session);
         EmpresaCEN empCen = new EmpresaCEN(empRepo);
 
         // Obtienes la empresa por su ID
         EmpresaEN empresaEN = empCen.GetByOID(id);
+
+        if (empresaEN.Videojuegos != null)
+        {
+            NHibernateUtil.Initialize(empresaEN.Videojuegos);
+        }
 
         // Creas el modelo que pasas a la vista
         var model = new EmpresaViewModel
@@ -104,6 +111,8 @@ namespace Web_GameAffinity.Controllers
             nota = empresaEN.Nota,
             videojuegos = empresaEN.Videojuegos
         };
+
+        SessionClose();  
 
         return View(model);
     }
