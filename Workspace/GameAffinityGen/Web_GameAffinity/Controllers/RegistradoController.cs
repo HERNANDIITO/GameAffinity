@@ -14,7 +14,7 @@ using Web_GameAffinity.Models;
 
 namespace Web_GameAffinity.Controllers
 {
-    public class RegistradoController : Controller
+    public class RegistradoController : BasicController
     {
 
         private GenericSessionCP CPSession;
@@ -36,18 +36,23 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public ActionResult Login(LoginRegistradoViewModel model)
         {
+            SessionInitialize();
             string token = null;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
             token = cen.Login(model.email, model.password);
             if (token != null)
             {
-                HttpContext.Session.SetString("token", token);
+                RegistradoEN user = cen.GetByOID(cen.CheckToken(token));
+                ConfiguracionPerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
+                HttpContext.Session.Set<ConfiguracionPerfilViewModel>("user", userlogged);
+                SessionClose();
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 model.ShowErrorModal = true;
+                SessionClose();
                 return View(model);
             }
         }
@@ -55,7 +60,7 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("token");
+            HttpContext.Session.Remove("user");
             return RedirectToAction("Index", "Home");
         }
 
@@ -71,6 +76,7 @@ namespace Web_GameAffinity.Controllers
         [HttpPost]
         public ActionResult Registro(RegistroRegistradoViewModel model)
         {
+            SessionInitialize();
             int NuevoUser = 0;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
@@ -78,12 +84,16 @@ namespace Web_GameAffinity.Controllers
 
             if (NuevoUser != 0)
             {
-                HttpContext.Session.SetString("token", cen.GetToken(NuevoUser));
+                RegistradoEN user = cen.GetByOID(NuevoUser);
+                ConfiguracionPerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
+                HttpContext.Session.Set<ConfiguracionPerfilViewModel>("user", userlogged);
+                SessionClose();
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 model.ShowErrorModal = true;
+                SessionClose();
                 return View(model);
             }
         }
@@ -92,7 +102,7 @@ namespace Web_GameAffinity.Controllers
         public ActionResult ConfiguracionPerfil()
         {
             // Verificar si la variable global contiene un ID válido
-            if (HttpContext.Session.GetString("token") == null)
+            if (HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user") == null)
             {
                 // Manejar el caso en que no hay un usuario registrado
                 return RedirectToAction("Login", "Registrado");
@@ -103,7 +113,7 @@ namespace Web_GameAffinity.Controllers
             RegistradoCEN cen = new RegistradoCEN(repo);
 
             // Usar el ID para obtener la información del usuario
-            var usuario = cen.GetByOID(cen.CheckToken(HttpContext.Session.GetString("token")));
+            var usuario = cen.GetByOID(HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user").id);
 
             if (usuario == null)
             {
@@ -130,22 +140,44 @@ namespace Web_GameAffinity.Controllers
         // GET: RegistradoController/Details/5
         public ActionResult Details()
         {
-            var token = HttpContext.Session.GetString("token");
-            if (string.IsNullOrEmpty(token))
+            SessionInitialize();
+            ConfiguracionPerfilViewModel usuario = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user");
+            if (usuario == null)
             {
+                SessionClose();
                 return RedirectToAction("Login", "Registrado");
             }
 
-            RegistradoRepository repo = new RegistradoRepository();
+            RegistradoRepository repo = new RegistradoRepository(session);
             RegistradoCEN cen = new RegistradoCEN(repo);
-            int userId = cen.CheckToken(token);
 
-            if (userId == -1)
+            if (usuario.id == -1)
             {
+                SessionClose();
                 return RedirectToAction("Login", "Registrado");
             }
 
-            var user = cen.GetByOID(userId);
+            RegistradoEN registrado = cen.GetByOID(usuario.id);
+            ListaRepository listaRepo = new ListaRepository(session);
+
+            //Forzar la carga
+            if(registrado.Listas != null)
+            {
+                NHibernateUtil.Initialize(registrado.Listas);
+
+                foreach (var lista in registrado.Listas)
+                {
+                    NHibernateUtil.Initialize(lista.Videojuegos);
+                }
+            }
+
+            var user = new RegistradoDetailsViewModel
+            {
+                Registrado = registrado,
+                Listas = registrado.Listas
+            };
+
+            SessionClose();
             return View(user);
         }
 

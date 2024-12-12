@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 
 namespace Web_GameAffinity.Models
 {
@@ -48,6 +49,12 @@ namespace Web_GameAffinity.Models
         public required string password { get; set; }
 
         public bool ShowErrorModal { get; set; } = false;
+    }
+
+    public class RegistradoDetailsViewModel
+    {
+        public RegistradoEN Registrado { get; set; }
+        public IList<ListaEN> Listas { get; set; }
     }
 
 
