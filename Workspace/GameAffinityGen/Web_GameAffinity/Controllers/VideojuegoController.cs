@@ -3,8 +3,10 @@ using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -28,22 +30,42 @@ namespace Web_GameAffinity.Controllers
         // GET: VideojuegoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SessionInitialize();
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+
+            VideojuegoEN videojuegoEn = videojuegoCEN.GetByoID(id);
+            VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
+
+            SessionClose();
+            return View(videojuegoView);
         }
 
         // GET: VideojuegoController/Create
         public ActionResult Create()
         {
+            //Obtener enums
+            IList<SelectListItem> listaGeneros = new List<SelectListItem>();
+            listaGeneros.Add(new SelectListItem { Text = "Terror", Value = GenerosEnum.Terror.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Acción", Value = GenerosEnum.Accion.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Puzzles", Value = GenerosEnum.Puzzles.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Mundo Abierto", Value = GenerosEnum.Mundo_abierto.ToString() });
+            ViewData["GenerosItems"] = listaGeneros;
+            
             return View();
+
         }
 
         // POST: VideojuegoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(VideojuegoViewModel videojuego)
         {
             try
             {
+                VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+                videojuegoCEN.New_(videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero, videojuego.FechaLanzamiento, videojuego.Imagen);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -55,16 +77,35 @@ namespace Web_GameAffinity.Controllers
         // GET: VideojuegoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SessionInitialize();
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+
+            VideojuegoEN videojuegoEn =  videojuegoCEN.GetByoID(id);
+            VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
+
+            SessionClose();
+
+            IList<SelectListItem> listaGeneros = new List<SelectListItem>();
+            listaGeneros.Add(new SelectListItem { Text = "Terror", Value = GenerosEnum.Terror.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Acción", Value = GenerosEnum.Accion.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Puzzles", Value = GenerosEnum.Puzzles.ToString() });
+            listaGeneros.Add(new SelectListItem { Text = "Mundo Abierto", Value = GenerosEnum.Mundo_abierto.ToString() });
+            ViewData["GenerosItems"] = listaGeneros;
+
+            return View(videojuegoView);
         }
 
         // POST: VideojuegoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, VideojuegoViewModel videojuego)
         {
             try
             {
+                VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+                VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+                videojuegoCEN.Modify(id, videojuego.Nombre, videojuego.Descripcion, 0.0f, videojuego.Genero, videojuego.FechaLanzamiento, videojuego.Imagen);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -76,7 +117,10 @@ namespace Web_GameAffinity.Controllers
         // GET: VideojuegoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            videojuegoCEN.Destroy(id);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: VideojuegoController/Delete/5

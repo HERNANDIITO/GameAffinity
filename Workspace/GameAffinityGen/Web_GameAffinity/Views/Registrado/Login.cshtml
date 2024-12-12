@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="page-container">
@@ -28,7 +28,7 @@
             </div>
             <div class="login-button">
                 <input type="submit" value="Entrar" class="btn btn-primary btn-sm" />
-                <span><a>¿Todavía no tienes cuenta?</a></span>
+                <span><a asp-controller="Registrado" asp-action="Registro">¿Todavía no tienes cuenta?</a></span>
             </div>
         </form>
     </div>
