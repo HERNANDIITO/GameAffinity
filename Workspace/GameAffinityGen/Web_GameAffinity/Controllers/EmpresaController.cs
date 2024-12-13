@@ -11,6 +11,14 @@ namespace Web_GameAffinity.Controllers
 {
     public class EmpresaController : BasicController
     {
+
+        private readonly IWebHostEnvironment _webHost;
+
+        public EmpresaController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         // GET: EmpresaController
         public ActionResult Index()
         {
@@ -49,14 +57,20 @@ namespace Web_GameAffinity.Controllers
         // POST: EmpresaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EmpresaViewModel empresa)
+        public async Task<ActionResult> Create(EmpresaViewModel empresa)
         {
+            string fileName = await FileHelper.GetFileName(empresa.Imagen, _webHost.WebRootPath);
+
             try
             {
-                EmpresaRepository empresaRepository = new EmpresaRepository();
-                EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
-                empresaCEN.New_(empresa.Nombre, empresa.Descripcion, empresa.Nota, "");
-
+                EmpresaRepository repository = new EmpresaRepository();
+                EmpresaCEN cen = new EmpresaCEN(repository);
+                cen.New_(
+                    empresa.Nombre,
+                    empresa.Descripcion,
+                    0,
+                    fileName
+                );
                 return RedirectToAction(nameof(Index));
             }
             catch

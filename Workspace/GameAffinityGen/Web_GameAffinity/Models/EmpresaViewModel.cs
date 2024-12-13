@@ -20,6 +20,16 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "La nota es obligatorio")]
         public float Nota { get; set; }
 
+        // Declaracion de la imagen
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Pega aquí la ruta de la portada del videojuego.",
+            Description = "Portada del videojuego.",
+            Name = "Imagen")]
+        [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
+        public IFormFile Imagen { get; set; }
+
         //[Display(Prompt = "Videojuegos hechos por la empresa.", Description = "Videojuegos de la empresa", Name = "Videojuegos")]
         //[Required(ErrorMessage = "Los videojuegos son obligatorios")]
         //public IList<VideojuegoEN> Videojuegos { get; set; }
@@ -55,5 +65,15 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Los videojuegos son obligatorios")]
 
         public required IList<VideojuegoEN> videojuegos { get; set; }
+
+        // Declaracion de la imagen
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Pega aquí la ruta de la portada del videojuego.",
+            Description = "Icono de la empresa.",
+            Name = "Imagen")]
+        [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
+        public IFormFile Imagen { get; set; }
     }
 }
