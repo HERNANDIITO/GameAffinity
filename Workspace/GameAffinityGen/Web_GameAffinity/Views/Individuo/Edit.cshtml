@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
     IEnumerable<SelectListItem> rolesItems = (IEnumerable<SelectListItem>)ViewData["RolesItems"];
+    IEnumerable<SelectListItem> paisesItems = (IEnumerable<SelectListItem>)ViewData["paisesItems"];
 }
 
 <h1>Editar</h1>
@@ -28,11 +29,11 @@
                 <input asp-for="FechaNac" class="form-control" />
                 <span asp-validation-for="FechaNac" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Nacionalidad" class="control-label"></label>
-                <input asp-for="Nacionalidad" class="form-control" />
-                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
-            </div>
+            @* <div class="form-group">
+                <label asp-for="idNacionalidad" class="control-label"></label>
+                <select asp-for="idNacionalidad" class="form-select" asp-items="paisesItems"></select>
+                <span asp-validation-for="idNacionalidad" class="text-danger"></span>
+            </div> *@
             <div class="form-group">
                 <label asp-for="Rol" class="control-label"></label>
                 <select class="form-select" asp-for="Rol" asp-items="rolesItems"></select>

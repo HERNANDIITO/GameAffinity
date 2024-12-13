@@ -102,7 +102,7 @@ namespace Web_GameAffinity.Controllers
             {
                 EmpresaRepository empresaRepository = new EmpresaRepository();
                 EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
-                empresaCEN.Modify(id, empresa.Nombre, empresa.Descripcion, empresa.Nota, "");
+                empresaCEN.Modify(id, empresa.Nombre, empresa.Descripcion, 0.0f, empresa.Img);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -155,6 +155,7 @@ namespace Web_GameAffinity.Controllers
             // Creas el modelo que pasas a la vista
             var model = new DetailsEmpresaViewModel
             {
+                Id = empresaEN.Id,
                 nombre = empresaEN.Nombre,
                 descripcion = empresaEN.Descripcion,
                 nota = empresaEN.Nota,

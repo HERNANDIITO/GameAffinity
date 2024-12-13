@@ -58,6 +58,7 @@ namespace Web_GameAffinity.Models
 
         [Display(Prompt = "Nota de empresa", Description = "Nota de empresa", Name = "nota")]
         [Required(ErrorMessage = "La nota es obligatorio")]
+        [Range(minimum: 0, maximum: 10, ErrorMessage = "La nota debe ser entre 0 y 10")]
 
         public required float nota { get; set; }
 
