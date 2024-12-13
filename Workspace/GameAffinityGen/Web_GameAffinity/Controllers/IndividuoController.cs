@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
 using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
+using GameAffinityGen.Infraestructure.EN.GameAffinity;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -51,6 +52,17 @@ namespace Web_GameAffinity.Controllers
             listaRoles.Add(new SelectListItem { Text = "Múscio", Value = RolesEnum.Musico.ToString() });
             listaRoles.Add(new SelectListItem { Text = "Programador", Value = RolesEnum.Programador.ToString() });
             ViewData["RolesItems"] = listaRoles;
+
+            PaisesRepository paisesRepository = new PaisesRepository();
+            PaisesCEN paisesCEN = new PaisesCEN(paisesRepository);
+            IList<PaisesEN> listaPaises = paisesCEN.ReadAll(0, -1);
+            IList<SelectListItem> paisesItems = new List<SelectListItem>();
+
+            foreach (PaisesEN paisesen in listaPaises)
+            {
+                paisesItems.Add(new SelectListItem { Text = paisesen.Nombre, Value = paisesen.Id.ToString() });
+            }
+            ViewData["paisesItems"] = paisesItems;
             return View();
         }
 
@@ -100,6 +112,17 @@ namespace Web_GameAffinity.Controllers
             listaRoles.Add(new SelectListItem { Text = "Múscio", Value = RolesEnum.Musico.ToString() });
             listaRoles.Add(new SelectListItem { Text = "Programador", Value = RolesEnum.Programador.ToString() });
             ViewData["RolesItems"] = listaRoles;
+
+            PaisesRepository paisesRepository = new PaisesRepository();
+            PaisesCEN paisesCEN = new PaisesCEN(paisesRepository);
+            IList<PaisesEN> listaPaises = paisesCEN.ReadAll(0, -1);
+            IList<SelectListItem> paisesItems = new List<SelectListItem>();
+
+            foreach (PaisesEN paisesen in listaPaises)
+            {
+                paisesItems.Add(new SelectListItem { Text = paisesen.Nombre, Value = paisesen.Id.ToString() });
+            }
+            ViewData["paisesItems"] = paisesItems;
 
             // retorno de valores a la vista
             return View(individuoView);
