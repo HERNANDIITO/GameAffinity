@@ -20,6 +20,9 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "La nota es obligatorio")]
         public float Nota { get; set; }
 
+        [ScaffoldColumn(false)] // ver que queda mejor aqui
+        public string Img {  get; set; }
+
         //[Display(Prompt = "Videojuegos hechos por la empresa.", Description = "Videojuegos de la empresa", Name = "Videojuegos")]
         //[Required(ErrorMessage = "Los videojuegos son obligatorios")]
         //public IList<VideojuegoEN> Videojuegos { get; set; }
@@ -48,6 +51,7 @@ namespace Web_GameAffinity.Models
 
         [Display(Prompt = "Nota de empresa", Description = "Nota de empresa", Name = "nota")]
         [Required(ErrorMessage = "La nota es obligatorio")]
+        [Range(minimum: 0, maximum: 10, ErrorMessage = "La nota debe ser entre 0 y 10")]
 
         public required float nota { get; set; }
 
