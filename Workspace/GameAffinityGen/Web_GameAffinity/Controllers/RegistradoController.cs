@@ -92,12 +92,12 @@ namespace Web_GameAffinity.Controllers
             string fileName = await FileHelper.GetFileName(model.Imagen, _webHost.WebRootPath);
 
             SessionInitialize();
-            int NuevoUser = 0;
+            
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
             RegistradoCP registradoCP = new RegistradoCP(new SessionCPNHibernate());
 
-            NuevoUser = registradoCP.New_(
+            RegistradoEN user = registradoCP.New_(
                 model.nombre,
                 model.email,
                 model.nick,
@@ -105,11 +105,10 @@ namespace Web_GameAffinity.Controllers
                 true,
                 model.password,
                 fileName
-            ).Id;
+            );
 
-            if (NuevoUser != 0)
+            if (user != null)
             {
-                RegistradoEN user = cen.GetByOID(NuevoUser);
                 PerfilViewModel userlogged = new RegistradoAssembler().ConvertirENToViewModel(user);
                 HttpContext.Session.Set<PerfilViewModel>("user", userlogged);
                 SessionClose();
