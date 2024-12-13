@@ -1,6 +1,7 @@
 ﻿using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
+using GameAffinityGen.Infraestructure.CP;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -94,8 +95,9 @@ namespace Web_GameAffinity.Controllers
             int NuevoUser = 0;
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
+            RegistradoCP registradoCP = new RegistradoCP(new SessionCPNHibernate());
 
-            NuevoUser = cen.New_(
+            NuevoUser = registradoCP.New_(
                 model.nombre,
                 model.email,
                 model.nick,
@@ -103,7 +105,7 @@ namespace Web_GameAffinity.Controllers
                 true,
                 model.password,
                 fileName
-            );
+            ).Id;
 
             if (NuevoUser != 0)
             {

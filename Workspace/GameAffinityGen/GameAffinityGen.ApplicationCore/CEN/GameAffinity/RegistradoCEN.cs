@@ -45,40 +45,11 @@ public void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.G
 }
 public void Aceptar_mentoria (int registrado_oid)
 {
-            /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_Aceptar_mentoria) ENABLED START*/
-            RegistradoEN registradoEN = this.GetByOID(registrado_oid);
-            registradoEN.Es_mentor = true;
-            _IRegistradoRepository.ModifyDefault(registradoEN);
-            /*PROTECTED REGION END*/
-        }
-
-public int New_ (string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya, string p_img)
-{
-        RegistradoEN registradoEN = null;
-        int oid;
-
-        //Initialized RegistradoEN
-        registradoEN = new RegistradoEN ();
-        registradoEN.Nombre = p_nombre;
-
-        registradoEN.Email = p_email;
-
-        registradoEN.Nick = p_nick;
-
-        /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_New_) ENABLED START*/
-        registradoEN.Es_mentor = false;
-
-        registradoEN.Notificaciones = true;
-        /*PROTECTED REGION END*/
-
-        registradoEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
-
-        registradoEN.Img = p_img;
-
-
-
-        oid = _IRegistradoRepository.New_ (registradoEN);
-        return oid;
+    /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_Aceptar_mentoria) ENABLED START*/
+    RegistradoEN registradoEN = this.GetByOID(registrado_oid);
+    registradoEN.Es_mentor = true;
+    _IRegistradoRepository.ModifyDefault(registradoEN);
+    /*PROTECTED REGION END*/
 }
 
 public void Modify (int p_Registrado_OID, string p_nombre, string p_email, string p_nick, bool p_es_mentor, bool p_notificaciones, String p_contrasenya, string p_img)
