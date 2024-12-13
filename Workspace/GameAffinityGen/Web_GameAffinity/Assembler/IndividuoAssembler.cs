@@ -13,7 +13,8 @@ namespace Web_GameAffinity.Assembler
             individuo.Apellido = en.Apellido;
             individuo.FechaNac = en.FechaNac;
             individuo.Rol = en.Rol;
-            individuo.Nacionalidad = en.Nacionalidad;
+            individuo.nombreNacionalidad = en.Nacionalidad.Nombre;
+            individuo.idNacionalidad = en.Nacionalidad.Id;
             individuo.Biografia = en.Biografia;
             return( individuo );
         }

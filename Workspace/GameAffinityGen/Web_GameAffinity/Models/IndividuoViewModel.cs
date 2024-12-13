@@ -36,7 +36,15 @@ namespace Web_GameAffinity.Models
             )]
         public Nullable<DateTime> FechaNac { get; set; }
 
-        public GameAffinityGen.ApplicationCore.EN.GameAffinity.PaisesEN Nacionalidad { get; set; }
+        [Display(
+            Prompt = "Indica la nacionalidad más apropiada.", // texto para el input vacio
+            Description = "Nacionalidad", // texto para el alt
+            Name = "Nacionalidad" // nombre para el label
+            )]
+        public string nombreNacionalidad { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int idNacionalidad { get; set; }
 
         [Display(
             Prompt = "Especifica un rol.", // texto para el input vacio
