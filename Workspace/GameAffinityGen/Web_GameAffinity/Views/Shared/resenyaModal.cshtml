@@ -6,15 +6,22 @@
     string titulo = string.Empty;
     string texto = string.Empty;
     int valoracion = 0;
+    string formAction = "PublicarResenya";
+    string botonTexto = "Añadir Reseña";
 
     if (user != null)
     {
         var userId = user.id;
-        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.IdAutor == userId);
-        if (userResenya != null)
+        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.Autor_resenya.Id == userId);
+        var userValoracion = Model.Valoraciones?.FirstOrDefault(r => r.Autor_valoracion.Id == userId);
+        if (userResenya != null || userValoracion != null)
         {
             titulo = userResenya.Titulo;
             texto = userResenya.Texto;
+            valoracion = userValoracion.Nota;
+            formAction = "ActualizarResenya";
+            botonTexto = "Actualizar Reseña";
+
         }
     }
 }
@@ -29,7 +36,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="PublicarResenya" method="post">
+                <form asp-controller="Resenya" asp-action="@formAction" method="post">
                     <div class="mb-3">
                         <label for="tituloResenya" class="form-label">Título</label>
                         <input type="text" class="form-control" id="tituloResenya" name="Titulo" placeholder="Título de la reseña" required maxlength="100" value="@titulo">
@@ -44,7 +51,7 @@
                     </div>
                     <input type="hidden" name="VideojuegoId" value="@Model.Videojuego.Id">
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Guardar Reseña</button>
+                        <button type="submit" class="btn btn-primary">@botonTexto</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </form>

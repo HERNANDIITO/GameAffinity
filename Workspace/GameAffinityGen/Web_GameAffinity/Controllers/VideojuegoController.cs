@@ -60,49 +60,20 @@ namespace Web_GameAffinity.Controllers
                 listaResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(videojuegoEn.Resenyas).ToList();
             }
 
+            if (videojuegoEn.Valoracion != null)
+            {
+                NHibernateUtil.Initialize(videojuegoEn.Valoracion);
+            }
+
             VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
             {
                 Videojuego = videojuegoView,
-                Resenyas = listaResenyas
+                Resenyas = videojuegoEn.Resenyas,
+                Valoraciones = videojuegoEn.Valoracion
             };
 
             SessionClose();
             return View(vistaJuego);
-        }
-
-        //POST: VideojuegoController/PublicarResenya
-        [HttpPost]
-        public ActionResult PublicarResenya(FResenyaViewModel resenya)
-        {
-            try
-            {
-                SessionInitialize();
-                int idUser = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user").id;
-                ResenyaRepository repo = new ResenyaRepository();
-                ResenyaCEN resenyaCEN = new ResenyaCEN(repo);
-                int nuevaResenyaId = resenyaCEN.New_(resenya.Titulo, resenya.Texto, 0, 0, idUser, resenya.VideojuegoId);
-
-                if (nuevaResenyaId > 0)
-                {
-                    ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
-                    valoracionCP.New_(resenya.Valoracion, idUser, resenya.VideojuegoId);
-                }
-                else
-                {
-                    // Manejar el caso en que la reseña no se creó correctamente
-                    ModelState.AddModelError("", "No se pudo crear la reseña.");
-                    return RedirectToAction("Details", new { id = resenya.VideojuegoId });
-                }
-
-                SessionClose();
-                return RedirectToAction("Details", new { id = resenya.VideojuegoId });
-            }
-            catch (Exception ex)
-            {
-                // Manejar cualquier excepción que ocurra durante el proceso
-                ModelState.AddModelError("", $"Error al crear la reseña: {ex.Message}");
-                return RedirectToAction("Details", new { id = resenya.VideojuegoId });
-            }
         }
 
 
