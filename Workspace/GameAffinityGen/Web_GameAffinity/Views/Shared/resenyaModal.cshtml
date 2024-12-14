@@ -1,6 +1,23 @@
 ﻿@model Web_GameAffinity.Models.VideojuegoDetailsViewModel
+@using Microsoft.AspNetCore.Http
 
+@{
+    var user = Context.Session.Get<ConfiguracionPerfilViewModel>("user");
+    string titulo = string.Empty;
+    string texto = string.Empty;
+    int valoracion = 0;
 
+    if (user != null)
+    {
+        var userId = user.id;
+        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.Autor_resenya.Id == userId);
+        if (userResenya != null)
+        {
+            titulo = userResenya.Titulo;
+            texto = userResenya.Texto;
+        }
+    }
+}
 
 <div class="modal fade" id="resenyaModal" tabindex="-1" role="dialog" aria-labelledby="resenyaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -15,15 +32,15 @@
                 <form asp-action="PublicarResenya" method="post">
                     <div class="mb-3">
                         <label for="tituloResenya" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="tituloResenya" name="Titulo" placeholder="Título de la reseña" required maxlength="100">
+                        <input type="text" class="form-control" id="tituloResenya" name="Titulo" placeholder="Título de la reseña" required maxlength="100" value="@titulo">
                     </div>
                     <div class="mb-3">
                         <label for="textoResenya" class="form-label">Texto</label>
-                        <textarea class="form-control" id="textoResenya" name="Texto" rows="3" placeholder="Texto de la reseña" required maxlength="1000"></textarea>
+                        <textarea class="form-control" id="textoResenya" name="Texto" rows="3" placeholder="Texto de la reseña" required maxlength="1000">@texto</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="valoracionResenyaNota" class="form-label">Valoración (0-10)</label>
-                        <input type="number" class="form-control" id="valoracionResenyaNota" name="Valoracion" min="0" max="10" required>
+                        <input type="number" class="form-control" id="valoracionResenyaNota" name="Valoracion" min="0" max="10" required value="@valoracion">
                     </div>
                     <input type="hidden" name="VideojuegoId" value="@Model.Videojuego.Id">
                     <div class="modal-footer">
