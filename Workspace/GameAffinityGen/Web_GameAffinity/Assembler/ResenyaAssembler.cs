@@ -8,14 +8,17 @@ namespace Web_GameAffinity.Assembler
         public ResenyaViewModel ConvertirENToViewModel(ResenyaEN en)
         {
             ResenyaViewModel resenya = new ResenyaViewModel();
-            resenya.Id = en.Id;
-            resenya.Titulo = en.Titulo;
-            resenya.Texto = en.Texto;
-            resenya.Likes_contador = en.Likes_contador;
-            resenya.Dislikes_contador = en.Dislikes_contador;
-            resenya.IdVideojuego = en.Videojuego.Id;
-            resenya.IdAutor = en.Autor_resenya.Id;
-            resenya.NombreAutor = en.Autor_resenya.Nombre;
+            if(en != null)
+            {
+                resenya.Id = en.Id;
+                resenya.Titulo = en.Titulo;
+                resenya.Texto = en.Texto;
+                resenya.Likes_contador = en.Likes_contador;
+                resenya.Dislikes_contador = en.Dislikes_contador;
+                resenya.IdVideojuego = en.Videojuego.Id;
+                resenya.IdAutor = en.Autor_resenya.Id;
+                resenya.NombreAutor = en.Autor_resenya.Nombre;
+            }
             // añadir reseña
             return (resenya);
         }
