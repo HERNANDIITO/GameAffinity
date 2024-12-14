@@ -1,4 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Http
+@using GameAffinityGen.ApplicationCore.CEN.GameAffinity
+@using GameAffinityGen.ApplicationCore.EN.GameAffinity
+@using GameAffinityGen.Infraestructure.Repository.GameAffinity
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
@@ -26,39 +30,67 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+
+                        <!--ESTO LO VE TO KISKI-->
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Videojuego" asp-action="Index">Videojuego</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Lista" asp-action="Index">Listas</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav flex-grow-1 justify-content-end">
-                        @if (Context.Session.Get<PerfilViewModel>("user") == null)
+
+                        
+                        
+                   
+                    
+                    
+
+                            <!--ESTO LO VE ALGUIEN SI NO SE HA REGISTRADO O INICIADO SESIÓN-->
+                        @if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") == null)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Registrado" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Registrado" asp-action="Registro">Registro</a>
-                            </li>
+                            <ul class="navbar-nav flex-grow-1 justify-content-end">
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Registrado" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Registrado" asp-action="Registro">Registro</a>
+                                </li>
+                            </ul>
                         }
                         else
                         {
+                            ModeradorRepository repo = new ModeradorRepository();
+                            ModeradorCEN cen = new ModeradorCEN(repo);
+                            var user = Context.Session.Get<ConfiguracionPerfilViewModel>("user");
+                            ModeradorEN esModerador = cen.GetByOID(user.id);
+
+
+
+                                <!--ESTO LO VE UN MODERADOR-->
+                            @if(esModerador != null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Lista" asp-action="Index">Listas</a>
+                                </li>                                
+                            }
+                            
+                                <!--ESTO LO VE UN USUARIO REGISTRADO QUE NO ES MODERADOR Y LOS MODERADORES-->
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Registrado" asp-action="Details">Perfil</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Videojuego" asp-action="Index">Videojuego</a>
                             </li>
-                            <li class="nav-item">
-                                <form method="post" asp-area="" asp-controller="Registrado" asp-action="Logout">
-                                    <button type="submit" class="nav-link btn btn-link text-light">Cerrar Sesión</button>
-                                </form> 
-                            </li>
+                            
+
+                            <ul class="navbar-nav flex-grow-1 justify-content-end">
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Registrado" asp-action="Details">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form method="post" asp-area="" asp-controller="Registrado" asp-action="Logout">
+                                        <button type="submit" class="nav-link btn btn-link text-light">Cerrar Sesión</button>
+                                    </form> 
+                                </li>
+                            </ul>
                         }
                     </ul>
                 </div>

@@ -21,6 +21,24 @@ namespace Web_GameAffinity.Controllers
         // GET: ListaController
         public ActionResult Index()
         {
+            var user = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user");
+
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModeradorRepository repo = new ModeradorRepository();
+                ModeradorCEN cen = new ModeradorCEN(repo);
+                ModeradorEN esModerador = cen.GetByOID(user.id);
+
+                if (esModerador == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             ListaRepository listaRepository = new ListaRepository(session);
             ListaCEN listaCEN = new ListaCEN(listaRepository);

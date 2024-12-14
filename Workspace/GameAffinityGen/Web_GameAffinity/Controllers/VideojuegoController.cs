@@ -24,6 +24,46 @@ namespace Web_GameAffinity.Controllers
         // GET: VideojuegoController
         public ActionResult Index()
         {
+            var user = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user");
+
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModeradorRepository repo = new ModeradorRepository();
+                ModeradorCEN cen = new ModeradorCEN(repo);
+                ModeradorEN esModerador = cen.GetByOID(user.id);
+
+                if (esModerador == null)
+                {
+                    return RedirectToAction("IndexRegistrado", "Videojuego");
+                }
+            }
+
+            SessionInitialize();
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+
+            IList<VideojuegoEN> listEN = videojuegoCEN.GetAll(0, -1);
+
+            IEnumerable<VideojuegoViewModel> listaVideojuegos = new VideojuegoAssembler().ConvertirListaENtoViewModel(listEN).ToList();
+            SessionClose();
+
+            return View(listaVideojuegos);
+        }
+
+        //Vista videojuego para registrados
+        public ActionResult IndexRegistrado()
+        {
+            var user = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user");
+
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             SessionInitialize();
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);

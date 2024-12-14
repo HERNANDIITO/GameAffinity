@@ -159,9 +159,11 @@ public static void InitializeData ()
                 int silvaID = registradoCP.New_ ("Silva", "silva@gmail.com", "laCalva", false, true, "arrikitaun", "").Id;
                 RegistradoEN silva = registradocen.GetByOID (jorgeID);
 
-                ListaCEN listaSilvaCEN = new ListaCEN (listarepository);
-                int listaJuegosSilvaID = listaSilvaCEN.New_ ("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID, "");
-                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID (listaJuegosSilvaID);
+                int moderadorID = moderadorcen.New_("Manolo", "manolo@gmail.com", "manolito69", false, false, "bachata", "");
+
+                ListaCEN listaSilvaCEN = new ListaCEN(listarepository);
+                int listaJuegosSilvaID = listaSilvaCEN.New_("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID, "");
+                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID(listaJuegosSilvaID);
 
                 Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Nombre + "\n");
                 Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Descripcion + "\n");
