@@ -68,7 +68,7 @@ namespace Web_GameAffinity.Controllers
             VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
             {
                 Videojuego = videojuegoView,
-                Resenyas = videojuegoEn.Resenyas,
+                Resenyas = listaResenyas,
                 Valoraciones = videojuegoEn.Valoracion
             };
 

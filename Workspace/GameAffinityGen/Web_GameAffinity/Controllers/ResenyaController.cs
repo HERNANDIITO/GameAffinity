@@ -53,7 +53,7 @@ namespace Web_GameAffinity.Controllers
                     0,
                     0,
                     resenya.IdAutor,
-                    resenya.IdVideojuego
+                    resenya.VideojuegoId
                 );
                 return RedirectToAction(nameof(Index));
             }
@@ -95,7 +95,7 @@ namespace Web_GameAffinity.Controllers
 
         //POST: ResenyaControler/PublicarResenya
         [HttpPost]
-        public ActionResult PublicarResenya(FResenyaViewModel resenya)
+        public ActionResult PublicarResenya(ResenyaViewModel resenya)
         {
             try
             {
@@ -114,42 +114,52 @@ namespace Web_GameAffinity.Controllers
                 {
                     // Manejar el caso en que la reseña no se creó correctamente
                     ModelState.AddModelError("", "No se pudo crear la reseña.");
-                    return RedirectToAction("Details", new { id = resenya.VideojuegoId });
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
                 }
 
                 SessionClose();
-                return RedirectToAction("Details", new { id = resenya.VideojuegoId });
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
             }
             catch (Exception ex)
             {
                 // Manejar cualquier excepción que ocurra durante el proceso
                 ModelState.AddModelError("", $"Error al crear la reseña: {ex.Message}");
-                return RedirectToAction("Details", new { id = resenya.VideojuegoId });
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
             }
         }
 
         //POST: ResenyaControler/ActualizarResenya
-        //[HttpPost]
-        //public ActionResult ActualizarResenya(FResenyaViewModel resenya)
-        //{
-        //    try
-        //    {
-        //        SessionInitialize();
-        //        ResenyaRepository repo = new ResenyaRepository();
-        //        ResenyaCEN resenyaCEN = new ResenyaCEN(repo);
-        //        resenyaCEN.Modify(resenya.Id, resenya.Titulo, resenya.Texto, resenya.Likes_contador, resenya.Dislikes_contador);
-        //        ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
-        //        valoracionCP.Modify(resenya.Valoracion, resenya.Id);
-        //        SessionClose();
-        //        return RedirectToAction("Details", new { id = resenya.VideojuegoId });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Manejar cualquier excepción que ocurra durante el proceso
-        //        ModelState.AddModelError("", $"Error al actualizar la reseña: {ex.Message}");
-        //        return RedirectToAction("Details", new { id = resenya.VideojuegoId });
-        //    }
-        //}
+        [HttpPost]
+        public ActionResult ActualizarResenya(ResenyaViewModel resenya)
+        {
+            try
+            {
+                SessionInitialize();
+                ResenyaRepository repo = new ResenyaRepository();
+                ResenyaCEN resenyaCEN = new ResenyaCEN(repo);
+                resenyaCEN.Modify(resenya.Id, resenya.Titulo, resenya.Texto, resenya.Likes_contador, resenya.Dislikes_contador);
+                ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                ValoracionCEN valoracionCEN = new ValoracionCEN(new ValoracionRepository(session));
+                IList<ValoracionEN> valoraciones = valoracionCEN.DameValoracionesUsu(resenya.IdAutor);
+                foreach (ValoracionEN valoracion in valoraciones)
+                {
+                    if (valoracion.Videojuego_valorado.Id == resenya.VideojuegoId)
+                    {
+                        valoracionCP.Modify(valoracion.Id, resenya.Valoracion);
+                        break;
+
+                    }
+                }
+                SessionClose();
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que ocurra durante el proceso
+                ModelState.AddModelError("", $"Error al actualizar la reseña: {ex.Message}");
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
+            }
+        }
 
         // GET: ResenyaController/Delete/5
         public ActionResult Delete(int id)

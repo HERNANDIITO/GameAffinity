@@ -12,7 +12,7 @@
     if (user != null)
     {
         var userId = user.id;
-        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.Autor_resenya.Id == userId);
+        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.IdAutor == userId);
         var userValoracion = Model.Valoraciones?.FirstOrDefault(r => r.Autor_valoracion.Id == userId);
         if (userResenya != null || userValoracion != null)
         {

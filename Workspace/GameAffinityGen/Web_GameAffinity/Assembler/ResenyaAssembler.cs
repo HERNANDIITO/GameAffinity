@@ -15,7 +15,7 @@ namespace Web_GameAffinity.Assembler
                 resenya.Texto = en.Texto;
                 resenya.Likes_contador = en.Likes_contador;
                 resenya.Dislikes_contador = en.Dislikes_contador;
-                resenya.IdVideojuego = en.Videojuego.Id;
+                resenya.VideojuegoId = en.Videojuego.Id;
                 resenya.IdAutor = en.Autor_resenya.Id;
                 resenya.NombreAutor = en.Autor_resenya.Nombre;
             }
