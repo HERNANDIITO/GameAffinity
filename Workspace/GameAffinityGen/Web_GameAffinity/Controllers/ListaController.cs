@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
+using NHibernate;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -35,13 +36,22 @@ namespace Web_GameAffinity.Controllers
         // GET: ListaController/Details/5
         public ActionResult Details(int id)
         {
+            if (id == 0)
+            {
+                return new EmptyResult();
+            }
             SessionInitialize();
             ListaRepository listRepo = new ListaRepository(session);
             ListaCEN listCEN = new ListaCEN(listRepo);
 
             ListaEN listEN = listCEN.GetByOID(id);
-            Console.WriteLine(listEN);
+            if (listEN != null)
+            {
+                NHibernateUtil.Initialize(listEN.Videojuegos);
+            }
+
             ListaViewModel listView = new ListaAssembler().ConvertirENToViewModel(listEN);
+            // listView.Videojuegos = listEN.Videojuegos; // Cargar los videojuegos
 
             SessionClose();
             return View(listView);
@@ -179,5 +189,7 @@ namespace Web_GameAffinity.Controllers
                 return View();
             }
         }
+
+        
     }
 }

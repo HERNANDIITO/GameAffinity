@@ -399,8 +399,11 @@ namespace InitializeDB
                 int adminID = registradocen.New_ ("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "");
                 RegistradoEN admin = registradocen.GetByOID (adminID);
 
-                int listaCompletados = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");
-                ListaEN completados = listacen.GetByOID (listaCompletados);
+                
+                int listaCompletadosID = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");
+                ListaEN completados = listacen.GetByOID (listaCompletadosID);
+                //listaCompletados.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID });
+                listacen.AnyadirVideojuego(listaCompletadosID, new List<int> { sonicID, superMarioID });
 
                 int listaEnProgreso = listacen.New_ ("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID, "");
                 ListaEN enProgreso = listacen.GetByOID (listaEnProgreso);

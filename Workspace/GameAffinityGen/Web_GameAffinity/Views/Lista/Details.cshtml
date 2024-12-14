@@ -37,6 +37,71 @@
 </div>
 
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
+    
+</div>
+
+<section class="row">
+    <h4>Videojuegos de la lista</h4>
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAñadirVideojuego">
+            Añadir juego
+        </button>
+        <button type="button" class="btn btn-danger" onclick="eliminarVideojuego(@Model.Id)">
+            Eliminar juego
+        </button>
+    </div>
+    
+    <div class="videogameList row">
+        @foreach (var item in Model.Videojuegos)
+        {
+            @Html.Partial("videojuegoCard", item)
+        }
+    </div>
+</section>
+
+
+
+
+
+
+<div class="modal fade" id="modalAñadirVideojuego" tabindex="-1" aria-labelledby="modalAñadirVideojuegoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAñadirVideojuegoLabel">Añadir Videojuego</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="text" id="busquedaVideojuego" class="form-control" placeholder="Busca un videojuego por su nombre" oninput="buscarVideojuegos(this.value)">
+                </div>
+                <div id="resultadosVideojuegos" class="row gy-3">
+                    <!-- Las tarjetas de videojuegos se renderizan aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
