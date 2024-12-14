@@ -45,6 +45,7 @@ namespace Web_GameAffinity.Controllers
             SessionInitialize();
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<ResenyaViewModel> listaResenyas = null;
 
             VideojuegoEN videojuegoEn = videojuegoCEN.GetByoID(id);
             if (videojuegoEn == null)
@@ -56,12 +57,13 @@ namespace Web_GameAffinity.Controllers
             if (videojuegoEn.Resenyas != null)
             {
                 NHibernateUtil.Initialize(videojuegoEn.Resenyas);
+                listaResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(videojuegoEn.Resenyas).ToList();
             }
 
             VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
             {
                 Videojuego = videojuegoView,
-                Resenyas = videojuegoEn.Resenyas
+                Resenyas = listaResenyas
             };
 
             SessionClose();
@@ -264,4 +266,5 @@ namespace Web_GameAffinity.Controllers
             ResenyaEN en = cen.GetByOID(id);
             return View(en);
         }
+    }
 }

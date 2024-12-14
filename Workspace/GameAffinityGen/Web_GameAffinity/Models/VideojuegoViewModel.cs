@@ -117,6 +117,6 @@ namespace Web_GameAffinity.Models
     public class VideojuegoDetailsViewModel
     {
         public VideojuegoViewModel Videojuego { get; set; }
-        public IList<ResenyaEN> Resenyas { get; set; }
+        public IList<ResenyaViewModel> Resenyas { get; set; }
     }
 }

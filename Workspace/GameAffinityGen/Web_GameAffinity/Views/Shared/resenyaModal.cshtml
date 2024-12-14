@@ -10,7 +10,7 @@
     if (user != null)
     {
         var userId = user.id;
-        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.Autor_resenya.Id == userId);
+        var userResenya = Model.Resenyas?.FirstOrDefault(r => r.IdAutor == userId);
         if (userResenya != null)
         {
             titulo = userResenya.Titulo;

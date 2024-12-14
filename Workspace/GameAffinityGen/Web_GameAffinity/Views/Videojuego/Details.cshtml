@@ -13,7 +13,7 @@
                 <img src="/Images/@Model.Videojuego.Imagen.FileName" alt="Imagen del Videojuego" />
                 @if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null){
                     @foreach(var resenya in Model.Resenyas){
-                        if(resenya.Autor_resenya.Id == Context.Session.Get<ConfiguracionPerfilViewModel>("user").id){
+                        if(resenya.IdAutor == Context.Session.Get<ConfiguracionPerfilViewModel>("user").id){
                             tieneRes = 1;
                             break;
                         }
@@ -50,7 +50,7 @@
             <ul>
                 @foreach (var resenya in Model.Resenyas)
                 {
-                    <li>@Html.Partial("Details", @resenya.Id)</li>
+                    <li>@Html.Partial("ResenyaCard", @resenya) </li>
                 }
             </ul>
         }
