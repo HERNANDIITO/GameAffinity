@@ -16,6 +16,20 @@ namespace Web_GameAffinity.Assembler
             //empresa.Individuos = en.Individuos;
             return (empresa);
         }
+
+        public DetailsEmpresaViewModel ConvertirENToDetailsViewModel(EmpresaEN en)
+        {
+            DetailsEmpresaViewModel empresa = new DetailsEmpresaViewModel();
+            empresa.Id = en.Id;
+            empresa.Nombre = en.Nombre;
+            empresa.Descripcion = en.Descripcion;
+            empresa.Nota = en.Nota;
+            empresa.Videojuegos = en.Videojuegos;
+            empresa.Imagen = FileHelper.ConvertToIFormFile(en.Img);
+            //empresa.Individuos = en.Individuos;
+            return empresa;
+        }
+
         public IList<EmpresaViewModel> ConvertirListaENtoViewModel(IList<EmpresaEN> ens)
         {
             IList<EmpresaViewModel> lista_empresas = new List<EmpresaViewModel>();

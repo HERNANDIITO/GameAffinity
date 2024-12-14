@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
 using NHibernate;
+using NHibernate.Proxy;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -96,13 +97,22 @@ namespace Web_GameAffinity.Controllers
         // POST: EmpresaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, EmpresaViewModel empresa)
+        public async Task<ActionResult> Edit(int id, EmpresaViewModel empresa)
         {
             try
             {
                 EmpresaRepository empresaRepository = new EmpresaRepository();
                 EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
-                empresaCEN.Modify(id, empresa.Nombre, empresa.Descripcion, 0.0f, empresa.Img);
+
+                string fileName = await FileHelper.GetFileName(empresa.Imagen, _webHost.WebRootPath);
+
+                empresaCEN.Modify(
+                    id,
+                    empresa.Nombre,
+                    empresa.Descripcion,
+                    0.0f,
+                    fileName
+                );
 
                 return RedirectToAction(nameof(Index));
             }
@@ -139,13 +149,21 @@ namespace Web_GameAffinity.Controllers
         //codigo silva
         public ActionResult DetailsEmpresa(int id)
         {
+
             SessionInitialize();
+
+            if (id == 0)
+            {
+                SessionClose();
+                return new EmptyResult();
+            }
 
             EmpresaRepository empRepo = new EmpresaRepository(session);
             EmpresaCEN empCen = new EmpresaCEN(empRepo);
 
             // Obtienes la empresa por su ID
             EmpresaEN empresaEN = empCen.GetByOID(id);
+            System.Diagnostics.Debug.WriteLine(id);
 
             if (empresaEN.Videojuegos != null)
             {
@@ -153,14 +171,7 @@ namespace Web_GameAffinity.Controllers
             }
 
             // Creas el modelo que pasas a la vista
-            var model = new DetailsEmpresaViewModel
-            {
-                Id = empresaEN.Id,
-                nombre = empresaEN.Nombre,
-                descripcion = empresaEN.Descripcion,
-                nota = empresaEN.Nota,
-                videojuegos = empresaEN.Videojuegos
-            };
+            DetailsEmpresaViewModel model = new EmpresaAssembler().ConvertirENToDetailsViewModel(empresaEN);
 
             SessionClose();
 

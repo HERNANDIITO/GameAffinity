@@ -5,17 +5,16 @@ namespace Web_GameAffinity.Assembler
 {
     public class RegistradoAssembler
     {
-        public PerfilViewModel ConvertirENToViewModel(RegistradoEN registrado)
+        public PerfilViewModel ConvertirENToViewModel(RegistradoEN en)
         {
             PerfilViewModel config = new PerfilViewModel();
-
-            config.id = registrado.Id;
-            config.nombre = registrado.Nombre;
-            config.email = registrado.Email;
-            config.nick = registrado.Nick;
-            config.password = registrado.Contrasenya;
-            config.notificaciones = registrado.Notificaciones;
-            config.imagen = registrado.Img;
+            config.id = en.Id;
+            config.nombre = en.Nombre;
+            config.email = en.Email;
+            config.nick = en.Nick;
+            config.password = en.Contrasenya;
+            config.notificaciones = en.Notificaciones;
+            config.imagen = en.Img;
             return config;
         }
     }

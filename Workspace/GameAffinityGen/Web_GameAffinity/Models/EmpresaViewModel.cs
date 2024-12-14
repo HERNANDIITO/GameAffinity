@@ -49,23 +49,23 @@ namespace Web_GameAffinity.Models
         [Display(Prompt = "Nombre de empresa", Description = "Nombre de empresa", Name = "nombre")]
         [Required(ErrorMessage = "El nombre es obligatorio")]
 
-        public required string nombre { get; set; }
+        public string Nombre { get; set; }
 
         [Display(Prompt = "Descripcion de empresa", Description = "Descripcion de empresa", Name = "descripcion")]
         [Required(ErrorMessage = "La descripcion es obligatorio")]
 
-        public required string descripcion { get; set; }
+        public string Descripcion { get; set; }
 
         [Display(Prompt = "Nota de empresa", Description = "Nota de empresa", Name = "nota")]
         [Required(ErrorMessage = "La nota es obligatorio")]
         [Range(minimum: 0, maximum: 10, ErrorMessage = "La nota debe ser entre 0 y 10")]
 
-        public required float nota { get; set; }
+        public float Nota { get; set; }
 
         [Display(Prompt = "Videojuegos de la empresa", Description = "Videojuegos de la empresa", Name = "videojuegos")]
         [Required(ErrorMessage = "Los videojuegos son obligatorios")]
 
-        public required IList<VideojuegoEN> videojuegos { get; set; }
+        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos { get; set; }
 
         // Declaracion de la imagen
         // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
