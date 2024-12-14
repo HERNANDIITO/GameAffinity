@@ -8,6 +8,9 @@ using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
 using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 using System.Collections.Specialized;
+using NHibernate;
+using GameAffinityGen.ApplicationCore.CP.GameAffinity;
+using GameAffinityGen.Infraestructure.CP;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -44,11 +47,62 @@ namespace Web_GameAffinity.Controllers
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
 
             VideojuegoEN videojuegoEn = videojuegoCEN.GetByoID(id);
+            if (videojuegoEn == null)
+            {
+                return NotFound();
+            }
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
 
+            if(videojuegoEn.Resenyas != null)
+            {
+                NHibernateUtil.Initialize(videojuegoEn.Resenyas);
+            }
+
+            VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
+            {
+                Videojuego = videojuegoView,
+                Resenyas = videojuegoEn.Resenyas
+            };
+
             SessionClose();
-            return View(videojuegoView);
+            return View(vistaJuego);
         }
+
+        //POST: VideojuegoController/PublicarResenya
+        [HttpPost]
+        public ActionResult PublicarResenya(ResenyaViewModel resenya)
+        {
+            try
+            {
+                SessionInitialize();
+                int idUser = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user").id;
+                ResenyaRepository repo = new ResenyaRepository();
+                ResenyaCEN resenyaCEN = new ResenyaCEN(repo);
+                int nuevaResenyaId = resenyaCEN.New_(resenya.Titulo, resenya.Texto, 0, 0, idUser, resenya.VideojuegoId);
+
+                if (nuevaResenyaId > 0)
+                {
+                        ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                        valoracionCP.New_(resenya.Valoracion, idUser, resenya.VideojuegoId);
+                }
+                else
+                {
+                    // Manejar el caso en que la reseña no se creó correctamente
+                    ModelState.AddModelError("", "No se pudo crear la reseña.");
+                    return RedirectToAction("Details", new { id = resenya.VideojuegoId });
+                }
+
+                SessionClose();
+                return RedirectToAction("Details", new { id = resenya.VideojuegoId });
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que ocurra durante el proceso
+                ModelState.AddModelError("", $"Error al crear la reseña: {ex.Message}");
+                return RedirectToAction("Details", new { id = resenya.VideojuegoId });
+            }
+        }
+
 
         // GET: VideojuegoController/Create
         public ActionResult Create()

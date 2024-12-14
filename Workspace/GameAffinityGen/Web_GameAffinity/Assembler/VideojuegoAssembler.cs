@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
 using Web_GameAffinity.Models;
-using 
 
 namespace Web_GameAffinity.Assembler
 {
@@ -13,17 +12,23 @@ namespace Web_GameAffinity.Assembler
     {
         public VideojuegoViewModel ConvertirENToViewModel(VideojuegoEN en)
         {
+            if (en == null)
+            {
+                throw new ArgumentNullException(nameof(en), "El objeto VideojuegoEN no puede ser null.");
+            }
 
-            VideojuegoViewModel videojuego = new VideojuegoViewModel();
-            videojuego.Id = en.Id;
-            videojuego.Nombre = en.Nombre;
-            videojuego.Descripcion = en.Descripcion;
-            videojuego.Genero = en.Genero;
-            videojuego.Imagen = ConvertToIFormFile(en.Imagen);
-            videojuego.NotaMedia = en.Nota_media;
-            videojuego.FechaLanzamiento = en.FechaDeLanzamiento;
+            VideojuegoViewModel videojuego = new VideojuegoViewModel
+            {
+                Id = en.Id,
+                Nombre = en.Nombre,
+                Descripcion = en.Descripcion,
+                Genero = en.Genero,
+                Imagen = ConvertToIFormFile(en.Imagen),
+                NotaMedia = en.Nota_media,
+                FechaLanzamiento = en.FechaDeLanzamiento
+            };
+
             return videojuego;
-
         }
 
         public IFormFile ConvertToIFormFile(string filePath)
