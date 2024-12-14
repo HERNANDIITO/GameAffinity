@@ -13,8 +13,8 @@
             </div>
             <div class="info-usuario">
                 <h2 class="Name-User-Profile">@Model.Registrado.Nick</h2>
-                <h4>Juegos Completados:</h4><br />
-                <h4>Juegos Jugados:</h4>
+                <h4>Juegos Completados: @Model.JuegosCompletados</h4><br/>
+                <h4>Juegos Empezados @Model.JuegosEmpezados</h4>
                 <div class="boton-configuracion">
                     @Html.ActionLink("Configuración", "Edit", new { id = Model.Registrado.Id }, new { @class = "btn btn-primary" })
                 </div>

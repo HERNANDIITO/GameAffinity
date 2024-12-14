@@ -185,6 +185,9 @@ namespace Web_GameAffinity.Controllers
             RegistradoEN registrado = cen.GetByOID(usuario.id);
             ListaRepository listaRepo = new ListaRepository(session);
 
+            int juegosCompletados = 0;
+            int juegosEmpezados = 0;
+
             //Forzar la carga
             if(registrado.Listas != null)
             {
@@ -193,13 +196,25 @@ namespace Web_GameAffinity.Controllers
                 foreach (var lista in registrado.Listas)
                 {
                     NHibernateUtil.Initialize(lista.Videojuegos);
+
+                    if ( lista.Nombre == "Juegos empezados")
+                    {
+                        juegosEmpezados = lista.Videojuegos.Count;
+                    }
+
+                    if (lista.Nombre == "Juegos completados")
+                    {
+                        juegosCompletados = lista.Videojuegos.Count;
+                    }
                 }
             }
 
             var user = new RegistradoDetailsViewModel
             {
                 Registrado = registrado,
-                Listas = registrado.Listas
+                Listas = registrado.Listas,
+                JuegosCompletados = juegosCompletados,
+                JuegosEmpezados = juegosEmpezados
             };
 
             SessionClose();
