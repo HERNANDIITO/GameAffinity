@@ -57,7 +57,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Empresa\" />
+    <Content Update="Views\Shared\individuoCard.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

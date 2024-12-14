@@ -16,6 +16,7 @@ using GameAffinityGen.Infraestructure.Repository;
 using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using NHibernate;
 using Microsoft.Win32;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -115,6 +116,8 @@ namespace InitializeDB
                 int nintendoID = empresacen.New_("Nintendo", "Juego pa toa la famili", 10, "");
                 int santamonicaID = empresacen.New_("Santa Monica", "Solo se nos conoce por el gow", 9, "");
 
+
+                
                 // Llamar al método pasándole el ID de la empresa y la lista de IDs de videojuegos
 
 
@@ -360,6 +363,20 @@ namespace InitializeDB
                 Console.WriteLine("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
 
                 int idEspanya = paisescen.New_ ("España");
+                int idSudan = paisescen.New_("Sudán");
+
+                //Creacion de Individuo
+                DateTime? fechaNacHideo = new DateTime(1963, 8, 24);
+                RolesEnum rolHideo = RolesEnum.Director;
+                int idFumito = individuocen.New_(
+                        "Fumito",
+                        "Ueda",
+                        new DateTime(1960, 02, 18),
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador,
+                        "Fumito se los fuma tos",
+                        "",
+                        idSudan
+                        );
 
                 // prueba creacion individuo
                 int idHideo = individuocen.New_ (

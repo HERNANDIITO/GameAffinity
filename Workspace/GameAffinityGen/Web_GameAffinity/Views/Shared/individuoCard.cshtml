@@ -1,15 +1,12 @@
-﻿@model GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN
+﻿@model GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN
 
 <div class="col-4 col-md-3 col-lg-2 videogame">
-    <section class="videogameScore">
-        <span class="score">@Html.DisplayFor(modelItem => Model.Nota)</span>
-    </section>
     <img src=@Model.Img class="videogameImage" onerror="this.src='Images/missing_img.jpg';" />
     <span class="videogameName">
         @Html.ActionLink(
             linkText: Model.Nombre, // El texto del enlace será el nombre de la empresa
-            actionName: "DetailsEmpresa", // El nombre de la acción del controlador
-            controllerName: "Empresa", // El nombre del controlador
+            actionName: "Details", // El nombre de la acción del controlador
+            controllerName: "Individuo", // El nombre del controlador
             routeValues: new { id = Model.Id } // Parámetro que se enviará a la acción
         )
     </span>

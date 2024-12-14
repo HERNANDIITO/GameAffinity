@@ -9,5 +9,7 @@ namespace Web_GameAffinity.Models
         public IList<VideojuegoEN> ProximosLanzamientos { get; set; }
 
         public IList<EmpresaEN> empresasDestacadas { get; set; }
+
+        public IList<IndividuoEN> individuos { get; set; }
     }
 }
