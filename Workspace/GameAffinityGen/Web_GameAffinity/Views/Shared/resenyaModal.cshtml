@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Web_GameAffinity.Models.VideojuegoDetailsViewModel
+
+
+
+<div class="modal fade" id="resenyaModal" tabindex="-1" role="dialog" aria-labelledby="resenyaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="resenyaModalLabel">Añadir Reseña</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="PublicarResenya" method="post">
+                    <div class="mb-3">
+                        <label for="tituloResenya" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="tituloResenya" name="Titulo" placeholder="Título de la reseña" required maxlength="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="textoResenya" class="form-label">Texto</label>
+                        <textarea class="form-control" id="textoResenya" name="Texto" rows="3" placeholder="Texto de la reseña" required maxlength="1000"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="valoracionResenyaNota" class="form-label">Valoración (0-10)</label>
+                        <input type="number" class="form-control" id="valoracionResenyaNota" name="Valoracion" min="0" max="10" required>
+                    </div>
+                    <input type="hidden" name="VideojuegoId" value="@Model.Videojuego.Id">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Reseña</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

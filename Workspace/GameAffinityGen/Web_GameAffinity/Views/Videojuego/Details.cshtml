@@ -1,7 +1,9 @@
 ﻿@model Web_GameAffinity.Models.VideojuegoDetailsViewModel
+@using Microsoft.AspNetCore.Http
 
 @{
     ViewData["Title"] = "Details";
+    int tieneRes = 0;
 }
 
 <main class="main-content-profile">
@@ -9,9 +11,21 @@
         <div class="perfil-usuario">
             <div class="foto-usuario">
                 <img src="/Images/@Model.Videojuego.Imagen.FileName" alt="Imagen del Videojuego" />
-                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#resenyaModal">
-                    Añadir Reseña
-                </button>
+                @foreach(var resenya in Model.Resenyas){
+                    if(resenya.Autor_resenya.Id == Context.Session.Get<ConfiguracionPerfilViewModel>("user").id){
+                        tieneRes = 1;
+                        break;
+                    }
+                }
+                @if(tieneRes == 0){
+                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#resenyaModal">
+                        Añadir Reseña
+                    </button>
+                } else {
+                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#resenyaModal">
+                        Actualizar Reseña
+                    </button>
+                }
             </div>
             <div class="info-usuario">
                 <h2 class="Name-User-Profile">@Model.Videojuego.Nombre</h2>
@@ -52,37 +66,4 @@
 </div>
 
 <!-- Modal para añadir reseña -->
-<div class="modal fade" id="resenyaModal" tabindex="-1" role="dialog" aria-labelledby="resenyaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="resenyaModalLabel">Añadir Reseña</h4>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Aquí puedes añadir el formulario para añadir una reseña -->
-                <form asp-action="PublicarResenya" method="post">
-                    <div class="mb-3">
-                        <label for="tituloResenya" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="tituloResenya" name="Titulo" placeholder="Título de la reseña" required maxlength="100">
-                    </div>
-                    <div class="mb-3">
-                        <label for="textoResenya" class="form-label">Texto</label>
-                        <textarea class="form-control" id="textoResenya" name="Texto" rows="3" placeholder="Texto de la reseña" required maxlength="1000"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="valoracionResenyaNota" class="form-label">Valoración (0-10)</label>
-                        <input type="number" class="form-control" id="valoracionResenyaNota" name="Valoracion" min="0" max="10" required>
-                    </div>
-                    <input type="hidden" name="VideojuegoId" value="@Model.Videojuego.Id">
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Guardar Reseña</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Partial("resenyaModal", Model)
