@@ -5,47 +5,21 @@
 }
 <section class="row">
     <h1>Últimas novedades</h1>
-    <div class="videogameList row">
-        @foreach (var item in Model.UltimasNovedades)
-        {
-            @Html.Partial("videojuegoCard", item)
-        }
-    </div>
+    @Html.Partial("videojuegoCardList", Model.UltimasNovedades)
 </section>
 <section class="row">
     <h1>Próximos lanzamientos</h1>
-    <div class="videogameList row">
-        @foreach (var item in Model.ProximosLanzamientos)
-        {
-            @Html.Partial("videojuegoCard", item)
-        }
-    </div>
+    @Html.Partial("videojuegoCardList", Model.ProximosLanzamientos)
 </section>
 <section class="row">
     <h1>Mejor puntuados</h1>
-    <div class="videogameList row">
-        @foreach (var item in Model.Popular)
-        {
-            @Html.Partial("videojuegoCard", item)
-        }
-    </div>
+    @Html.Partial("videojuegoCardList", Model.Popular)
 </section>
 <section class="row">
     <h1>Empresas destacadas</h1>
-    <div class="videogameList row">
-        @foreach (var item in Model.empresasDestacadas)
-        {
-            @Html.Partial("empresaCard", item)
-        }
-    </div>
+    @Html.Partial("empresaCardList", Model.empresasDestacadas)
 </section>
-
 <section class="row">
     <h1>Menciones especiales</h1>
-    <div class="videogameList row">
-        @foreach (var item in Model.individuos)
-        {
-            @Html.Partial("individuoCard", item)
-        }
-    </div>
+    @Html.Partial("individuoCardList", Model.individuos)
 </section>

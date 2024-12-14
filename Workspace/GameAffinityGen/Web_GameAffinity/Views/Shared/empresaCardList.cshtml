@@ -1,0 +1,8 @@
+﻿@model IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN>
+
+<div class="videogameList row">
+    @foreach (var item in Model)
+    {
+        @Html.Partial("empresaCard", item)
+    }
+</div>
