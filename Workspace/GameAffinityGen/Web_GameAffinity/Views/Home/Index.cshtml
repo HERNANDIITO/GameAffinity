@@ -39,3 +39,13 @@
         }
     </div>
 </section>
+
+<section class="row">
+    <h1>Menciones especiales</h1>
+    <div class="videogameList row">
+        @foreach (var item in Model.individuos)
+        {
+            @Html.Partial("individuoCard", item)
+        }
+    </div>
+</section>

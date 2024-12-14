@@ -16,6 +16,7 @@ using GameAffinityGen.Infraestructure.Repository;
 using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using NHibernate;
 using Microsoft.Win32;
+using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -114,6 +115,8 @@ public static void InitializeData ()
                 int nintendoID = empresacen.New_ ("Nintendo", "Juego pa toa la famili", 10, "");
                 int santamonicaID = empresacen.New_ ("Santa Monica", "Solo se nos conoce por el gow", 9, "");
 
+
+                
                 // Llamar al método pasándole el ID de la empresa y la lista de IDs de videojuegos
 
 
@@ -354,6 +357,20 @@ public static void InitializeData ()
                 Console.WriteLine ("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
 
                 int idEspanya = paisescen.New_ ("España");
+                int idSudan = paisescen.New_("Sudán");
+
+                //Creacion de Individuo
+                DateTime? fechaNacHideo = new DateTime(1963, 8, 24);
+                RolesEnum rolHideo = RolesEnum.Director;
+                int idFumito = individuocen.New_(
+                        "Fumito",
+                        "Ueda",
+                        new DateTime(1960, 02, 18),
+                        GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador,
+                        "Fumito se los fuma tos",
+                        "",
+                        idSudan
+                        );
 
                 // prueba creacion individuo
                 int idHideo = individuocen.New_ (
@@ -376,8 +393,11 @@ public static void InitializeData ()
                 int adminID = registradoCP.New_("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "").Id;
                 RegistradoEN admin = registradocen.GetByOID (adminID);
 
-                int listaCompletados = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");
-                ListaEN completados = listacen.GetByOID (listaCompletados);
+                
+                int listaCompletadosID = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");
+                ListaEN completados = listacen.GetByOID (listaCompletadosID);
+                //listaCompletados.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID });
+                listacen.AnyadirVideojuego(listaCompletadosID, new List<int> { sonicID, superMarioID });
 
                 int listaEnProgreso = listacen.New_ ("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID, "");
                 ListaEN enProgreso = listacen.GetByOID (listaEnProgreso);

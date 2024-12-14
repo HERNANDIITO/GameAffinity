@@ -27,13 +27,18 @@ namespace Web_GameAffinity.Controllers
             EmpresaRepository empRepository = new EmpresaRepository();
             EmpresaCEN empCEN = new EmpresaCEN(empRepository);
 
+            IndividuoRepository indRepository = new IndividuoRepository();
+            IndividuoCEN indCEN = new IndividuoCEN(indRepository);
+
             var viewModel = new HomeViewModel
             {
                 UltimasNovedades = videojuegoCEN.GetRecienPublicados(),
                 Popular = videojuegoCEN.GetPopular(),
                 ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos(),
 
-                empresasDestacadas = empCEN.GetAll(0, 2)
+                empresasDestacadas = empCEN.GetAll(0, 2),
+                individuos = indCEN.GetAll(0, 2)
+
             };
 
             return View(viewModel);
