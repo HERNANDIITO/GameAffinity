@@ -74,7 +74,7 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN New_ (string
                     true, oid, "");
 
                 int juegosJugando = listaCEN.New_(
-                    "Juegos completados",
+                    "Juegos empezados",
                     "Lista de juegos que estás jugando ahora mismo",
                     true, oid, "");
 

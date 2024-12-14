@@ -78,3 +78,33 @@
 .carousel-body-css {
     padding: 1em;
 }
+
+.carousel {
+  max-width: 100%;
+}
+
+a.card {
+  transition: transform 0.25s, filter 0.25s;
+}
+
+a.card:hover {
+  text-decoration: none;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0px 5px black);
+    transition: transform 0.25s, filter 0.25s;
+    cursor: pointer;
+}
+
+.card-body {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+
+  & > * {
+      color: var(--ga-dark);
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+}

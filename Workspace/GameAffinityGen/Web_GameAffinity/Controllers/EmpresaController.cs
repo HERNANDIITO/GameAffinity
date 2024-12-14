@@ -35,20 +35,6 @@ namespace Web_GameAffinity.Controllers
             return View(listaEmpresas);
         }
 
-        // GET: EmpresaController/Details/5
-        public ActionResult Details(int id)
-        {
-            SessionInitialize();
-            EmpresaRepository empresaRepository = new EmpresaRepository(session);
-            EmpresaCEN empresaCEN = new EmpresaCEN(empresaRepository);
-
-            EmpresaEN empresaEn = empresaCEN.GetByOID(id);
-            EmpresaViewModel empresaView = new EmpresaAssembler().ConvertirENToViewModel(empresaEn);
-
-            SessionClose();
-            return View(empresaView);
-        }
-
         // GET: EmpresaController/Create
         public ActionResult Create()
         {
@@ -147,7 +133,7 @@ namespace Web_GameAffinity.Controllers
         }
 
         //codigo silva
-        public ActionResult DetailsEmpresa(int id)
+        public ActionResult Details(int id)
         {
 
             SessionInitialize();

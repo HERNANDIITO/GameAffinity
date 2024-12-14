@@ -1,6 +1,6 @@
 ﻿@model GameAffinityGen.ApplicationCore.EN.GameAffinity.ListaEN
 
-<div class="card mb-3" style="max-width: 450px;">
+<a class="card mb-3" style="max-width: 450px;" asp-action="Details" asp-controller="Lista" asp-route-id="@Model.Id">
     <div class="row no-gutters">
         <div class="col-md-4">
             <img src=@Model.Img class="card-img" alt="...">
@@ -13,4 +13,4 @@
             </div>
         </div>
     </div>
-</div>
+</a>
