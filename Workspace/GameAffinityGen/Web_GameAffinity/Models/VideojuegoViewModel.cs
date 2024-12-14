@@ -80,7 +80,7 @@ namespace Web_GameAffinity.Models
 
     }
 
-    public class ResenyaViewModel
+    public class FResenyaViewModel
     {
         [ScaffoldColumn(false)]
 

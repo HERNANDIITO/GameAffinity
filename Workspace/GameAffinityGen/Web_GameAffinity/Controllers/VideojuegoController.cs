@@ -53,7 +53,7 @@ namespace Web_GameAffinity.Controllers
             }
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
 
-            if(videojuegoEn.Resenyas != null)
+            if (videojuegoEn.Resenyas != null)
             {
                 NHibernateUtil.Initialize(videojuegoEn.Resenyas);
             }
@@ -70,7 +70,7 @@ namespace Web_GameAffinity.Controllers
 
         //POST: VideojuegoController/PublicarResenya
         [HttpPost]
-        public ActionResult PublicarResenya(ResenyaViewModel resenya)
+        public ActionResult PublicarResenya(FResenyaViewModel resenya)
         {
             try
             {
@@ -82,8 +82,8 @@ namespace Web_GameAffinity.Controllers
 
                 if (nuevaResenyaId > 0)
                 {
-                        ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
-                        valoracionCP.New_(resenya.Valoracion, idUser, resenya.VideojuegoId);
+                    ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
+                    valoracionCP.New_(resenya.Valoracion, idUser, resenya.VideojuegoId);
                 }
                 else
                 {
@@ -114,7 +114,7 @@ namespace Web_GameAffinity.Controllers
             listaGeneros.Add(new SelectListItem { Text = "Puzzles", Value = GenerosEnum.Puzzles.ToString() });
             listaGeneros.Add(new SelectListItem { Text = "Mundo Abierto", Value = GenerosEnum.Mundo_abierto.ToString() });
             ViewData["GenerosItems"] = listaGeneros;
-            
+
             return View();
 
         }
@@ -125,19 +125,19 @@ namespace Web_GameAffinity.Controllers
         public async Task<ActionResult> Create(VideojuegoViewModel videojuego)
         {
             string fileName = "", path = "";
-            if ( videojuego.Imagen != null && videojuego.Imagen.Length > 0 )
+            if (videojuego.Imagen != null && videojuego.Imagen.Length > 0)
             {
                 fileName = Path.GetFileName(videojuego.Imagen.FileName).Trim();
 
                 string directory = _webHost.WebRootPath + "/Images/";
                 path = Path.Combine((directory), fileName);
 
-                if ( !Directory.Exists(directory) )
+                if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
                 }
 
-                using ( var stream = System.IO.File.Create(path))
+                using (var stream = System.IO.File.Create(path))
                 {
                     await videojuego.Imagen.CopyToAsync(stream);
                 }
@@ -172,7 +172,7 @@ namespace Web_GameAffinity.Controllers
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
 
-            VideojuegoEN videojuegoEn =  videojuegoCEN.GetByoID(id);
+            VideojuegoEN videojuegoEn = videojuegoCEN.GetByoID(id);
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
             SessionClose();
 
@@ -256,5 +256,12 @@ namespace Web_GameAffinity.Controllers
                 return View();
             }
         }
-    }
+
+        public ActionResult ResenyaPartial(int id)
+        {
+            ResenyaRepository repo = new ResenyaRepository();
+            ResenyaCEN cen = new ResenyaCEN(repo);
+            ResenyaEN en = cen.GetByOID(id);
+            return View(en);
+        }
 }
