@@ -1,0 +1,16 @@
+﻿@model Web_GameAffinity.Models.ResenyaViewModel
+
+
+<div class="card bg-light mb-3" style="min-width: 20rem;">
+    <div class="card-header">@Html.DisplayFor(model => model.NombreAutor) - @Html.DisplayFor(model => model.Valoracion)</div>
+    <div class="card-body">
+        <h5 class="card-title">@Html.DisplayFor(model => model.Titulo)</h5>
+        <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
+    </div>
+    <div class="card-footer bg-light text-center">
+        <button class="btn btn-light mr-1">  <i class="bi bi-hand-thumbs-up"></i>    </button>
+        <span class="ml-1">@Html.DisplayFor(model => model.Likes_contador)</span>
+        <button class="btn btn-light mr-1">  <i class="bi bi-hand-thumbs-down"></i>  </button>
+        <span class="ml-1">@Html.DisplayFor(model => model.Dislikes_contador)</span>
+    </div>
+</div>

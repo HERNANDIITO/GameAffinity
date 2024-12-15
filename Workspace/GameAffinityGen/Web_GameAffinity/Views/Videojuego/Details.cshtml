@@ -1,60 +1,71 @@
-﻿@model Web_GameAffinity.Models.VideojuegoViewModel
+﻿@model Web_GameAffinity.Models.VideojuegoDetailsViewModel
+@using Microsoft.AspNetCore.Http
 
 @{
     ViewData["Title"] = "Details";
+    int tieneRes = 0;
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Videojuego</h4>
-    <hr/>
-
-    <div class="row">
-        <div class="col-12 col-md-3">
-            <img class="caratula" src="/Images/@Model.Imagen.FileName" alt="Alternate Text" />
+<main class="main-content-profile">
+    <div class="full-profile-container">
+        <div class="perfil-usuario">
+            <div class="foto-usuario">
+                <img src="/Images/@Model.Videojuego.Imagen.FileName" alt="Imagen del Videojuego" />
+                @if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null){
+                    @foreach(var resenya in Model.Resenyas){
+                        if(resenya.IdAutor == Context.Session.Get<ConfiguracionPerfilViewModel>("user").id){
+                            tieneRes = 1;
+                            break;
+                        }
+                    }
+                    @if(tieneRes == 0){
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#resenyaModal">
+                            Añadir Reseña
+                        </button>
+                    } else {
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#resenyaModal">
+                            Actualizar Reseña
+                        </button>
+                    }
+                    }
+            </div>
+            <div class="info-usuario">
+                <h2 class="Name-User-Profile">@Model.Videojuego.Nombre</h2>
+                <h4>Descripción:</h4>
+                <p>@Model.Videojuego.Descripcion</p>
+                <h4>Nota Media:</h4>
+                <p>@Model.Videojuego.NotaMedia</p>
+                <h4>Fecha de Lanzamiento:</h4>
+                <p>@Model.Videojuego.FechaLanzamiento</p>
+                <h4>Género:</h4>
+                <p>@Model.Videojuego.Genero</p>
+                <div class="boton-configuracion">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Videojuego.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-md-9">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Nombre)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Descripcion)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Descripcion)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Imagen)
-                </dt>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NotaMedia)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.NotaMedia)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.FechaLanzamiento)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.FechaLanzamiento)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Genero)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Genero)
-                </dd>
-            </dl>
-        </div>
+        <h4>Reseñas</h4>
+        @if (Model.Resenyas != null && Model.Resenyas.Any())
+        {
+            <ul>
+                @foreach (var resenya in Model.Resenyas)
+                {
+                    <li>@Html.Partial("ResenyaCard", @resenya) </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No hay reseñas disponibles.</p>
+        }
     </div>
 
-</div>
+</main>
+
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Videojuego.Id }) |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<!-- Modal para añadir reseña -->
+@Html.Partial("resenyaModal", Model)

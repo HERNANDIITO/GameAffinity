@@ -8,6 +8,9 @@ using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
 using GameAffinityGen.ApplicationCore.Enumerated.GameAffinity;
 using System.Collections.Specialized;
+using NHibernate;
+using GameAffinityGen.ApplicationCore.CP.GameAffinity;
+using GameAffinityGen.Infraestructure.CP;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -82,13 +85,51 @@ namespace Web_GameAffinity.Controllers
             SessionInitialize();
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+            IList<ResenyaViewModel> listaResenyas = null;
 
             VideojuegoEN videojuegoEn = videojuegoCEN.GetByoID(id);
+            if (videojuegoEn == null)
+            {
+                return NotFound();
+            }
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
 
+            if (videojuegoEn.Resenyas != null)
+            {
+                NHibernateUtil.Initialize(videojuegoEn.Resenyas);
+                listaResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(videojuegoEn.Resenyas).ToList();
+            }
+
+            if (videojuegoEn.Valoracion != null)
+            {
+                NHibernateUtil.Initialize(videojuegoEn.Valoracion);
+            }
+
+            // Asignar la nota de valoración a las reseñas correspondientes
+            if (listaResenyas != null && videojuegoEn.Valoracion != null)
+            {
+                foreach (var resenya in listaResenyas)
+                {
+                    var valoracion = videojuegoEn.Valoracion.FirstOrDefault(v => v.Autor_valoracion.Id == resenya.IdAutor);
+                    if (valoracion != null)
+                    {
+                        resenya.Valoracion = valoracion.Nota;
+                    }
+                }
+            }
+
+
+            VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
+            {
+                Videojuego = videojuegoView,
+                Resenyas = listaResenyas,
+                Valoraciones = videojuegoEn.Valoracion
+            };
+
             SessionClose();
-            return View(videojuegoView);
+            return View(vistaJuego);
         }
+
 
         // GET: VideojuegoController/Create
         public ActionResult Create()
@@ -100,7 +141,7 @@ namespace Web_GameAffinity.Controllers
             listaGeneros.Add(new SelectListItem { Text = "Puzzles", Value = GenerosEnum.Puzzles.ToString() });
             listaGeneros.Add(new SelectListItem { Text = "Mundo Abierto", Value = GenerosEnum.Mundo_abierto.ToString() });
             ViewData["GenerosItems"] = listaGeneros;
-            
+
             return View();
 
         }
@@ -110,7 +151,26 @@ namespace Web_GameAffinity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(VideojuegoViewModel videojuego)
         {
-            string fileName = await FileHelper.GetFileName(videojuego.Imagen, _webHost.WebRootPath);
+            string fileName = "", path = "";
+            if (videojuego.Imagen != null && videojuego.Imagen.Length > 0)
+            {
+                fileName = Path.GetFileName(videojuego.Imagen.FileName).Trim();
+
+                string directory = _webHost.WebRootPath + "/Images/";
+                path = Path.Combine((directory), fileName);
+
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                using (var stream = System.IO.File.Create(path))
+                {
+                    await videojuego.Imagen.CopyToAsync(stream);
+                }
+
+                fileName = "/Images/" + fileName;
+            }
 
             try
             {
@@ -139,7 +199,7 @@ namespace Web_GameAffinity.Controllers
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
 
-            VideojuegoEN videojuegoEn =  videojuegoCEN.GetByoID(id);
+            VideojuegoEN videojuegoEn = videojuegoCEN.GetByoID(id);
             VideojuegoViewModel videojuegoView = new VideojuegoAssembler().ConvertirENToViewModel(videojuegoEn);
             SessionClose();
 
@@ -203,6 +263,14 @@ namespace Web_GameAffinity.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult ResenyaPartial(int id)
+        {
+            ResenyaRepository repo = new ResenyaRepository();
+            ResenyaCEN cen = new ResenyaCEN(repo);
+            ResenyaEN en = cen.GetByOID(id);
+            return View(en);
         }
     }
 }

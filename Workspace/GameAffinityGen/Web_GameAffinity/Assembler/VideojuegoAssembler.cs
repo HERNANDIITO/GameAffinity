@@ -12,6 +12,21 @@ namespace Web_GameAffinity.Assembler
     {
         public VideojuegoViewModel ConvertirENToViewModel(VideojuegoEN en)
         {
+            if (en == null)
+            {
+                throw new ArgumentNullException(nameof(en), "El objeto VideojuegoEN no puede ser null.");
+            }
+
+            VideojuegoViewModel videojuego = new VideojuegoViewModel
+            {
+                Id = en.Id,
+                Nombre = en.Nombre,
+                Descripcion = en.Descripcion,
+                Genero = en.Genero,
+                Imagen = ConvertToIFormFile(en.Imagen),
+                NotaMedia = en.Nota_media,
+                FechaLanzamiento = en.FechaDeLanzamiento
+            };
 
             VideojuegoViewModel videojuego = new VideojuegoViewModel();
             videojuego.Id = en.Id;
@@ -22,7 +37,6 @@ namespace Web_GameAffinity.Assembler
             videojuego.NotaMedia = en.Nota_media;
             videojuego.FechaLanzamiento = en.FechaDeLanzamiento;
             return videojuego;
-
         }
         public IList<VideojuegoViewModel> ConvertirListaENtoViewModel(IList<VideojuegoEN> ens)
         {

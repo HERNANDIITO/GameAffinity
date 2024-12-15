@@ -57,16 +57,11 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                         foreach (ValoracionEN val in listaValoraciones) {
                                 notaMedia += val.Nota;
                         }
+                        notaMedia += p_nota; // Añadir la nueva nota
+                        notaMedia = notaMedia / (listaValoraciones.Count + 1); // Calcular la media incluyendo la nueva nota
                 }
-                else{
-                        notaMedia = p_nota;
-                }
-
-
-                if (videojuego.Valoracion.Count > 0) {
-                        notaMedia = notaMedia / videojuego.Valoracion.Count;
-                }
-                else{
+                else
+                {
                         notaMedia = p_nota;
                 }
 

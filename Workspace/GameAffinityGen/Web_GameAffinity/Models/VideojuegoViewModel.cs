@@ -1,4 +1,5 @@
 ﻿// Este modelo va a permitr mostrar unicamente lo que nos interesa en una pagina concreta
+using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,13 +30,13 @@ namespace Web_GameAffinity.Models
         // Declaracion de la descripcion
         // Display define unos atributos que nos ayudan a la hora de mostrar esta descripcion tanto si 
         // es de la BD o si es un formulario para introducirla
-        [Display( 
+        [Display(
             Prompt = "Describe el videojuego", // texto para el input vacio
             Description = "Descripción del videojuego", // texto para el alt
             Name = "Descripción" // nombre para el label
             )]
         [Required(ErrorMessage = "Es obligatorio indicar una descripcion.")]
-        [StringLength(maximumLength:200, ErrorMessage = "La descripcion no puede superar 200 caracteres.")]
+        [StringLength(maximumLength: 200, ErrorMessage = "La descripcion no puede superar 200 caracteres.")]
         public string Descripcion { get; set; }
 
         // Declaracion de la imagen
@@ -74,6 +75,15 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Es obligatorio indicar un genero.")]
         public GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.GenerosEnum Genero { get; set; }
 
-        
+        public bool showResenyaModal { get; set; } = false;
+
+
+    }
+
+    public class VideojuegoDetailsViewModel
+    {
+        public VideojuegoViewModel Videojuego { get; set; }
+        public IList<ResenyaViewModel> Resenyas { get; set; }
+        public IList<ValoracionEN> Valoraciones {get; set; }
     }
 }
