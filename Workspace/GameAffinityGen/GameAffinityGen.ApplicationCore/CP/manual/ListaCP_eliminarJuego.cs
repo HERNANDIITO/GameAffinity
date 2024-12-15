@@ -26,20 +26,21 @@ namespace GameAffinityGen.ApplicationCore.CP.GameAffinity
             {
                 CPSession.SessionInitializeTransaction();
                 ListaCEN listaCEN = new ListaCEN(CPSession.UnitRepo.ListaRepository);
-                VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
+                listaCEN.EliminarJuego(p_Lista_OID, new List<int> { videojuego_OID });
+                //VideojuegoCEN videojuegoCEN = new VideojuegoCEN(CPSession.UnitRepo.VideojuegoRepository);
 
-                VideojuegoEN videojuego = videojuegoCEN.GetByoID(videojuego_OID);
-                ListaEN lista = listaCEN.get_IListaRepository().ReadOIDDefault(p_Lista_OID);
-                lista.Videojuegos.Remove(videojuego);
+                //VideojuegoEN videojuego = videojuegoCEN.GetByoID(videojuego_OID);
+                //ListaEN lista = listaCEN.get_IListaRepository().ReadOIDDefault(p_Lista_OID);
+                //lista.Videojuegos.Remove(videojuego);
 
-                listaCEN.get_IListaRepository().ModifyDefault(lista);
+                //listaCEN.get_IListaRepository().ModifyDefault(lista);
 
                 CPSession.Commit();
             }
             catch (Exception ex)
             {
                 CPSession.RollBack();
-                throw ex;
+                throw new Exception("Error al eliminar el videojuego a la lista: " + ex.Message);
             }
             finally
             {

@@ -48,7 +48,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAñadirVideojuego">
             Añadir juego
         </button>
-        <button type="button" class="btn btn-danger" onclick="eliminarVideojuego(@Model.Id)">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarVideojuego">
             Eliminar juego
         </button>
     </div>
@@ -65,9 +65,13 @@
 
 
 
-
-
-<div class="modal fade" id="modalAñadirVideojuego" tabindex="-1" aria-labelledby="modalAñadirVideojuegoLabel" aria-hidden="true">
+<!-- Modal para añadir videojuego -->
+<div class="modal fade @(Context.Request.Query["showModal"] == "true" ? "show" : "")"
+     id="modalAñadirVideojuego"
+     tabindex="-1"
+     aria-labelledby="modalAñadirVideojuegoLabel"
+     aria-hidden="@(Context.Request.Query["showModal"] != "true")"
+     style="display: @(Context.Request.Query["showModal"] == "true" ? "block" : "none");">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -75,16 +79,83 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <!-- Barra de búsqueda dentro del modal -->
+                <form method="get">
+                    <input type="hidden" name="showModal" value="true" />
+                    <div class="input-group mb-4">
+                        <input type="text" name="query" class="form-control" placeholder="Buscar..." value="@Context.Request.Query["query"]" />
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </div>
+                </form>
+
+                <!-- Resultados -->
                 <div class="row gy-3">
                     @foreach (var videojuego in Model.TodosLosVideojuegos)
                     {
-                        <div class="col-lg-6"> <!-- Esta clase es la que hace que se vean pequenyitas las cards juego -->
-                            @Html.Partial("VideojuegoCard", videojuego)  
+                        if (string.IsNullOrEmpty(Context.Request.Query["query"]) || videojuego.Nombre.Contains(Context.Request.Query["query"], StringComparison.OrdinalIgnoreCase))
+                        {
+                            <div class="col-lg-6">
+                                @Html.Partial("VideojuegoCard", videojuego)
+
+                                @if (Model.Videojuegos.Any(v => v.Id == videojuego.Id))
+                                {
+                                    <!-- Botón deshabilitado si ya está añadido -->
+                                    <button class="btn btn-secondary" disabled>Ya añadido</button>
+                                }
+                                else
+                                {
+                                    <!-- Botón para añadir si no está añadido -->
+                                    <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post">
+                                        <input type="hidden" name="listaId" value="@Model.Id" />
+                                        <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                        <button type="submit" class="btn btn-primary">Añadir</button>
+                                    </form>
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Script para reapertura automática -->
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const queryParam = new URLSearchParams(window.location.search);
+        if (queryParam.get("showModal") === "true") {
+            const modal = new bootstrap.Modal(document.getElementById("modalAñadirVideojuego"));
+            modal.show();
+        }
+    });
+</script>
+
+
+
+
+
+<!-- Modal de eliminar videojeugo -->
+<div class="modal fade" id="modalEliminarVideojuego" tabindex="-1" aria-labelledby="modalEliminarVideojuegoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEliminarVideojuegoLabel">Eliminar Videojuego</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row gy-3">
+                    @foreach (var videojuego in Model.Videojuegos)
+                    {
+                        <div class="col-lg-6">
+                            <!-- Esta clase es la que hace que se vean pequenyitas las cards juego -->
+                            @Html.Partial("VideojuegoCard", videojuego)
                             <!-- Formulario para añadir videojuego -->
-                            <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post">
+                            <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete">
                                 <input type="hidden" name="listaId" value="@Model.Id" />
                                 <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
-                                <button type="submit" class="btn btn-primary">Añadir</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
                         </div>
                     }

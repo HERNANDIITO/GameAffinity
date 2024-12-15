@@ -253,5 +253,46 @@ namespace Web_GameAffinity.Controllers
 
 
 
+        // DELETE: ListaController/EliminarVideojuego
+        public ActionResult EliminarVideojuego(int listaId, int videojuegoId)
+        {
+            try
+            {
+                if (listaId <= 0 || videojuegoId <= 0)
+                {
+                    return BadRequest("IDs inválidos");
+                }
+
+                // Inicializamos la sesión
+                SessionInitialize();
+
+                // Repositorio y CEN
+                ListaRepository listRepo = new ListaRepository(session);
+                ListaCEN listCEN = new ListaCEN(listRepo);
+                ListaCP listCP = new ListaCP(new SessionCPNHibernate());
+                listCP.EliminarJuego(listaId, new List<int> { }, videojuegoId);
+                //listCEN.AnyadirVideojuego(listaId, new List<int> { }, videojuegoId);
+
+
+                // Llamamos al método de negocio para añadir el videojuego
+                //listCEN.AnyadirVideojuego(listaId, new List<int> { videojuegoId});
+
+                ListaEN lista = listCEN.GetByOID(listaId);
+                // Cerramos la sesión
+                SessionClose();
+
+                // Redirigir a los detalles de la lista tras añadir el videojuego
+                return RedirectToAction("Details", new { id = listaId });
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                SessionClose();
+                return View("Error", new { message = ex.Message });
+            }
+        }
+
+
+
     }
 }
