@@ -60,6 +60,7 @@ namespace Web_GameAffinity.Models
     {
         public RegistradoEN Registrado { get; set; }
         public IList<ListaEN> Listas { get; set; }
+        public IList<ResenyaViewModel> Resenyas { get; set; }
         public int JuegosCompletados { get; set; }
         public int JuegosEmpezados { get; set; }
     }

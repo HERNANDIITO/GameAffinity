@@ -209,12 +209,21 @@ namespace Web_GameAffinity.Controllers
                 }
             }
 
+            // Obtener las reseñas del usuario
+            IList<ResenyaViewModel> userResenyas = null;
+            if (registrado.Resenya != null)
+            {
+                NHibernateUtil.Initialize(registrado.Resenya);
+                userResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(registrado.Resenya).ToList();
+            }
+
             var user = new RegistradoDetailsViewModel
             {
                 Registrado = registrado,
                 Listas = registrado.Listas,
                 JuegosCompletados = juegosCompletados,
-                JuegosEmpezados = juegosEmpezados
+                JuegosEmpezados = juegosEmpezados,
+                Resenyas = userResenyas
             };
 
             SessionClose();
