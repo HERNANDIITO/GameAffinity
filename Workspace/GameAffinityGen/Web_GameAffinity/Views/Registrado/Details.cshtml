@@ -50,6 +50,9 @@
         }
 
         <h4>Listas Personalizadas</h4>
+        <div class="boton-configuracion">
+            @Html.ActionLink("Crear lista", "Create", "Lista", null, new { @class = "btn btn-primary" })
+        </div>
         @if (Model.Listas != null && Model.Listas.Any(l => !l.Por_defecto))
         {
             <div id="carouselPersonalizadas" class="carousel">

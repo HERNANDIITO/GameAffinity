@@ -105,6 +105,7 @@ namespace Web_GameAffinity.Controllers
             return View();
         }
 
+
         // POST: ListaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,15 +115,25 @@ namespace Web_GameAffinity.Controllers
 
             try
             {
+                // Obtener el usuario logueado desde la sesión
+                var userSession = HttpContext.Session.Get<PerfilViewModel>("user");
+                if (userSession == null || userSession.id <= 0)
+                {
+                    // Redirigir a la página de login si no hay usuario logueado
+                    return RedirectToAction("Login", "Registrado");
+                }
+
+                // Crear la lista con el ID del usuario logueado como autor
                 ListaRepository listRepo = new ListaRepository();
                 ListaCEN listCEN = new ListaCEN(listRepo);
                 listCEN.New_(
                     list.Nombre,
                     list.Descripcion,
                     list.Por_defecto,
-                    -1,
+                    userSession.id, // Usar el ID del usuario logueado como autor
                     fileName
-                );  //el -1 es el autor, si no es -1 el post no funciona no se por que
+                );
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -130,6 +141,7 @@ namespace Web_GameAffinity.Controllers
                 return View();
             }
         }
+
 
         // GET: ListaController/Edit/5
         public ActionResult Edit(int id)
