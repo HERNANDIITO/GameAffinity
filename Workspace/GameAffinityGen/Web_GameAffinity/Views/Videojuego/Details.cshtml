@@ -10,7 +10,10 @@
     <div class="full-profile-container">
         <div class="perfil-usuario">
             <div class="foto-usuario">
-                <img src="/Images/@Model.Videojuego.Imagen.FileName" alt="Imagen del Videojuego" />
+                <div class="caratulaNota">
+                    <img class="imagenUsuario" src="/Images/@Model.Videojuego.Imagen.FileName" alt="Imagen del Videojuego" />
+                    <span class="nota">@Model.Videojuego.NotaMedia</span>
+                </div>
                 @if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null){
                     @foreach(var resenya in Model.Resenyas){
                         if(resenya.IdAutor == Context.Session.Get<ConfiguracionPerfilViewModel>("user").id){
@@ -18,6 +21,7 @@
                             break;
                         }
                     }
+
                     @if(tieneRes == 0){
                         <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#resenyaModal">
                             Añadir Reseña
@@ -27,32 +31,28 @@
                             Actualizar Reseña
                         </button>
                     }
-                    }
+                }
             </div>
             <div class="info-usuario">
                 <h2 class="Name-User-Profile">@Model.Videojuego.Nombre</h2>
-                <h4>Descripción:</h4>
-                <p>@Model.Videojuego.Descripcion</p>
-                <h4>Nota Media:</h4>
-                <p>@Model.Videojuego.NotaMedia</p>
                 <h4>Fecha de Lanzamiento:</h4>
-                <p>@Model.Videojuego.FechaLanzamiento</p>
+                <p>@Model.Videojuego.FechaLanzamiento.Value.ToString("dd/MM/yyyy")</p>
                 <h4>Género:</h4>
-                <p>@Model.Videojuego.Genero</p>
+                <p class="genre">@Model.Videojuego.Genero</p>
                 <div class="boton-configuracion">
                     @Html.ActionLink("Edit", "Edit", new { id = Model.Videojuego.Id }, new { @class = "btn btn-primary" })
                 </div>
             </div>
         </div>
+        <h4>Descripción:</h4>
+        <p>@Model.Videojuego.Descripcion</p>
         <h4>Reseñas</h4>
         @if (Model.Resenyas != null && Model.Resenyas.Any())
         {
-            <ul>
                 @foreach (var resenya in Model.Resenyas)
                 {
-                    <li>@Html.Partial("ResenyaCard", @resenya) </li>
+                    @Html.Partial("ResenyaCard", @resenya)
                 }
-            </ul>
         }
         else
         {
@@ -61,11 +61,6 @@
     </div>
 
 </main>
-
-<div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Videojuego.Id }) |
-    <a asp-action="Index">Back to List</a>
-</div>
 
 <!-- Modal para añadir reseña -->
 @Html.Partial("resenyaModal", Model)
