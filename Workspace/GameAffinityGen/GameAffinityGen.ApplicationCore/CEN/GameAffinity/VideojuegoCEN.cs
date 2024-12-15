@@ -109,7 +109,7 @@ public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameA
 }
 public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetRecienPublicados ()
 {
-        return _IVideojuegoRepository.GetRecienPublicados ();
+return _IVideojuegoRepository.GetRecienPublicados ();
 }
 public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> GetPopular ()
 {
