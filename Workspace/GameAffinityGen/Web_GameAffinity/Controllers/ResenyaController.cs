@@ -114,7 +114,7 @@ namespace Web_GameAffinity.Controllers
             try
             {
                 SessionInitialize();
-                int idUser = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user").id;
+                int idUser = HttpContext.Session.Get<PerfilViewModel>("user").id;
                 ResenyaRepository repo = new ResenyaRepository();
                 ResenyaCEN resenyaCEN = new ResenyaCEN(repo);
                 int nuevaResenyaId = resenyaCEN.New_(resenya.Titulo, resenya.Texto, 0, 0, idUser, resenya.VideojuegoId);
@@ -123,6 +123,18 @@ namespace Web_GameAffinity.Controllers
                 {
                     ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
                     valoracionCP.New_(resenya.Valoracion, idUser, resenya.VideojuegoId);
+
+                    // Añadir el juego a la lista "juegos valorados"
+                    ListaRepository listaRepo = new ListaRepository(session);
+                    ListaCEN listaCEN = new ListaCEN(listaRepo);
+                    ListaEN listaValorados = listaCEN.GetAll(0, -1).FirstOrDefault(l => l.Nombre == "Juegos valorados" && l.Autor_lista.Id == idUser);
+                    NHibernateUtil.Initialize(listaValorados);
+
+                    if (listaValorados != null)
+                    {
+                        ListaCP listaCP = new ListaCP(new SessionCPNHibernate());
+                        listaCP.AnyadirJuego(listaValorados.Id, new List<int> { }, resenya.VideojuegoId);
+                    }
                 }
                 else
                 {
