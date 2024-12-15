@@ -1,5 +1,8 @@
 ﻿@model Web_GameAffinity.Models.VideojuegoDetailsViewModel
 @using Microsoft.AspNetCore.Http
+@using GameAffinityGen.Infraestructure.Repository.GameAffinity
+@using GameAffinityGen.ApplicationCore.CEN.GameAffinity
+@using GameAffinityGen.ApplicationCore.EN.GameAffinity
 
 @{
     ViewData["Title"] = "Details";
@@ -39,9 +42,21 @@
                 <p>@Model.Videojuego.FechaLanzamiento.Value.ToString("dd/MM/yyyy")</p>
                 <h4>Género:</h4>
                 <p class="genre">@Model.Videojuego.Genero</p>
-                <div class="boton-configuracion">
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.Videojuego.Id }, new { @class = "btn btn-primary" })
-                </div>
+                
+                    <!--ESTO LO VE UN MODERADOR-->
+                @if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null){
+                    ModeradorRepository repo = new ModeradorRepository();
+                    ModeradorCEN cen = new ModeradorCEN(repo);
+                    var user = Context.Session.Get<ConfiguracionPerfilViewModel>("user");
+                    ModeradorEN esModerador = cen.GetByOID(user.id);
+                    @if(esModerador != null)
+                    {
+                    <div class="boton-configuracion">
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.Videojuego.Id }, new { @class = "btn btn-primary" })
+                    </div>
+                    }
+                }
+
             </div>
         </div>
         <h4>Descripción:</h4>
