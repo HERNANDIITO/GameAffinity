@@ -1,0 +1,57 @@
+﻿@import "colors.css";
+
+
+.resenya {
+  width: 100%;
+}
+
+.caratulaNota {
+  position: relative;
+  .nota
+
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+  background: var(--ga-blue);
+  padding: 15px;
+  color: var(--ga-white);
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+}
+
+.card-header {
+position: relative;
+.nota
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(35%, -35%);
+  background: var(--ga-blue);
+  padding: 15px;
+  margin: 15px;
+  color: var(--ga-white);
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+h5 {
+margin-bottom: 0;
+}
+}
+
+.genre {
+  border-radius: 15px;
+  background-color: var(--ga-blue);
+  color: var(--ga-white);
+  padding: 3px 15px;
+  width: fit-content;
+}
