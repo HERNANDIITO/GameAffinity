@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
 using NHibernate;
+using GameAffinityGen.ApplicationCore.CP.GameAffinity;
+using GameAffinityGen.Infraestructure.CP;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -51,6 +53,8 @@ namespace Web_GameAffinity.Controllers
             return View(listLists);
         }
 
+
+
         // GET: ListaController/Details/5
         public ActionResult Details(int id)
         {
@@ -58,22 +62,42 @@ namespace Web_GameAffinity.Controllers
             {
                 return new EmptyResult();
             }
-            SessionInitialize();
-            ListaRepository listRepo = new ListaRepository(session);
-            ListaCEN listCEN = new ListaCEN(listRepo);
 
+            // Inicializamos la sesión
+            SessionInitialize();
+
+            // Repositorios y CEN necesarios
+            ListaRepository listRepo = new ListaRepository(session);
+            VideojuegoRepository videojuegoRepo = new VideojuegoRepository(session);
+
+            ListaCEN listCEN = new ListaCEN(listRepo);
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepo);
+
+            // Obtenemos la lista por ID
             ListaEN listEN = listCEN.GetByOID(id);
             if (listEN != null)
             {
-                NHibernateUtil.Initialize(listEN.Videojuegos);
+                NHibernateUtil.Initialize(listEN.Videojuegos); // Inicializamos los videojuegos asociados a la lista
             }
 
-            ListaViewModel listView = new ListaAssembler().ConvertirENToViewModel(listEN);
-            // listView.Videojuegos = listEN.Videojuegos; // Cargar los videojuegos
+            // Obtenemos todos los videojuegos de la base de datos
+            IList<VideojuegoEN> todosLosVideojuegos = videojuegoCEN.GetAll(0, -1);
 
+            // Convertimos la entidad a modelo de vista
+            ListaViewModel listView = new ListaAssembler().ConvertirENToViewModel(listEN);
+
+            // Añadimos todos los videojuegos al modelo de vista
+            listView.TodosLosVideojuegos = todosLosVideojuegos;
+
+            // Cerramos la sesión
             SessionClose();
+
+            // Devolvemos la vista con el modelo actualizado
             return View(listView);
         }
+
+
+
 
         // GET: ListaController/Create
         public ActionResult Create()
@@ -172,6 +196,50 @@ namespace Web_GameAffinity.Controllers
             }
         }
 
-        
+
+
+
+        // POST: ListaController/AnyadirVideojuego
+        [HttpPost]
+        public ActionResult AnyadirVideojuego(int listaId, int videojuegoId)
+        {
+            try
+            {
+                if (listaId <= 0 || videojuegoId <= 0)
+                {
+                    return BadRequest("IDs inválidos");
+                }
+
+                // Inicializamos la sesión
+                SessionInitialize();
+
+                // Repositorio y CEN
+                ListaRepository listRepo = new ListaRepository(session);
+                ListaCEN listCEN = new ListaCEN(listRepo);
+                ListaCP listCP = new ListaCP(new SessionCPNHibernate());
+                listCP.AnyadirJuego(listaId, new List<int> { }, videojuegoId);
+                //listCEN.AnyadirVideojuego(listaId, new List<int> { }, videojuegoId);
+
+
+                // Llamamos al método de negocio para añadir el videojuego
+                //listCEN.AnyadirVideojuego(listaId, new List<int> { videojuegoId});
+
+                ListaEN lista = listCEN.GetByOID(listaId);
+                // Cerramos la sesión
+                SessionClose();
+
+                // Redirigir a los detalles de la lista tras añadir el videojuego
+                return RedirectToAction("Details", new { id = listaId });
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                SessionClose();
+                return View("Error", new { message = ex.Message });
+            }
+        }
+
+
+
     }
 }

@@ -66,6 +66,7 @@
 
 
 
+
 <div class="modal fade" id="modalAñadirVideojuego" tabindex="-1" aria-labelledby="modalAñadirVideojuegoLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -74,33 +75,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="mb-3">
-                    <input type="text" id="busquedaVideojuego" class="form-control" placeholder="Busca un videojuego por su nombre" oninput="buscarVideojuegos(this.value)">
+                <div class="row gy-3">
+                    @foreach (var videojuego in Model.TodosLosVideojuegos)
+                    {
+                        <div class="col-lg-6"> <!-- Esta clase es la que hace que se vean pequenyitas las cards juego -->
+                            @Html.Partial("VideojuegoCard", videojuego)  
+                            <!-- Formulario para añadir videojuego -->
+                            <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post">
+                                <input type="hidden" name="listaId" value="@Model.Id" />
+                                <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                <button type="submit" class="btn btn-primary">Añadir</button>
+                            </form>
+                        </div>
+                    }
                 </div>
-                <div id="resultadosVideojuegos" class="row gy-3">
-                    <!-- Las tarjetas de videojuegos se renderizan aquí -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

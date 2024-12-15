@@ -105,7 +105,7 @@ public void ModifyDefault (ListaEN lista)
 
                 listaNH.Por_defecto = lista.Por_defecto;
 
-
+                listaNH.Videojuegos = lista.Videojuegos;
 
 
                 listaNH.Img = lista.Img;

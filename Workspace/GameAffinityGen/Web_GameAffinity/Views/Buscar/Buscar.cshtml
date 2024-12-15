@@ -1,0 +1,74 @@
+﻿@model Web_GameAffinity.Models.BuscarViewModel
+@{
+    ViewData["Title"] = "Buscar";
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<!-- Barra de búsqueda -->
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="get">
+                <div class="input-group">
+                    <input type="text" name="query" class="form-control" placeholder="Buscar..." value="@Context.Request.Query["query"]" aria-label="Buscar" />
+                    <button class="btn btn-primary" type="submit">Filtrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Secciones de resultados -->
+<div class="container">
+    <!-- Videojuegos -->
+    <h2 class="mb-3">Videojuegos</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        @if (Model != null && Model.Videojuegos != null)
+        {    
+            @foreach (var videojuego in Model.Videojuegos)
+            {
+                if (string.IsNullOrEmpty(Context.Request.Query["query"]) || videojuego.Nombre.Contains(Context.Request.Query["query"], StringComparison.OrdinalIgnoreCase))
+                {
+                    <div class="col">
+                        @Html.Partial("VideojuegoCard", videojuego)
+                    </div>
+                }
+            }
+        }
+    </div>
+
+    <!-- Empresas -->
+    <h2 class="mt-5 mb-3">Empresas</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        @if (Model != null && Model.Empresas != null)
+        {    
+            @foreach (var empresa in Model.Empresas)
+            {
+                if (string.IsNullOrEmpty(Context.Request.Query["query"]) || empresa.Nombre.Contains(Context.Request.Query["query"], StringComparison.OrdinalIgnoreCase))
+                {
+                    <div class="col">
+                        @Html.Partial("EmpresaCard", empresa)
+                    </div>
+                }
+            }
+        }
+    </div>
+
+    <!-- Personas -->
+    <h2 class="mt-5 mb-3">Personas</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        @if (Model != null && Model.Personas != null)
+        {   
+            @foreach (var persona in Model.Personas)
+            {
+                if (string.IsNullOrEmpty(Context.Request.Query["query"]) || persona.Nombre.Contains(Context.Request.Query["query"], StringComparison.OrdinalIgnoreCase))
+                {
+                    <div class="col">
+                        @Html.Partial("IndividuoCard", persona)
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

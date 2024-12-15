@@ -36,5 +36,11 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
         public IFormFile Imagen { get; set; }
 
+
+
+        // Todos los videojuegos de la base de datos (para el modal)
+        public IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> TodosLosVideojuegos { get; set; }
+
+
     }
 }
