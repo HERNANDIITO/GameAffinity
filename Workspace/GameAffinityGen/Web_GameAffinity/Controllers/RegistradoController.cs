@@ -2,6 +2,7 @@
 using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.CP;
+using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -220,6 +221,75 @@ namespace Web_GameAffinity.Controllers
             SessionClose();
             return View(user);
         }
+
+
+
+
+        // GET: RegistradoController/DetailsUsuario/5
+        public ActionResult DetailsUsuario(int id)
+        {
+            SessionInitialize();
+            ResenyaRepository resRepository = new ResenyaRepository(session);
+            ResenyaCEN resCEN = new ResenyaCEN(resRepository);
+            ResenyaEN resEN = resCEN.GetByOID(id);
+
+            if (resEN == null)
+            {
+                SessionClose();
+                return RedirectToAction("Index", "Home");
+            }
+
+            RegistradoRepository regRepository = new RegistradoRepository(session);
+            RegistradoCEN regCEN = new RegistradoCEN(regRepository);
+            RegistradoEN regEN = resEN.Autor_resenya;
+            
+            if (regEN == null)
+            {
+                SessionClose();
+                return RedirectToAction("Index", "Home");
+            }
+
+            ListaRepository listaRepo = new ListaRepository(session);
+
+            int juegosCompletados = 0;
+            int juegosEmpezados = 0;
+
+            //Forzar la carga
+            if (regEN.Listas != null)
+            {
+                NHibernateUtil.Initialize(regEN.Listas);
+
+                foreach (var lista in regEN.Listas)
+                {
+                    NHibernateUtil.Initialize(lista.Videojuegos);
+
+                    if (lista.Nombre == "Juegos empezados")
+                    {
+                        juegosEmpezados = lista.Videojuegos.Count;
+                    }
+
+                    if (lista.Nombre == "Juegos completados")
+                    {
+                        juegosCompletados = lista.Videojuegos.Count;
+                    }
+                }
+            }
+
+            var user = new RegistradoDetailsViewModel
+            {
+                Registrado = regEN,
+                Listas = regEN.Listas,
+                JuegosCompletados = juegosCompletados,
+                JuegosEmpezados = juegosEmpezados
+            };
+
+            SessionClose();
+            return View(user);
+        }
+
+
+
+
 
         // GET: RegistradoController/Create
         public ActionResult Create()
