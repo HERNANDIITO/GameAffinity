@@ -78,17 +78,14 @@
                 <div class="row gy-3">
                     @foreach (var videojuego in Model.TodosLosVideojuegos)
                     {
-                        <div>
-                            <div class="videogameCard">
-                                @Html.Partial("VideojuegoCard", videojuego)
-
-                                <!-- Formulario para añadir videojuego -->
-                                <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post">
-                                    <input type="hidden" name="listaId" value="@Model.Id" />
-                                    <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
-                                    <button type="submit" class="btn btn-primary">Añadir</button>
-                                </form>
-                            </div>
+                        <div class="col-lg-6"> <!-- Esta clase es la que hace que se vean pequenyitas las cards juego -->
+                            @Html.Partial("VideojuegoCard", videojuego)  
+                            <!-- Formulario para añadir videojuego -->
+                            <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post">
+                                <input type="hidden" name="listaId" value="@Model.Id" />
+                                <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                <button type="submit" class="btn btn-primary">Añadir</button>
+                            </form>
                         </div>
                     }
                 </div>

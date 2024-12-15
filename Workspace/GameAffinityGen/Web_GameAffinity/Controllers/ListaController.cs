@@ -198,9 +198,9 @@ namespace Web_GameAffinity.Controllers
                 // Repositorio y CEN
                 ListaRepository listRepo = new ListaRepository(session);
                 ListaCEN listCEN = new ListaCEN(listRepo);
-                //ListaCP listCP = new ListaCP(new SessionCPNHibernate());
-                //listCP.AnyadirJuego(listaId, new List<int> { }, videojuegoId);
-                listCEN.AnyadirVideojuego(listaId, new List<int> { }, videojuegoId);
+                ListaCP listCP = new ListaCP(new SessionCPNHibernate());
+                listCP.AnyadirJuego(listaId, new List<int> { }, videojuegoId);
+                //listCEN.AnyadirVideojuego(listaId, new List<int> { }, videojuegoId);
 
 
                 // Llamamos al método de negocio para añadir el videojuego
