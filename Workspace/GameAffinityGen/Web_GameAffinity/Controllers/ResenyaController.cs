@@ -2,9 +2,11 @@
 using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.CP;
+using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NHibernate;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
 
@@ -27,6 +29,18 @@ namespace Web_GameAffinity.Controllers
 
             ResenyaEN resenyaEn = resenyaCEN.GetByOID(id);
             ResenyaViewModel resenyaView = new ResenyaAssembler().ConvertirENToViewModel(resenyaEn);
+
+            // Obtener la valoración del usuario para el videojuego correspondiente
+            ValoracionCEN valoracionCEN = new ValoracionCEN(new ValoracionRepository(session));
+            IList<ValoracionEN> valoraciones = valoracionCEN.DameValoracionesUsu(resenyaView.IdAutor);
+            foreach (ValoracionEN valoracion in valoraciones)
+            {
+                if (valoracion.Videojuego_valorado.Id == resenyaView.VideojuegoId)
+                {
+                    resenyaView.Valoracion = valoracion.Nota;
+                    break;
+                }
+            }
 
             SessionClose();
             return View(resenyaView);
@@ -72,7 +86,7 @@ namespace Web_GameAffinity.Controllers
         // POST: ResenyaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ResenyaViewModel resenya)
+        public ActionResult Edit(ResenyaViewModel resenya)
         {
             try
             {
@@ -85,7 +99,7 @@ namespace Web_GameAffinity.Controllers
                     resenya.Likes_contador,
                     resenya.Dislikes_contador
                 );
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
             }
             catch
             {
@@ -128,8 +142,9 @@ namespace Web_GameAffinity.Controllers
             }
         }
 
-        //POST: ResenyaControler/ActualizarResenya
+        //POST: ResenyaControler/ActualizarResenya/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ActualizarResenya(ResenyaViewModel resenya)
         {
             try
@@ -137,25 +152,32 @@ namespace Web_GameAffinity.Controllers
                 SessionInitialize();
                 ResenyaRepository repo = new ResenyaRepository();
                 ResenyaCEN resenyaCEN = new ResenyaCEN(repo);
+
+                // Modificar la reseña
                 resenyaCEN.Modify(resenya.Id, resenya.Titulo, resenya.Texto, resenya.Likes_contador, resenya.Dislikes_contador);
+
+                // Obtener las valoraciones del usuario
                 ValoracionCP valoracionCP = new ValoracionCP(new SessionCPNHibernate());
                 ValoracionCEN valoracionCEN = new ValoracionCEN(new ValoracionRepository(session));
                 IList<ValoracionEN> valoraciones = valoracionCEN.DameValoracionesUsu(resenya.IdAutor);
+
+                // Modificar la valoración correspondiente
                 foreach (ValoracionEN valoracion in valoraciones)
                 {
                     if (valoracion.Videojuego_valorado.Id == resenya.VideojuegoId)
                     {
                         valoracionCP.Modify(valoracion.Id, resenya.Valoracion);
                         break;
-
                     }
                 }
+
                 SessionClose();
                 return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
             }
             catch (Exception ex)
             {
                 // Manejar cualquier excepción que ocurra durante el proceso
+                SessionClose();
                 ModelState.AddModelError("", $"Error al actualizar la reseña: {ex.Message}");
                 return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
             }

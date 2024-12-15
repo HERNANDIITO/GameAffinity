@@ -65,6 +65,20 @@ namespace Web_GameAffinity.Controllers
                 NHibernateUtil.Initialize(videojuegoEn.Valoracion);
             }
 
+            // Asignar la nota de valoración a las reseñas correspondientes
+            if (listaResenyas != null && videojuegoEn.Valoracion != null)
+            {
+                foreach (var resenya in listaResenyas)
+                {
+                    var valoracion = videojuegoEn.Valoracion.FirstOrDefault(v => v.Autor_valoracion.Id == resenya.IdAutor);
+                    if (valoracion != null)
+                    {
+                        resenya.Valoracion = valoracion.Nota;
+                    }
+                }
+            }
+
+
             VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
             {
                 Videojuego = videojuegoView,

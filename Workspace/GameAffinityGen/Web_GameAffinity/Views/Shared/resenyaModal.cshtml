@@ -6,6 +6,10 @@
     string titulo = string.Empty;
     string texto = string.Empty;
     int valoracion = 0;
+    int resenyaId = 0;
+    int idAutor = 0;
+    int likesContador = 0;
+    int dislikesContador = 0;
     string formAction = "PublicarResenya";
     string botonTexto = "Añadir Reseña";
 
@@ -16,12 +20,15 @@
         var userValoracion = Model.Valoraciones?.FirstOrDefault(r => r.Autor_valoracion.Id == userId);
         if (userResenya != null || userValoracion != null)
         {
-            titulo = userResenya.Titulo;
-            texto = userResenya.Texto;
-            valoracion = userValoracion.Nota;
+            resenyaId = userResenya?.Id ?? 0;
+            titulo = userResenya?.Titulo ?? string.Empty;
+            texto = userResenya?.Texto ?? string.Empty;
+            valoracion = userValoracion?.Nota ?? 0;
+            idAutor = userId;
+            likesContador = userResenya?.Likes_contador ?? 0;
+            dislikesContador = userResenya?.Dislikes_contador ?? 0;
             formAction = "ActualizarResenya";
             botonTexto = "Actualizar Reseña";
-
         }
     }
 }
@@ -49,7 +56,11 @@
                         <label for="valoracionResenyaNota" class="form-label">Valoración (0-10)</label>
                         <input type="number" class="form-control" id="valoracionResenyaNota" name="Valoracion" min="0" max="10" required value="@valoracion">
                     </div>
+                    <input type="hidden" name="Id" value="@resenyaId">
+                    <input type="hidden" name="IdAutor" value="@idAutor">
                     <input type="hidden" name="VideojuegoId" value="@Model.Videojuego.Id">
+                    <input type="hidden" name="Likes_contador" value="@likesContador">
+                    <input type="hidden" name="Dislikes_contador" value="@dislikesContador">
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">@botonTexto</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
