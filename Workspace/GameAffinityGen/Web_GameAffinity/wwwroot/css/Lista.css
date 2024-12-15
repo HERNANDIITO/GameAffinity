@@ -1,0 +1,25 @@
+﻿@import "colors.css";
+
+.hoverCard {
+  position: relative;
+  .deleteFromList { background: var(--bs-danger); }
+  .addToList { background: var(--bs-success); }
+
+  .background
+{
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  color: var(--ga-white);
+  transition: all .25s;
+  position: absolute;
+  padding: 0 !important;
+  border: none !important;
+  &:hover {
+    opacity: .75;
+    transition: all .25s;
+
+  }
+}
+
+}

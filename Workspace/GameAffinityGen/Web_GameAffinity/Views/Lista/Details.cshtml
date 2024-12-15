@@ -46,19 +46,12 @@
     <h4>Videojuegos de la lista</h4>
     <div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAñadirVideojuego">
-            Añadir juego
-        </button>
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarVideojuego">
-            Eliminar juego
+            Editar contenido
         </button>
     </div>
     
-    <div class="videogameList row">
-        @foreach (var item in Model.Videojuegos)
-        {
-            @Html.Partial("videojuegoCard", item)
-        }
-    </div>
+    @Html.Partial("videojuegoCardList", Model.Videojuegos)
+
 </section>
 
 
@@ -89,29 +82,43 @@
                 </form>
 
                 <!-- Resultados -->
-                <div class="row gy-3">
+                <div class="row d-flex justify-content-around gy-3">
                     @foreach (var videojuego in Model.TodosLosVideojuegos)
                     {
                         if (string.IsNullOrEmpty(Context.Request.Query["query"]) || videojuego.Nombre.Contains(Context.Request.Query["query"], StringComparison.OrdinalIgnoreCase))
                         {
-                            <div class="col-lg-6">
-                                @Html.Partial("VideojuegoCard", videojuego)
-
                                 @if (Model.Videojuegos.Any(v => v.Id == videojuego.Id))
                                 {
-                                    <!-- Botón deshabilitado si ya está añadido -->
-                                    <button class="btn btn-secondary" disabled>Ya añadido</button>
+                                    <!-- Carta para eliminar -->
+                                    <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete" class="hoverCard col-4 col-md-3 col-lg-2 videogame">
+                                        <button type="submit" class="background deleteFromList"><h1><i class="bi bi-x-circle"></i></h1></button>
+                                        <section class="videogameScore">
+                                            <span class="score">@Html.DisplayFor(modelItem => videojuego.Nota_media)</span>
+                                        </section>
+                                        <img src=@videojuego.Imagen class="videogameImage" onerror="this.src='/Images/missing_img.jpg';" />
+                                        <span class="videogameName">
+                                            @Html.DisplayFor(modelItem => videojuego.Nombre)
+                                        </span>
+                                        <input type="hidden" name="listaId" value="@Model.Id" />
+                                        <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                    </form>
                                 }
                                 else
                                 {
-                                    <!-- Botón para añadir si no está añadido -->
-                                    <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post">
+                                <!-- Carta para agregar -->
+                                    <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post" class="hoverCard col-4 col-md-3 col-lg-2 videogame">
+                                    <button type="submit" class="background addToList"><h1><i class="bi bi-plus-circle"></i></h1></button>
+                                        <section class="videogameScore">
+                                            <span class="score">@Html.DisplayFor(modelItem => videojuego.Nota_media)</span>
+                                        </section>
+                                        <img src=@videojuego.Imagen class="videogameImage" onerror="this.src='/Images/missing_img.jpg';" />
+                                        <span class="videogameName">
+                                            @Html.DisplayFor(modelItem => videojuego.Nombre)
+                                        </span>
                                         <input type="hidden" name="listaId" value="@Model.Id" />
                                         <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
-                                        <button type="submit" class="btn btn-primary">Añadir</button>
                                     </form>
                                 }
-                            </div>
                         }
                     }
                 </div>
@@ -137,6 +144,8 @@
 
 
 <!-- Modal de eliminar videojeugo -->
+
+@* delete david
 <div class="modal fade" id="modalEliminarVideojuego" tabindex="-1" aria-labelledby="modalEliminarVideojuegoLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -164,3 +173,4 @@
         </div>
     </div>
 </div>
+*@
