@@ -12,7 +12,13 @@
                 <img class="caratula" src="@Model.Registrado.Img" alt="Foto del Usuario" />
             </div>
             <div class="info-usuario">
-                <h2 class="Name-User-Profile">@Model.Registrado.Nick</h2>
+                <h2 class="Name-User-Profile">
+                    @Model.Registrado.Nick
+                    @if (Model.Registrado.Es_mentor)
+                    {
+                        <i class="fas fa-check-circle text-primary" title="Mentor Verificado"></i>
+                    }
+                </h2>
                 <h4>Juegos Completados: @Model.JuegosCompletados</h4><br/>
                 <h4>Juegos Empezados @Model.JuegosEmpezados</h4>
                 <div class="boton-configuracion">

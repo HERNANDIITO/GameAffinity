@@ -135,6 +135,23 @@ namespace Web_GameAffinity.Controllers
                         ListaCP listaCP = new ListaCP(new SessionCPNHibernate());
                         listaCP.AnyadirJuego(listaValorados.Id, new List<int> { }, resenya.VideojuegoId);
                     }
+
+                    // Obtener el usuario registrado
+                    RegistradoRepository registradoRepo = new RegistradoRepository(session);
+                    RegistradoCEN registradoCEN = new RegistradoCEN(registradoRepo);
+                    RegistradoEN registrado = registradoCEN.GetByOID(idUser);
+                    NHibernateUtil.Initialize(registrado.Resenya);
+
+                    // Contar las reseñas del usuario
+                    if (registrado.Resenya != null)
+                    {
+                        if (registrado.Resenya.Count >= 3)
+                        {
+                            // Actualizar el estado de es_mentor a true
+                            registradoCEN.Modify(registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, true, registrado.Notificaciones, registrado.Contrasenya, registrado.Img);
+                        }
+                    }
+
                 }
                 else
                 {
