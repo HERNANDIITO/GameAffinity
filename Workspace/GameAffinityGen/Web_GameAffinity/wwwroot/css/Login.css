@@ -95,7 +95,7 @@
     font-size:20px;
 }
 
-a {
+.loginLink {
     color: #05A4E4;
     font-size: 120%;
     text-decoration: none;

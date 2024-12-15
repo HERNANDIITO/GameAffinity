@@ -3,18 +3,22 @@
 
 <div class="resenya card bg-light mb-5 row" style="min-width: 20rem;">
 
-    <a class="card-header"  asp-action="DetailsUsuario" asp-controller="Registrado" asp-route-id="@Model.Id">
+    <div class="card-header">
         <h5>@Html.DisplayFor(model => model.Titulo)</h5>
-        <span class="nota">
+        <span class="nota" style="margin: 0">
             @Html.DisplayFor(model => model.Valoracion)
         </span>
-    </a>
+    </div>
     
     <div class="card-body">
         <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
-        <p class="card-text">Autor: @Html.DisplayFor(model => model.NombreAutor)</p>
+        <p>
+            Autor:
+            <a asp-action="DetailsUsuario" asp-controller="Registrado" asp-route-id="@Model.Id" class="card-text">
+                @Html.DisplayFor(model => model.NombreAutor)
+            </a>
+        </p>
     </div>
-
 
     <div class="card-footer bg-light text-center">
         <button class="btn btn-light mr-1">
