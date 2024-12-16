@@ -392,8 +392,8 @@ public static void InitializeData ()
 
 
                 //creacion de listas por defecto y admin que las administra
-                int adminID = registradoCP.New_("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "").Id;
-                RegistradoEN admin = registradocen.GetByOID (adminID);
+                int adminID = moderadorcen.New_("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "");
+                ModeradorEN admin = moderadorcen.GetByOID (adminID);
 
                 
                 int listaCompletadosID = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");

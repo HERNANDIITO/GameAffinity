@@ -1,6 +1,7 @@
 ﻿using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 using GameAffinityGen.ApplicationCore.CP.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
+using GameAffinityGen.ApplicationCore.IRepository.GameAffinity;
 using GameAffinityGen.Infraestructure.CP;
 using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
@@ -200,6 +201,7 @@ namespace Web_GameAffinity.Controllers
 
             int juegosCompletados = 0;
             int juegosEmpezados = 0;
+            
 
             //Forzar la carga
             if(registrado.Listas != null)
@@ -228,6 +230,11 @@ namespace Web_GameAffinity.Controllers
             {
                 NHibernateUtil.Initialize(registrado.Resenya);
                 userResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(registrado.Resenya).ToList();
+            }
+
+            foreach ( var resenya in userResenyas){
+                resenya.NombreVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Nombre;
+                resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id  == resenya.IdAutor).Nota;
             }
 
             var user = new RegistradoDetailsViewModel
@@ -296,12 +303,28 @@ namespace Web_GameAffinity.Controllers
                 }
             }
 
+            // Obtener las reseñas del usuario
+            IList<ResenyaViewModel> userResenyas = null;
+            if (regEN.Resenya != null)
+            {
+                NHibernateUtil.Initialize(regEN.Resenya);
+                userResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(regEN.Resenya).ToList();
+            }
+
+            foreach (var resenya in userResenyas)
+            {
+                resenya.NombreVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Nombre;
+                resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id == resenya.IdAutor).Nota;
+                resenya.imageVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Imagen;
+            }
+
             var user = new RegistradoDetailsViewModel
             {
                 Registrado = regEN,
                 Listas = regEN.Listas,
                 JuegosCompletados = juegosCompletados,
-                JuegosEmpezados = juegosEmpezados
+                JuegosEmpezados = juegosEmpezados,
+                Resenyas = userResenyas
             };
 
             SessionClose();

@@ -12,9 +12,16 @@
                 <img class="caratula" src="@Model.Registrado.Img" alt="Foto del Usuario" />
             </div>
             <div class="info-usuario">
-                <h2 class="Name-User-Profile">@Model.Registrado.Nick</h2>
-                <h5>Juegos Completados: @Model.JuegosCompletados</h5><br/>
-                <h5>Juegos Empezados: @Model.JuegosEmpezados</h5>
+                <h2 class="Name-User-Profile">
+                    @Model.Registrado.Nick
+                    @if (Model.Registrado.Es_mentor)
+                    {
+                        <i class="bi bi-check-circle-fill"></i>
+
+                    }
+                </h2>
+                <h4>Juegos Completados: @Model.JuegosCompletados</h4><br />
+                <h4>Juegos Empezados @Model.JuegosEmpezados</h4>
             </div>
         </div>
 
@@ -73,6 +80,34 @@
         {
             <p>No hay listas personalizadas disponibles.</p>
         }
+
+        <h4>Reseñas Realizadas</h4>
+        @if (Model.Resenyas != null && Model.Resenyas.Any())
+        {
+            <div id="carouselResenyas" class="carousel">
+                <div class="carousel-inner carousel-body-css">
+                    @for (int i = 0; i < Model.Resenyas.Count(); i++)
+                    {
+                        var resenya = Model.Resenyas.ElementAt(i);
+                        <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                            @Html.Partial("ResenyaCardProfile", resenya)
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev control-prev-next-type-class" type="button" data-bs-target="#carouselResenyas" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselResenyas" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <p>No hay reseñas disponibles.</p>
+        }
     </div>
 </main>
 
@@ -122,5 +157,6 @@
         // Configura ambos carruseles
         configureCarousel('#carouselPersonalizadas');
         configureCarousel('#carouselPredeterminadas');
+        configureCarousel('#carouselResenyas');
     });
 </script>

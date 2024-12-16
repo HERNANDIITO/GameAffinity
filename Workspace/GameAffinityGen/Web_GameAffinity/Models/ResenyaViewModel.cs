@@ -46,6 +46,10 @@ namespace Web_GameAffinity.Models
         public int VideojuegoId { get; set; }
 
         public int Valoracion { get; set; }
+
+        public string NombreVideojuego { get; set; }
+
+        public string imageVideojuego { get; set; }
         //public IList<> Interacciones
 
         //public float Valoracion { get; set; }

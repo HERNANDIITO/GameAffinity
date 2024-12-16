@@ -56,10 +56,11 @@
             <p>No hay listas predeterminadas disponibles.</p>
         }
 
-        <h4>Listas Personalizadas</h4>
-        <div class="boton-configuracion">
-            @Html.ActionLink("Crear lista", "Create", "Lista", null, new { @class = "btn btn-primary" })
-        </div>
+        <h4>Listas Personalizadas
+            <a asp-controller="Lista" asp-action="Create" style="cursor:pointer">
+                <i class="bi bi-plus-circle-fill"></i>
+            </a>
+        </h4>
         @if (Model.Listas != null && Model.Listas.Any(l => !l.Por_defecto))
         {
             <div id="carouselPersonalizadas" class="carousel">
@@ -96,7 +97,7 @@
                     {
                         var resenya = Model.Resenyas.ElementAt(i);
                         <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
-                            @Html.Partial("ResenyaCard", resenya)
+                            @Html.Partial("ResenyaCardProfile", resenya)
                         </div>
                     }
                 </div>
