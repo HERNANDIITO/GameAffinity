@@ -246,22 +246,17 @@ namespace Web_GameAffinity.Controllers
         public ActionResult DetailsUsuario(int id)
         {
             SessionInitialize();
-            ResenyaRepository resRepository = new ResenyaRepository(session);
-            ResenyaCEN resCEN = new ResenyaCEN(resRepository);
-            ResenyaEN resEN = resCEN.GetByOID(id);
-
-            if (resEN == null)
-            {
-                SessionClose();
-                return RedirectToAction("Index", "Home");
-            }
 
             RegistradoRepository regRepository = new RegistradoRepository(session);
             RegistradoCEN regCEN = new RegistradoCEN(regRepository);
-            RegistradoEN regEN = resEN.Autor_resenya;
+            RegistradoEN regEN = regCEN.GetByOID(id);
+
+            Console.WriteLine("DETAILS USUARIO: " + id);
             
             if (regEN == null)
             {
+                Console.WriteLine("regEN NULL");
+
                 SessionClose();
                 return RedirectToAction("Index", "Home");
             }
@@ -325,10 +320,108 @@ namespace Web_GameAffinity.Controllers
             SessionClose();
             return View(user);
         }
+        
+        [HttpPost]
+        public ActionResult Seguir(int id)
+        {
+            SessionInitialize();
 
+            RegistradoRepository regRepository = new RegistradoRepository(session);
+            RegistradoCEN regCEN = new RegistradoCEN(regRepository);
 
+            PerfilViewModel userViewModel = HttpContext.Session.Get<PerfilViewModel>("user");
+            RegistradoEN usuarioQueSigue = regCEN.GetByOID(userViewModel.id);
 
+            IList<int> ids = new List<int>();
 
+            if ( usuarioQueSigue != null )
+            {
+                NHibernateUtil.Initialize(usuarioQueSigue.Seguidos);
+                ids = usuarioQueSigue.Seguidos.Select(r => r.Id).ToList();
+            } else
+            {
+                return View("Error", new { message = "Tu sesión no es válida." });
+            }
+
+            SessionClose();
+
+            SessionInitialize();
+            regRepository = new RegistradoRepository();
+            regCEN = new RegistradoCEN(regRepository);
+
+            RegistradoEN usuarioASeguir = regCEN.GetByOID(id);
+
+            if ( usuarioASeguir != null && usuarioQueSigue != null )
+            {
+                ids.Add(usuarioASeguir.Id);
+
+                regRepository.Seguir_perfiles(usuarioQueSigue.Id, [id]);
+                SessionClose();
+
+                return RedirectToAction("DetailsUsuario", new { id = id });
+            } else
+            {
+                Console.WriteLine("ERROR");
+                SessionClose();
+                return View("Error", new { message = "No existe ese usuari o tu sesión no es válida." });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DejarDeSeguir(int id)
+        {
+            SessionInitialize();
+
+            RegistradoRepository regRepository = new RegistradoRepository(session);
+            RegistradoCEN regCEN = new RegistradoCEN(regRepository);
+
+            PerfilViewModel userViewModel = HttpContext.Session.Get<PerfilViewModel>("user");
+            RegistradoEN usuarioQueSigue = regCEN.GetByOID(userViewModel.id);
+
+            IList<int> ids = new List<int>();
+
+            if (usuarioQueSigue != null)
+            {
+                NHibernateUtil.Initialize(usuarioQueSigue.Seguidos);
+                ids = usuarioQueSigue.Seguidos.Select(r => r.Id).ToList();
+            }
+            else
+            {
+                return View("Error", new { message = "Tu sesión no es válida." });
+            }
+
+            SessionClose();
+
+            SessionInitialize();
+            regRepository = new RegistradoRepository();
+            regCEN = new RegistradoCEN(regRepository);
+
+            RegistradoEN usuarioASeguir = regCEN.GetByOID(id);
+
+            if (usuarioASeguir != null && usuarioQueSigue != null)
+            {
+                Console.WriteLine("usuarioASeguir: " + usuarioASeguir.Nombre);
+                Console.WriteLine("usuarioQueSigue: " + usuarioQueSigue.Nombre);
+
+                Console.WriteLine("ids antes: " + ids.Count);
+
+                ids.Add(usuarioASeguir.Id);
+
+                Console.WriteLine("ids despues: " + ids.Count);
+                Console.WriteLine("id: " + id);
+
+                regRepository.Dejar_de_seguir_perfiles(usuarioQueSigue.Id, [id]);
+                SessionClose();
+
+                return RedirectToAction("DetailsUsuario", new { id = id });
+            }
+            else
+            {
+                Console.WriteLine("ERROR");
+                SessionClose();
+                return View("Error", new { message = "No existe ese usuari o tu sesión no es válida." });
+            }
+        }
 
         // GET: RegistradoController/Create
         public ActionResult Create()

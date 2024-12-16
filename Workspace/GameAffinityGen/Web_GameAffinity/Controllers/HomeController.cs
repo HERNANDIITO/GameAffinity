@@ -8,6 +8,8 @@ using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using NHibernate;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
+using System.Reflection;
+using Web_GameAffinity.Assembler;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -97,19 +99,16 @@ namespace Web_GameAffinity.Controllers
 
             var viewModel = new HomeViewModel();
 
+            IList<ResenyaViewModel> resenyaSeguidosVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaSeguidos);
+            IList<ResenyaViewModel> resenyaMentoresVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaMentores);
+
             viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados();
             viewModel.Popular = videojuegoCEN.GetPopular();
             viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
             viewModel.empresasDestacadas = empCEN.GetAll(0, 2);
             viewModel.individuos = indCEN.GetAll(0, 2);
-
-            if ( resenyaSeguidos.Count() > 0 ) {
-                viewModel.ResenyaSeguidos = resenyaSeguidos;
-            }
-
-            if (resenyaMentores.Count() > 0) {
-                viewModel.ResenyaDeMentores = resenyaMentores;  
-            }
+            viewModel.ResenyaSeguidos = resenyaSeguidosVM;
+            viewModel.ResenyaDeMentores = resenyaMentoresVM;
 
             return View(viewModel);
         }

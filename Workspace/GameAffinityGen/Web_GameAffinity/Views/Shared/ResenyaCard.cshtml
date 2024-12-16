@@ -13,7 +13,7 @@
         <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
         <p>
             Autor:
-            <a asp-action="DetailsUsuario" asp-controller="Registrado" asp-route-id="@Model.Id" class="card-text">
+            <a asp-action="DetailsUsuario" asp-controller="Registrado" asp-route-id="@Model.IdAutor" class="card-text">
                 @Html.DisplayFor(model => model.NombreAutor)
             </a>
         </p>
