@@ -23,3 +23,41 @@
     <h1>Menciones especiales</h1>
     @Html.Partial("individuoCardList", Model.individuos)
 </section>
+
+
+
+
+
+<div class="modal fade" id="ModalMentor" tabindex="-1" role="dialog" aria-labelledby="MentorModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="MentorModal">¡Has sido seleccionado!</h4>
+                <button type="button" class="close" onclick="$('#ModalMentor').modal('hide');" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Has sido seleccionado para ser mentor en GameAffinity
+            </div>
+            <div class="modal-footer">
+                <form asp-controller="Registrado" asp-action="SerMentor" method="post">
+                    <button type="submit" class="btn btn-secondary">Aceptar</button>
+                </form>
+                <button type="button" class="btn btn-secondary" onclick="$('#ModalMentor').modal('hide');">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @if (Model.mostrarModalMentor)
+    {
+        <script>
+            $(document).ready(function () {
+                $('#ModalMentor').modal('show');
+            });
+        </script>
+    }
+}

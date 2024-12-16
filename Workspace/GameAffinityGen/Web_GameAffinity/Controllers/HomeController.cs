@@ -6,10 +6,11 @@ using Web_GameAffinity.Models;
 using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
+using NHibernate;
 
 namespace Web_GameAffinity.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BasicController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -20,6 +21,8 @@ namespace Web_GameAffinity.Controllers
 
         public IActionResult Index()
         {
+            SessionInitialize();
+
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
 
@@ -30,6 +33,23 @@ namespace Web_GameAffinity.Controllers
             IndividuoRepository indRepository = new IndividuoRepository();
             IndividuoCEN indCEN = new IndividuoCEN(indRepository);
 
+            bool mostrar = false;
+
+            var user = HttpContext.Session.Get<PerfilViewModel>("user");
+            if (user != null)
+            {
+                RegistradoRepository registradoRepo = new RegistradoRepository(session);
+                RegistradoCEN registradoCEN = new RegistradoCEN(registradoRepo);
+                RegistradoEN registrado = registradoCEN.GetByOID(user.id);
+                NHibernateUtil.Initialize(registrado.Resenya);
+
+                // Contar las reseñas del usuario
+                if (registrado.Resenya != null && registrado.Resenya.Count >= 3 && !registrado.Es_mentor)
+                {
+                    mostrar = true;
+                }
+            }
+
             var viewModel = new HomeViewModel
             {
                 UltimasNovedades = videojuegoCEN.GetRecienPublicados(),
@@ -37,10 +57,12 @@ namespace Web_GameAffinity.Controllers
                 ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos(),
 
                 empresasDestacadas = empCEN.GetAll(0, 2),
-                individuos = indCEN.GetAll(0, 2)
+                individuos = indCEN.GetAll(0, 2),
+
+                mostrarModalMentor = mostrar
 
             };
-
+            SessionClose();
             return View(viewModel);
         }
 
