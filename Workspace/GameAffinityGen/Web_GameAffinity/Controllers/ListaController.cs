@@ -251,8 +251,6 @@ namespace Web_GameAffinity.Controllers
             }
         }
 
-
-
         // DELETE: ListaController/EliminarVideojuego
         public ActionResult EliminarVideojuego(int listaId, int videojuegoId)
         {
@@ -291,8 +289,5 @@ namespace Web_GameAffinity.Controllers
                 return View("Error", new { message = ex.Message });
             }
         }
-
-
-
     }
 }

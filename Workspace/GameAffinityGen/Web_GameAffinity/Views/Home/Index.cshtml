@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home Page";
 }
 <section class="row">
-    <h1>Últimas novedades</h1>
+    <h1>Últimas lanzamientos</h1>
     @Html.Partial("videojuegoCardList", Model.UltimasNovedades)
 </section>
 <section class="row">
@@ -23,3 +23,106 @@
     <h1>Menciones especiales</h1>
     @Html.Partial("individuoCardList", Model.individuos)
 </section>
+
+@if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null)
+{
+    @if ( Model.ResenyaSeguidos != null && Model.ResenyaSeguidos.Count() > 0 )
+    {        
+        <section class="row">
+            <h1>Reseñas de tus seguidos</h1>
+            <div id="carouselResenyasSeguidos" class="carousel">
+                <div class="carousel-inner carousel-body-css">
+                    @for (int i = 0; i < Model.ResenyaSeguidos.Count(); i++)
+                    {
+                        var resenya = Model.ResenyaSeguidos.ElementAt(i);
+                        <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                            @Html.Partial("ResenyaCard", resenya)
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev control-prev-next-type-class" type="button" data-bs-target="#carouselResenyas" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselResenyas" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+    }
+}
+
+@if (Model.ResenyaDeMentores != null && Model.ResenyaDeMentores.Count() > 0)
+{    
+    <section class="row">
+        <h1>Reseñas de los mentores</h1>
+        <div id="carouselResenyasMentores" class="carousel">
+            <div class="carousel-inner carousel-body-css">
+                @for (int i = 0; i < Model.ResenyaDeMentores.Count(); i++)
+                {
+                    var resenya = Model.ResenyaDeMentores.ElementAt(i);
+                    <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                        @Html.Partial("ResenyaCard", resenya)
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev control-prev-next-type-class" type="button" data-bs-target="#carouselResenyas" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselResenyas" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+}
+<script>
+    $(document).ready(function () {
+        // Configuración común para ambos carruseles
+        function configureCarousel(carouselId) {
+            var carouselInner = $(carouselId + ' .carousel-inner');
+            var carouselItems = $(carouselId + ' .carousel-item');
+            var cardWidth = carouselItems.outerWidth(true); // Ancho del elemento incluyendo márgenes
+            var totalItems = carouselItems.length;
+            var currentIndex = 0; // Índice del elemento actualmente activo
+
+            function updateActiveClass() {
+                // Quita la clase 'active' de todos los elementos
+                carouselItems.removeClass('active');
+                // Añade la clase 'active' al elemento actual
+                carouselItems.eq(currentIndex).addClass('active');
+            }
+
+            $(carouselId + ' .carousel-control-next').on('click', function () {
+                if (currentIndex < totalItems - 1) {
+                    currentIndex++;
+                } else {
+                    // Comportamiento cíclico: del último al primero
+                    currentIndex = 0;
+                }
+                carouselInner.animate({ scrollLeft: cardWidth * currentIndex }, 600);
+                updateActiveClass();
+            });
+
+            $(carouselId + ' .carousel-control-prev').on('click', function () {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    // Comportamiento cíclico: del primero al último
+                    currentIndex = totalItems - 1;
+                }
+                carouselInner.animate({ scrollLeft: cardWidth * currentIndex }, 600);
+                updateActiveClass();
+            });
+
+            // Inicializa la clase activa en el primer elemento
+            updateActiveClass();
+        }
+
+        // Configura ambos carruseles
+        configureCarousel('#carouselResenyasSeguidos');
+        configureCarousel('#carouselResenyasMentores');
+    });
+</script>
