@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using NHibernate.Engine;
 using NuGet.Common;
+using NuGet.LibraryModel;
 using System.Reflection;
 using Web_GameAffinity.Assembler;
 using Web_GameAffinity.Models;
@@ -73,6 +74,17 @@ namespace Web_GameAffinity.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult SerMentor()
+        {
+            SessionInitialize();
+            RegistradoRepository repo = new RegistradoRepository();
+            RegistradoCEN cen = new RegistradoCEN(repo);
+            RegistradoEN user = cen.GetByOID(HttpContext.Session.Get<PerfilViewModel>("user").id);
+            cen.Aceptar_mentoria(user.Id);
+            SessionClose();
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: RegistradoController/Registro
         public ActionResult Registro()

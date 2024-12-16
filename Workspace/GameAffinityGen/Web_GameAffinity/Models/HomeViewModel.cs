@@ -11,5 +11,7 @@ namespace Web_GameAffinity.Models
         public IList<EmpresaEN> empresasDestacadas { get; set; }
 
         public IList<IndividuoEN> individuos { get; set; }
+
+        public bool mostrarModalMentor { get; set; }
     }
 }

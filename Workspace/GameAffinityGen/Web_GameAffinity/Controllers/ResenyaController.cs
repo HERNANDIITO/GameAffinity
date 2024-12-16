@@ -136,11 +136,12 @@ namespace Web_GameAffinity.Controllers
                         listaCP.AnyadirJuego(listaValorados.Id, new List<int> { }, resenya.VideojuegoId);
                     }
                 }
+
                 else
                 {
                     // Manejar el caso en que la reseña no se creó correctamente
                     ModelState.AddModelError("", "No se pudo crear la reseña.");
-                return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
+                    return RedirectToAction("Details", "Videojuego", new { id = resenya.VideojuegoId });
                 }
 
                 SessionClose();
