@@ -48,6 +48,14 @@ namespace Web_GameAffinity.Controllers
             RegistradoRepository repo = new RegistradoRepository();
             RegistradoCEN cen = new RegistradoCEN(repo);
             RegistradoEN reg = cen.GetByEmail(model.email);
+
+            if ( reg == null )
+            {
+                model.ShowErrorModal = true;
+                SessionClose();
+                return View(model);
+            }
+
             token = cen.Login(reg.Id, model.password);
             if (token != null)
             {
@@ -284,12 +292,34 @@ namespace Web_GameAffinity.Controllers
                 }
             }
 
+            PerfilViewModel loggedUser = HttpContext.Session.Get<PerfilViewModel>("user");
+
+            bool following = false;
+            if ( loggedUser != null )
+            {
+                Console.WriteLine("Logged user!");
+                RegistradoEN loggedUserEN = regCEN.GetByOID(loggedUser.id);
+                if ( loggedUserEN != null )
+                {
+                    Console.WriteLine("Logged found!");
+
+                    NHibernateUtil.Initialize(loggedUserEN.Seguidos);
+                    if ( loggedUserEN.Seguidos.Any( seguido => seguido.Id == regEN.Id ) )
+                    {
+                        Console.WriteLine("Siguiendo!");
+
+                        following = true;
+                    }
+                }
+            }
+
             var user = new RegistradoDetailsViewModel
             {
                 Registrado = regEN,
                 Listas = regEN.Listas,
                 JuegosCompletados = juegosCompletados,
-                JuegosEmpezados = juegosEmpezados
+                JuegosEmpezados = juegosEmpezados,
+                following = following
             };
 
             SessionClose();

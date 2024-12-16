@@ -15,6 +15,20 @@
                 <h2 class="Name-User-Profile">@Model.Registrado.Nick</h2>
                 <h5>Juegos Completados: @Model.JuegosCompletados</h5><br/>
                 <h5>Juegos Empezados: @Model.JuegosEmpezados</h5>
+                
+                @* Comprobamos que haya una sesion iniciada *@
+                @if (Context.Session.Get<PerfilViewModel>("user") != null)
+                {
+                    PerfilViewModel userViewModel = Context.Session.Get<PerfilViewModel>("user");
+
+                    // En caso de que el usuario no lo siga
+                    if ( Model.following == false ) {
+                        <button class="btn btn-primary">Seguir <i class="bi bi-person-fill-add"></i> </button>
+                    } else {
+                    // En caso de que el usuario lo siga
+                        <button class="btn btn-danger">Dejar de seguir <i class="bi bi-person-fill-dash"></i> </button>
+                    }
+                }
             </div>
         </div>
 
