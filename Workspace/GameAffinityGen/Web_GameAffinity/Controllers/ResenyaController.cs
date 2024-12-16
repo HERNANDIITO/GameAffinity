@@ -140,19 +140,14 @@ namespace Web_GameAffinity.Controllers
                     RegistradoRepository registradoRepo = new RegistradoRepository(session);
                     RegistradoCEN registradoCEN = new RegistradoCEN(registradoRepo);
                     RegistradoEN registrado = registradoCEN.GetByOID(idUser);
-                    NHibernateUtil.Initialize(registrado.Resenya);
 
-                    // Contar las reseñas del usuario
-                    if (registrado.Resenya != null)
-                    {
-                        if (registrado.Resenya.Count >= 3)
+                        if (listaValorados.Videojuegos.Count >= 3)
                         {
                             // Actualizar el estado de es_mentor a true
                             registradoCEN.Modify(registrado.Id, registrado.Nombre, registrado.Email, registrado.Nick, true, registrado.Notificaciones, registrado.Contrasenya, registrado.Img);
                         }
                     }
 
-                }
                 else
                 {
                     // Manejar el caso en que la reseña no se creó correctamente
