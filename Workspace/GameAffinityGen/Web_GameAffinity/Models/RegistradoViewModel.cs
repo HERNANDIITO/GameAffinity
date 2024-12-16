@@ -63,6 +63,7 @@ namespace Web_GameAffinity.Models
         public IList<ResenyaViewModel> Resenyas { get; set; }
         public int JuegosCompletados { get; set; }
         public int JuegosEmpezados { get; set; }
+        public bool following { get; set; }
     }
 
     public class ConfiguracionPerfilViewModel

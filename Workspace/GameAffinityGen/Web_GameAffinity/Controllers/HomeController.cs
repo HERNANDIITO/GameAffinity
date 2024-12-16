@@ -7,6 +7,9 @@ using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
 using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using NHibernate;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using System.Reflection;
+using Web_GameAffinity.Assembler;
 
 namespace Web_GameAffinity.Controllers
 {
@@ -26,7 +29,6 @@ namespace Web_GameAffinity.Controllers
             VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
             VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
 
-
             EmpresaRepository empRepository = new EmpresaRepository();
             EmpresaCEN empCEN = new EmpresaCEN(empRepository);
 
@@ -43,7 +45,7 @@ namespace Web_GameAffinity.Controllers
                 RegistradoEN registrado = registradoCEN.GetByOID(user.id);
                 NHibernateUtil.Initialize(registrado.Resenya);
 
-                // Contar las reseñas del usuario
+                // Contar las reseï¿½as del usuario
                 if (registrado.Resenya != null && registrado.Resenya.Count >= 3 && !registrado.Es_mentor)
                 {
                     mostrar = true;
@@ -51,45 +53,86 @@ namespace Web_GameAffinity.Controllers
             }
 
             var viewModel = new HomeViewModel
+            IList<ResenyaEN> resenyaSeguidos = new List<ResenyaEN>();
+            IList<ResenyaEN> resenyaMentores = new List<ResenyaEN>();
+
+            PerfilViewModel loggedUser = HttpContext.Session.Get<PerfilViewModel>("user");
+
+            SessionInitialize();
+            RegistradoRepository registradoRepository = new RegistradoRepository(session);
+            RegistradoCEN registradoCEN = new RegistradoCEN(registradoRepository);
+            IList<RegistradoEN> mentores = registradoCEN.GetMentores(true);
+            int contador = 0;
+
+            if (loggedUser != null) {
+                RegistradoEN user = registradoCEN.GetByOID(loggedUser.id);
+                if (user != null) {
+                   NHibernateUtil.Initialize(user.Seguidos);
+                   contador = 0;
+
+                    foreach (var seguido in user.Seguidos)
+                    {
+                        if (contador >= 10) { break; } else { contador++; }
+
+                        NHibernateUtil.Initialize(seguido.Resenya);
+
+                        Random rndElement = new Random();
+                        int random = rndElement.Next(0, seguido.Resenya.Count() - 1);
+
+                        resenyaSeguidos.Add(seguido.Resenya[random]);
+
+                        contador++;
+                    }
+
+                    foreach (var mentor in mentores)
+                    {
+                        if ( !user.Seguidos.Any( usuario => usuario.Id == mentor.Id ) ) { continue; }
+                        if (contador >= 10) { break; } else { contador++; }
+
+                        NHibernateUtil.Initialize(mentor.Resenya);
+
+                        Random rndElement = new Random();
+                        int random = rndElement.Next(0, mentor.Resenya.Count() - 1);
+
+                        resenyaMentores.Add(mentor.Resenya[random]);
+
+                        contador++;
+                    }
+                }
+            } else
             {
-                UltimasNovedades = videojuegoCEN.GetRecienPublicados(),
-                Popular = videojuegoCEN.GetPopular(),
-                ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos(),
+                SessionClose();
+                    foreach (var mentor in mentores)
+                    {
+                        if (contador >= 10) { break; } else { contador++; }
 
-                empresasDestacadas = empCEN.GetAll(0, 2),
-                individuos = indCEN.GetAll(0, 2),
+                        NHibernateUtil.Initialize(mentor.Resenya);
 
-                mostrarModalMentor = mostrar
+                        Random rndElement = new Random();
+                        int random = rndElement.Next(0, mentor.Resenya.Count() - 1);
 
+                        resenyaMentores.Add(mentor.Resenya[random]);
+
+                        contador++;
+                    }
+                }
             };
-            SessionClose();
+
+            var viewModel = new HomeViewModel();
+
+            IList<ResenyaViewModel> resenyaSeguidosVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaSeguidos);
+            IList<ResenyaViewModel> resenyaMentoresVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaMentores);
+
+            viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados();
+            viewModel.Popular = videojuegoCEN.GetPopular();
+            viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
+            viewModel.empresasDestacadas = empCEN.GetAll(0, 2);
+            viewModel.individuos = indCEN.GetAll(0, 2);
+            viewModel.ResenyaSeguidos = resenyaSeguidosVM;
+            viewModel.ResenyaDeMentores = resenyaMentoresVM;
+
+            mostrarModalMentor = mostrar
             return View(viewModel);
-        }
-
-        public IActionResult getUltimasNovedades()
-        {
-            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
-            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-            IList<VideojuegoEN> ultimasNovedades = videojuegoCEN.GetRecienPublicados();
-
-            return View(ultimasNovedades);
-        }
-
-        public IActionResult getPopular()
-        {
-            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
-            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-            IList<VideojuegoEN> popular = videojuegoCEN.GetPopular();
-
-            return View(popular);
-        }
-        public IActionResult getProximosLanzamientos()
-        {
-            VideojuegoRepository videojuegoRepository = new VideojuegoRepository();
-            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
-            IList<VideojuegoEN> proximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
-
-            return View(proximosLanzamientos);
         }
 
         public IActionResult Privacy()
