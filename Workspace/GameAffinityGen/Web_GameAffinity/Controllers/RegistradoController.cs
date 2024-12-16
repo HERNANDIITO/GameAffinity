@@ -348,7 +348,7 @@ namespace Web_GameAffinity.Controllers
                 Listas = regEN.Listas,
                 JuegosCompletados = juegosCompletados,
                 JuegosEmpezados = juegosEmpezados,
-                Resenyas = userResenyas
+                Resenyas = userResenyas,
                 following = following
             };
 

@@ -37,36 +37,33 @@ namespace Web_GameAffinity.Controllers
 
             bool mostrar = false;
 
-            var user = HttpContext.Session.Get<PerfilViewModel>("user");
-            if (user != null)
-            {
-                RegistradoRepository registradoRepo = new RegistradoRepository(session);
-                RegistradoCEN registradoCEN = new RegistradoCEN(registradoRepo);
-                RegistradoEN registrado = registradoCEN.GetByOID(user.id);
-                NHibernateUtil.Initialize(registrado.Resenya);
+            PerfilViewModel loggedUser = HttpContext.Session.Get<PerfilViewModel>("user");
 
-                // Contar las rese�as del usuario
-                if (registrado.Resenya != null && registrado.Resenya.Count >= 3 && !registrado.Es_mentor)
-                {
-                    mostrar = true;
-                }
-            }
+            RegistradoCEN registradoCEN;
+            RegistradoRepository registradoRepo;
 
-            var viewModel = new HomeViewModel
+            registradoRepo = new RegistradoRepository(session);
+            registradoCEN = new RegistradoCEN(registradoRepo);
+
+            var viewModel = new HomeViewModel();
             IList<ResenyaEN> resenyaSeguidos = new List<ResenyaEN>();
             IList<ResenyaEN> resenyaMentores = new List<ResenyaEN>();
 
-            PerfilViewModel loggedUser = HttpContext.Session.Get<PerfilViewModel>("user");
-
-            SessionInitialize();
-            RegistradoRepository registradoRepository = new RegistradoRepository(session);
-            RegistradoCEN registradoCEN = new RegistradoCEN(registradoRepository);
             IList<RegistradoEN> mentores = registradoCEN.GetMentores(true);
             int contador = 0;
 
             if (loggedUser != null) {
+
                 RegistradoEN user = registradoCEN.GetByOID(loggedUser.id);
                 if (user != null) {
+
+                    NHibernateUtil.Initialize(user.Resenya);
+                    // Contar las rese�as del usuario
+                    if (user.Resenya != null && user.Resenya.Count >= 3 && !user.Es_mentor)
+                    {
+                        mostrar = true;
+                    }
+
                    NHibernateUtil.Initialize(user.Seguidos);
                    contador = 0;
 
@@ -102,23 +99,20 @@ namespace Web_GameAffinity.Controllers
             } else
             {
                 SessionClose();
-                    foreach (var mentor in mentores)
-                    {
-                        if (contador >= 10) { break; } else { contador++; }
+                foreach (var mentor in mentores)
+                {
+                    if (contador >= 10) { break; } else { contador++; }
 
-                        NHibernateUtil.Initialize(mentor.Resenya);
+                    NHibernateUtil.Initialize(mentor.Resenya);
 
-                        Random rndElement = new Random();
-                        int random = rndElement.Next(0, mentor.Resenya.Count() - 1);
+                    Random rndElement = new Random();
+                    int random = rndElement.Next(0, mentor.Resenya.Count() - 1);
 
-                        resenyaMentores.Add(mentor.Resenya[random]);
+                    resenyaMentores.Add(mentor.Resenya[random]);
 
-                        contador++;
-                    }
+                    contador++;
                 }
-            };
-
-            var viewModel = new HomeViewModel();
+            }
 
             IList<ResenyaViewModel> resenyaSeguidosVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaSeguidos);
             IList<ResenyaViewModel> resenyaMentoresVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaMentores);
@@ -130,8 +124,7 @@ namespace Web_GameAffinity.Controllers
             viewModel.individuos = indCEN.GetAll(0, 2);
             viewModel.ResenyaSeguidos = resenyaSeguidosVM;
             viewModel.ResenyaDeMentores = resenyaMentoresVM;
-
-            mostrarModalMentor = mostrar
+            viewModel.mostrarModalMentor = mostrar;
             return View(viewModel);
         }
 
