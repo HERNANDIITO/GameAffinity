@@ -126,7 +126,7 @@ namespace Web_GameAffinity.Controllers
                     cen.Cambiar_password(user.Id, nueva.contrasena);
                     SessionClose();
                 }
-                TempData["SuccessMessage"] = "Contrasena modificada con exito" + contrasenaantes + "|||" + user.Contrasenya + "|||" + nueva.contrasena;
+                TempData["SuccessMessage"] = "Contrasena modificada con exito";
                 return RedirectToAction("Login", "Registrado");
             }
         }
