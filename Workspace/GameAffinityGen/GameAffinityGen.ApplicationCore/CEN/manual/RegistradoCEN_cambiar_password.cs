@@ -19,14 +19,13 @@ namespace GameAffinityGen.ApplicationCore.CEN.GameAffinity
             /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_cambiar_password_customized) START*/
 
             // Obtener el usuario registrado por su ID
-            RegistradoEN registrado = new RegistradoEN();
-            registrado.Id = p_oid;
+            RegistradoEN registrado = this.GetByOID(p_oid);
 
             // Actualizar la contraseña del usuario
-            registrado.Contrasenya = new_password;
+            registrado.Contrasenya = Utils.Util.GetEncondeMD5(new_password);
 
             // Guardar los cambios en la base de datos
-            _IRegistradoRepository.Cambiar_password(registrado);
+            _IRegistradoRepository.ModifyDefault(registrado);
 
             /*PROTECTED REGION END*/
         }

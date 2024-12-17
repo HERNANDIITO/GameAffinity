@@ -111,10 +111,6 @@ namespace GameAffinityGen.Infraestructure.Repository.GameAffinity
                 registradoNH.Es_mentor = registrado.Es_mentor;
 
 
-
-
-
-
                 registradoNH.Notificaciones = registrado.Notificaciones;
 
 

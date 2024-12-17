@@ -152,7 +152,12 @@ namespace Web_GameAffinity.Models
 
     public class NuevaContrasena
     {
-        public String contrasena { get; set; }
-        public String repContrasena { get; set; }
+        public string email { get; set; }
+
+        [DataType(DataType.Password)]
+        public string contrasena { get; set; }
+        
+        [DataType(DataType.Password)]
+        public string repContrasena { get; set; }
     }
 }

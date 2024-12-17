@@ -107,27 +107,26 @@ namespace Web_GameAffinity.Controllers
         }
 
         [HttpPost]
-        public ActionResult CambiarContrasena(string email, String contrasena, String repContrasena)
+        public ActionResult CambiarContrasena(NuevaContrasena nueva)
         {
             SessionInitialize();
-            if (contrasena != repContrasena)
+            if (nueva.contrasena != nueva.repContrasena)
             {
                 SessionClose();
                 TempData["ErrorMessage"] = "Las contrasenas deben ser iguales.";
                 return View();
             } else
             {
-                RegistradoRepository repo = new RegistradoRepository(session);
+                RegistradoRepository repo = new RegistradoRepository();
                 RegistradoCEN cen = new RegistradoCEN(repo);
-                RegistradoEN user = cen.GetByEmail(email);
+                RegistradoEN user = cen.GetByEmail(nueva.email);
                 String contrasenaantes = user.Contrasenya;
                 if(user != null)
                 {
-                    contrasena = GameAffinityGen.ApplicationCore.Utils.Util.GetEncondeMD5(contrasena);
-                    cen.Cambiar_password(user.Id, contrasena);
+                    cen.Cambiar_password(user.Id, nueva.contrasena);
+                    SessionClose();
                 }
-                TempData["SuccessMessage"] = "Contrasena modificada con exito" + contrasenaantes + "|||" + user.Contrasenya + "|||" + contrasena;
-                SessionClose();
+                TempData["SuccessMessage"] = "Contrasena modificada con exito" + contrasenaantes + "|||" + user.Contrasenya + "|||" + nueva.contrasena;
                 return RedirectToAction("Login", "Registrado");
             }
         }
