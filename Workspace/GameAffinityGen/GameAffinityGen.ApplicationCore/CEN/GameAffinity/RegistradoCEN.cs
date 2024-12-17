@@ -129,7 +129,7 @@ public void EliminarLista (int p_Registrado_OID, System.Collections.Generic.ILis
 public string Login (int p_Registrado_OID, string p_pass)
 {
         string result = null;
-        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault (p_Registrado_OID);
+        RegistradoEN en = _IRegistradoRepository.ReadOIDDefault(p_Registrado_OID);
 
         if (en != null && en.Contrasenya.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
                 result = this.GetToken (en.Id);

@@ -98,7 +98,6 @@ namespace Web_GameAffinity.Controllers
                 }
             } else
             {
-                SessionClose();
                 foreach (var mentor in mentores)
                 {
                     if (contador >= 10) { break; } else { contador++; }
@@ -125,6 +124,7 @@ namespace Web_GameAffinity.Controllers
             viewModel.ResenyaSeguidos = resenyaSeguidosVM;
             viewModel.ResenyaDeMentores = resenyaMentoresVM;
             viewModel.mostrarModalMentor = mostrar;
+            SessionClose();
             return View(viewModel);
         }
 

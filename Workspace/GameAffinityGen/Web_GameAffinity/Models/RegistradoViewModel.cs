@@ -145,4 +145,14 @@ namespace Web_GameAffinity.Models
 
         public bool ShowSaveModal { get; set; } = false;
     }
+    public class EmailReceptor
+    {
+        public string emailReceptor { get; set; }
+    }
+
+    public class NuevaContrasena
+    {
+        public String contrasena { get; set; }
+        public String repContrasena { get; set; }
+    }
 }

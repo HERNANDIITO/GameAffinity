@@ -16,19 +16,13 @@ void ModifyDefault (RegistradoEN registrado);
 
 System.Collections.Generic.IList<RegistradoEN> ReadAllDefault (int first, int size);
 
-
-
-
-
-
-
-
 void Seguir_perfiles (int p_Registrado_OID, System.Collections.Generic.IList<int> p_seguidos_OIDs);
 
 void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.Generic.IList<int> p_seguidos_OIDs);
 
 void Alternar_notificaciones (RegistradoEN registrado);
 
+void Cambiar_password (RegistradoEN registrado);
 
 void Aceptar_mentoria (RegistradoEN registrado);
 

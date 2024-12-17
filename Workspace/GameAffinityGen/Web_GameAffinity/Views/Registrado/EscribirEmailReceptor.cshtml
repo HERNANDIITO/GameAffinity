@@ -1,0 +1,30 @@
+﻿@model Web_GameAffinity.Models.EmailReceptor
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-container">
+    <div class="titles-container">
+        <div class="title">
+            <h2>Inicio de Sesión</h2>
+        </div>
+    </div>
+    <div class="login-container">
+        <form asp-controller="Email" asp-action="RestablecerContrasena" class="login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="inputs-container">
+                <div>
+                    <label asp-for="emailReceptor" class="label">Email<span class="need">*</span></label>
+                    <input asp-for="emailReceptor" name="emailReceptor" class="form-control form-control-lg" id="exampleInputEmail1" />
+                    <span asp-validation-for="emailReceptor" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="login-button">
+                <input type="submit" value="Entrar" class="btn btn-primary btn-sm" />
+                <span><a class="loginLink" asp-controller="Registrado" asp-action="Login">Volver</a></span>
+            </div>
+        </form>
+    </div>
+</div>

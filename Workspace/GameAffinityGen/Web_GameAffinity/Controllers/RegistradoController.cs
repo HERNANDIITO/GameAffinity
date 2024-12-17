@@ -7,6 +7,7 @@ using GameAffinityGen.Infraestructure.EN.GameAffinity;
 using GameAffinityGen.Infraestructure.Repository.GameAffinity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using NHibernate;
 using NHibernate.Engine;
 using NuGet.Common;
@@ -39,6 +40,11 @@ namespace Web_GameAffinity.Controllers
         public ActionResult Login()
         {
             return View(new LoginRegistradoViewModel { email = string.Empty, password = string.Empty });
+        }
+
+        public ActionResult EscribirEmailReceptor()
+        {
+            return View();
         }
 
         // POST: RegistradoController/Login
@@ -82,8 +88,52 @@ namespace Web_GameAffinity.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult CambiarContrasena()
+        {
+            // Recuperar email y token de la sesión
+            var email = HttpContext.Session.GetString("ResetEmail");
+            var token = HttpContext.Session.GetString("ResetToken");
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token))
+            {
+                TempData["ErrorMessage"] = "La sesión ha expirado. Intenta nuevamente.";
+                return RedirectToAction("Login", "Registrado");
+            }
+
+            ViewData["Email"] = email;
+            ViewData["Token"] = token;
+
+            return View();
+        }
 
         [HttpPost]
+        public ActionResult CambiarContrasena(string email, String contrasena, String repContrasena)
+        {
+            SessionInitialize();
+            if (contrasena != repContrasena)
+            {
+                SessionClose();
+                TempData["ErrorMessage"] = "Las contrasenas deben ser iguales.";
+                return View();
+            } else
+            {
+                RegistradoRepository repo = new RegistradoRepository(session);
+                RegistradoCEN cen = new RegistradoCEN(repo);
+                RegistradoEN user = cen.GetByEmail(email);
+                String contrasenaantes = user.Contrasenya;
+                if(user != null)
+                {
+                    contrasena = GameAffinityGen.ApplicationCore.Utils.Util.GetEncondeMD5(contrasena);
+                    cen.Cambiar_password(user.Id, contrasena);
+                }
+                TempData["SuccessMessage"] = "Contrasena modificada con exito" + contrasenaantes + "|||" + user.Contrasenya + "|||" + contrasena;
+                SessionClose();
+                return RedirectToAction("Login", "Registrado");
+            }
+        }
+
+
+            [HttpPost]
         public ActionResult SerMentor()
         {
             SessionInitialize();

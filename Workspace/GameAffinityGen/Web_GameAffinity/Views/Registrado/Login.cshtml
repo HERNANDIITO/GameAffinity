@@ -10,6 +10,14 @@
         <div class="title">
             <h2>Inicio de Sesión</h2>
         </div>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
     </div>
     <div class="login-container">
         <form asp-action="Login" class="login">
@@ -29,6 +37,7 @@
             <div class="login-button">
                 <input type="submit" value="Entrar" class="btn btn-primary btn-sm" />
                 <span><a class="loginLink" asp-controller="Registrado" asp-action="Registro">¿Todavía no tienes cuenta?</a></span>
+                <span><a class="loginLink" asp-controller="Registrado" asp-action="EscribirEmailReceptor">¿Has olvidado tu contraseña?</a></span>
             </div>
         </form>
     </div>
