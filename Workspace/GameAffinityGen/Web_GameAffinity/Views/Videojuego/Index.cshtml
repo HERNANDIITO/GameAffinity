@@ -2,16 +2,25 @@
 
 @{
     ViewData["Title"] = "Index";
+    
+    var user = Context.Session.Get<ConfiguracionPerfilViewModel>("user");
 }
 
 <h1>Videojuegos</h1>
 
 <p>
-    <a class="btn btn-primary" asp-action="Create">Crear nuevo videojuego</a>
+    @if (user != null)
+    {
+        <a class="btn btn-primary" asp-action="Create">Crear nuevo videojuego</a>
+    }
 </p>
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -25,43 +34,44 @@
                 @Html.DisplayNameFor(model => model.NotaMedia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FechaLanzamiento)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img class="caratula" src="Images/@item.Imagen.FileName" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NotaMedia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaLanzamiento)
-            </td>
-            <td>
-                <div class="btn-group" role="group">
-                    <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
-                    <a class="btn btn-info" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
-                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Eliminar</a>
-                </div>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="caratula" src="Images/@item.Imagen.FileName" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NotaMedia)
+                </td>
+                <td>
+                    @item.FechaLanzamiento.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @if (user != null)
+                    {
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                            <a class="btn btn-info" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
+                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Eliminar</a>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
