@@ -29,11 +29,8 @@ namespace Web_GameAffinity.Controllers
         {
             var user = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user");
 
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
+
+            if (user != null)
             {
                 ModeradorRepository repo = new ModeradorRepository();
                 ModeradorCEN cen = new ModeradorCEN(repo);

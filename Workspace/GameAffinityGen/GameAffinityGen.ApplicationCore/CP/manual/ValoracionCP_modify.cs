@@ -28,6 +28,8 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 // CEN
                 ValoracionCEN valoracionCEN = new ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
+                EmpresaCEN empresaCEN = new EmpresaCEN(CPSession.UnitRepo.EmpresaRepository);
+
 
                 // EN
                 ValoracionEN valoracionEN = valoracionCEN.GetByOID (p_Valoracion_OID);
@@ -51,7 +53,23 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 }
 
                 // Sobreescribimos la nota media
-                videojuegoEN.Nota_media = notaMedia;
+                videojuegoEN.Nota_media = (float)Math.Truncate(notaMedia * 100) / 100;
+
+
+                foreach (var empresa in videojuegoEN.Empresas)
+                {
+                    float notaTotal = 0;
+
+                    foreach (var juego in empresa.Videojuegos)
+                    {
+                        notaTotal += juego.Nota_media;
+                    }
+
+                    float notaMediaEmpresa = notaTotal / empresa.Videojuegos.Count;
+                    empresa.Nota = (float)Math.Truncate(notaMediaEmpresa * 100) / 100; ;
+
+                    empresaCEN.get_IEmpresaRepository().ModifyDefault(empresa);
+                }
 
                 // Aplicamos cambios
                 videojuegoCEN.get_IVideojuegoRepository ().ModifyDefault (videojuegoEN);
