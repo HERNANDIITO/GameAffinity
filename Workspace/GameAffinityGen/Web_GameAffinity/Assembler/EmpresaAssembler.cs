@@ -25,6 +25,7 @@ namespace Web_GameAffinity.Assembler
             empresa.Descripcion = en.Descripcion;
             empresa.Nota = en.Nota;
             empresa.Videojuegos = en.Videojuegos;
+            empresa.Individuos = en.Individuos;
             empresa.Imagen = FileHelper.ConvertToIFormFile(en.Img);
             //empresa.Individuos = en.Individuos;
             return empresa;

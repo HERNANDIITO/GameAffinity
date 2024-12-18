@@ -32,6 +32,9 @@ namespace PopulateDB
                 ResenyaRepository resenyaRepo = new ResenyaRepository();
                 ResenyaCEN resenyaCEN = new ResenyaCEN(resenyaRepo);
 
+                IndividuoRepository individuoRepo = new IndividuoRepository();
+                IndividuoCEN individuoCEN = new IndividuoCEN(individuoRepo);
+
                 ValoracionCP valoracionCP = new ValoracionCP( new SessionCPNHibernate() );
 
                 RegistradoCP registradoCP = new RegistradoCP(new SessionCPNHibernate());
@@ -53,6 +56,67 @@ namespace PopulateDB
                 empresas.Add(empresaCEN.New_("Rockstar Games", "Creadores de GTA y Red Dead Redemption", 0, ""));
                 empresas.Add(empresaCEN.New_("Capcom", "Conocidos por Resident Evil y Street Fighter", 0, ""));
                 empresas.Add(empresaCEN.New_("Bethesda", "Creadora de Skyrim y Fallout", 0, ""));
+
+
+
+
+                // Crear individuos con datos reales
+                Random randomNumber = new Random();
+
+                PaisesRepository paisRep = new PaisesRepository();
+                PaisesCEN paisCEN = new PaisesCEN(paisRep);
+
+                IList<PaisesEN > paisEN = paisCEN.ReadAll(0, 90);
+                
+
+                var individuos = new List<int>();
+                var rialsIndividuos = new List<(string Nombre, string Apellido, DateTime FechaNacimiento, GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum Rol, string bio, string fotikoNene, int nasion)>
+                {
+                    ("Hideo", "Kojima", new DateTime(1960, 02, 18), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador, "Panoli", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Yoko", "Shimomura", new DateTime(1967, 10, 19), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Musico, "MusicoYoko", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("John", "Carmack", new DateTime(1970, 08, 20), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Programador, "Carmack123", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Shigeru", "Miyamoto", new DateTime(1952, 11, 16), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director, "MiyamotoShigeru", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Koji", "Kondo", new DateTime(1961, 08, 13), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Musico, "KondoKoji", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Tetsuya", "Nomura", new DateTime(1970, 10, 08), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador, "NomuraTetsuya", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Ken", "Levine", new DateTime(1966, 09, 06), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director, "LevineKen", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Toby", "Fox", new DateTime(1983, 10, 11), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Musico, "TobyFoxMusic", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Markus", "Persson", new DateTime(1979, 06, 01), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Programador, "Notch", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Hideki", "Kamiya", new DateTime(1970, 12, 28), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director, "KamiyaHideki", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Fumito", "Ueda", new DateTime(1968, 12, 09), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador, "UedaFumito", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Gustavo", "Santaolalla", new DateTime(1951, 08, 19), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Musico, "GustavoSanta", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Jason", "Jones", new DateTime(1971, 09, 13), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Programador, "BungieJason", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Naoto", "Ohshima", new DateTime(1966, 02, 02), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador, "OhshimaNaoto", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Yusuke", "Naora", new DateTime(1971, 05, 12), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador, "NaoraYusuke", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Akira", "Yamaoka", new DateTime(1968, 02, 06), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Musico, "YamaokaAkira", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Satoshi", "Takahashi", new DateTime(1980, 01, 30), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Programador, "TakahashiSatoshi", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Kazunori", "Yamauchi", new DateTime(1967, 08, 05), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Director, "YamauchiKazunori", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Yuji", "Naka", new DateTime(1965, 09, 17), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Programador, "YujiNaka", "", paisEN[randomNumber.Next(1, 90)].Id),
+                    ("Ryuji", "Ikeda", new DateTime(1975, 03, 12), GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador, "IkedaRyuji", "", paisEN[randomNumber.Next(1, 90)].Id)
+                };
+
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("CREANDO INDIVIDUOS");
+                Console.ResetColor();
+                foreach (var individuo in rialsIndividuos)
+                {
+                    int empresaIndex = random.Next(0, empresas.Count - 1);
+                    int indi = individuoCEN.New_(individuo.Nombre, individuo.Apellido, individuo.FechaNacimiento, individuo.Rol, individuo.bio, "", individuo.nasion);
+                    individuos.Add(indi);
+
+                    // Asociar individuo a una empresa
+                    EmpresaEN empresaEN = empresaCEN.GetByOID(empresas[empresaIndex]);
+                    IndividuoEN individuoEN = individuoCEN.GetByOID(indi);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("INDIVIDUO AÑADIDO: " + individuoEN.Nombre);
+                    Console.ResetColor();
+
+                    empresaCEN.AnyadirIndividuo(empresaEN.Id, new List<int> { individuoEN.Id });
+                }
+
+
+
 
                 // Crear videojuegos con datos reales
                 var videojuegos = new List<int>();
@@ -89,11 +153,13 @@ namespace PopulateDB
                 foreach (var juego in juegosReales)
                 {
                     int empresaIndex = random.Next(0, empresas.Count - 1);
+                    int individuoIndex = random.Next(0, individuos.Count - 1);
                     int videojuego = videojuegoCEN.New_(juego.Titulo, juego.Descripcion, juego.Nota, juego.Genero, juego.Fecha, "");
                     videojuegos.Add(videojuego);
 
-                    // Asociar juego a una empresa
+                    // Asociar juego a una empresa y a un individuo
                     EmpresaEN empresaEN = empresaCEN.GetByOID(empresas[empresaIndex]);
+                    IndividuoEN indiEN = individuoCEN.GetByOID(individuos[individuoIndex]);
                     VideojuegoEN videojuegoEN = videojuegoCEN.GetByoID(videojuego);
 
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -101,6 +167,7 @@ namespace PopulateDB
                     Console.ResetColor();
 
                     empresaCEN.AnyadirJuegoDesarrollado(empresaEN.Id, new List<int> { videojuegoEN.Id });
+                    individuoCEN.AnyadirVideojuego(indiEN.Id, new List<int> { videojuegoEN.Id });
                 }
 
                 // Crear usuarios con datos realistas

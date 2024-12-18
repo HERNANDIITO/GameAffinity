@@ -1,4 +1,4 @@
-﻿@model Web_GameAffinity.Models.RegistradoDetailsViewModel
+﻿@model Web_GameAffinity.Models.ListasDeUsuarioViewModel
 @using Microsoft.AspNetCore.Http
 
 
@@ -14,15 +14,32 @@
             <div class="modal-body">
                 <!-- Listas Predeterminadas -->
                 <h4>Listas Predeterminadas</h4>
-                @if (Model.Listas != null && Model.Listas.Any(l => l.Por_defecto))
+                @if (Model.ListasDeUsuario != null && Model.ListasDeUsuario.Any(l => l.Por_defecto))
                 {
                     <div id="carouselPredeterminadas" class="carousel">
                         <div class="carousel-inner carousel-body-css">
-                            @for (int i = 0; i < Model.Listas.Where(l => l.Por_defecto).Count(); i++)
+                            @for (int i = 0; i < Model.ListasDeUsuario.Where(l => l.Por_defecto).Count(); i++)
                             {
-                                var lista = Model.Listas.Where(l => l.Por_defecto).ElementAt(i);
+                                var lista = Model.ListasDeUsuario.Where(l => l.Por_defecto).ElementAt(i);
                                 <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
-                                    @Html.Partial("listaCard", lista)
+                                @if (lista.Videojuegos.Any(v => v.Id == Model.IdVideojuegoAnyadir))
+                                {
+                                    <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete" class="hoverCard">
+                                        @Html.Partial("listaCard", lista)
+                                        <input type="hidden" name="listaId" value="@lista.Id" />
+                                        <input type="hidden" name="videojuegoId" value="@Model.IdVideojuegoAnyadir" />
+                                        <button type="submit" class="btn-danger">Eliminar de lista</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post" class="hoverCard">
+                                        @Html.Partial("listaCard", lista)
+                                        <input type="hidden" name="listaId" value="@lista.Id" />
+                                        <input type="hidden" name="videojuegoId" value="@Model.IdVideojuegoAnyadir" />
+                                        <button type="submit" class="btn-primary">Añadir a la lista</button>
+                                    </form>
+                                }
                                 </div>
                             }
                         </div>
@@ -48,17 +65,36 @@
                         <i class="bi bi-plus-circle-fill"></i>
                     </a>
                 </h4>
-                @if (Model.Listas != null && Model.Listas.Any(l => !l.Por_defecto))
+                @if (Model.ListasDeUsuario != null && Model.ListasDeUsuario.Any(l => !l.Por_defecto))
                 {
                     <div id="carouselPersonalizadas" class="carousel">
                         <div class="carousel-inner carousel-body-css">
-                            @for (int i = 0; i < Model.Listas.Where(l => !l.Por_defecto).Count(); i++)
+                            
+                        @for (int i = 0; i < Model.ListasDeUsuario.Where(l => !l.Por_defecto).Count(); i++)
+                        {
+                            var lista = Model.ListasDeUsuario.Where(l => !l.Por_defecto).ElementAt(i);
+                            <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                            @if (lista.Videojuegos.Any(v => v.Id == Model.IdVideojuegoAnyadir))
                             {
-                                var lista = Model.Listas.Where(l => !l.Por_defecto).ElementAt(i);
-                                <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                            <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete" class="hoverCard">
                                     @Html.Partial("listaCard", lista)
-                                </div>
+                                    <input type="hidden" name="listaId" value="@lista.Id" />
+                                    <input type="hidden" name="videojuegoId" value="@Model.IdVideojuegoAnyadir" />
+                                    <button type="submit" class="btn-danger">Eliminar de lista</button>
+                                </form>
                             }
+                            else
+                            {
+                                <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post" class="hoverCard">
+                                    @Html.Partial("listaCard", lista)
+                                    <input type="hidden" name="listaId" value="@lista.Id" />
+                                    <input type="hidden" name="videojuegoId" value="@Model.IdVideojuegoAnyadir" />
+                                    <button type="submit" class="btn-primary">Añadir a la lista</button>
+                                </form>
+                            }
+                            </div>
+                        }
+                            
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselPersonalizadas" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

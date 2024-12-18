@@ -156,6 +156,11 @@ namespace Web_GameAffinity.Controllers
                 NHibernateUtil.Initialize(empresaEN.Videojuegos);
             }
 
+            if (empresaEN.Individuos != null)
+            {
+                NHibernateUtil.Initialize(empresaEN.Individuos);
+            }
+
             // Creas el modelo que pasas a la vista
             DetailsEmpresaViewModel model = new EmpresaAssembler().ConvertirENToDetailsViewModel(empresaEN);
 

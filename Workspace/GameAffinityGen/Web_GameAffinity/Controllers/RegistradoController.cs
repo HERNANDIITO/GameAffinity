@@ -315,8 +315,17 @@ namespace Web_GameAffinity.Controllers
 
         // GET: RegistradoController/DetailsUsuario/5
         public ActionResult DetailsUsuario(int id)
+
+
         {
             SessionInitialize();
+
+            PerfilViewModel usuario = HttpContext.Session.Get<PerfilViewModel>("user");
+
+            if (usuario.id == id)
+            {
+                return RedirectToAction("Details", "Registrado");
+            }
 
             RegistradoRepository regRepository = new RegistradoRepository(session);
             RegistradoCEN regCEN = new RegistradoCEN(regRepository);

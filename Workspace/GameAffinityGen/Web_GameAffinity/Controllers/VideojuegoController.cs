@@ -120,12 +120,31 @@ namespace Web_GameAffinity.Controllers
                 }
             }
 
+            ListasDeUsuarioViewModel listas_de_usuario = new ListasDeUsuarioViewModel();
+
+            if(HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user") != null)
+            {
+                int idUser = HttpContext.Session.Get<ConfiguracionPerfilViewModel>("user").id;
+                RegistradoRepository registradorepo = new RegistradoRepository(session);
+                RegistradoCEN registradoCEN = new RegistradoCEN(registradorepo);
+                RegistradoEN registradoEN = registradoCEN.GetByOID(idUser);
+                listas_de_usuario.IdUsuario = idUser;
+                NHibernateUtil.Initialize(registradoEN.Listas);
+                //listas_de_usuario.ListasDeUsuario = new ListaAssembler().ConvertirListENToViewModel(registradoEN.Listas);
+                listas_de_usuario.ListasDeUsuario = registradoEN.Listas;
+                listas_de_usuario.IdVideojuegoAnyadir = id;
+                foreach (var lista in listas_de_usuario.ListasDeUsuario)
+                {
+                    NHibernateUtil.Initialize(lista.Videojuegos);
+                }
+            }
 
             VideojuegoDetailsViewModel vistaJuego = new VideojuegoDetailsViewModel
             {
                 Videojuego = videojuegoView,
                 Resenyas = listaResenyas,
-                Valoraciones = videojuegoEn.Valoracion
+                Valoraciones = videojuegoEn.Valoracion,
+                ListasDeUsuario = listas_de_usuario
             };
 
             SessionClose();

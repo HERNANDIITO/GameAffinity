@@ -27,7 +27,8 @@
 
         <br />
 
-        <h4>Videojuegos Asociados:</h4>
+        <h4>Videojuegos asociados</h4>
+        
         <div class="videogameList row">
             @if (Model.Videojuegos != null && Model.Videojuegos.Any())
             {
@@ -39,6 +40,24 @@
             else
             {
                 <p>No hay videojuegos asociados con este individuo.</p>
+            }
+        </div>
+
+        <br />
+
+        <h4>Empresas asociadas</h4>
+
+        <div class="videogameList row">
+            @if (Model.Empresas != null && Model.Empresas.Any())
+            {
+                @foreach (var item in Model.Empresas)
+                {
+                    @Html.Partial("empresaCardDetails", item)
+                }
+            }
+            else
+            {
+                <p>No hay empresas asociadas con este individuo.</p>
             }
         </div>
     </div>
