@@ -37,7 +37,7 @@ public void Modify (int p_Valoracion_OID, int p_nota)
                 valoracionEN.Nota = p_nota;
 
                 //recalcular media del videojuego
-                int notaMedia = 0;
+                float notaMedia = 0;
                 IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego (videojuegoEN.Id);
                 foreach (ValoracionEN videojuego_valoracion in videojuegoEN.Valoracion) {
                         notaMedia += videojuego_valoracion.Nota;
