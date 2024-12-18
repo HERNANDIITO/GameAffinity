@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Policy;
 using System.Collections.Generic;
+using GameAffinityGen.ApplicationCore.EN.GameAffinity;
 
 namespace Web_GameAffinity.Models
 {
@@ -42,5 +43,13 @@ namespace Web_GameAffinity.Models
         public IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> TodosLosVideojuegos { get; set; }
 
 
+    }
+
+    public class ListasDeUsuarioViewModel
+    {
+        public int IdVideojuegoAnyadir {  get; set; }
+        public int IdUsuario { get; set; }
+        //public IList<ListaViewModel> ListasDeUsuario { get; set; }
+        public IList<ListaEN> ListasDeUsuario { get; set; }
     }
 }

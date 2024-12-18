@@ -84,14 +84,8 @@
 <!-- Modal para añadir reseña -->
 @Html.Partial("resenyaModal", Model)
 
-
-@{
-    var registradoModel = new Web_GameAffinity.Models.RegistradoDetailsViewModel
-            {
-                Listas = Model.Registrado?.Listas // Asegúrate de mapear correctamente las propiedades
-            };
-
-}
-
 <!-- Modal para añadir a lista -->
-@Html.Partial("listaModal", registradoModel)
+@if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null)
+{
+    @Html.Partial("listaModal", Model.ListasDeUsuario)
+}

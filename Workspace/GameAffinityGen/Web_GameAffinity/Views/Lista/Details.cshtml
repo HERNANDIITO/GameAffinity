@@ -4,52 +4,45 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div class="row">
     <div class="col-12 col-md-3">
          <img class="caratula" src="/Images/@Model.Imagen.FileName">
     </div>
     <div class="col-12 col-md-9">
-        <h4>ListaViewModel</h4>
+        <h1>@Html.DisplayFor(model => model.Nombre)</h1>
         <hr />
         <dl class="row">
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Nombre)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Nombre)
-            </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 @Html.DisplayNameFor(model => model.Descripcion)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.Descripcion)
             </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Por_defecto)
+            <dt class="col-sm-4">
+                Juegos en la lista
             </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Por_defecto)
+            <dd class="col-sm-8">
+                @Model.Videojuegos.Count()
             </dd>
         </dl>
     </div>
 </div>
 
-<div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Index">Back to List</a>
-</div>
-
 <section class="row">
-    <h4>Videojuegos de la lista</h4>
     <div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAñadirVideojuego">
             Editar contenido
         </button>
     </div>
     
-    @Html.Partial("videojuegoCardList", Model.Videojuegos)
+    @if(Model.Videojuegos.Count() > 0)
+    {
+        @Html.Partial("videojuegoCardList", Model.Videojuegos)
+    }
+    else
+    {
+        <p class="mt-5">No hay videojuegos en la lista.</p>
+    }
 
 </section>
 
