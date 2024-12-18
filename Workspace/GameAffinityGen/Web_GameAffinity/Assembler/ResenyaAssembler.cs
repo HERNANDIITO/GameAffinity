@@ -18,6 +18,7 @@ namespace Web_GameAffinity.Assembler
                 resenya.VideojuegoId = en.Videojuego.Id;
                 resenya.IdAutor = en.Autor_resenya.Id;
                 resenya.NombreAutor = en.Autor_resenya.Nombre;
+                resenya.Interacciones = new InteraccionAssembler().ConvertirListaENtoViewModel(en.Interacciones);
             }
             // añadir reseña
             return (resenya);

@@ -1,20 +1,63 @@
 ﻿@model Web_GameAffinity.Models.ResenyaViewModel
 
+@{
+    var user = Context.Session.Get<ConfiguracionPerfilViewModel>("user");
+    InteraccionViewModel userInteraccion = null;
+    int userId = -1;
+    string iconolike = "bi bi-hand-thumbs-up";
+    string iconodislike = "bi bi-hand-thumbs-down";
+    if(user != null)
+    {
+        Console.WriteLine("user is not null");
+        userId = user.id;
+
+        userInteraccion = Model.Interacciones.FirstOrDefault<InteraccionViewModel>(r => r.IdAutor == userId);
+
+        if ( userInteraccion != null ) {
+            if ( userInteraccion.Liked ) {
+                Console.WriteLine("interactionLiked");
+                iconolike += "-fill";
+            }
+
+            else if ( userInteraccion.Disliked ) {
+                Console.WriteLine("interactionDisLiked");
+                iconodislike += "-fill";
+            }
+        }
+    }
+    Console.WriteLine(iconolike);
+    Console.WriteLine(iconodislike);
+}
 
 <div class="card bg-light mb-3" style="min-width: 20rem;">
-
-
     <div class="card-header">@Html.DisplayFor(model => model.NombreAutor) - @Html.DisplayFor(model => model.Valoracion)</div>
-    
     
     <div class="card-body">
         <h5 class="card-title">@Html.DisplayFor(model => model.Titulo)</h5>
         <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
     </div>
     <div class="card-footer bg-light text-center">
-        <button class="btn btn-light mr-1">  <i class="bi bi-hand-thumbs-up"></i>    </button>
-        <span class="ml-1">@Html.DisplayFor(model => model.Likes_contador)</span>
-        <button class="btn btn-light mr-1">  <i class="bi bi-hand-thumbs-down"></i>  </button>
-        <span class="ml-1">@Html.DisplayFor(model => model.Dislikes_contador)</span>
+        <form 
+            asp-controller="Interaccion" 
+            asp-action="InteraccionCambia" 
+            method="post">
+            <input type="number" name="idusuario" value="@userId" hidden />
+            <input type="number" name="idresenya" value="@Model.Id" hidden />
+            <input type="number" name="operation" value="0" hidden />
+            <button type="submit" class="btn btn-light mr-1">
+                <i class="@iconolike"></i>
+            </button>
+        </form>
+        <span class="ml-1">@Model.Likes_contador</span>
+
+        <form asp-controller="Interaccion" asp-action="InteraccionCambia" method="post">
+            <input type="number" name="idusuario" value="@userId" hidden />
+            <input type="number" name="idresenya" value="@Model.Id" hidden />
+            <input type="number" name="operation" value="1" hidden />
+            <button type="submit" class="btn btn-light mr-1">
+                <i class="@iconodislike"></i>
+            </button>
+        </form>
+        <span class="ml-1">@Model.Dislikes_contador</span>
     </div>
 </div>
