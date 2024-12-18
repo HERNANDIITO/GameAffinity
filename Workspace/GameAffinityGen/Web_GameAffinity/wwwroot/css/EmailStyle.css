@@ -1,0 +1,51 @@
+@import 'colors.css';
+
+.body-email {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container-email {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+}
+
+.header-email {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.content-email {
+    padding: 20px;
+    text-align: center;
+}
+
+.button-email {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: white !important;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.footer-email {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #777777;
+}
+
+.ii a[href] {
+    color: white !important;
+}

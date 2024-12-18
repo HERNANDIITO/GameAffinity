@@ -26,13 +26,48 @@ namespace Web_GameAffinity.Servicios
             var host = _configuration.GetValue<string>("CONFIGURACIONES_EMAIL:HOST");
             var puerto = _configuration.GetValue<int>("CONFIGURACIONES_EMAIL:PUERTO");
 
-            var smtpClient = new SmtpClient(host, puerto);
-            smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = false;
+            var smtpClient = new SmtpClient(host, puerto)
+            {
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(emailEmisor, password)
+            };
 
-            smtpClient.Credentials = new NetworkCredential(emailEmisor, password);
-            var mensaje = new MailMessage(emailEmisor!, emailReceptor, tema, cuerpo);
-            await smtpClient.SendMailAsync(mensaje);
+            // Leer el contenido del archivo CSS
+            var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "css", "EmailStyle.css");
+            var cssContent = File.ReadAllText(cssPath);
+
+            // Incrustar el CSS en el cuerpo del mensaje HTML
+            var htmlBody = $@"
+            <!DOCTYPE html>
+            <html lang='es'>
+            <head>
+                <meta charset='UTF-8'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                <style>
+                    {cssContent}
+                </style>
+                <title>{tema}</title>
+            </head>
+            <body>
+                {cuerpo}
+            </body>
+            </html>";
+
+            var mensaje = new MailMessage(emailEmisor, emailReceptor, tema, htmlBody)
+            {
+                IsBodyHtml = true // Si el cuerpo del correo es HTML
+            };
+
+            try
+            {
+                await smtpClient.SendMailAsync(mensaje);
+            }
+            catch (SmtpException ex)
+            {
+                // Manejar la excepción de SMTP
+                throw new Exception("Error al enviar el correo: " + ex.Message);
+            }
         }
     }
 }

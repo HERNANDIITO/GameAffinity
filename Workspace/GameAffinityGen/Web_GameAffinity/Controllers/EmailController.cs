@@ -48,7 +48,20 @@ namespace Web_GameAffinity.Controllers
 
             // Mensaje del email
             var tema = "Restablecer tu contraseña";
-            var cuerpo = $"Haz clic en el siguiente enlace para restablecer tu contraseña: \n{enlace}";
+            var cuerpo = $@"
+                <div class='container-email'>
+                    <div class='header-email'>
+                        <h1>Restablecer tu contraseña</h1>
+                    </div>
+                    <div class='content-email'>
+                        <p>Haz clic en el siguiente botón para restablecer tu contraseña:</p>
+                        <a href='{enlace}' class='button-email'>Restablecer Contraseña</a>
+                    </div>
+                    <div class='footer-email'>
+                        <p>Si no solicitaste este cambio, puedes ignorar este correo.</p>
+                        <p>Gracias por confiar en GameAffinity</p>
+                    </div>
+                </div>";
 
             // Enviar el email
             await servicioemail.SendEmail(emailReceptor, tema, cuerpo);

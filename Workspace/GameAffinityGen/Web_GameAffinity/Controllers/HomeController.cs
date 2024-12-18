@@ -116,6 +116,18 @@ namespace Web_GameAffinity.Controllers
             IList<ResenyaViewModel> resenyaSeguidosVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaSeguidos);
             IList<ResenyaViewModel> resenyaMentoresVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaMentores);
 
+            foreach (var resenya in resenyaMentoresVM)
+            {
+                resenya.NombreVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Nombre;
+                resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id == resenya.IdAutor).Nota;
+            }
+
+            foreach (var resenya in resenyaSeguidosVM)
+            {
+                resenya.NombreVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Nombre;
+                resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id == resenya.IdAutor).Nota;
+            }
+
             viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados();
             viewModel.Popular = videojuegoCEN.GetPopular();
             viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
