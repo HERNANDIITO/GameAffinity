@@ -88,6 +88,10 @@ private Nullable<DateTime> fechaDeLanzamiento;
 private string imagen;
 
 
+
+
+
+
 public virtual string Nombre {
         get { return nombre; } set { nombre = value;  }
 }

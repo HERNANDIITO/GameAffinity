@@ -87,7 +87,7 @@ public static void InitializeData ()
         {
                 // Initialising  CENs
                 RegistradoRepository registradorepository = new RegistradoRepository ();
-                RegistradoCEN registradocen = new RegistradoCEN(registradorepository);
+                RegistradoCEN registradocen = new RegistradoCEN (registradorepository);
                 ModeradorRepository moderadorrepository = new ModeradorRepository ();
                 ModeradorCEN moderadorcen = new ModeradorCEN (moderadorrepository);
                 ListaRepository listarepository = new ListaRepository ();
@@ -107,16 +107,18 @@ public static void InitializeData ()
                 PaisesRepository paisesrepository = new PaisesRepository ();
                 PaisesCEN paisescen = new PaisesCEN (paisesrepository);
 
+
+
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
-                RegistradoCP registradoCP = new RegistradoCP(new SessionCPNHibernate());
+                RegistradoCP registradoCP = new RegistradoCP (new SessionCPNHibernate ());
 
                 //Creacion de Empresa
                 int nintendoID = empresacen.New_ ("Nintendo", "Juego pa toa la famili", 10, "");
                 int santamonicaID = empresacen.New_ ("Santa Monica", "Solo se nos conoce por el gow", 9, "");
 
 
-                
+
                 // Llamar al método pasándole el ID de la empresa y la lista de IDs de videojuegos
 
 
@@ -159,11 +161,11 @@ public static void InitializeData ()
                 int silvaID = registradoCP.New_ ("Silva", "silva@gmail.com", "laCalva", false, true, "arrikitaun", "").Id;
                 RegistradoEN silva = registradocen.GetByOID (jorgeID);
 
-                int moderadorID = moderadorcen.New_("Manolo", "manolo@gmail.com", "manolito69", false, false, "bachata", "");
+                int moderadorID = moderadorcen.New_ ("Manolo", "manolo@gmail.com", "manolito69", false, false, "bachata", "");
 
-                ListaCEN listaSilvaCEN = new ListaCEN(listarepository);
-                int listaJuegosSilvaID = listaSilvaCEN.New_("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID, "");
-                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID(listaJuegosSilvaID);
+                ListaCEN listaSilvaCEN = new ListaCEN (listarepository);
+                int listaJuegosSilvaID = listaSilvaCEN.New_ ("JUEGOS Y VAINAS", "Una lista rexulona bb", false, silvaID, "");
+                ListaEN listaJuegosSilvaEN = listaSilvaCEN.GetByOID (listaJuegosSilvaID);
 
                 Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Nombre + "\n");
                 Console.WriteLine ("Lista: " + listaJuegosSilvaEN.Descripcion + "\n");
@@ -204,7 +206,7 @@ public static void InitializeData ()
 
                 //PRUEBA RECUPERAR_PASSWORD: Recuperar contrase�a de Pablo
                 Console.WriteLine ("\n\nPRUEBA RECUPERAR_PASSWORD");
-                int pabloID = registradoCP.New_("pablo", "pablo@example.com", "hernan", false, true, "pass123", "").Id;
+                int pabloID = registradoCP.New_ ("pablo", "pablo@example.com", "hernan", false, true, "pass123", "").Id;
                 RegistradoEN registradoEN3 = registradocen.GetByOID (pabloID);
                 string passwordPablo = registradoEN3.Contrasenya.ToString ();
                 Console.WriteLine ("CONTRASENYA PABLO: " + registradoEN3.Contrasenya + "\n");
@@ -217,7 +219,7 @@ public static void InitializeData ()
                 //PRUEBA CONSULTAR_AFINIDADES: Comparar dos usuarios para saber afinidad
                 Console.WriteLine ("\n\nPRUEBA CONSULTAR_AFINIDADES: ");
                 ///// Cargar usuarios y videojuegos
-                int davidID = registradoCP.New_("david", "david@example.com", "davidxx", false, true, "pass123", "").Id;
+                int davidID = registradoCP.New_ ("david", "david@example.com", "davidxx", false, true, "pass123", "").Id;
                 // A�adir videojuegos y rese�as, similar al c�digo que ya tienes
                 int darkSoulsID = videojuegocen.New_ (
                         "darkSouls",
@@ -359,15 +361,15 @@ public static void InitializeData ()
                 Console.WriteLine ("\n\nAfinidad entre usuario Pablo y usuario David: " + afinidad);
 
                 int idEspanya = paisescen.New_ ("España");
-                int idSudan = paisescen.New_("Sudán");
+                int idSudan = paisescen.New_ ("Sudán");
 
                 //Creacion de Individuo
-                DateTime? fechaNacHideo = new DateTime(1963, 8, 24);
+                DateTime? fechaNacHideo = new DateTime (1963, 8, 24);
                 RolesEnum rolHideo = RolesEnum.Director;
-                int idFumito = individuocen.New_(
+                int idFumito = individuocen.New_ (
                         "Fumito",
                         "Ueda",
-                        new DateTime(1960, 02, 18),
+                        new DateTime (1960, 02, 18),
                         GameAffinityGen.ApplicationCore.Enumerated.GameAffinity.RolesEnum.Ilustrador,
                         "Fumito se los fuma tos",
                         "",
@@ -392,14 +394,14 @@ public static void InitializeData ()
 
 
                 //creacion de listas por defecto y admin que las administra
-                int adminID = moderadorcen.New_("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "");
+                int adminID = moderadorcen.New_ ("Admin", "admin@gmail.com", "elAdmin", false, true, "1234", "");
                 ModeradorEN admin = moderadorcen.GetByOID (adminID);
 
-                
+
                 int listaCompletadosID = listacen.New_ ("Juegos completados", "Juegos que el jugador ha completado", true, adminID, "");
                 ListaEN completados = listacen.GetByOID (listaCompletadosID);
                 //listaCompletados.EliminarJuego(listaJuegosSilvaID, new List<int> { sonicID });
-                listacen.AnyadirVideojuego(listaCompletadosID, new List<int> { sonicID, superMarioID });
+                listacen.AnyadirVideojuego (listaCompletadosID, new List<int> { sonicID, superMarioID });
 
                 int listaEnProgreso = listacen.New_ ("Juegos en progreso", "Juegos que el jugador esta jugando pero no ha completado todavia", true, adminID, "");
                 ListaEN enProgreso = listacen.GetByOID (listaEnProgreso);
