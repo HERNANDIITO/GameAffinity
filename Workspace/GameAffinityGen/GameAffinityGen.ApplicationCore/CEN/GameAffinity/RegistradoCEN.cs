@@ -43,7 +43,7 @@ public void Dejar_de_seguir_perfiles (int p_Registrado_OID, System.Collections.G
 
         _IRegistradoRepository.Dejar_de_seguir_perfiles (p_Registrado_OID, p_seguidos_OIDs);
 }
-p        public void Aceptar_mentoria(int registrado_oid)
+public void Aceptar_mentoria(int registrado_oid)
 {
         /*PROTECTED REGION ID(GameAffinityGen.ApplicationCore.CEN.GameAffinity_Registrado_Aceptar_mentoria) ENABLED START*/
         RegistradoEN registradoEN = this.GetByOID(registrado_oid);

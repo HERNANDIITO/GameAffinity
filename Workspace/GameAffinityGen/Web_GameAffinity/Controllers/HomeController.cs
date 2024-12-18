@@ -116,9 +116,9 @@ namespace Web_GameAffinity.Controllers
             IList<ResenyaViewModel> resenyaSeguidosVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaSeguidos);
             IList<ResenyaViewModel> resenyaMentoresVM = new ResenyaAssembler().ConvertirListaENtoViewModel(resenyaMentores);
 
-            viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados();
-            viewModel.Popular = videojuegoCEN.GetPopular();
-            viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
+            viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados().Take(10).ToList<VideojuegoEN>();
+            viewModel.Popular = videojuegoCEN.GetPopular().Take(10).ToList<VideojuegoEN>();
+            viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos().Take(10).ToList<VideojuegoEN>();
             viewModel.empresasDestacadas = empCEN.GetAll(0, 2);
             viewModel.individuos = indCEN.GetAll(0, 2);
             viewModel.ResenyaSeguidos = resenyaSeguidosVM;

@@ -30,6 +30,7 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                 CPSession.SessionInitializeTransaction ();
                 ValoracionCEN valoracionCEN = new ValoracionCEN (CPSession.UnitRepo.ValoracionRepository);
                 VideojuegoCEN videojuegoCEN = new VideojuegoCEN (CPSession.UnitRepo.VideojuegoRepository);
+                EmpresaCEN    empresaCEN    = new EmpresaCEN    (CPSession.UnitRepo.EmpresaRepository);
 
                 VideojuegoEN videojuego = videojuegoCEN.GetByoID (p_videojuego_valorado);
 
@@ -50,7 +51,7 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                 }
 
 
-                int notaMedia = 0;
+                float notaMedia = 0;
                 IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego (p_videojuego_valorado);
                 //aqui necesitais una lista de valoraciones de un videojuego. ya que videojuego.Valoracion no es una lista
                 if (listaValoraciones.Count > 0) {
@@ -64,7 +65,22 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.ValoracionEN New_ (int p_
                         notaMedia = p_nota;
                 }
 
-                videojuego.Nota_media = notaMedia;
+                videojuego.Nota_media = (float) Math.Truncate(notaMedia * 100) / 100;
+
+                foreach ( var empresa in videojuego.Empresas)
+                {
+                    float notaTotal = 0;
+
+                    foreach (var juego in empresa.Videojuegos)
+                    {
+                        notaTotal += juego.Nota_media;
+                    }
+
+                    float notaMediaEmpresa = notaTotal / empresa.Videojuegos.Count;
+                    empresa.Nota = (float)Math.Truncate(notaMediaEmpresa * 100) / 100; ;
+
+                    empresaCEN.get_IEmpresaRepository ().ModifyDefault (empresa);
+                } 
 
                 oid = valoracionCEN.get_IValoracionRepository ().New_ (valoracionEN);
                 result = valoracionCEN.get_IValoracionRepository ().ReadOIDDefault (oid);

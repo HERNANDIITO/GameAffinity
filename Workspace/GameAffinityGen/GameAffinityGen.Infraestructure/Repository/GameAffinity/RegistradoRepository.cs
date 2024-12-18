@@ -63,7 +63,32 @@ public RegistradoEN ReadOIDDefault (int id
         return registradoEN;
 }
 
-public System.Collections.Generic.IList<RegistradoEN> ReadAllDefault (int first, int size)
+        public void Cambiar_password(RegistradoEN registrado)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+                RegistradoNH registradoNH = (RegistradoNH)session.Load(typeof(RegistradoNH), registrado.Id);
+                session.Update(registradoNH);
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                if (ex is GameAffinityGen.ApplicationCore.Exceptions.ModelException)
+                    throw;
+                else throw new GameAffinityGen.ApplicationCore.Exceptions.DataLayerException("Error in RegistradoRepository.", ex);
+            }
+
+
+            finally
+            {
+                SessionClose();
+            }
+        }
+
+        public System.Collections.Generic.IList<RegistradoEN> ReadAllDefault (int first, int size)
 {
         System.Collections.Generic.IList<RegistradoEN> result = null;
         try
