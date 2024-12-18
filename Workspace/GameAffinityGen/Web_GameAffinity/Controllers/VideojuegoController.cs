@@ -107,6 +107,16 @@ namespace Web_GameAffinity.Controllers
                 NHibernateUtil.Initialize(videojuegoEn.Valoracion);
             }
 
+            if (videojuegoEn.Individuos != null)
+            {
+                NHibernateUtil.Initialize(videojuegoEn.Individuos);
+            }
+
+            if (videojuegoEn.Empresas != null)
+            {
+                NHibernateUtil.Initialize(videojuegoEn.Empresas);
+            }
+
             // Asignar la nota de valoración a las reseñas correspondientes
             if (listaResenyas != null && videojuegoEn.Valoracion != null)
             {
@@ -144,7 +154,9 @@ namespace Web_GameAffinity.Controllers
                 Videojuego = videojuegoView,
                 Resenyas = listaResenyas,
                 Valoraciones = videojuegoEn.Valoracion,
-                ListasDeUsuario = listas_de_usuario
+                ListasDeUsuario = listas_de_usuario,
+                Individuos = (IList<IndividuoEN>)videojuegoEn.Individuos,
+                Empresas = videojuegoEn.Empresas
             };
 
             SessionClose();
