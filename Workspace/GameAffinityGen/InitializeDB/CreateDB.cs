@@ -374,6 +374,10 @@ public static void InitializeData ()
                         idSudan
                         );
 
+                var videojuegoIDsDOS = new List<int> { darkSoulsID, tlouID };
+                individuocen.AnyadirVideojuego(idFumito, videojuegoIDsDOS);
+
+
                 // prueba creacion individuo
                 int idHideo = individuocen.New_ (
                         "Hideo",

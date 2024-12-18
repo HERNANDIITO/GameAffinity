@@ -44,10 +44,23 @@ namespace Web_GameAffinity.Controllers
             IndividuoCEN IndividuoCEN = new IndividuoCEN(individuoRepository);
 
             IndividuoEN individuoEn = IndividuoCEN.GetByOID(id);
-            IndividuoViewModel individuoView = new IndividuoAssembler().ConvertirENToViewModel(individuoEn);
+            System.Diagnostics.Debug.WriteLine(id);
+            
+            if(id != 0)
+            {
+                if (individuoEn.Videojuegos != null)
+                {
+                    NHibernateUtil.Initialize(individuoEn.Videojuegos);
+                }
+
+                IndividuoViewModel individuoView = new IndividuoAssembler().ConvertirENToViewModel(individuoEn);
+                SessionClose();
+                return View(individuoView);
+            }
+            
 
             SessionClose();
-            return View(individuoView);
+            return RedirectToAction("Index");
         }
 
         // GET: IndividuoController/Create

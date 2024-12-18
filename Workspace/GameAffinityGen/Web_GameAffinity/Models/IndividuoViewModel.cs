@@ -14,7 +14,7 @@ namespace Web_GameAffinity.Models
         [Display(
             Prompt = "Especifica el nombre.", // texto para el input vacio
             Description = "Nombre", // texto para el alt
-            Name = "Biografía" // nombre para el label
+            Name = "Nombre" // nombre para el label
             )]
         [Required(ErrorMessage = "Es obligatorio indicar un nombre.")]
         [StringLength(maximumLength: 100, ErrorMessage = "La descripcion no puede superar 100 caracteres.")]
@@ -62,7 +62,17 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Es obligatorio indicar una biografía.")]
         [StringLength(maximumLength: 1000, ErrorMessage = "La descripcion no puede superar 1000 caracteres.")]
         public string Biografia { get; set; }
-        public string Imagen { get; set; }
+        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos { get; set; }
+
+        // Declaracion de la imagen
+        // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
+        // es de la BD o si es un formulario para introducirla
+        [Display(
+            Prompt = "Pega aquí la ruta de la portada del videojuego.",
+            Description = "Icono de la empresa.",
+            Name = "Imagen")]
+        [Required(ErrorMessage = "Es obligatorio indicar una imagen.")]
+        public IFormFile Imagen { get; set; }
 
     }
 }
