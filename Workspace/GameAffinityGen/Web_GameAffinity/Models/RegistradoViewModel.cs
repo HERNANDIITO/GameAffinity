@@ -64,6 +64,7 @@ namespace Web_GameAffinity.Models
         public int JuegosCompletados { get; set; }
         public int JuegosEmpezados { get; set; }
         public bool following { get; set; }
+        public int afinidad { get; set; }
     }
 
     public class ConfiguracionPerfilViewModel
