@@ -16,7 +16,9 @@
             <div class="foto-usuario">
                 <div class="caratulaNota">
                     <img class="imagenUsuario img-profile-games-etc" src="/Images/@Model.Videojuego.Imagen.FileName" alt="Imagen del Videojuego" />
-                    <span class="nota">@Model.Videojuego.NotaMedia</span>
+                    <div class="nota">
+                        <span class="puntuacion">@Model.Videojuego.NotaMedia</span>
+                    </div>
                 </div>
                 @if (Context.Session.Get<ConfiguracionPerfilViewModel>("user") != null){
                     @foreach(var resenya in Model.Resenyas){
