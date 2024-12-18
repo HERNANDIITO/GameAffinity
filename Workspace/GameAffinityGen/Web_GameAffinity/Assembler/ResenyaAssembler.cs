@@ -1,4 +1,5 @@
 ﻿using GameAffinityGen.ApplicationCore.EN.GameAffinity;
+using NHibernate;
 using Web_GameAffinity.Models;
 
 namespace Web_GameAffinity.Assembler
@@ -10,6 +11,7 @@ namespace Web_GameAffinity.Assembler
             ResenyaViewModel resenya = new ResenyaViewModel();
             if(en != null)
             {
+                NHibernateUtil.Initialize(en.Autor_resenya);
                 resenya.Id = en.Id;
                 resenya.Titulo = en.Titulo;
                 resenya.Texto = en.Texto;
