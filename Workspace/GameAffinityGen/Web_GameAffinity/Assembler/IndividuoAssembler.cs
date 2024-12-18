@@ -17,6 +17,7 @@ namespace Web_GameAffinity.Assembler
             individuo.idNacionalidad = en.Nacionalidad.Id;
             individuo.Biografia = en.Biografia;
             individuo.Videojuegos = en.Videojuegos;
+            individuo.Empresas = en.Empresas;
             individuo.Imagen = FileHelper.ConvertToIFormFile(en.Img);
             return (individuo);
         }

@@ -25,7 +25,7 @@
 
         
         <br />
-        <h4>Videojuegos Desarrollados:</h4>
+        <h4>Videojuegos desarrollados</h4>
         <div class="videogameList row">
             @if (Model.Videojuegos != null && Model.Videojuegos.Any())
             {
@@ -37,6 +37,22 @@
             else
             {
                 <p>No hay videojuegos registrados para esta empresa.</p>
+            }
+        </div>
+
+        <br />
+        <h4>Desarrolladores asociados</h4>
+        <div class="videogameList row">
+            @if (Model.Individuos != null && Model.Individuos.Any())
+            {
+                @foreach (var item in Model.Individuos)
+                {
+                    @Html.Partial("individuoCardDetails", item)
+                }
+            }
+            else
+            {
+                <p>No hay individuos asociados a esta empresa.</p>
             }
         </div>
     </div>

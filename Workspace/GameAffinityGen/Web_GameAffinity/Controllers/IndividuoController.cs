@@ -53,6 +53,11 @@ namespace Web_GameAffinity.Controllers
                     NHibernateUtil.Initialize(individuoEn.Videojuegos);
                 }
 
+                if (individuoEn.Empresas != null)
+                {
+                    NHibernateUtil.Initialize(individuoEn.Empresas);
+                }
+
                 IndividuoViewModel individuoView = new IndividuoAssembler().ConvertirENToViewModel(individuoEn);
                 SessionClose();
                 return View(individuoView);

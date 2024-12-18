@@ -66,7 +66,7 @@ namespace Web_GameAffinity.Models
         [Required(ErrorMessage = "Los videojuegos son obligatorios")]
 
         public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos { get; set; }
-
+        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.IndividuoEN> Individuos { get; set; }
         // Declaracion de la imagen
         // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
         // es de la BD o si es un formulario para introducirla
