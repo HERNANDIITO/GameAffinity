@@ -84,7 +84,9 @@ namespace Web_GameAffinity.Models
     {
         public VideojuegoViewModel Videojuego { get; set; }
         public IList<ResenyaViewModel> Resenyas { get; set; }
-        public IList<ValoracionEN> Valoraciones {get; set; }
+        public IList<ValoracionEN> Valoraciones { get; set; }
         public ListasDeUsuarioViewModel ListasDeUsuario { get; set; }
+        public IList<IndividuoEN> Individuos { get; set; }
+        public IList<EmpresaEN> Empresas { get; set; }
     }
 }
