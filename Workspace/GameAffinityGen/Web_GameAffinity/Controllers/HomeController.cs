@@ -128,9 +128,9 @@ namespace Web_GameAffinity.Controllers
                 resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id == resenya.IdAutor).Nota;
             }
 
-            viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados();
-            viewModel.Popular = videojuegoCEN.GetPopular();
-            viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos();
+            viewModel.UltimasNovedades = videojuegoCEN.GetRecienPublicados().Take(10).ToList<VideojuegoEN>();
+            viewModel.Popular = videojuegoCEN.GetPopular().Take(10).ToList<VideojuegoEN>();
+            viewModel.ProximosLanzamientos = videojuegoCEN.GetLanzamientosProximos().Take(10).ToList<VideojuegoEN>();
             viewModel.empresasDestacadas = empCEN.GetAll(0, 2);
             viewModel.individuos = indCEN.GetAll(0, 2);
             viewModel.ResenyaSeguidos = resenyaSeguidosVM;
