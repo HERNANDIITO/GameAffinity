@@ -1,0 +1,80 @@
+﻿@model Web_GameAffinity.Models.RegistradoDetailsViewModel
+@using Microsoft.AspNetCore.Http
+
+
+<div class="modal fade" id="listaModal" tabindex="-1" role="dialog" aria-labelledby="listaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="listaModalLabel">Añadir videojuego a una lista</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Listas Predeterminadas -->
+                <h4>Listas Predeterminadas</h4>
+                @if (Model.Listas != null && Model.Listas.Any(l => l.Por_defecto))
+                {
+                    <div id="carouselPredeterminadas" class="carousel">
+                        <div class="carousel-inner carousel-body-css">
+                            @for (int i = 0; i < Model.Listas.Where(l => l.Por_defecto).Count(); i++)
+                            {
+                                var lista = Model.Listas.Where(l => l.Por_defecto).ElementAt(i);
+                                <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                                    @Html.Partial("listaCard", lista)
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPredeterminadas" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPredeterminadas" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <p>No hay listas predeterminadas disponibles.</p>
+                }
+
+                <!-- Listas Personalizadas -->
+                <h4>
+                    Listas Personalizadas
+                    <a asp-controller="Lista" asp-action="Create" style="cursor:pointer">
+                        <i class="bi bi-plus-circle-fill"></i>
+                    </a>
+                </h4>
+                @if (Model.Listas != null && Model.Listas.Any(l => !l.Por_defecto))
+                {
+                    <div id="carouselPersonalizadas" class="carousel">
+                        <div class="carousel-inner carousel-body-css">
+                            @for (int i = 0; i < Model.Listas.Where(l => !l.Por_defecto).Count(); i++)
+                            {
+                                var lista = Model.Listas.Where(l => !l.Por_defecto).ElementAt(i);
+                                <div class="carousel-item @(i == 0 ? "active" : "") carousel-item-block-2items" data-interval="2000">
+                                    @Html.Partial("listaCard", lista)
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPersonalizadas" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPersonalizadas" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <p>No hay listas personalizadas disponibles.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

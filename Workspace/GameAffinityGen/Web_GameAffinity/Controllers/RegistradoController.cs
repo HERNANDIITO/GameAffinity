@@ -618,5 +618,22 @@ namespace Web_GameAffinity.Controllers
                 return View();
             }
         }
+
+        public int Afinidad(int suID)
+        {
+            // Obtener el usuario logueado desde la sesión
+            int miID = 0;
+            var userSession = HttpContext.Session.Get<PerfilViewModel>("user");
+            if (userSession != null && userSession.id > 0)
+            {
+                miID = userSession.id;    
+            }
+
+            RegistradoCP regCP = new RegistradoCP(new SessionCPNHibernate());
+            int afinidad = regCP.Consultar_afinidades(miID, suID);
+            return afinidad;
+        }
+
+
     }
 }

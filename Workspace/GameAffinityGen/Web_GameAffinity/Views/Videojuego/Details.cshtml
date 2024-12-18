@@ -1,4 +1,5 @@
 ﻿@model Web_GameAffinity.Models.VideojuegoDetailsViewModel
+
 @using Microsoft.AspNetCore.Http
 @using GameAffinityGen.Infraestructure.Repository.GameAffinity
 @using GameAffinityGen.ApplicationCore.CEN.GameAffinity
@@ -34,6 +35,9 @@
                             Actualizar Reseña
                         </button>
                     }
+                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#listaModal">
+                        Añadir a lista
+                    </button>
                 }
             </div>
             <div class="info-usuario">
@@ -79,3 +83,15 @@
 
 <!-- Modal para añadir reseña -->
 @Html.Partial("resenyaModal", Model)
+
+
+@{
+    var registradoModel = new Web_GameAffinity.Models.RegistradoDetailsViewModel
+            {
+                Listas = Model.Registrado?.Listas // Asegúrate de mapear correctamente las propiedades
+            };
+
+}
+
+<!-- Modal para añadir a lista -->
+@Html.Partial("listaModal", registradoModel)
