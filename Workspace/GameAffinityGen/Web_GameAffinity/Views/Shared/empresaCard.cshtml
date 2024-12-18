@@ -4,7 +4,7 @@
     <section class="videogameScore">
         <span class="score">@Html.DisplayFor(modelItem => Model.Nota)</span>
     </section>
-    <img src=@Model.Img class="videogameImage" onerror="this.src='Images/missing_img.jpg';" />
+    <img src=@Model.Img class="videogameImage" onerror="this.src='/Images/missing_img.jpg';" />
     <span class="videogameName">
         @Html.DisplayFor(modelItem => Model.Nombre)
     </span>

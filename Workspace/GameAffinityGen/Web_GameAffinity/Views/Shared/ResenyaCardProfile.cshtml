@@ -2,7 +2,9 @@
 
 <div class="resenya card bg-light mb-5 row d-flex flex-row p-0" style="min-width: 20rem;">
         <div class="col-md-4 p-0">
+            <a asp-action="Details" asp-controller="Videojuego" asp-route-id="@Model.VideojuegoId">
             <img src="@Model.imageVideojuego" class="img-fluid rounded-start" alt="Imagen del juego" onerror="this.onerror=null; this.src='/Images/missing_img.jpg';" style="object-fit: cover; height: 100%; width: 100%;">
+            </a>
         </div>
         <div class="col-md-8 p-0">
             <div class="card-header">

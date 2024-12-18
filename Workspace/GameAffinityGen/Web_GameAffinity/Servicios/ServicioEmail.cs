@@ -28,7 +28,7 @@ namespace Web_GameAffinity.Servicios
 
             var smtpClient = new SmtpClient(host, puerto);
             smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = false;
+            smtpClient.UseDefaultCredentials = true;
 
             smtpClient.Credentials = new NetworkCredential(emailEmisor, password);
             var mensaje = new MailMessage(emailEmisor!, emailReceptor, tema, cuerpo);

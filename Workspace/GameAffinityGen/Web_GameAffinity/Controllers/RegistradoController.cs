@@ -363,11 +363,21 @@ namespace Web_GameAffinity.Controllers
                 userResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(regEN.Resenya).ToList();
             }
 
+            VideojuegoRepository videojuegoRepository = new VideojuegoRepository(session);
+            VideojuegoCEN videojuegoCEN = new VideojuegoCEN(videojuegoRepository);
+
+            ValoracionRepository valoracionRepository = new ValoracionRepository(session);
+            ValoracionCEN valoracionCEN = new ValoracionCEN(valoracionRepository);
+
             foreach (var resenya in userResenyas)
             {
-                resenya.NombreVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Nombre;
-                resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id == resenya.IdAutor).Nota;
-                resenya.imageVideojuego = new VideojuegoCEN(new VideojuegoRepository(session)).GetByoID(resenya.VideojuegoId).Imagen;
+                VideojuegoEN videojuego = videojuegoCEN.GetByoID(resenya.VideojuegoId);
+                IList<ValoracionEN> valoracionesJuego = valoracionCEN.DameValoracionesJuego(resenya.Id);
+                ValoracionEN valoracion = valoracionesJuego.FirstOrDefault(j => j.Autor_valoracion.Id == resenya.IdAutor);
+
+                resenya.NombreVideojuego = videojuego.Nombre;
+                resenya.Valoracion = valoracion != null ? valoracion.Nota : 0;
+                resenya.imageVideojuego = videojuego.Imagen;
             }
             
             PerfilViewModel loggedUser = HttpContext.Session.Get<PerfilViewModel>("user");

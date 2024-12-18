@@ -1,5 +1,9 @@
 ﻿@import "colors.css";
 
+.card-footer.bg-light.text-center {
+  display: flex;
+  justify-content: center;
+}
 
 .resenya {
   width: 100%;
