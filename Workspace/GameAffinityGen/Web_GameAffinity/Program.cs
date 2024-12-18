@@ -1,3 +1,5 @@
+using Web_GameAffinity.Servicios;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +13,15 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromSeconds(1000);
     options.Cookie.IsEssential = true;
 });
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Tiempo de expiración de la sesión
+    options.Cookie.HttpOnly = true; // Seguridad para evitar accesos JS
+    options.Cookie.IsEssential = true; // Necesario para funcionamiento
+});
+
+builder.Services.AddTransient<IServicioEmail, ServicioEmail>();
 
 var app = builder.Build();
 

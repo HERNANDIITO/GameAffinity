@@ -48,6 +48,13 @@ namespace Web_GameAffinity.Models
         public int Valoracion { get; set; }
         
         public IList<InteraccionViewModel> Interacciones {  get; set; }
+
+        public string NombreVideojuego { get; set; }
+
+        public string imageVideojuego { get; set; }
+        //public IList<> Interacciones
+
+        //public float Valoracion { get; set; }
     }
 
     public class PostResenyaViewModel

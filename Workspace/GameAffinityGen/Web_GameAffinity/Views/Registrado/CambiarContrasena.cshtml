@@ -1,0 +1,40 @@
+﻿@model Web_GameAffinity.Models.NuevaContrasena
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-container">
+    <div class="titles-container">
+        <div class="title">
+            <h2>Cambiar Contrasena</h2>
+        </div>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+    </div>
+    <div class="login-container">
+        <form asp-controller="Registrado" asp-action="CambiarContrasena" class="login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="inputs-container">
+                <input type="hidden" name="email" value="@ViewData["Email"]" />
+                <div>
+                    <label asp-for="contrasena" class="label">Contrasenya<span class="need">*</span></label>
+                    <input asp-for="contrasena" type="password" name="contrasena" class="form-control form-control-lg" id="exampleInputEmail1" />
+                    <span asp-validation-for="contrasena" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="repContrasena" class="label">Repetir Contrasenya<span class="need">*</span></label>
+                    <input asp-for="repContrasena" type="password" name="repContrasena" class="form-control form-control-lg" id="exampleInputEmail1" />
+                    <span asp-validation-for="repContrasena" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="login-button">
+                <input type="submit" value="Entrar" class="btn btn-primary btn-sm" />
+                <span><a class="loginLink" asp-controller="Registrado" asp-action="Login">Volver al login</a></span>
+            </div>
+        </form>
+    </div>
+</div>

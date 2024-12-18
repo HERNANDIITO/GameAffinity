@@ -1,0 +1,33 @@
+﻿@model Web_GameAffinity.Models.ResenyaViewModel
+
+
+<div class="resenya card bg-light mb-5 row" style="min-width: 20rem;">
+    <div class="card-header">
+        <h5>@Html.DisplayFor(model => model.Titulo)</h5>
+        <span class="nota" style="margin: 0">
+            @Html.DisplayFor(model => model.Valoracion)
+        </span>
+    </div>
+    
+    <div class="card-body">
+        <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
+        <p>
+            Autor:
+            <a asp-action="DetailsUsuario" asp-controller="Registrado" asp-route-id="@Model.Id" class="card-text">
+                @Html.DisplayFor(model => model.NombreAutor)
+            </a>
+        </p>
+    </div>
+
+    <div class="card-footer bg-light text-center">
+        <button class="btn btn-light mr-1">
+            <i class="bi bi-hand-thumbs-up"></i>
+            <span class="ml-1">@Html.DisplayFor(model => model.Likes_contador)</span>
+        </button>
+        
+        <button class="btn btn-light mr-1">
+            <i class="bi bi-hand-thumbs-down"></i>
+            <span class="ml-1">@Html.DisplayFor(model => model.Dislikes_contador)</span>
+        </button>
+    </div>
+</div>

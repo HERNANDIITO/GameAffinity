@@ -60,8 +60,10 @@ namespace Web_GameAffinity.Models
     {
         public RegistradoEN Registrado { get; set; }
         public IList<ListaEN> Listas { get; set; }
+        public IList<ResenyaViewModel> Resenyas { get; set; }
         public int JuegosCompletados { get; set; }
         public int JuegosEmpezados { get; set; }
+        public bool following { get; set; }
     }
 
     public class ConfiguracionPerfilViewModel
@@ -142,5 +144,20 @@ namespace Web_GameAffinity.Models
         public string imagen { get; set; }
 
         public bool ShowSaveModal { get; set; } = false;
+    }
+    public class EmailReceptor
+    {
+        public string emailReceptor { get; set; }
+    }
+
+    public class NuevaContrasena
+    {
+        public string email { get; set; }
+
+        [DataType(DataType.Password)]
+        public string contrasena { get; set; }
+        
+        [DataType(DataType.Password)]
+        public string repContrasena { get; set; }
     }
 }

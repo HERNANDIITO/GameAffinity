@@ -20,11 +20,26 @@
 
                     }
                 </h2>
-                <h4>Juegos Completados: @Model.JuegosCompletados</h4><br/>
-                <h4>Juegos Empezados @Model.JuegosEmpezados</h4>
-                <div class="boton-configuracion">
-                    @Html.ActionLink("Configuración", "Edit", new { id = Model.Registrado.Id }, new { @class = "btn btn-primary" })
-                </div>
+                <h5>Juegos Completados: @Model.JuegosCompletados</h5><br/>
+                <h5>Juegos Empezados: @Model.JuegosEmpezados</h5>
+                
+                @* Comprobamos que haya una sesion iniciada *@
+                @if (Context.Session.Get<PerfilViewModel>("user") != null)
+                {
+                    PerfilViewModel userViewModel = Context.Session.Get<PerfilViewModel>("user");
+
+                    // En caso de que el usuario no lo siga
+                    if ( Model.following == false ) {
+                        <form method="post" asp-controller="Registrado" asp-action="Seguir" asp-route-id="@Model.Registrado.Id">
+                            <button type="submit" class="btn btn-primary">Seguir <i class="bi bi-person-fill-add"></i> </button>
+                        </form>
+                    } else {
+                    // En caso de que el usuario lo siga
+                        <form method="post" asp-controller="Registrado" asp-action="DejarDeSeguir" asp-route-id="@Model.Registrado.Id">
+                            <button class="btn btn-danger">Dejar de seguir <i class="bi bi-person-fill-dash"></i> </button>
+                        </form>
+                    }
+                }
             </div>
         </div>
 
@@ -56,11 +71,7 @@
             <p>No hay listas predeterminadas disponibles.</p>
         }
 
-        <h4>Listas Personalizadas
-            <a asp-controller="Lista" asp-action="Create" style="cursor:pointer">
-                <i class="bi bi-plus-circle-fill"></i>
-            </a>
-        </h4>
+        <h4>Listas Personalizadas</h4>
         @if (Model.Listas != null && Model.Listas.Any(l => !l.Por_defecto))
         {
             <div id="carouselPersonalizadas" class="carousel">

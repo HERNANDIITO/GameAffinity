@@ -39,34 +39,31 @@
 <div>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
-    
 </div>
 
 <section class="row">
     <h4>Videojuegos de la lista</h4>
     <div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAñadirVideojuego">
-            Añadir juego
-        </button>
-        <button type="button" class="btn btn-danger" onclick="eliminarVideojuego(@Model.Id)">
-            Eliminar juego
+            Editar contenido
         </button>
     </div>
     
-    <div class="videogameList row">
-        @foreach (var item in Model.Videojuegos)
-        {
-            @Html.Partial("videojuegoCard", item)
-        }
-    </div>
+    @Html.Partial("videojuegoCardList", Model.Videojuegos)
+
 </section>
 
 
 
 
 
-
-<div class="modal fade" id="modalAñadirVideojuego" tabindex="-1" aria-labelledby="modalAñadirVideojuegoLabel" aria-hidden="true">
+<!-- Modal para añadir videojuego -->
+<div class="modal fade @(Context.Request.Query["showModal"] == "true" ? "show" : "")"
+     id="modalAñadirVideojuego"
+     tabindex="-1"
+     aria-labelledby="modalAñadirVideojuegoLabel"
+     aria-hidden="@(Context.Request.Query["showModal"] != "true")"
+     style="display: @(Context.Request.Query["showModal"] == "true" ? "block" : "none");">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -74,11 +71,55 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="mb-3">
-                    <input type="text" id="busquedaVideojuego" class="form-control" placeholder="Busca un videojuego por su nombre" oninput="buscarVideojuegos(this.value)">
-                </div>
-                <div id="resultadosVideojuegos" class="row gy-3">
-                    <!-- Las tarjetas de videojuegos se renderizan aquí -->
+                <!-- Barra de búsqueda dentro del modal -->
+                <form method="get">
+                    <input type="hidden" name="showModal" value="true" />
+                    <div class="input-group mb-4">
+                        <input type="text" name="query" class="form-control" placeholder="Buscar..." value="@Context.Request.Query["query"]" />
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </div>
+                </form>
+
+                <!-- Resultados -->
+                <div class="row d-flex justify-content-around gy-3">
+                    @foreach (var videojuego in Model.TodosLosVideojuegos)
+                    {
+                        if (string.IsNullOrEmpty(Context.Request.Query["query"]) || videojuego.Nombre.Contains(Context.Request.Query["query"], StringComparison.OrdinalIgnoreCase))
+                        {
+                                @if (Model.Videojuegos.Any(v => v.Id == videojuego.Id))
+                                {
+                                    <!-- Carta para eliminar -->
+                                    <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete" class="hoverCard col-4 col-md-3 col-lg-2 videogame">
+                                        <button type="submit" class="background deleteFromList"><h1><i class="bi bi-x-circle"></i></h1></button>
+                                        <section class="videogameScore">
+                                            <span class="score">@Html.DisplayFor(modelItem => videojuego.Nota_media)</span>
+                                        </section>
+                                        <img src=@videojuego.Imagen class="videogameImage" onerror="this.src='/Images/missing_img.jpg';" />
+                                        <span class="videogameName">
+                                            @Html.DisplayFor(modelItem => videojuego.Nombre)
+                                        </span>
+                                        <input type="hidden" name="listaId" value="@Model.Id" />
+                                        <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                    </form>
+                                }
+                                else
+                                {
+                                <!-- Carta para agregar -->
+                                    <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post" class="hoverCard col-4 col-md-3 col-lg-2 videogame">
+                                    <button type="submit" class="background addToList"><h1><i class="bi bi-plus-circle"></i></h1></button>
+                                        <section class="videogameScore">
+                                            <span class="score">@Html.DisplayFor(modelItem => videojuego.Nota_media)</span>
+                                        </section>
+                                        <img src=@videojuego.Imagen class="videogameImage" onerror="this.src='/Images/missing_img.jpg';" />
+                                        <span class="videogameName">
+                                            @Html.DisplayFor(modelItem => videojuego.Nombre)
+                                        </span>
+                                        <input type="hidden" name="listaId" value="@Model.Id" />
+                                        <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                    </form>
+                                }
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -86,22 +127,49 @@
 </div>
 
 
-<div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
+<!-- Script para reapertura automática -->
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const queryParam = new URLSearchParams(window.location.search);
+        if (queryParam.get("showModal") === "true") {
+            const modal = new bootstrap.Modal(document.getElementById("modalAñadirVideojuego"));
+            modal.show();
+        }
+    });
+</script>
+
+
+
+
+
+<!-- Modal de eliminar videojeugo -->
+
+@* delete david
+<div class="modal fade" id="modalEliminarVideojuego" tabindex="-1" aria-labelledby="modalEliminarVideojuegoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="modalEliminarVideojuegoLabel">Eliminar Videojuego</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="row gy-3">
+                    @foreach (var videojuego in Model.Videojuegos)
+                    {
+                        <div class="col-lg-6">
+                            <!-- Esta clase es la que hace que se vean pequenyitas las cards juego -->
+                            @Html.Partial("VideojuegoCard", videojuego)
+                            <!-- Formulario para añadir videojuego -->
+                            <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete">
+                                <input type="hidden" name="listaId" value="@Model.Id" />
+                                <input type="hidden" name="videojuegoId" value="@videojuego.Id" />
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>
 </div>
+*@

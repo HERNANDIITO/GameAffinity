@@ -1,0 +1,34 @@
+﻿@model Web_GameAffinity.Models.ResenyaViewModel
+
+<div class="resenya card bg-light mb-5 row d-flex flex-row p-0" style="min-width: 20rem;">
+        <div class="col-md-4 p-0">
+            <img src="@Model.imageVideojuego" class="img-fluid rounded-start" alt="Imagen del juego" onerror="this.onerror=null; this.src='/Images/missing_img.jpg';" style="object-fit: cover; height: 100%; width: 100%;">
+        </div>
+        <div class="col-md-8 p-0">
+            <div class="card-header">
+                <h5>@Html.DisplayFor(model => model.Titulo)</h5>
+                <span class="nota" style="margin: 0">
+                    @Html.DisplayFor(model => model.Valoracion)
+                </span>
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
+                <p>
+                    Videojuego:
+                    <a asp-action="Details" asp-controller="Videojuego" asp-route-id="@Model.VideojuegoId" class="card-text">
+                        @Html.DisplayFor(model => model.NombreVideojuego)
+                    </a>
+                </p>
+            </div>
+            <div class="card-footer bg-light text-center">
+                <button class="btn btn-light mr-1">
+                    <i class="bi bi-hand-thumbs-up"></i>
+                    <span class="ml-1">@Html.DisplayFor(model => model.Likes_contador)</span>
+                </button>
+                <button class="btn btn-light mr-1">
+                    <i class="bi bi-hand-thumbs-down"></i>
+                    <span class="ml-1">@Html.DisplayFor(model => model.Dislikes_contador)</span>
+                </button>
+            </div>
+        </div>
+</div>

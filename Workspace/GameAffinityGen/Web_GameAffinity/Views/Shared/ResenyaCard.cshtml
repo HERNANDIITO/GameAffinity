@@ -11,6 +11,7 @@
         Console.WriteLine("user is not null");
         userId = user.id;
 
+
         userInteraccion = Model.Interacciones.FirstOrDefault<InteraccionViewModel>(r => r.IdAutor == userId);
 
         if ( userInteraccion != null ) {
@@ -31,11 +32,25 @@
 
 <div class="card bg-light mb-3" style="min-width: 20rem;">
     <div class="card-header">@Html.DisplayFor(model => model.NombreAutor) - @Html.DisplayFor(model => model.Valoracion)</div>
+
+<div class="resenya card bg-light mb-5 row" style="min-width: 20rem;">
+    <div class="card-header">
+        <h5>@Html.DisplayFor(model => model.Titulo)</h5>
+        <span class="nota" style="margin: 0">
+            @Html.DisplayFor(model => model.Valoracion)
+        </span>
+  </div>
     
     <div class="card-body">
-        <h5 class="card-title">@Html.DisplayFor(model => model.Titulo)</h5>
         <p class="card-text">@Html.DisplayFor(model => model.Texto)</p>
+        <p>
+            Autor:
+            <a asp-action="DetailsUsuario" asp-controller="Registrado" asp-route-id="@Model.IdAutor" class="card-text">
+                @Html.DisplayFor(model => model.NombreAutor)
+            </a>
+        </p>
     </div>
+
     <div class="card-footer bg-light text-center">
         <form 
             asp-controller="Interaccion" 
