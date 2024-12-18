@@ -82,7 +82,7 @@
                                 @if (Model.Videojuegos.Any(v => v.Id == videojuego.Id))
                                 {
                                     <!-- Carta para eliminar -->
-                                    <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete" class="hoverCard col-4 col-md-3 col-lg-2 videogame">
+                                    <form asp-controller="Lista" asp-action="EliminarVideojuego" method="delete" class="hoverCard m-1 col-4 col-md-3 col-lg-2 videogame">
                                         <button type="submit" class="background deleteFromList"><h1><i class="bi bi-x-circle"></i></h1></button>
                                         <section class="videogameScore">
                                             <span class="score">@Html.DisplayFor(modelItem => videojuego.Nota_media)</span>
@@ -98,7 +98,7 @@
                                 else
                                 {
                                 <!-- Carta para agregar -->
-                                    <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post" class="hoverCard col-4 col-md-3 col-lg-2 videogame">
+                                <form asp-controller="Lista" asp-action="AnyadirVideojuego" method="post" class="hoverCard m-1 col-4 col-md-3 col-lg-2 videogame">
                                     <button type="submit" class="background addToList"><h1><i class="bi bi-plus-circle"></i></h1></button>
                                         <section class="videogameScore">
                                             <span class="score">@Html.DisplayFor(modelItem => videojuego.Nota_media)</span>
