@@ -16,7 +16,7 @@ namespace Web_GameAffinity.Controllers
     public class InteraccionController : BasicController
     {
         [HttpPost]
-        public ActionResult InteraccionCambia(int idresenya, int idusuario, int operation)
+        public ActionResult InteraccionCambia(int idresenya, int idusuario, int operation, string contr)
         {
             SessionInitialize();
             InteraccionEN userInteraccion = null;
@@ -27,7 +27,8 @@ namespace Web_GameAffinity.Controllers
 
             ResenyaCEN resenyaCEN = new ResenyaCEN(resenyaRepo);
             ResenyaEN resenya = resenyaCEN.GetByOID(idresenya);
-
+            
+            int idUserRes = resenya.Autor_resenya.Id;
             if (idusuario > 0)
             {
                 // bucamos la interaccion del usuario
@@ -85,7 +86,11 @@ namespace Web_GameAffinity.Controllers
                 return RedirectToAction("Login", "Registrado");
             }
             SessionClose();
-            return RedirectToAction("Details", "Videojuego", new { id = resenya.Videojuego.Id  });
+            if(contr == "juego")
+                return RedirectToAction("Details", "Videojuego", new { id = resenya.Videojuego.Id });
+            else{
+                return RedirectToAction("DetailsUsuario", "Registrado", new { id = idUserRes });
+            }
         }
     }
 }

@@ -823,51 +823,6 @@
       ]
     },
     {
-      "Route": "css/Resenya.aki721qnks.css",
-      "AssetFile": "css/Resenya.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "915"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"RmAJV/UoiUyMYG7hCSWlEeYL9Koii1M0wLDWn4fJRgU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 18 Dec 2024 16:06:45 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "aki721qnks"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-RmAJV/UoiUyMYG7hCSWlEeYL9Koii1M0wLDWn4fJRgU="
-        },
-        {
-          "Name": "label",
-          "Value": "css/Resenya.css"
-        }
-      ]
-    },
-    {
       "Route": "css/Resenya.css",
       "AssetFile": "css/Resenya.css",
       "Selectors": [],
@@ -882,7 +837,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "915"
+          "Value": "1065"
         },
         {
           "Name": "Content-Type",
@@ -890,17 +845,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RmAJV/UoiUyMYG7hCSWlEeYL9Koii1M0wLDWn4fJRgU=\""
+          "Value": "\"aek42nFVQoGJ73SMuiY2pUT30cjtpTzPxT/vZxlwnuI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 18 Dec 2024 16:06:45 GMT"
+          "Value": "Wed, 18 Dec 2024 21:40:14 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-RmAJV/UoiUyMYG7hCSWlEeYL9Koii1M0wLDWn4fJRgU="
+          "Value": "sha256-aek42nFVQoGJ73SMuiY2pUT30cjtpTzPxT/vZxlwnuI="
+        }
+      ]
+    },
+    {
+      "Route": "css/Resenya.n0457j6a1v.css",
+      "AssetFile": "css/Resenya.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1065"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aek42nFVQoGJ73SMuiY2pUT30cjtpTzPxT/vZxlwnuI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Dec 2024 21:40:14 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n0457j6a1v"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aek42nFVQoGJ73SMuiY2pUT30cjtpTzPxT/vZxlwnuI="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Resenya.css"
         }
       ]
     },
@@ -3857,51 +3857,6 @@
       ]
     },
     {
-      "Route": "css/videogame.70psdrya04.css",
-      "AssetFile": "css/videogame.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1626"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"l4Z/PFsgAcoKjJQLxw9gu0QKXPIPdUXonUeb/iVEA+o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 15 Dec 2024 16:57:37 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "70psdrya04"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-l4Z/PFsgAcoKjJQLxw9gu0QKXPIPdUXonUeb/iVEA+o="
-        },
-        {
-          "Name": "label",
-          "Value": "css/videogame.css"
-        }
-      ]
-    },
-    {
       "Route": "css/videogame.css",
       "AssetFile": "css/videogame.css",
       "Selectors": [],
@@ -3916,7 +3871,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1626"
+          "Value": "1645"
         },
         {
           "Name": "Content-Type",
@@ -3924,17 +3879,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"l4Z/PFsgAcoKjJQLxw9gu0QKXPIPdUXonUeb/iVEA+o=\""
+          "Value": "\"suupg4yF61tKxPLzzc5KUKhlvHpr/KPpwYlgo/tJfQE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 15 Dec 2024 16:57:37 GMT"
+          "Value": "Wed, 18 Dec 2024 21:40:14 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-l4Z/PFsgAcoKjJQLxw9gu0QKXPIPdUXonUeb/iVEA+o="
+          "Value": "sha256-suupg4yF61tKxPLzzc5KUKhlvHpr/KPpwYlgo/tJfQE="
+        }
+      ]
+    },
+    {
+      "Route": "css/videogame.iwmbjki73g.css",
+      "AssetFile": "css/videogame.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1645"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"suupg4yF61tKxPLzzc5KUKhlvHpr/KPpwYlgo/tJfQE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Dec 2024 21:40:14 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iwmbjki73g"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-suupg4yF61tKxPLzzc5KUKhlvHpr/KPpwYlgo/tJfQE="
+        },
+        {
+          "Name": "label",
+          "Value": "css/videogame.css"
         }
       ]
     },
