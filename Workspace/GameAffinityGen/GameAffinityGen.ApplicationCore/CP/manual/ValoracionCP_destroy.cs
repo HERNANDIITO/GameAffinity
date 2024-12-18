@@ -33,7 +33,7 @@ public void Destroy (int p_Valoracion_OID)
                 VideojuegoEN videojuego = videojuegoCEN.GetByoID (valoracionEN.Videojuego_valorado.Id);
 
                 // Recalculamos la nota media
-                int notaMedia = 0;
+                float notaMedia = 0;
                 IList<ValoracionEN> listaValoraciones = valoracionCEN.DameValoracionesJuego (videojuego.Id);
                 listaValoraciones.Remove (valoracionEN);
 
