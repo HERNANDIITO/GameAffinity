@@ -294,6 +294,8 @@ namespace Web_GameAffinity.Controllers
                 resenya.Valoracion = new ValoracionCEN(new ValoracionRepository(session)).DameValoracionesJuego(resenya.VideojuegoId).FirstOrDefault(j => j.Autor_valoracion.Id  == resenya.IdAutor).Nota;
             }
 
+            userResenyas = userResenyas.OrderByDescending(r => (r.Likes_contador - r.Dislikes_contador)).ToList();
+
             var user = new RegistradoDetailsViewModel
             {
                 Registrado = registrado,
@@ -400,6 +402,8 @@ namespace Web_GameAffinity.Controllers
                     }
                 }
             }
+
+            userResenyas = userResenyas.OrderByDescending(r => (r.Likes_contador - r.Dislikes_contador)).ToList();
 
             var user = new RegistradoDetailsViewModel
             {
