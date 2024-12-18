@@ -1,51 +1,45 @@
 ﻿@model Web_GameAffinity.Models.IndividuoViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "DetailsIndividuo";
 }
 
-<h1>Detalles</h1>
+<main class="main-content-profile">
+    <div class="full-profile-container">
+        <div class="perfil-usuario">
+            <div class="foto-usuario">
+                <div class="caratulaNota">
+                    <img class="imagenUsuario" src="/Images/@Model.Imagen.FileName" alt="Imagen del Individuo" />
+                </div>
+            </div>
+            <div class="info-usuario">
+                <h2 class="Name-User-Profile">@Model.Nombre @Model.Apellido</h2>
+                <h5>Fecha de nacimiento:</h5>
+                <p>@Model.FechaNac.Value.ToString("dd/MM/yyyy")</p>
+                <h5>Nacionalidad:</h5>
+                <p>@Model.nombreNacionalidad</p>
+                <h5>Rol:</h5>
+                <p>@Model.Rol</p>
+            </div>
+        </div>
+        <h4>Biografía:</h4>
+        <p>@Model.Biografia</p>
 
-<div>
-    <h4>Individuo</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Apellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaNac)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaNac)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nombreNacionalidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.nombreNacionalidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rol)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rol)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Biografia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Biografia)
-        </dd>
-    </dl>
-</div>
+        <br />
 
+        <h4>Videojuegos Asociados:</h4>
+        <div class="videogameList row">
+            @if (Model.Videojuegos != null && Model.Videojuegos.Any())
+            {
+                @foreach (var item in Model.Videojuegos)
+                {
+                    @Html.Partial("videojuegoCardDetails", item)
+                }
+            }
+            else
+            {
+                <p>No hay videojuegos asociados con este individuo.</p>
+            }
+        </div>
+    </div>
+</main>

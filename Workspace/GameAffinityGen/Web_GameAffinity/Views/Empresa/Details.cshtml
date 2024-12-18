@@ -4,42 +4,40 @@
     ViewData["Title"] = "DetailsEmpresa";
 }
 
-<h1>Detalles de la empresa</h1>
-<hr />
+<main class="main-content-profile">
+    <div class="full-profile-container">
+        <div class="perfil-usuario">
+            <div class="foto-usuario">
+                <div class="caratulaNota">
+                    <img class="imagenUsuario" src="/Images/@Model.Imagen.FileName" alt="Imagen de la Empresa" />
+                    @if (Model.Nota != null)
+                    {
+                        <span class="nota">@Model.Nota</span>
+                    }
+                </div>
+            </div>
+            <div class="info-usuario">
+                <h2 class="Name-User-Profile">@Model.Nombre</h2>
+                <h4>Descripción:</h4>
+                <p>@Model.Descripcion</p>
+            </div>
+        </div>
 
-<div>
-    <img class="caratula" src="/Images/@Model.Imagen.FileName">
-    <dl class="row">
-        <dt class = "col-sm-2">
-            Nombre:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            Descripción:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            Nota:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nota)
-        </dd>
-    </dl>
-
-    <div class="videogameList row">
-
-        @foreach (var item in Model.Videojuegos)
-        {
-            @Html.Partial("videojuegoCard", item)
-        }
+        
+        <br />
+        <h4>Videojuegos Desarrollados:</h4>
+        <div class="videogameList row">
+            @if (Model.Videojuegos != null && Model.Videojuegos.Any())
+            {
+                @foreach (var item in Model.Videojuegos)
+                {
+                    @Html.Partial("videojuegoCardDetails", item)
+                }
+            }
+            else
+            {
+                <p>No hay videojuegos registrados para esta empresa.</p>
+            }
+        </div>
     </div>
-
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+</main>
