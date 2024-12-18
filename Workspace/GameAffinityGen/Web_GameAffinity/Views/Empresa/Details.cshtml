@@ -12,7 +12,11 @@
                     <img class="imagenUsuario" src="/Images/@Model.Imagen.FileName" alt="Imagen de la Empresa" />
                     @if (Model.Nota != null)
                     {
-                        <span class="nota">@Model.Nota</span>
+                        <div class="nota">
+                            <div class="puntuacion">
+                                @Model.Nota
+                            </div>
+                        </div>
                     }
                 </div>
             </div>

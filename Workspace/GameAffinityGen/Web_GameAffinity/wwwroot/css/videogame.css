@@ -34,6 +34,7 @@
     padding: 4px 8px;
     color: var(--light);
     background: var(--primary);
+    flex-grow: 1;
   }
 
   .videogameScore {
