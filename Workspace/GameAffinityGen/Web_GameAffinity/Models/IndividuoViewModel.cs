@@ -63,6 +63,7 @@ namespace Web_GameAffinity.Models
         [StringLength(maximumLength: 1000, ErrorMessage = "La descripcion no puede superar 1000 caracteres.")]
         public string Biografia { get; set; }
         public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.VideojuegoEN> Videojuegos { get; set; }
+        public System.Collections.Generic.IList<GameAffinityGen.ApplicationCore.EN.GameAffinity.EmpresaEN> Empresas { get; set; }
 
         // Declaracion de la imagen
         // Display define unos atributos que nos ayudan a la hora de mostrar esta imagen tanto si 
