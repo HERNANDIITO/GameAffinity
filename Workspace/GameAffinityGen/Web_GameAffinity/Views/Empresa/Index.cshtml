@@ -1,25 +1,43 @@
 ﻿@model IEnumerable<Web_GameAffinity.Models.EmpresaViewModel>
 
+@using GameAffinityGen.ApplicationCore.CEN.GameAffinity;
+@using GameAffinityGen.ApplicationCore.EN.GameAffinity;
+@using GameAffinityGen.Infraestructure.Repository.GameAffinity;
+
+
 @{
     ViewData["Title"] = "Index";
+    var user = Context.Session.Get<ConfiguracionPerfilViewModel>("user");
 }
 
-<h1>Lista de Empresas</h1>
+<h1>Empresas</h1>
 
 <p>
-    <a class="btn btn-primary" asp-action="Create">Crear nueva empresa</a>
+    @if (user != null)
+    {
+        ModeradorRepository repo = new ModeradorRepository();
+        ModeradorCEN cen = new ModeradorCEN(repo);
+        ModeradorEN esModerador = cen.GetByOID(user.id);
+
+        if (esModerador != null)
+        {
+            <a class="btn btn-primary" asp-action="Create">Crear nueva empresa</a>
+        }
+        
+    }
+    
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                Descripción
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nota)
+                Nota
             </th>
         </tr>
     </thead>
@@ -36,11 +54,22 @@
                 @Html.DisplayFor(modelItem => item.Nota)
             </td>
             <td>
-                <div class="btn-group" role="group">
-                    <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
-                    <a class="btn btn-info" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
-                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Eliminar</a>
-                </div>
+                @if (user != null)
+                {
+                    ModeradorRepository repo = new ModeradorRepository();
+                    ModeradorCEN cen = new ModeradorCEN(repo);
+                    ModeradorEN esModerador = cen.GetByOID(user.id);
+
+                    if (esModerador != null)
+                    {
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                            <a class="btn btn-info" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
+                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Eliminar</a>
+                        </div>
+                    }
+
+                }   
             </td>
         </tr>
 }
