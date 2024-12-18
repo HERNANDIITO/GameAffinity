@@ -100,6 +100,8 @@ namespace Web_GameAffinity.Controllers
                 listaResenyas = new ResenyaAssembler().ConvertirListaENtoViewModel(videojuegoEn.Resenyas).ToList();
             }
 
+            listaResenyas = listaResenyas.OrderByDescending(r => (r.Likes_contador - r.Dislikes_contador)).ToList();
+
             if (videojuegoEn.Valoracion != null)
             {
                 NHibernateUtil.Initialize(videojuegoEn.Valoracion);

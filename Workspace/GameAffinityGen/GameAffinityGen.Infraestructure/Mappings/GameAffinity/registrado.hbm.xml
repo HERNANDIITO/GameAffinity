@@ -94,16 +94,14 @@
 					
 					
 					
-						<bag name="Seguidos" table="registrado_registrado_0" > 
+						<bag name="Seguidos" table="[registrado_registrado_0]" >
 							<key>
-								
 									<column name="FK_idRegistrado_idRegistrado_0"/> 
 							</key>
       						<many-to-many class="GameAffinityGen.Infraestructure.EN.GameAffinity.RegistradoNH">
-									<column name="FK_idRegistrado_idRegistrado" unique="true"/> 
+									<column name="FK_idRegistrado_idRegistrado"/> 
       						</many-to-many>
-    					</bag>
-    				
+    					</bag>		
 					
 					
 					

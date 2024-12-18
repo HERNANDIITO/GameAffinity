@@ -28,8 +28,8 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN New_ (string
         try
         {
                 CPSession.SessionInitializeTransaction ();
-                RegistradoCEN   registradoCEN   = new RegistradoCEN(CPSession.UnitRepo.RegistradoRepository);
-                ListaCEN        listaCEN        = new ListaCEN(CPSession.UnitRepo.ListaRepository);
+                RegistradoCEN registradoCEN = new RegistradoCEN (CPSession.UnitRepo.RegistradoRepository);
+                ListaCEN listaCEN = new ListaCEN (CPSession.UnitRepo.ListaRepository);
 
                 int oid;
                 //Initialized RegistradoEN
@@ -53,30 +53,30 @@ public GameAffinityGen.ApplicationCore.EN.GameAffinity.RegistradoEN New_ (string
 
                 result = registradoCEN.get_IRegistradoRepository ().ReadOIDDefault (oid);
 
-                int juegosCompletados   = listaCEN.New_(
-                    "Juegos completados",
-                    "Lista de juegos compeltados",
-                    true, oid, "");
+                int juegosCompletados = listaCEN.New_ (
+                        "Juegos completados",
+                        "Lista de juegos compeltados",
+                        true, oid, "");
 
-                int juegosPendientes = listaCEN.New_(
-                    "Juegos pendientes",
-                    "Lista de juegos que tienes pensado jugaR",
-                    true, oid, "");
+                int juegosPendientes = listaCEN.New_ (
+                        "Juegos pendientes",
+                        "Lista de juegos que tienes pensado jugaR",
+                        true, oid, "");
 
-                int juegosDroppeados = listaCEN.New_(
-                    "Juegos abandonados", 
-                    "Lista de juegos que empezaste y no planeas terminar",
-                    true, oid, "");
+                int juegosDroppeados = listaCEN.New_ (
+                        "Juegos abandonados",
+                        "Lista de juegos que empezaste y no planeas terminar",
+                        true, oid, "");
 
-                int juegosValorados = listaCEN.New_(
-                    "Juegos valorados",
-                    "Lista de juegos que has valorado",
-                    true, oid, "");
+                int juegosValorados = listaCEN.New_ (
+                        "Juegos valorados",
+                        "Lista de juegos que has valorado",
+                        true, oid, "");
 
-                int juegosJugando = listaCEN.New_(
-                    "Juegos empezados",
-                    "Lista de juegos que estás jugando ahora mismo",
-                    true, oid, "");
+                int juegosJugando = listaCEN.New_ (
+                        "Juegos empezados",
+                        "Lista de juegos que estï¿½s jugando ahora mismo",
+                        true, oid, "");
 
                 CPSession.Commit ();
         }

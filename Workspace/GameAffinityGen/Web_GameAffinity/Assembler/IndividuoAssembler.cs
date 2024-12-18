@@ -5,7 +5,7 @@ namespace Web_GameAffinity.Assembler
 {
     public class IndividuoAssembler
     {
-        public IndividuoViewModel ConvertirENToViewModel( IndividuoEN en)
+        public IndividuoViewModel ConvertirENToViewModel(IndividuoEN en)
         {
             IndividuoViewModel individuo = new IndividuoViewModel();
             individuo.Id = en.Id;
@@ -16,7 +16,9 @@ namespace Web_GameAffinity.Assembler
             individuo.nombreNacionalidad = en.Nacionalidad.Nombre;
             individuo.idNacionalidad = en.Nacionalidad.Id;
             individuo.Biografia = en.Biografia;
-            return( individuo );
+            individuo.Videojuegos = en.Videojuegos;
+            individuo.Imagen = FileHelper.ConvertToIFormFile(en.Img);
+            return (individuo);
         }
         public IList<IndividuoViewModel> ConvertirListaENtoViewModel(IList<IndividuoEN> ens)
         {
