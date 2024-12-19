@@ -4,8 +4,8 @@
 .afinidad-wrapper {
   width: 100%;
   margin: 0 auto;
-  position: absolute;
-  top: 45px;
+  position: relative;
+  height: 180px;
 }
 
 .progress {
@@ -17,7 +17,6 @@
   margin: 20px;
   box-shadow: none;
   position: absolute;
-  left: 100%;
 }
 
   .progress:after {
@@ -34,7 +33,6 @@
 
 .afinidad-label {
   position: absolute;
-  left: 100%;
   width: 190px;
   text-align: center;
   top: -5px;
