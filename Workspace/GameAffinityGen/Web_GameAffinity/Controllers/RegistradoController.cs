@@ -322,6 +322,11 @@ namespace Web_GameAffinity.Controllers
 
             PerfilViewModel usuario = HttpContext.Session.Get<PerfilViewModel>("user");
 
+            if(usuario == null)
+            {
+                return RedirectToAction("Login", "Registrado");
+            }
+
             if (usuario.id == id)
             {
                 return RedirectToAction("Details", "Registrado");
